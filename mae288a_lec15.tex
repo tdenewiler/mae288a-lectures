@@ -57,7 +57,7 @@ $$[\nabla_pf(x,p)]_i = f_{p_i}(x,p)$$
 
 \begin{figure}[ht!]
 	\centering
-	\includegraphics[width=.15\textwidth]{images/15g}
+	\includegraphics[width=.4\textwidth]{images/15g}
 	\caption{The space $G$ showing possible trajectories $\eta_r$ starting at $\bar{x}$.}
 	\label{fig:15g}
 \end{figure}
@@ -122,7 +122,7 @@ This gives us $n$ equations in $n-1$ dimensions and we can solve the problem.
 
 \begin{figure}[ht!]
 	\centering
-	\includegraphics[width=.2\textwidth]{images/15gboundary}
+	\includegraphics[width=.4\textwidth]{images/15gboundary}
 	\caption{A close-up look at the boundary of the space $G$.}
 	\label{fig:15gboundary}
 \end{figure}
@@ -136,7 +136,7 @@ This gives us $n$ equations in $n-1$ dimensions and we can solve the problem.
 \end{itemize}
 
 \begin{example}
-We are taking a characteristic approach to Example \ref{ex:14lq}. We start with
+We are taking a characteristic approach to Example \ref{ex:14exit}. We start with
 \begin{align*}
 0 = \rho - \frac{1}{2}|\nw(x)|^2 = f(x,\nw(x))&, \qquad |x|<R \\
 W(x) = 0&, \qquad |x| = R
@@ -145,7 +145,7 @@ We also have that
 \begin{align*}
 f(x,p) &= \rho-\frac{1}{2}|p|^2 \\
 \dot{\eta}_r &= \nabla_pf(\eta_r,\vp_r) = -\vp_r \\
-\dot{\vp}_r &= \nabla_xf(\eta_r,\vp_r) = 0 \\
+\dot{\vp}_r &= -\nabla_xf(\eta_r,\vp_r) = 0 \\
 \dot{z}_r &= \vp_r\cdot\dot{\eta}_r = \vp_r\cdot(-\vp_r) = -|\vp_r|^2
 \end{align*}
 The boundary conditions are
@@ -170,35 +170,35 @@ From Figure \ref{fig:15circlezoom} we see that
 
 \begin{figure}[ht!]
 	\centering
-	\includegraphics[width=.15\textwidth]{images/15circlezoom}
+	\includegraphics[width=.4\textwidth]{images/15circlezoom}
 	\caption{A close-up look at the boundary of the space.}
 	\label{fig:15circlezoom}
 \end{figure}
 
 By (\ref{eq:15vpr}) and (\ref{eq:15vpo}) we get
 $$\vp_0 = \pm\frac{\sqrt{2\rho}}{R}\cdot\left(\begin{array}{c} -x_2 \\ x_1 \end{array}\right) = \pm\frac{\sqrt{2\rho}}{R}x$$
-Then we get
+Then, because $\vp_r$ is constant, we get
 $$\vp_r = \frac{\sqrt{2\rho}}{R}x ~\forall r$$
-because $\vp$ is constant, and
+and
 \begin{align*}
 \dot{\eta}_r &= \mp \frac{\sqrt{2\rho}}{R}x ~\forall r \\
 \eta_0 &= x \\
-\eta_r &= x\mp\frac{\sqrt{2\rho}}{R}xr = \left(1\mp\frac{\sqrt{2\rho}}{R}\right)x
+\eta_r &= x\mp\frac{\sqrt{2\rho}}{R}xr = \left(1\mp\frac{\sqrt{2\rho}r}{R}\right)x
 \end{align*}
 We want to have $\eta_r\in G$ for $r>0$ so
-$$\eta_r = \left(1-\frac{\sqrt{2\rho}}{R}\right)x$$
+$$\eta_r = \left(1-\frac{\sqrt{2\rho}r}{R}\right)x$$
 From Figure \ref{fig:15traj} we want
 \begin{align*}
-y &= \eta_r = \left(1-\frac{\sqrt{2\rho}}{R}\right)x \\
-|y| &= \left(1-\frac{\sqrt{2\rho}}{R}\right)|x| \\
-&= \left(1-\frac{\sqrt{2\rho}}{R}\right)R \\
+y &= \eta_r = \left(1-\frac{\sqrt{2\rho}r}{R}\right)x \\
+|y| &= \left(1-\frac{\sqrt{2\rho}r}{R}\right)|x| \\
+&= \left(1-\frac{\sqrt{2\rho}r}{R}\right)R \\
 &= R-\sqrt{2\rho}r \\
 r &= \frac{R-|y|}{\sqrt{2\rho}}
 \end{align*}
 
 \begin{figure}[ht!]
 	\centering
-	\includegraphics[width=.2\textwidth]{images/15traj}
+	\includegraphics[width=.4\textwidth]{images/15traj}
 	\caption{Possible trajectories in the space.}
 	\label{fig:15traj}
 \end{figure}
@@ -219,7 +219,7 @@ $\lozenge$
 
 \begin{figure}[ht!]
 	\centering
-	\includegraphics[width=.1\textwidth]{images/15solcone}
+	\includegraphics[width=.25\textwidth]{images/15solcone}
 	\caption{Dual cones showing possible solution spaces.}
 	\label{fig:15solcone}
 \end{figure}

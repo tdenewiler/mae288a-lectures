@@ -137,7 +137,8 @@ The LQ control problem is set up as
 &\dot{\xi} = A\xi+Bu \\
 &\xi_s = x \\
 &J(s,x,u) = \int_s^T\frac{1}{2}\xi_t^TC\xi_t + \frac{1}{2}u_t^TDu_tdt + \frac{1}{2}(\xi_T-z)^TE(\xi_T-z) \\
-&0 = W_{s,T} + \min\left\lbrace (Ax)^T\nabla_xW + (Bv)\nabla_xW + \frac{1}{2}x^TCx + \frac{1}{2}v^TDv \right\rbrace \\
+&0 = W_{s,T} + \min\left\lbrace (Ax)^T\nabla_xW + (Bv)^T\nabla_xW + \frac{1}{2}x^TCx + \frac{1}{2}v^TDv \right\rbrace \\
+&v^TB^T\nabla_xW + \frac{1}{2}v^TDV = 0 \\
 &B^T\nabla_xW + Dv = 0
 \end{align*}
 The terminal condition is given by
@@ -148,26 +149,28 @@ W(T,x) &= \frac{1}{2}(x-z)^TE(x-z)
 Let $D^{-1}$ exist, then
 \begin{align*}
 v^\sigma &= -D^{-1}B^T\nabla_xW \\
-0 &= W_s+s^TA^T\nabla_xW + \frac{1}{2}x^TCx - \frac{1}{2}\nabla_xW^T\Sigma\nabla_xW
+0 &= W_x+\underbrace{x^TA^T\nabla_xW}_{\lambda} + \frac{1}{2}x^TCx - \frac{1}{2}\nabla_xW^T\Sigma\nabla_xW
 \end{align*}
 where $\Sigma = -BD^{-1}B^T$.
 
-% Suppose
+Suppose
 $$W(t,x) = \frac{1}{2}(x-\bar{x}_t)^TP_t(x-\bar{x}_t) + r_t$$
-From (\ref{eq:14extc}) $\bar{x}_T = z$, $P_t=E$ and $r_t=0$. Then
+From (\ref{eq:14extc}) $\bar{x}_T = z$, $P_T=E$ and $r_T=0$. Then
 \begin{align*}
-W_t &= \frac{1}{2}(x-\bar{x}_t)^T\dot{P}_t(x-\bar{x}_t)+\dot{r}_t - \frac{1}{2}\dot{\bar{x}}^TP_t(x-\bar{x}_t) - \frac{1}{2}(x-\bar{x}_t)P_t\dot{\bar{x}_t} \\
+W_t &= \frac{1}{2}(x-\bar{x}_t)^T\dot{P}_t(x-\bar{x}_t)+\dot{r}_t - \frac{1}{2}\dot{\bar{x}}^TP_t(x-\bar{x}_t) - \frac{1}{2}(x-\bar{x}_t)P_t\dot{\bar{x}}_t \\
 \nabla_xW &= P_t(x-\bar{x}_t) \\
 0 &= \frac{1}{2}(x-\bar{x}_t)^T\dot{P}_t(x-\bar{x}_t) + \dot{r}_t - \frac{1}{2}\dot{\bar{x}}_tP_t(x-\bar{x}_t) - \frac{1}{2}(x-\bar{x}_t)^TP_t\dot{\bar{x}}_t \\
-&\qquad + \frac{1}{2}x_t^TAP_t(x-\bar{x}_t) + \frac{1}{2}(x-\bar{x}_t)^TP_tA^Tx + \frac{1}{2}x^TCx \\
+&\qquad + \underbrace{\frac{1}{2}x^TAP_t(x-\bar{x}_t) + \frac{1}{2}(x-\bar{x}_t)^TP_tA^Tx}_{\lambda} + \frac{1}{2}x^TCx \\
 &\qquad - \frac{1}{2}(x-\bar{x}_t)^TP_t\Sigma P_t(x-\bar{x}_t)
 \end{align*}
-This gives the Riccati equation as
+Notice that $\lambda$ is a scalar value and $P_t$ is symmetric so the term $x^TA^T\nabla_xW$ was separated into two components above.
+
+Since we are using a quadratic form for the cost function it is of the form $a(t)x^2+b(t)x+c(t)$ and we want this to be equal to zero for all $t$ and $x$. The only way for that to occur is if $a(t)=b(t)=c(t)=0$, and we have that $\dot{P}_t = a(t)$, $\dot{\bar{x}}_t=b(t)$ and $\dot{r}_t=c(t)$. Looking for $a(t) = \dot{P}_t$ gives the Riccati equation as
 \begin{align*}
 0 &= \frac{1}{2}\dot{P}_t + \frac{1}{2}AP_t + \frac{1}{2}P_tA^T + \frac{1}{2}C - \frac{1}{2}P_t\Sigma P_t \\
 \Rightarrow \dot{P}_t &= -AP_t - P_tA^T - C + P_t\Sigma P_t
 \end{align*}
-Next, we separate out the $x^T(\cdot)$ and $x(\cdot)$ terms such that
+Next, we separate out the $x^T(\cdot)$ and $(\cdot)x$ terms and find $b(t) = \dot{\bar{x}}_t$ such that
 \begin{align*}
 0 &= -\frac{1}{2}\dot{P}_t\bar{x}_t - \frac{1}{2}P_t\dot{\bar{x}}_t - \frac{1}{2}AP_t\bar{x}_t + \frac{1}{2}P_t\Sigma P_t\bar{x}_t \\
 P_t\dot{\bar{x}}_t &= -\dot{P}_t\bar{x}_t - AP_t\bar{x}_t + P_t\Sigma P_t\bar{x}_t \\
@@ -214,6 +217,7 @@ $$\therefore W(x)\leq V(x) ~\forall x$$
 It is the same idea as for optimal control.
 
 \begin{example}
+\label{ex:14exit}
 Let the system be described by
 \begin{align*}
 \dot{\xi} = A\xi+Bu, \qquad \xi_0 = x, \qquad G=B_R(0)
