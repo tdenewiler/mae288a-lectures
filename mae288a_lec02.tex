@@ -92,7 +92,6 @@
 
 % A command to show a vector norm that will have the pipe signs scale with the contents.
 \newcommand{\vectornorm}[1]{\left|\left|#1\right|\right|}
-\newcommand{\SI}{System Identification}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -113,7 +112,225 @@
 \setcounter{lecture}{1}
 \setcounter{chapter}{1}
 
-\lecture{??}
+\lecture{Probability Review II}
+
+\section{Multiple Random Variables}Start with a pair of RVs that are put together where $(X,Y):(\Omega,\Sigma) \to (\mathbb{R}^m\times \mathbb{R}^n,B)$. Note that $X$ and $Y$ are in some sample space. In the remainder of this course we will assume that probability density functions exist.
+
+\begin{theorem}
+\label{th:02expectationlo}
+The expectation operator $E$ is a linear operator.
+
+If $A\in k\times m$, $B\in k\times n$, then $E[AX+BY]=AE[X]+BE[Y]$.
+\end{theorem}
+\begin{proof}
+This proof is for the one dimensional case.
+\begin{align*}
+E[AX+BY] &= \int_{\mathbb{R}\times\mathbb{R}}(AX+BY)p(x,y)dxdy \\
+&= \int_{\mathbb{R}}\int_{\mathbb{R}}AXp(x,y)dxdy + \int_{\mathbb{R}}\int_{\mathbb{R}}BYp(x,y)dxdy \\
+&= A\int_{\mathbb{R}}\int_{\mathbb{R}}Xp(x,y)dxdy + B\int_{\mathbb{R}}\int_{\mathbb{R}}Yp(x,y)dxdy \\
+&= AE[X] + BE[Y]
+\end{align*}
+\end{proof}
+
+Let $X\sim N(m\in\mathbb{R}^n,C)$, then $p(x)=\frac{1}{(2\pi)^{n/2}|C|^{1/2}}exp\left[-\frac{1}{2}(x-m)^TC^{-1}(x-m)\right]$. Let $k=\frac{1}{(2\pi)^{n/2}|C|^{1/2}}$.
+
+\begin{theorem}
+\label{th:02mean}
+\begin{align}
+\label{eq:02mean}
+E[x] = m \\
+\label{eq:02covariance}
+E[(x-m)(x-m)^T] = C
+\end{align}
+\end{theorem}
+\begin{proof}
+The proof for (\ref{eq:02covariance}) follows Theorem \ref{th:02covariance} later in this lecture. This proof is for the one dimensional case of (\ref{eq:02mean}). Let $C=\sigma^2$, $x=m+(x-m)$, $f(y)=yke^{-\frac{1}{2\sigma^2}y^2}$
+
+\begin{align*}
+E[x] &= \int xke^{-\frac{1}{2\sigma^2}(x-m)^2}dx \\
+&= \int mke^{-\frac{1}{2\sigma^2}(x-m)^2}dx + \int(x-m)ke^{-\frac{1}{2\sigma^2}(x-m)^2}dx \\
+&= m \cdot 1 + \int_{-\infty}^\infty yke^{-\frac{1}{2\sigma^2}y^2}dy \\
+&= m + 0 = m
+\end{align*}
+In the third equality a change of variables was used where $y=x-m$ and $dy=dx$. Then, since $f(y)$ is an odd function ($f(y)=-f(-y)$, see Figure \ref{fig:02oddFunction}) and $\int_{-\infty}^\infty|f(y)|dy < \infty$ then that term is equal to zero.
+\end{proof}
+\begin{figure}[ht!]
+	\centering
+	\includegraphics[width=.5\textwidth]{images/02oddFunction}
+	\caption{An odd function, where the integral is zero because the two areas $A$ and $-A$ cancel each other out.}
+	\label{fig:02oddFunction}
+\end{figure}
+
+\begin{theorem}
+If $X$ and $Y$ are normal RVs, then $AX+BY$ is also a normal RV.
+\end{theorem}
+
+\textit{Example:} This example is similar to a problem in Homework 1. Let $(X(\omega),Y(\omega)) \in \mathbb{R}^2$ so that $X$ and $Y$ are scalars and let $Z=(X,Y)$. Recall that
+\begin{align*}
+F(x,y) &= P(X\leq x, Y\leq y) \\
+&= P(\lbrace \omega\in\Omega | X(\omega)\leq x, Y(\omega)\leq y\rbrace) \\
+&= \int_{-\infty}^y\int_{-\infty}^x p(x,y)dxdy
+\end{align*}
+
+Then let $A=\lbrace(x,y) | x\in(a_1,b_1], y\in(-\infty,b_2]\rbrace$, $B=\lbrace(~) | x\leq a_1, y\leq b_2\rbrace$ and $C=\lbrace(~)|x\leq b_1, y\leq b_2\rbrace$, as shown in Figure \ref{fig:02twoSets}. This gives $C=A\cup B$, $A\cap B=\emptyset$.
+$$Z^{-1}(A)\cap Z^{-1}(B) = \emptyset$$
+Since $P$ is a probability measure
+$$P(Z^{-1}(C)) = P(Z^{-1}(A\cup B)) = P(Z^{-1}(A))+P(Z^{-1}(B))$$
+or
+$$P(Z^{-1}(A))=P(Z^{-1}(C))-P(Z^{-1}(B))$$
+This all leads to
+\begin{align*}
+C &= F(b_1,b_2) - F(a_1,b_2) \\
+&= \int_{-\infty}^{b_1}\int_{-\infty}^{b_2} p(x,y)dxdy - \int_{-\infty}^{b_1}\int_{-\infty}^{a_1}p(x,y)dxdy \\
+&= \int_{-\infty}^{b_2}\int_{a_1}^{b_1} p(x,y)dxdy
+\end{align*}
+$\lozenge$
+\begin{figure}[ht!]
+	\centering
+	\includegraphics[width=.35\textwidth]{images/02twoSets}
+	\caption{Two sets, $A$ and $B$, showing the distributions of RVs.}
+	\label{fig:02twoSets}
+\end{figure}
+
+\begin{theorem}
+For any measurable $A\subseteq\mathbb{R}^n$ then
+$$P(x\in A)=P(X^{-1}(A)) = \int_Ap(x)dx$$
+\end{theorem}
+
+\section{Independence}
+\begin{definition}
+The RVs $(X,Y)$ are independent if
+\begin{align*}
+P(X\in A, Y\in B) &= P(X^{-1}(A) \cap Y^{-1}(B)) \\
+&= P(X^{-1}(A)) P(Y^{-1}(B)) \\
+&= P(X\in A) \cdot P(Y\in B)
+\end{align*}
+\end{definition}
+
+\textit{Example:} Using the uniform system we have
+$$p(x,y) = \begin{cases} 1, & x\in[0,1],y\in[0,1] \\ 0, & \text{elsewhere} \end{cases}$$
+This is shown in Figure \ref{fig:02unitSquare}. Let $A,B\subseteq\mathbb{R}$, then
+\begin{align*}
+P(X^{-1}(A) \cap Y^{-1}(B)) &= {\int\int}_{A\times B} p(x,y)dydx \\
+&= \int_{A\cap[0,1]}\int_{B\cap[0,1]} 1 dydx \\
+&= \int_{B\cap[0,1]}dy \int_{A\cap[0,1]}dx \\
+&= \int_{B\cap[0,1]}\int_{[0,1]}dxdy \cdot \int_{A\cap[0,1]}\int_{[0,1]}dydx \\
+&= \int_{\mathbb{R}\times B}p(x,y)dydx \cdot \int_{\mathbb{R}\times A}p(x,y)dydx \\
+&= P(Y^{-1}(B)) P(X^{-1}(A))
+\end{align*}
+\begin{figure}[ht!]
+	\centering
+	\includegraphics[width=.3\textwidth]{images/02unitSquare}
+	\caption{Unit square.}
+	\label{fig:02unitSquare}
+\end{figure}
+$\lozenge$
+
+\textit{Example:} Let $A=[0,\frac{1}{2}]$ and $B=[0,\frac{1}{2}]$, as shown in Figure \ref{fig:02unitTriangle}. Then
+\begin{align*}
+&P((X,Y)\in [0,\frac{1}{2}],[0,\frac{1}{2}]) = 2\cdot \frac{1}{8} = \frac{1}{4} \\
+&P(X\in[1,\frac{1}{2}] = \frac{1}{4} \\
+&P(Y\in[1,\frac{1}{2}] = \frac{3}{4} \\
+&\Rightarrow \frac{1}{4} \neq \frac{3}{4}
+\end{align*}
+The inequality means that $X$ and $Y$ are not independent variables. This makes sense because knowing information about the RV $X$ will tell us something about constraints on the RV $Y$ and vice-versa.
+\begin{figure}[ht!]
+	\centering
+	\includegraphics[width=.3\textwidth]{images/02unitTriangle}
+	\caption{Unit triangle.}
+	\label{fig:02unitTriangle}
+\end{figure}
+$\lozenge$
+
+\textit{Example:} Let $X$ and $Y$ be scalar RVs.
+\begin{align*}
+P(X\leq a) &= \int_{-\infty}^a \int_{-\infty}^\infty p(x,y)dydx = F_x(a) \\
+&\doteq \int_{-\infty}^a p_x(x)dx
+\end{align*}
+This is known as the ``marginal density for $x$''.
+$\lozenge$
+
+\textit{Example:} This is similar to a problem in Homework 1.
+\begin{align}
+\label{eq:02probXY1}
+P(X\in[l_1,u_1], Y\in[l_2,u_2]) = \int_{l_2}^{u_2} \int_{l_1}^{u_1} p(x,y)dxdy
+\end{align}
+\begin{align}
+\label{eq:02probXY2}
+\begin{split}
+P(X\in[l_1,u_1], Y\in[l_2,u_2]) &= P(X\in[l_1,u_1]) P(Y\in[l_2,u_2]) \\
+&= \int_{l_1}^{u_1}p_x(x)dx \int_{l_2}^{u_2}p_y(y)dy \\
+&= \int_{l_2}^{u_2}px(x)p_y(y)dxdy
+\end{split}
+\end{align}
+For all $A$ that are rectangular, then by (\ref{eq:02probXY1}) and (\ref{eq:02probXY2}) we have
+\begin{align*}
+\int_A\int p(x,y)dxdy &= \int_A\int p_x(x)p_y(y)dxdy \\
+&\Rightarrow p(x,y) = p_x(x)p_y(y)
+\end{align*}
+$\lozenge$
+
+\begin{theorem}
+$X$ and $Y$ are independent if $p(x,y) = p_x(x)p_y(y)$.
+\end{theorem}
+
+\begin{theorem}
+$X$ and $Y$ are independent scalars if $E[XY] = E[X]E[Y]$.
+\end{theorem}
+
+\begin{proof}
+\begin{align*}
+E[XY] &= \int_\mathbb{R}\int_\mathbb{R} xyp(x,y)dxdy \\
+&= \int_\mathbb{R}\int_\mathbb{R} xyp_x(x)p_y(y)dydx \\
+&= \int_\mathbb{R} xp_x(x)\int_\mathbb{R} yp_y(y)dydx \\
+&= \int_\mathbb{R} yp_y(y)dy \int_\mathbb{R} p_x(x)dx \\
+&= E[Y]E[X]
+\end{align*}
+\end{proof}
+
+\begin{theorem}
+\label{th:02covariance}
+Given $X$ and $Y$ are independent RVs, $X\sim N(m_x,C_x)$, $Y\sim N(m_y,C_y)$ and $Z=AX+BY$, then
+\begin{align}
+\label{eq:02meanz}
+\bar{z} = E[Z] = Am_x+Bm_y \\
+\label{eq:02covariancez}
+C_z = E[(z-\bar{z})(z-\bar{z})^T] = AC_xA^T + BC_yB^T
+\end{align}
+\end{theorem}
+The proof for (\ref{eq:02meanz}) was done earlier in this lecture following Theorem \ref{th:02mean}.
+\begin{proof}
+The proof for (\ref{eq:02covariancez}) follows. Let $z=AX+BY$ and $\bar{z}=Am_x+Bm_y$. Recall that $E[(\cdot)]$ is a linear operator from Theorem \ref{th:02expectationlo}.
+\begin{align*}
+C_z &= E\left[[A(X-m_x)+B(Y-m_y)][A(X-m_x)+B(Y-m_y)]^T\right] \\
+&= E[A(X-m_x)(X-m_x)^TA^T] + E[B(Y-m_y)(Y-m_y)^TB^T] \\
+&+ E[A(X-m_x)(Y-m_y)^TB^T] + E[B(Y-m_y)(X-m_x)^TA^T] \\
+&= AE[(X-m_x)(X-m_x)^T]A^T + BE[(Y-m_y)(Y-m_y)^T]B^T \\
+&+ AE[(X-m_x)(Y-m_y)^T]B^T + BE[(Y-m_y)(X-m_x)^T]A^T \\
+&= AC_xA^T + BC_yB^T \\
+&+ AE[X-m_x]E[Y-m_y]^TB^T + BE[Y-m_y]E[X-m_x]^T]A^T \\
+&= AC_xA^T + BC_yB^T
+\end{align*}
+The last two terms in the fourth equality are both equal to zero because $X$ and $Y$ are independent. Also, note that when $X$ and $Y$ are independent RVs that it implies that $X-m_x$ and $Y-m_y$ are also independent.
+\end{proof}
+
+\section{Independent and Identically Distributed Sequence}
+\textit{Example:} Let $\lbrace w_t\rbrace_{t=0}^\infty$ be an IID sequence of RVs. The variables are IID if $w_r$ and $w_s$ are independent when $r\neq s$ and they all have the same distribution. Let $\zeta_0$ be uniformaly distributed over the range $[0,1]$. Then the desnity function for $w_t$ is
+$$p_t(w) = \begin{cases} \frac{1}{2}, & w\in[-1,1] \\ 0, & \text{elsewhere} \end{cases}$$
+Let $\zeta_{t+1}=\zeta_t+w_t$. Then
+\begin{align*}
+P(\zeta_1\in[a,b]) &= P(\zeta_0 + w_0\in[a,b]) \\
+&= \int_A p_{\zeta_0,w_0}(x,v)dxdv \\
+&= \int_A q_0(x)p_0(w)dxdw \\
+&= \#
+\end{align*}
+The distribution can be seen in Figure \ref{fig:02iid}.
+\begin{figure}[ht!]
+	\centering
+	\includegraphics[width=.3\textwidth]{images/02iid}
+	\caption{Distribution over $A$.}
+	\label{fig:02iid}
+\end{figure}
 
 
 \end{document}
