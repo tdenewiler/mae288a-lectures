@@ -25,7 +25,7 @@ J(s,x,u) &= E_w\int_{]s,t-1[}\sum_{t=s}^{T-1}l(x_t,u_t)dt \\
 V(s,x,\mu) &= \inf_{\mu\in\mathcal{M}}J(s,x,\mu)
 \end{align*}
 The optimal control here is feedback control. Using the Dynamic Programming Principle (DPP) and Dynamic Programming Equation (DPE) yields
-$$V(t,x) = \min_{u\in\mathcal{U}}\left\lbrace l(x,u) + E_w[V(t+1),f(x,u,w))]\right\rbrace$$
+$$V(t,x) = \min_{u\in\mathcal{U}}\left\lbrace l(x,u) + E_w[V(t+1,f(x,u,w))]\right\rbrace$$
 
 \section{Linear Quadratic Gaussian}
 The goal here is to use DP in discrete time to solve the regular LQG problem.
@@ -42,15 +42,15 @@ $$V(T,\cdot) = \frac{1}{2}x^TFx$$
 If we assume that $V(t,x) = \frac{1}{2}x^TP_{t+1}x + R_{t+1}$, with $P_{t+1}$ symmetric positive definite and that this is true at $t+1=T$ with $P_T=F$, $R_t=0$, then the DPE is
 \begin{align*}
 V(t,x) &= \min_{u\in\mathbb{R}^k}\{\frac{1}{2}x^TCx + \frac{1}{2}u^TDU  \\
-&+ E_w[\frac{1}{2}(Ax+Bu+\sigma w)^TP_{t+1}(Ax+Bu+\sigma w) + R_{t+1}]\} \\
+&\qquad + E_w[\frac{1}{2}(Ax+Bu+\sigma w)^TP_{t+1}(Ax+Bu+\sigma w) + R_{t+1}]\} \\
 &= \frac{1}{2}x^TCx + R_{t+1} \\
-&+ \min_u \{\frac{1}{2}u^TDu + \frac{1}{2}(Ax+Bu)^TP_{t+1}(Ax+Bu) \\
-&+ 2\cdot\frac{1}{2}E_w[(Ax+Bu)^TP_{t+1}\sigma w] + \frac{1}{2}E_w[w^T\sigma^TP_{t+1}\sigma w]\} \\
+&\qquad + \min_u \{\frac{1}{2}u^TDu + \frac{1}{2}(Ax+Bu)^TP_{t+1}(Ax+Bu) \\
+&\qquad + 2\cdot\frac{1}{2}E_w[(Ax+Bu)^TP_{t+1}\sigma w] + \frac{1}{2}E_w[w^T\sigma^TP_{t+1}\sigma w]\} \\
 &= \frac{1}{2}x^TCx + R_{t+1} + \frac{1}{2}E_w[w^T\sigma^TP_{t+1}\sigma w] \\
-&+ \min_u \{ \frac{1}{2}u^TDu + \frac{1}{2}(Ax+Bu)^TP_{t+1}(Ax+Bu) \\
-&+ (Ax+Bu)^TP_{t+1}\sigma E_w[w] \} \\
+&\qquad + \min_u \{ \frac{1}{2}u^TDu + \frac{1}{2}(Ax+Bu)^TP_{t+1}(Ax+Bu) \\
+&\qquad + (Ax+Bu)^TP_{t+1}\sigma E_w[w] \} \\
 &= \frac{1}{2}x^TCx + R_{t+1} + \frac{1}{2}E_w[w^T\sigma^TP_{t+1}\sigma w] \\
-&+ \min_u \left\lbrace \frac{1}{2}u^TDu + \frac{1}{2}(Ax+Bu)^TP_{t+1}(Ax+Bu) \right\rbrace \\
+&\qquad + \min_u \left\lbrace \frac{1}{2}u^TDu + \frac{1}{2}(Ax+Bu)^TP_{t+1}(Ax+Bu) \right\rbrace \\
 \end{align*}
 where the last equality occurs because $E_w[w]=0$ and at the second and third equalities all terms that are not a function of $u$ were pulled out in front.
 
@@ -232,7 +232,7 @@ where the first $\xi_{t+1}$ represents the cost of having backlogged orders and 
 \begin{align*}
 V(t,x) &= \min_{u\geq 0}E_w[cu+p\max(0,-\xi_{t+1})) \\
 &+ h\max(0,\xi_{t+1}) + V(t+1,x+u+w)] \\
-&\doteq min_{u\geq 0}H(x,u)
+&\doteq \min_{u\geq 0}H(x,u)
 \end{align*}
 From here we can use convex analysis since $cu$, $x+u+w$ and $-(x+u+w)$ are all convex in $u$. Suppose $V(t+1,\cdot)$ is convex where the $\cdot$ represents the state. Then by Theorem \ref{th:argconvex} we have that $V(t+1,x+u+w)$ is convex in $u$. Theorems \ref{th:cfxconvex} and \ref{th:maxconvex} show that $p\max(0,-(x+u+w))$ and $h\max(0,x+u+w)$ are convex in $u$. Then Theorem \ref{th:randconvex} means that $H(x,u)$ is convex in $u$.
 

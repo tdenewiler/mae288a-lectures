@@ -66,7 +66,7 @@ We want to show that $||\mathcal{G}[V]-\mathcal{G}[\tilde{V}]||_\infty\leq\alpha
 &= \alpha||V-\tilde{V}||_\infty\max_{i,u}\sum_j\pij(u) \\
 &= \alpha||V-\tilde{V}||_\infty
 \end{align*}
-Therefore, $\calg$ is a contraction and by Theorem \ref{th:bfp} the value iteration converges to the unique solution of the DPE. Note that the term $\sum_j\pij(u)=1$ because the probability transition matrix is defined such that all of the probabilities in a row must add up to $1$, so that term need not be considered.
+Therefore, $\calg$ is a contraction and by the Banach Fixed Point Theorem (\ref{th:bfp}) the value iteration converges to the unique solution of the DPE. Note that the term $\sum_j\pij(u)=1$ because the probability transition matrix is defined such that all of the probabilities in a row must add up to $1$, so that term need not be considered.
 
 \begin{example}
 \label{ex:valit}
@@ -90,9 +90,9 @@ V(3) &= \min\left\lbrace-6+\frac{2}{3}\left[\frac{3}{4}V(2)+\frac{1}{4}V(3)\righ
 \end{align*}
 This yields three non-linear equations with three unknowns. The equations are non-linear because of the $\min$ operator. To solve for the three unknowns we begin by guessing a solution for $V_0\equiv0$ and getting
 \begin{align*}
-&V_1(1) = -2, \qquad &V_1(2) = -4, \qquad &V_1(3) = -6 \\
-&V_2(1) = -\frac{19}{6}, \qquad &V_2(2) = -6, \qquad &V_2(3) = -9 \\
-&\vdots
+&V_1(1) = -2, &\qquad &V_1(2) = -4, &\qquad &V_1(3) = -6 \\
+&V_2(1) = -\frac{19}{6}, &\qquad &V_2(2) = -6, &\qquad &V_2(3) = -9 \\
+&\vdots &\qquad & \vdots &\qquad &\vdots
 \end{align*}
 This value iteration should continue until the convergence criterion is met. Recall from \S\ref{sec:showfcontraction} that the optimal control can be found using these values and typically the optimal control will converge before the value iteration converges.
 $\lozenge$

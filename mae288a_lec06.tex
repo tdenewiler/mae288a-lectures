@@ -101,15 +101,15 @@ This is used in non-linear $H_\infty$. We are not going to spend time on this me
 $$V(x) = \inf_{\mu\in\mathcal{M}_{0,\infty}} J(x,\mu)$$
 The following is \textit{not} a proof and we are assuming Markov processes. Let $r=t-\tau$, $\hat{\xi}_r=\xi_{\tau+r}$, $\hat{\mu}_r=\mu_{\tau+r}$ and $\hat{w}_r=w_{\tau+r}$. Then we can get the value function as
 \begin{align}
-V(x) &= \inf_{\mu\in\mathcal{M}_{0,\infty}} E_{w_]0,\infty)} \left\lbrace \sum_{t=1}^{T-1} \alpha^tl(\xi_t,\mu_t(\xi_t)) + \sum_{t=-\tau}^\infty \alpha^tl(\xi_t,\mu_t(\xi_t))\right\rbrace \nonumber \\
-&= \inf_{\mu\in\mathcal{M}_{0,\infty}} E_{w_]0,\infty)} \left\lbrace \sum_{t=1}^{T-1} \alpha^tl(\xi_t,\mu_t(\xi_t)) \right. \\
+V(x) &= \inf_{\mu\in\mathcal{M}_{0,\infty}} E_{w_{]0,\infty[}} \left\lbrace \sum_{t=1}^{T-1} \alpha^tl(\xi_t,\mu_t(\xi_t)) + \sum_{t=-\tau}^\infty \alpha^tl(\xi_t,\mu_t(\xi_t))\right\rbrace \nonumber \\
+&= \inf_{\mu\in\mathcal{M}_{0,\infty}} E_{w_{]0,\infty[}} \left\lbrace \sum_{t=1}^{T-1} \alpha^tl(\xi_t,\mu_t(\xi_t)) \right. \nonumber \\
 &\left. \qquad +  \alpha^t \sum_{r=0}^\infty \alpha^rl(\xi_{\tau+r},\mu_{\tau+r}(\xi_{\tau+r})) \right\rbrace \nonumber \\
-&= \inf_{\mu\in\mathcal{M}_{]0,\tau-1[}} E_{]0,\tau-1[} \left\lbrace \sum_{t=0}^{\tau-1} \alpha^tl(\xi_t,\mu_t(\xi_t))\right\rbrace \nonumber \\
-&\qquad + \alpha^\tau\inf_{\mu\in\mathcal{M}_{]\tau,\infty[}} E_{w_{]\tau,\infty[}} \left\lbrace \sum_{r=0}^\infty\alpha^rl(\xi_{\tau+r},\mu_{\tau+r}(\xi_{\tau+r}))\right\rbrace \nonumber \\
-&= \inf_{\mu\in\mathcal{M}_{]0,\tau-1[}} E_{]0,\tau-1[} \left\lbrace \sum_{t=0}^{\tau-1} l(\xi_t,\mu(\xi_t)) \right. \\
+&= \inf_{\mu\in\mathcal{M}_{\mu_{]0,\tau-1[}}} E_{]0,\tau-1[} \left\lbrace \sum_{t=0}^{\tau-1} \alpha^tl(\xi_t,\mu_t(\xi_t))\right\rbrace \nonumber \\
+&\qquad + \alpha^\tau\inf_{\mu\in\mathcal{M}_{\mu_{]\tau,\infty[}}} E_{w_{]\tau,\infty[}} \left\lbrace \sum_{r=0}^\infty\alpha^rl(\xi_{\tau+r},\mu_{\tau+r}(\xi_{\tau+r}))\right\rbrace \nonumber \\
+&= \inf_{\mu\in\mathcal{M}_{]0,\tau-1[}} E_{\mu_{]0,\tau-1[}} \left\lbrace \sum_{t=0}^{\tau-1} l(\xi_t,\mu(\xi_t)) \right. \nonumber \\
 &\left. \qquad + \alpha^\tau \inf_{\mu\in\mathcal{M}_{]0,\tau-1[}} \sum_{r=0}^\infty \alpha^rl(\hat{\xi}_r,\hat{\mu}_r(\hat{\xi}_r)) \right\rbrace \nonumber \\
-&= \inf_{\mu\in\mathcal{M}_{]0,\tau-1[}} E_{]0,\tau-1[} \left\lbrace \sum_{t=0}^{\tau-1} l(\xi_t,\mu(\xi_t)) + \alpha^\tau V(\xi_\tau) \right\rbrace \nonumber \\
-\Rightarrow V(x) &= \inf_{\mu\in\mathcal{M}_{]0,\tau-1[}} E_{]0,\tau-1[} \left\lbrace \sum_{t=0}^{\tau-1} l(\xi_t,\mu(\xi_t)) + \alpha^\tau V(\xi_\tau) \right\rbrace
+&= \inf_{\mu\in\mathcal{M}_{]0,\tau-1[}} E_{\mu_{]0,\tau-1[}} \left\lbrace \sum_{t=0}^{\tau-1} l(\xi_t,\mu(\xi_t)) + \alpha^\tau V(\xi_\tau) \right\rbrace \nonumber \nonumber \\
+\Rightarrow V(x) &= \inf_{\mu\in\mathcal{M}_{]0,\tau-1[}} E_{\mu_{]0,\tau-1[}} \left\lbrace \sum_{t=0}^{\tau-1} l(\xi_t,\mu(\xi_t)) + \alpha^\tau V(\xi_\tau) \right\rbrace
 \end{align}
 This is the dynamic programming principle (DPP)! When $\tau=1$ we get the Dynamic Programming Equation (DPE).
 

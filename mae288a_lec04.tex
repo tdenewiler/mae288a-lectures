@@ -59,7 +59,7 @@ $z = \inf A$ iff $y\leq z$ $\forall x\in A$ and $y>z\to\exists x\in A: y>x$. In 
 $\inf A = \min A$ if $\min A$ exists. And yet
 \begin{align*}
 \inf((2.7,\pi)) &= 2.7 \\
-\inf\left(\left\lbrace\frac{1}{n}\right\rbrace_{N=1}^\infty\right) &= 0
+\inf\left(\left\lbrace\frac{1}{n}\right\rbrace_{n=1}^\infty\right) &= 0
 \end{align*}
 Note the the supremum is the opposite, or the least upper bound.
 
@@ -120,7 +120,7 @@ The expectation taken over $w_s,\ldots,w_{t-1} = w_{]s,t-1[}$.
 \end{theorem}
 
 \begin{proof}
-The notation $]a,b[$ operator means greater than $a$ and less than $b$. Let $R(s,x) = $ right hand side of (\ref{eq:dpp}). For any $y\in\mathbb{R}^N$, by definition the value $V(t,y) = \inf_{\mu\in\mathcal{M}]t,T-1[}$. This gives
+The notation $]a,b[$ operator means greater than $a$ and less than $b$. Let $R(s,x) = $ right hand side of (\ref{eq:dpp}). For any $y\in\mathbb{R}^N$, by definition the value $V(t,y) = \inf_{\mu\in\mathcal{M}_{]t,T-1[}}$. This gives
 $$E_{w_{]t,T-1[}}\left\lbrace \sum_{r=k}^{T-1}l(\xi_r,\mu_r(\xi))+\phi(\xi_T)\right\rbrace$$
 Introduce the notation $x$ is $\epsilon$-optimal for $\inf A$ if $x\in A, x\leq\inf A+\epsilon$. Let $\mu^{\epsilon,y}\in\tilde{M}_{]t,T-1[}$ be $\epsilon$-optimal, then
 \begin{align}

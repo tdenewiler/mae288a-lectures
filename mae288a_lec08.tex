@@ -127,7 +127,7 @@ V(x) &= \inf_{\mu\in\mathcal{M}}J(x,w) \\
 \{w_t\} & \text{ IID, } \sim N(0,Q)
 \end{align*}
 The DPE is
-$$V(x) = \inf_{u\in\mathbb{R}^l}\left\lbrace\frac{1}{2}x^TCx + \frac{1}{2}u^TDu + \alpha E[V(Ax+Bu+\sigma w)]\}\right\rbrace$$
+$$V(x) = \inf_{u\in\mathbb{R}^l}\left\lbrace\tfrac{1}{2}x^TCx + \tfrac{1}{2}u^TDu + \alpha E[V(Ax+Bu+\sigma w)]\}\right\rbrace$$
 We start by guessing $V_0(x)=0 = \frac{1}{2}x^TP_0x+R_0$, where $P_0=0$ is an $n\times n$ matrix and $R_0=0$. Suppose that $V_k(x) = \frac{1}{2}x^TP_kx+R_k$ where $k$ is an iteration step and not a time step so that we can go from $V_0\to V_1$. Then we get
 \begin{align*}
 V_{k+1}(x) &= \inf_u\left\lbrace\frac{1}{2}x^TCx+\frac{1}{2}u^TDu + \frac{\alpha}{2}(Ax+Bu)^TP_k(Ax+Bu) \right.\\

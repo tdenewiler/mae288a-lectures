@@ -86,7 +86,7 @@ $$V(s,x) \leq V^\epsilon(s,x)$$
 
 This shows that if the system is deterministic then we can predict the trajectory using open loop control, so feedback is open loop control. However, we know that real systems have noise in them. The open loop controller is still useful because it is easier to solve than the feedback controller and the open loop controller can be used iteratively such that when the system gets to a state we know is wrong the open loop controller can be reset.
 
-How do we now $\mu^\epsilon\in\mathcal{M}_{s,t}$? This goes back to $|f(x,u)-f(y,u)|\leq K|x-y|$ and knowing that we get a unique solution.
+How do we know $\mu^\epsilon\in\mathcal{M}_{s,t}$? This goes back to $|f(x,u)-f(y,u)|\leq K|x-y|$ and knowing that we get a unique solution.
 
 \section{Open Loop Control}
 Let $u\in\mathcal{U}_{s,T}$, $\tau\in(s,T)$ and $u^0:[s,\tau)\to\mathcal{U}$. This is given by $u^0=u_t ~\forall t\in[s,\tau)$. Then we have the mapping $u^1: [\tau,T)\to\mathcal{U}$ and get that $u^1_t=u_t ~\forall t\in[\tau,T)$. This leads to $u^0\in\mathcal{U}_{s,\tau}$ and $u^1\in\mathcal{U}_{\tau,T}$. Letting

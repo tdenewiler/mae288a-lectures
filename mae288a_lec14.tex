@@ -50,9 +50,9 @@ V(s,x) = \inf_{u\in\mathcal{U}_{s,T}} \left\lbrace \int_s^T l(\xi_t,w_t)dt + V(t
 Using this, we get the HJB PDE as
 \begin{align}
 \label{eq:14hjb}
-0 &= W_s(s,x) + \inf_{v\in\mathcal{U}} \left\lbrace f(x,v)\cdot\nabla_xW(s,x)+l(x,v) \right\rbrace \\
+&0 = W_s(s,x) + \inf_{v\in\mathcal{U}} \left\lbrace f(x,v)\cdot\nabla_xW(s,x)+l(x,v) \right\rbrace \\
 \label{eq:14tc}
-W(T,x) &= \psi(x)
+&W(T,x) = \psi(x)
 \end{align}
 Note that (\ref{eq:14tc}) represent the terminal condition. We saw in Example \ref{ex:13hjb} how to use the HJB PDE. We will make the assumption that
 \begin{align}
@@ -134,45 +134,45 @@ with $u_t^\epsilon\doteq \bar{\mu}_t^\epsilon(\xi_t^\epsilon)$ and $\dot{\xi}_t^
 \label{ex:14lq}
 The LQ control problem is set up as
 \begin{align*}
-&\dot{\xi} = A\xi+Bu \\
-&\xi_s = x \\
-&J(s,x,u) = \int_s^T\frac{1}{2}\xi_t^TC\xi_t + \frac{1}{2}u_t^TDu_tdt + \frac{1}{2}(\xi_T-z)^TE(\xi_T-z) \\
-&0 = W_{s,T} + \min\left\lbrace (Ax)^T\nabla_xW + (Bv)^T\nabla_xW + \frac{1}{2}x^TCx + \frac{1}{2}v^TDv \right\rbrace \\
+&\dot{\xi} = A\xi_t+Bu_t \\
+&\xi_s = x_0 \\
+&J(s,x,u) = \int_s^T\tfrac{1}{2}\xi_t^TC\xi_t + \tfrac{1}{2}u_t^TDu_tdt + \tfrac{1}{2}(\xi_T-z)^TE(\xi_T-z) \\
+&0 = W_{s,T} + \min\left\lbrace (Ax)^T\nabla_xW + (Bv)^T\nabla_xW + \tfrac{1}{2}x^TCx + \tfrac{1}{2}v^TDv \right\rbrace \\
 &v^TB^T\nabla_xW + \frac{1}{2}v^TDV = 0 \\
 &B^T\nabla_xW + Dv = 0
 \end{align*}
 The terminal condition is given by
 \begin{align}
 \label{eq:14extc}
-W(T,x) &= \frac{1}{2}(x-z)^TE(x-z)
+W(T,x) &= \tfrac{1}{2}(x-z)^TE(x-z)
 \end{align}
 Let $D^{-1}$ exist, then
 \begin{align*}
 v^\sigma &= -D^{-1}B^T\nabla_xW \\
-0 &= W_x+\underbrace{x^TA^T\nabla_xW}_{\lambda} + \frac{1}{2}x^TCx - \frac{1}{2}\nabla_xW^T\Sigma\nabla_xW
+0 &= W_x+\underbrace{x^TA^T\nabla_xW}_{\lambda} + \tfrac{1}{2}x^TCx - \tfrac{1}{2}\nabla_xW^T\Sigma\nabla_xW
 \end{align*}
 where $\Sigma = -BD^{-1}B^T$.
 
 Suppose
-$$W(t,x) = \frac{1}{2}(x-\bar{x}_t)^TP_t(x-\bar{x}_t) + r_t$$
+$$W(t,x) = \tfrac{1}{2}(x-\bar{x}_t)^TP_t(x-\bar{x}_t) + r_t$$
 From (\ref{eq:14extc}) $\bar{x}_T = z$, $P_T=E$ and $r_T=0$. Then
 \begin{align*}
-W_t &= \frac{1}{2}(x-\bar{x}_t)^T\dot{P}_t(x-\bar{x}_t)+\dot{r}_t - \frac{1}{2}\dot{\bar{x}}^TP_t(x-\bar{x}_t) - \frac{1}{2}(x-\bar{x}_t)P_t\dot{\bar{x}}_t \\
+W_t &= \tfrac{1}{2}(x-\bar{x}_t)^T\dot{P}_t(x-\bar{x}_t)+\dot{r}_t - \tfrac{1}{2}\dot{\bar{x}}^TP_t(x-\bar{x}_t) - \tfrac{1}{2}(x-\bar{x}_t)^TP_t\dot{\bar{x}}_t \\
 \nabla_xW &= P_t(x-\bar{x}_t) \\
-0 &= \frac{1}{2}(x-\bar{x}_t)^T\dot{P}_t(x-\bar{x}_t) + \dot{r}_t - \frac{1}{2}\dot{\bar{x}}_tP_t(x-\bar{x}_t) - \frac{1}{2}(x-\bar{x}_t)^TP_t\dot{\bar{x}}_t \\
-&\qquad + \underbrace{\frac{1}{2}x^TAP_t(x-\bar{x}_t) + \frac{1}{2}(x-\bar{x}_t)^TP_tA^Tx}_{\lambda} + \frac{1}{2}x^TCx \\
-&\qquad - \frac{1}{2}(x-\bar{x}_t)^TP_t\Sigma P_t(x-\bar{x}_t)
+0 &= \tfrac{1}{2}(x-\bar{x}_t)^T\dot{P}_t(x-\bar{x}_t) + \dot{r}_t - \tfrac{1}{2}\dot{\bar{x}}_tP_t(x-\bar{x}_t) - \tfrac{1}{2}(x-\bar{x}_t)^TP_t\dot{\bar{x}}_t \\
+&\qquad + \underbrace{\tfrac{1}{2}x^TAP_t(x-\bar{x}_t) + \tfrac{1}{2}(x-\bar{x}_t)^TP_tA^Tx}_{\lambda} + \tfrac{1}{2}x^TCx \\
+&\qquad - \tfrac{1}{2}(x-\bar{x}_t)^TP_t\Sigma P_t(x-\bar{x}_t)
 \end{align*}
 Notice that $\lambda$ is a scalar value and $P_t$ is symmetric so the term $x^TA^T\nabla_xW$ was separated into two components above.
 
 Since we are using a quadratic form for the cost function it is of the form $a(t)x^2+b(t)x+c(t)$ and we want this to be equal to zero for all $t$ and $x$. The only way for that to occur is if $a(t)=b(t)=c(t)=0$. Looking at the quadratic terms such that $a(t)=0$ gives the Riccati equation as
 \begin{align*}
-0 &= \frac{1}{2}\dot{P}_t + \frac{1}{2}AP_t + \frac{1}{2}P_tA^T + \frac{1}{2}C - \frac{1}{2}P_t\Sigma P_t \\
+0 &= \tfrac{1}{2}\dot{P}_t + \tfrac{1}{2}AP_t + \tfrac{1}{2}P_tA^T + \tfrac{1}{2}C - \tfrac{1}{2}P_t\Sigma P_t \\
 \Rightarrow \dot{P}_t &= -AP_t - P_tA^T - C + P_t\Sigma P_t
 \end{align*}
 Next, we separate out the $x^T(\cdot)$ and $(\cdot)x$ linear terms and find $b(t) = 0$ such that
 \begin{align*}
-0 &= -\frac{1}{2}\dot{P}_t\bar{x}_t - \frac{1}{2}P_t\dot{\bar{x}}_t - \frac{1}{2}AP_t\bar{x}_t + \frac{1}{2}P_t\Sigma P_t\bar{x}_t \\
+0 &= -\tfrac{1}{2}\dot{P}_t\bar{x}_t - \tfrac{1}{2}P_t\dot{\bar{x}}_t - \tfrac{1}{2}AP_t\bar{x}_t + \tfrac{1}{2}P_t\Sigma P_t\bar{x}_t \\
 P_t\dot{\bar{x}}_t &= -\dot{P}_t\bar{x}_t - AP_t\bar{x}_t + P_t\Sigma P_t\bar{x}_t \\
 \dot{\bar{x}}_t &= P_t^{-1}\left[ (AP_t+P_tA^T+C-P_t\Sigma P_t)\bar{x}_t - AP_t\bar{x}_t + P_t\Sigma P_t\bar{x}_t \right] \\
 &= P_t^{-1}\left[P_tA^T + C\right] \bar{x}_t
@@ -223,17 +223,17 @@ Let the system be described by
 \dot{\xi} = A\xi+Bu, \qquad \xi_0 = x, \qquad G=B_R(0)
 \end{align*}
 We are looking at a space that is a ball with radius $R$ around the origin, see Figure \ref{fig:14circle}. The cost function is
-$$J(x,u) = \int_0^\tau \rho + \frac{1}{2}|u_t|^2dt, \qquad \rho>0$$
+$$J(x,u) = \int_0^\tau \rho + \tfrac{1}{2}|u_t|^2dt, \qquad \rho>0$$
 Now we go to the HJB PDE and find
 \begin{align*}
 &W(x) = 0, \qquad |x|=R \\
-&0 = \min_{u\in\mathbb{R}^m} \left\lbrace x^TA^T\nabla_xW + u^TB^T\nabla_xu + \rho + \frac{1}{2}|u_t|^2 \right\rbrace \\
-&0 = \rho + x^TA^T\nabla_xW - \frac{1}{2}\nabla_xWBB^T\nabla_xW
+&0 = \min_{u\in\mathbb{R}^m} \left\lbrace x^TA^T\nabla_xW + u^TB^T\nabla_xu + \rho + \tfrac{1}{2}|u_t|^2 \right\rbrace \\
+&0 = \rho + x^TA^T\nabla_xW - \tfrac{1}{2}\nabla_xWBB^T\nabla_xW
 \end{align*}
 Suppose $A=0$ and $B=I$, then
 \begin{align}
 \label{eq:14exrho}
-&0 = \rho - \frac{1}{2}|\nabla_xW|^2 \nonumber \\
+&0 = \rho - \tfrac{1}{2}|\nabla_xW|^2 \nonumber \\
 \Rightarrow &|\nabla_xW| = \sqrt{2\rho}
 \end{align}
 We guess that

@@ -44,8 +44,8 @@
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
-     inkscape:window-width="1280"
-     inkscape:window-height="846"
+     inkscape:window-width="1920"
+     inkscape:window-height="1150"
      inkscape:window-x="0"
      inkscape:window-y="25" />
   <metadata
@@ -110,26 +110,6 @@
          x="489.73962"
          y="515.64722"
          style="font-size:40px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:100%;writing-mode:lr-tb;text-anchor:start;font-family:Liberation Serif;-inkscape-font-specification:Liberation Serif Bold">R</tspan></text>
-    <path
-       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1.01774871px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="M 246.78308,377.64361 C 246.2091,378.60899 249.89501,387.41084 249.89501,396.51145 C 249.89501,403.61585 250.38201,407.425 255.59481,414.2594 C 259.83281,419.81577 266.56107,427.86894 267.66671,429.79235 C 272.8994,438.89526 282.67232,439.78269 286.45925,443.58273 C 289.97276,447.1084 299.92045,447.32773 304.95268,448.58586 C 320.65216,452.51093 335.36129,456.93804 350.35334,459.93661 C 358.81845,461.62972 364.40893,462.38656 371.63491,464.19314 C 378.43538,465.89336 379.50479,465.83601 385.03045,467.21749 C 392.43245,469.06809 406.35145,474.97975 412.28638,478.18764 C 418.2248,481.39741 424.18059,485.42704 428.32588,491.68925 C 429.91787,494.09425 434.20336,501.89225 435.04656,505.26526"
-       id="path2409"
-       sodipodi:nodetypes="csssssssssss" />
-    <path
-       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="M 335.8067,377.58441 C 334.35816,382.00486 334.84831,392.44744 334.92411,395.75759 C 334.67185,418.96894 333.52135,423.95382 341.89444,448.38354 C 347.61137,475.13989 355.71153,486.69523 360.39733,500.17931 C 361.19127,502.46399 361.36442,502.8872 361.93412,505.36594"
-       id="path2411"
-       sodipodi:nodetypes="cccsc" />
-    <path
-       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="M 467.01176,376.24068 C 468.47146,376.97053 461.4355,398.20518 461.4355,404.12198 C 459.23907,417.33797 454.83076,422.07193 449.23743,434.44288 C 443.84352,447.14385 437.92889,466.28584 426.58388,472.08264 C 414.45643,480.11263 404.63322,490.23486 391.73225,492.29659 C 379.76879,502.25604 371.11009,500.96467 362.4569,505.88871"
-       id="path2413"
-       sodipodi:nodetypes="cccccc" />
-    <path
-       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="M 561.45966,378.33178 C 550.27873,387.44569 539.65013,395.16554 525.56249,398.54572 C 506.60959,404.85522 499.77096,407.86112 480.6039,413.53191 C 474.16543,415.14153 452.79723,416.66856 446.10079,416.66856 C 433.27722,416.66856 420.6213,416.41662 408.46103,419.45669 C 390.43966,420.2234 372.2138,419.45669 354.0925,419.45669 C 342.03576,422.2921 322.81382,435.35736 308.39751,460.06436 C 302.92426,469.44453 296.73071,483.69627 293.23478,495.42129 C 292.25819,498.69668 291.1436,502.82044 290.66254,505.5402"
-       id="path2415"
-       sodipodi:nodetypes="cccsccssc" />
     <text
        xml:space="preserve"
        style="font-size:20px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Serif;-inkscape-font-specification:Bitstream Vera Serif Italic"
@@ -174,5 +154,25 @@
          id="tspan2431"
          x="277.67908"
          y="547.26294">-2</tspan></text>
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 257.20498,376.24069 C 287.56851,440.11751 410.03188,439.36018 434.94826,505.1917"
+       id="path4070"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 359.66875,378.33179 C 343.24105,424.36865 342.42833,467.28252 363.15392,505.88873"
+       id="path4072"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 462.13253,376.24069 C 455.78497,411.66502 428.173,453.06996 362.45688,505.1917"
+       id="path4074"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 563.89927,378.33179 C 492.64065,452.22627 355.77661,407.50689 290.66254,505.88873"
+       id="path4076"
+       sodipodi:nodetypes="cc" />
   </g>
 </svg>
