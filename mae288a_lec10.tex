@@ -35,6 +35,7 @@ If $\mc$ is finite, irreducible and aperiodic then there exists $n_0(i,j)<\infty
 Let $\bar{n}_0=\max_{i,j\in\mathbb{X}}n_0(i,j)$, then $\pij^n>0 ~\forall i,j\in\mathbb{X}, ~\forall n\geq n_0$. This means that eventually all the probabilities are greater than zero for going from one state to another.
 
 \begin{theorem}
+\label{th:distconverge}
 If $\mc$ is finite, irreducible and aperiodic then there exists $A\in[0,\infty], \rho\in[0,1)$ and a stationary distribution $\Pi$ such that
 $$|\pij^n-\Pi_j|\leq A\rho^n ~\forall n\geq1, ~\forall i,j$$
 \end{theorem}
@@ -94,7 +95,7 @@ $\lozenge$
 \begin{example}
 Let
 $$\mathbb{P} = \left[\begin{array}{c c c} \frac{1}{2} & \frac{1}{2} & 0 \\ 0 & 0 & 1 \\ \frac{1}{2} & \frac{1}{2} & 0 \end{array}\right]$$
-From Figure \ref{fig:10mc3b} we can see that $1\leftrightarrow 3$, $1\leftrightarrow 2$ and $2\leftrightarrow 3$ meaning that the system is irreducible. Also, $d(1)=1$ so by the Theorem in Lecture 9 about equivalence classes it must be true that $d(2)=d(3)=d(1)=1$ and the system is aperiodic. Let
+From Figure \ref{fig:10mc3b} we can see that $1\leftrightarrow 3$, $1\leftrightarrow 2$ and $2\leftrightarrow 3$ meaning that the system is irreducible. Also, $d(1)=1$ so by Theorem \ref{th:periodicity} about equivalence classes it must be true that $d(2)=d(3)=d(1)=1$ and the system is aperiodic. Let
 \begin{align*}
 p_0 &= \left[\begin{array}{c} 0 \\ 0 \\ 1 \end{array}\right],
 \qquad p_1 = \mathbb{P}^Tp_0 = \left[\begin{array}{c} \frac{1}{2} \\ \frac{1}{2} \\ 0 \end{array}\right], \\
@@ -132,10 +133,10 @@ From this we see that
 \begin{align*}
 &q\pi_2 = 0 \Rightarrow \pi_2=0 \\
 &-\pi_2+q\pi_3 = 0 \Rightarrow \pi_3=0 \\
-&\vdots
+&\vdots \\
 &\Rightarrow \Pi = \left[\begin{array}{c} \beta \\ 0 \\ 0 \\ 0 \\ 1-\beta \end{array}\right]
 \end{align*}
-where $\beta\in[0,1]$. This $\Pi$ is not unique because the Theorem does not hold. It can be seen that $p_t\rightarrow \Pi(p_0)\in\mathcal{N}\cap S^N$. Then let
+where $\beta\in[0,1]$. This $\Pi$ is not unique because Theorem \ref{th:distconverge} does not hold. It can be seen that $p_t\rightarrow \Pi(p_0)\in\mathcal{N}\cap S^N$. Then let
 $$p_{0_i}(j) = \begin{cases} 1, & i=j \\ 0, & i\neq j \end{cases}$$
 This corresponds to the player starting with $\$j-1$. Then
 $$p_t(j) = (\mathbb{P}^t)^Tp_0(j) \rightarrow \Pi(j)\in\mathcal{N}$$
@@ -155,7 +156,7 @@ $$\mathcal{M}=\{\mu:\mathbb{X}\rightarrow\mathcal{U}\}$$
 If $\mathcal{U}$ is finite then $\text{size}(\mathcal{M})=\text{size}(\mathcal{U})$. This means that there a finite number of control policies to explore and can greatly simplify control problems. Another bit of notation is that given $\mu\in\mathcal{M}$, let $\pij^\mu \doteq \pij(\mu(i))$.
 
 \begin{example}
-Consider a setting with two UAVs. Let $\mathbb{X}=\{1,2,3\}$ where state $1$ is both UAVs are inoperational, state $2$ is one UAV inoperational and one UAV operational while state $3$ means both UAVS are operational. Our control space consists of $\mathcal{U} = \{A,B,C\}$ where $A$ means fly all operational UAVs, $B$ means fly $\min\{1, \#\text{operational}\}$ (or fly one UAV if there are any that are operational, else don't fly any UAVs) and $C$ means fly all operational UAVs and repair all inoperational UAVs. Let the probability transition matrices be
+Consider a setting with two UAVs. Let $\mathbb{X}=\{1,2,3\}$ where state $1$ is both UAVs are inoperational, state $2$ is one UAV inoperational and one UAV operational while state $3$ means both UAVs are operational. Our control space consists of $\mathcal{U} = \{A,B,C\}$ where $A$ means fly all operational UAVs, $B$ means fly $\min\{1, \#\text{operational}\}$ (or fly one UAV if there are any that are operational, else don't fly any UAVs) and $C$ means fly all operational UAVs and repair all inoperational UAVs. Let the probability transition matrices be
 \begin{align*}
 \begin{split}
 \mathbb{P}(A) = \left[\begin{array}{c c c} 1 & 0 & 0 \\ \frac{1}{2} & \frac{1}{2} & 0 \\ \frac{1}{4} & \frac{1}{2} & \frac{1}{4} \end{array}\right],
