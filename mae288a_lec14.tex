@@ -134,11 +134,11 @@ with $u_t^\epsilon\doteq \bar{\mu}_t^\epsilon(\xi_t^\epsilon)$ and $\dot{\xi}_t^
 \label{ex:14lq}
 The LQ control problem is set up as
 \begin{align*}
-\dot{\xi} &= A\xi+Bu \\
-\xi_s &= x \\
-J(s,x,u) &= \int_s^T\frac{1}{2}\xi_t^TC\xi_t = \frac{1}{2}u_t^TDu_tdt + \frac{1}{2}(\xi_T-z)^TE(\xi_T-z) \\
-0 = W_{s,T} &\min\left\lbrace (Ax)^T\nabla_xW + (Bv)\nabla_xW + \frac{1}{2}x^TCx + \frac{1}{2}v^TDv \right\rbrace \\
-B^T\nabla_xW + Dv &= 0
+&\dot{\xi} = A\xi+Bu \\
+&\xi_s = x \\
+&J(s,x,u) = \int_s^T\frac{1}{2}\xi_t^TC\xi_t + \frac{1}{2}u_t^TDu_tdt + \frac{1}{2}(\xi_T-z)^TE(\xi_T-z) \\
+&0 = W_{s,T} \min\left\lbrace (Ax)^T\nabla_xW + (Bv)\nabla_xW + \frac{1}{2}x^TCx + \frac{1}{2}v^TDv \right\rbrace \\
+&B^T\nabla_xW + Dv = 0
 \end{align*}
 The terminal condition is given by
 \begin{align}
