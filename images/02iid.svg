@@ -185,20 +185,6 @@
    dy="2.5253813"
    id="tspan4618"
    style="font-size:12px">0</tspan></tspan></text>
-    <text
-       sodipodi:linespacing="125%"
-       id="text4620"
-       y="324.54727"
-       x="522.75397"
-       style="font-size:24px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Liberation Serif;-inkscape-font-specification:Liberation Serif Italic"
-       xml:space="preserve"><tspan
-         y="324.54727"
-         x="522.75397"
-         id="tspan4622"
-         sodipodi:role="line">ζ<tspan
-   dy="2.0203052"
-   id="tspan4624"
-   style="font-size:12px">0</tspan></tspan></text>
     <path
        sodipodi:nodetypes="cc"
        id="path4644"
@@ -227,5 +213,19 @@
          id="tspan4722"
          x="234.86047"
          y="161.40764">A</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:24px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Liberation Serif;-inkscape-font-specification:Liberation Serif Italic"
+       x="523.25903"
+       y="321.51682"
+       id="text2518"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan2520"
+         x="523.25903"
+         y="321.51682">ξ<tspan
+   style="font-size:12px"
+   id="tspan2522"
+   dy="4.5456862">0</tspan></tspan></text>
   </g>
 </svg>

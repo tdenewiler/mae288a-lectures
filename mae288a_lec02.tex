@@ -90,6 +90,18 @@
 \newcommand{\matlabscript}[2]
   {\begin{itemize}\item[]\lstinputlisting[caption=#2,label=#1]{#1.m}\end{itemize}}
 
+% Example environment.
+\newtheoremstyle{example}{\topsep}{\topsep}	%
+     {}%         Body font
+     {}%         Indent amount (empty = no indent, \parindent = para indent)
+     {\bfseries}% Thm head font
+     {}%        Punctuation after thm head
+     {\newline}%     Space after thm head (\newline = linebreak)
+     {\thmname{#1}\thmnumber{ #2}\thmnote{ #3}}%         Thm head spec
+
+   \theoremstyle{example}
+   \newtheorem{example}{Example}[section]
+
 % A command to show a vector norm that will have the pipe signs scale with the contents.
 \newcommand{\vectornorm}[1]{\left|\left|#1\right|\right|}
 
@@ -132,7 +144,7 @@ E[AX+BY] &= \int_{\mathbb{R}\times\mathbb{R}}(AX+BY)p(x,y)dxdy \\
 \end{align*}
 \end{proof}
 
-Let $X\sim N(m\in\mathbb{R}^n,C)$, then $p(x)=\frac{1}{(2\pi)^{n/2}|C|^{1/2}}exp\left[-\frac{1}{2}(x-m)^TC^{-1}(x-m)\right]$. Let $k=\frac{1}{(2\pi)^{n/2}|C|^{1/2}}$.
+Let $X\sim N(m\in\mathbb{R}^n,C)$, then $p(x)=\frac{1}{(2\pi)^{n/2}|C|^{1/2}}\exp\left[-\frac{1}{2}(x-m)^TC^{-1}(x-m)\right]$. Let $k=\frac{1}{(2\pi)^{n/2}|C|^{1/2}}$.
 
 \begin{theorem}
 \label{th:02mean}
@@ -165,7 +177,8 @@ In the third equality a change of variables was used where $y=x-m$ and $dy=dx$. 
 If $X$ and $Y$ are normal RVs, then $AX+BY$ is also a normal RV.
 \end{theorem}
 
-\textit{Example:} This example is similar to a problem in Homework 1. Let $(X(\omega),Y(\omega)) \in \mathbb{R}^2$ so that $X$ and $Y$ are scalars and let $Z=(X,Y)$. Recall that
+\begin{example}
+This example is similar to a problem in Homework 1. Let $(X(\omega),Y(\omega)) \in \mathbb{R}^2$ so that $X$ and $Y$ are scalars and let $Z=(X,Y)$. Recall that
 \begin{align*}
 F(x,y) &= P(X\leq x, Y\leq y) \\
 &= P(\lbrace \omega\in\Omega | X(\omega)\leq x, Y(\omega)\leq y\rbrace) \\
@@ -185,6 +198,7 @@ C &= F(b_1,b_2) - F(a_1,b_2) \\
 &= \int_{-\infty}^{b_2}\int_{a_1}^{b_1} p(x,y)dxdy
 \end{align*}
 $\lozenge$
+\end{example}
 \begin{figure}[ht!]
 	\centering
 	\includegraphics[width=.35\textwidth]{images/02twoSets}
@@ -207,9 +221,10 @@ P(X\in A, Y\in B) &= P(X^{-1}(A) \cap Y^{-1}(B)) \\
 \end{align*}
 \end{definition}
 
-\textit{Example:} Using the uniform system we have
+\begin{example}
+Using the uniform system shown in Figure \ref{fig:02unitSquare} we have
 $$p(x,y) = \begin{cases} 1, & x\in[0,1],y\in[0,1] \\ 0, & \text{elsewhere} \end{cases}$$
-This is shown in Figure \ref{fig:02unitSquare}. Let $A,B\subseteq\mathbb{R}$, then
+Let $A,B\subseteq\mathbb{R}$, then
 \begin{align*}
 P(X^{-1}(A) \cap Y^{-1}(B)) &= {\int\int}_{A\times B} p(x,y)dydx \\
 &= \int_{A\cap[0,1]}\int_{B\cap[0,1]} 1 dydx \\
@@ -218,15 +233,17 @@ P(X^{-1}(A) \cap Y^{-1}(B)) &= {\int\int}_{A\times B} p(x,y)dydx \\
 &= \int_{\mathbb{R}\times B}p(x,y)dydx \cdot \int_{\mathbb{R}\times A}p(x,y)dydx \\
 &= P(Y^{-1}(B)) P(X^{-1}(A))
 \end{align*}
+$\lozenge$
+\end{example}
 \begin{figure}[ht!]
 	\centering
 	\includegraphics[width=.3\textwidth]{images/02unitSquare}
 	\caption{Unit square.}
 	\label{fig:02unitSquare}
 \end{figure}
-$\lozenge$
 
-\textit{Example:} Let $A=[0,\frac{1}{2}]$ and $B=[0,\frac{1}{2}]$, as shown in Figure \ref{fig:02unitTriangle}. Then
+\begin{example}
+Let $A=[0,\frac{1}{2}]$ and $B=[0,\frac{1}{2}]$, as shown in Figure \ref{fig:02unitTriangle}. Also let $p(x,y)=2$. Then
 \begin{align*}
 &P((X,Y)\in [0,\frac{1}{2}],[0,\frac{1}{2}]) = 2\cdot \frac{1}{8} = \frac{1}{4} \\
 &P(X\in[1,\frac{1}{2}] = \frac{1}{4} \\
@@ -234,23 +251,27 @@ $\lozenge$
 &\Rightarrow \frac{1}{4} \neq \frac{3}{4}
 \end{align*}
 The inequality means that $X$ and $Y$ are not independent variables. This makes sense because knowing information about the RV $X$ will tell us something about constraints on the RV $Y$ and vice-versa.
+$\lozenge$
+\end{example}
 \begin{figure}[ht!]
 	\centering
 	\includegraphics[width=.3\textwidth]{images/02unitTriangle}
 	\caption{Unit triangle.}
 	\label{fig:02unitTriangle}
 \end{figure}
-$\lozenge$
 
-\textit{Example:} Let $X$ and $Y$ be scalar RVs.
+\begin{example}
+Let $X$ and $Y$ be scalar RVs.
 \begin{align*}
 P(X\leq a) &= \int_{-\infty}^a \int_{-\infty}^\infty p(x,y)dydx = F_x(a) \\
 &\doteq \int_{-\infty}^a p_x(x)dx
 \end{align*}
 This is known as the ``marginal density for $x$''.
 $\lozenge$
+\end{example}
 
-\textit{Example:} This is similar to a problem in Homework 1.
+\begin{example}
+This is similar to a problem in Homework 1.
 \begin{align}
 \label{eq:02probXY1}
 P(X\in[l_1,u_1], Y\in[l_2,u_2]) = \int_{l_2}^{u_2} \int_{l_1}^{u_1} p(x,y)dxdy
@@ -260,7 +281,7 @@ P(X\in[l_1,u_1], Y\in[l_2,u_2]) = \int_{l_2}^{u_2} \int_{l_1}^{u_1} p(x,y)dxdy
 \begin{split}
 P(X\in[l_1,u_1], Y\in[l_2,u_2]) &= P(X\in[l_1,u_1]) P(Y\in[l_2,u_2]) \\
 &= \int_{l_1}^{u_1}p_x(x)dx \int_{l_2}^{u_2}p_y(y)dy \\
-&= \int_{l_2}^{u_2}px(x)p_y(y)dxdy
+&= \int_{l_2}^{u_2}p_x(x)p_y(y)dxdy
 \end{split}
 \end{align}
 For all $A$ that are rectangular, then by (\ref{eq:02probXY1}) and (\ref{eq:02probXY2}) we have
@@ -269,6 +290,7 @@ For all $A$ that are rectangular, then by (\ref{eq:02probXY1}) and (\ref{eq:02pr
 &\Rightarrow p(x,y) = p_x(x)p_y(y)
 \end{align*}
 $\lozenge$
+\end{example}
 
 \begin{theorem}
 $X$ and $Y$ are independent if $p(x,y) = p_x(x)p_y(y)$.
@@ -283,7 +305,7 @@ $X$ and $Y$ are independent scalars if $E[XY] = E[X]E[Y]$.
 E[XY] &= \int_\mathbb{R}\int_\mathbb{R} xyp(x,y)dxdy \\
 &= \int_\mathbb{R}\int_\mathbb{R} xyp_x(x)p_y(y)dydx \\
 &= \int_\mathbb{R} xp_x(x)\int_\mathbb{R} yp_y(y)dydx \\
-&= \int_\mathbb{R} yp_y(y)dy \int_\mathbb{R} p_x(x)dx \\
+&= \int_\mathbb{R} yp_y(y)dy \int_\mathbb{R} xp_x(x)dx \\
 &= E[Y]E[X]
 \end{align*}
 \end{proof}
@@ -311,20 +333,23 @@ C_z &= E\left[[A(X-m_x)+B(Y-m_y)][A(X-m_x)+B(Y-m_y)]^T\right] \\
 &+ AE[X-m_x]E[Y-m_y]^TB^T + BE[Y-m_y]E[X-m_x]^T]A^T \\
 &= AC_xA^T + BC_yB^T
 \end{align*}
-The last two terms in the fourth equality are both equal to zero because $X$ and $Y$ are independent. Also, note that when $X$ and $Y$ are independent RVs that it implies that $X-m_x$ and $Y-m_y$ are also independent.
+The last two terms in the fourth equality are both equal to zero because $X$ and $Y$ are independent. Also, note that when $X$ and $Y$ are independent RVs it implies that $X-m_x$ and $Y-m_y$ are also independent.
 \end{proof}
 
 \section{Independent and Identically Distributed Sequence}
-\textit{Example:} Let $\lbrace w_t\rbrace_{t=0}^\infty$ be an IID sequence of RVs. The variables are IID if $w_r$ and $w_s$ are independent when $r\neq s$ and they all have the same distribution. Let $\zeta_0$ be uniformaly distributed over the range $[0,1]$. Then the desnity function for $w_t$ is
+\begin{example}
+Let $\lbrace w_t\rbrace_{t=0}^\infty$ be an IID sequence of RVs. The variables are IID if $w_r$ and $w_s$ are independent when $r\neq s$ and they all have the same distribution. Let $\xi_0$ be uniformly distributed over the range $[0,1]$. Then the desnity function for $w_t$ is
 $$p_t(w) = \begin{cases} \frac{1}{2}, & w\in[-1,1] \\ 0, & \text{elsewhere} \end{cases}$$
-Let $\zeta_{t+1}=\zeta_t+w_t$. Then
+Let $\xi_{t+1}=\xi_t+w_t$. Then
 \begin{align*}
-P(\zeta_1\in[a,b]) &= P(\zeta_0 + w_0\in[a,b]) \\
-&= \int_A p_{\zeta_0,w_0}(x,v)dxdv \\
+P(\xi_1\in[a,b]) &= P(\xi_0 + w_0\in[a,b]) \\
+&= \int_A p_{\xi_0,w_0}(x,v)dxdv \\
 &= \int_A q_0(x)p_0(w)dxdw \\
 &= \#
 \end{align*}
 The distribution can be seen in Figure \ref{fig:02iid}.
+$\lozenge$
+\end{example}
 \begin{figure}[ht!]
 	\centering
 	\includegraphics[width=.3\textwidth]{images/02iid}

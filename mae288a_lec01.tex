@@ -90,6 +90,18 @@
 \newcommand{\matlabscript}[2]
   {\begin{itemize}\item[]\lstinputlisting[caption=#2,label=#1]{#1.m}\end{itemize}}
 
+% Example environment.
+\newtheoremstyle{example}{\topsep}{\topsep}	%
+     {}%         Body font
+     {}%         Indent amount (empty = no indent, \parindent = para indent)
+     {\bfseries}% Thm head font
+     {}%        Punctuation after thm head
+     {\newline}%     Space after thm head (\newline = linebreak)
+     {\thmname{#1}\thmnumber{ #2}\thmnote{ #3}}%         Thm head spec
+
+   \theoremstyle{example}
+   \newtheorem{example}{Example}[section]
+
 % A command to show a vector norm that will have the pipe signs scale with the contents.
 \newcommand{\vectornorm}[1]{\left|\left|#1\right|\right|}
 \newcommand{\SI}{System Identification}
@@ -126,26 +138,26 @@ Optimal control is concerned with reaching some specified goal that is given in 
 
 \subsection{Dynamics Representations}
 Continuous time deterministic dynamics are given by
-$$\dot\zeta_t = f(\zeta_t,u_t) \textnormal{, where } \zeta_0 = x \in \mathbb{R}^n.$$
-The state is represented as $\zeta(t)$ and the control input is represented by $u(t)$.
+$$\dot\xi_t = f(\xi_t,u_t) \textnormal{, where } \xi_0 = x \in \mathbb{R}^n.$$
+The state is represented as $\xi(t)$ and the control input is represented by $u(t)$.
 
 Discrete time deterministic dynamics are generally known as ``classical optimal control'' dynamics and are given by
-$$\zeta_{t+1} = f(\zeta_t,u_t).$$
+$$\xi_{t+1} = f(\xi_t,u_t).$$
 
 Continuous time stochastic dynamics are given by
-$$d\zeta_t = f(\zeta_t,u_t)dt + \sigma(\zeta_t)dB_t.$$
+$$d\xi_t = f(\xi_t,u_t)dt + \sigma(\xi_t)dB_t.$$
 Brownian motion is represented by $B$.
 
 Discrete time stocahstic dynamics in continuous space are given by
-$$\zeta_{t+1} = f(\zeta_t,u_t) + \sigma(\zeta_t)w_t.$$
+$$\xi_{t+1} = f(\xi_t,u_t) + \sigma(\xi_t)w_t.$$
 Random noise is represented by $w$. *** Was that really a $\sigma$ Prof wrote on the board? Is that the variance of the measurements of state variables? ***
 
 Discrete time stocahstic dynamics in discrete space are given by
-$$\zeta_t \in \mathbb{X}.$$
+$$\xi_t \in \mathbb{X}.$$
 The finite space is represented by $\mathbb{X}$ and this can be thought of as $\mathbb{N}$ or the set of all natural numbers.
 
 The dynamics of games are given by
-$$\dot\zeta_t = f(\zeta_t,u_t,w_t).$$
+$$\dot\xi_t = f(\xi_t,u_t,w_t).$$
 Player 1 is represented by $u$ and player 2 is represented by $w$.
 
 \section{Applications}
@@ -178,7 +190,8 @@ A set $\Omega$ is considered a sample space. We will be using $\sigma$-algebra i
 \end{align*}
 The term $A^C$ means the complement of $A$.
 
-\textit{Example:} Taking a fair coin and tossing it twice in a row has four possible outcomes that can be considered a set or a sample space, $\Omega = \left\lbrace (H,H), (H,T), (T,H), (T,T) \right\rbrace$. Each of the coin tosses can be represented by $A$, where $A$ is known as an event. Using $\sigma$-algebra we can say
+\begin{example}
+Taking a fair coin and tossing it twice in a row has four possible outcomes that can be considered a set or a sample space, $\Omega = \left\lbrace (H,H), (H,T), (T,H), (T,T) \right\rbrace$. Each of the coin tosses can be represented by $A$, where $A$ is known as an event. Using $\sigma$-algebra we can say
 \begin{align*}
 \Sigma_0 &= \left\lbrace \Omega, \emptyset \right\rbrace \\
 \Omega &\in \Sigma_0 \textnormal{ and } \Omega^C = \emptyset \in \Sigma_0 \\
@@ -187,19 +200,24 @@ The term $A^C$ means the complement of $A$.
 \Sigma_1 &= \left\lbrace \Omega, \emptyset, \left\lbrace (H,H), (H,T) \right\rbrace, \left\lbrace (T,H), (T,T) \right\rbrace \right\rbrace \\
 \Sigma_2 &= P(\Omega) = \textnormal{ power set } = \textnormal{ collection of \textit{all} subsets of } \Omega.
 \end{align*}
-The subscripts of $\Sigma$ represent discrete time steps. It can be seen that the different $\Sigma$ time steps represent our knowledge about the system at each step. For example, $\Sigma_1$ is our knowledge of the system after one toss of the coin and the possible events contain the cases for times when heads was the first measurement and for times when tails was the first measurement. *** Double-check that this explanation is accurate. *** $\lozenge$
+The subscripts of $\Sigma$ represent discrete time steps. It can be seen that the different $\Sigma$ time steps represent our knowledge about the system at each step. For example, $\Sigma_1$ is our knowledge of the system after one toss of the coin and the possible events contain the cases for times when heads was the first measurement and for times when tails was the first measurement. *** Double-check that this explanation is accurate. ***
+\end{example}
+$\lozenge$
 
 \section{Random Variables}
 Let a variable $X$ be a random variable (R.V.) that acts according to \\
 $X: (\Omega, \Sigma) \to (\mathbb{R}^n, \mathbb{B})$, where $\mathbb{R}^n$ is the set of natural numbers and $\mathbb{B}$ is the Borel measurable set. $\mathbb{B}$ is any collection of sets that can be formed through the operations of unions, intersections and complements. Essentially, $X$ takes elements of the $\sigma$-algebra and maps them to the space of $(\mathbb{R}^n, \mathbb{B})$ such that $X^{-1}(A) \in \Sigma ~ \forall ~ A \in \mathbb{B}$ is a R.V. More precisely $X^{-1}(A) = \left\lbrace \omega \in \Omega | X(\omega) \in A \right\rbrace$.
 
-\textit{Example:} Based on the previous coin toss example and specifying
+\begin{example}
+Based on the previous coin toss example and specifying
 \begin{align*}
 X(H,H) &= 2 \\
 X(H,T) &= X(T,H) = 0 \\
 X(T,T) &= -2
 \end{align*}
-See Figure \ref{fig:01set2nat}. Let $X$ be a R.V. on $(\Omega, \Sigma_2)$ then we can say that $X^{-1}(\lbrace 0,2 \rbrace) = ??$. Note that $X$ is \textit{not} a R.V. on $(\Omega, \Sigma_1)$. *** Ask for more details about this part. The question marks were not written down on the board. *** After the first toss we know which subset  we're in and after the second toss we know everything about the system. $\lozenge$
+See Figure \ref{fig:01set2nat}. Let $X$ be a R.V. on $(\Omega, \Sigma_2)$ then we can say that $X^{-1}(\lbrace 0,2 \rbrace) = ??$. Note that $X$ is \textit{not} a R.V. on $(\Omega, \Sigma_1)$. *** Ask for more details about this part. The question marks were not written down on the board. *** After the first toss we know which subset  we're in and after the second toss we know everything about the system.
+\end{example}
+$\lozenge$
 \begin{figure}[ht!]
 	\centering
 	\includegraphics[width=.5\textwidth]{images/01set2nat}
@@ -221,7 +239,8 @@ $$P\left(\left\lbrace \omega \in \Omega | X_1(\omega) \leq x_1, X_2(\omega) \leq
 If $F: \mathbb{R} \to [0,1]$ behaves such that $\lim_{x \to -\infty} F(x) = 0$, $\lim_{x \to +\infty} F(x) = 1$, $F$ is monotonically increasing and $F$ is right continuous (defined as $\lim_{y \downarrow x} F(y) = F(x)$) then $F$ is a distribution function for a R.V. Also, $f:\mathbb{R}^n \to [0,\infty]$ is a density function corresponding to the distribution $F$ if
 $$F(x) = \int_{y \leq x} f(y)dy = \int_{-\infty}^{x_1} \int_{-\infty}^{x_2}\cdots \int_{-\infty}^{x_n} f(y_1,y_2,\ldots,y_n)dy_n\ldots dy_2dy_1.$$
 
-\textit{Example:} Given
+\begin{example}
+Given
 \begin{align}
 \label{eq:probEg}
 \begin{split}F(x) &= \begin{cases} 0 & x \leq 0 \\ 1-e^{-x} & x > 0 \end{cases}\end{split} \nonumber \\
@@ -230,7 +249,9 @@ $$F(x) = \int_{y \leq x} f(y)dy = \int_{-\infty}^{x_1} \int_{-\infty}^{x_2}\cdot
 Note that taking the indefinite integral of $f(x)$ yields $F(x)$.
 
 There is a theorem that says if $X$ has a density $f$ then \\
-``$P(A)$'' $= P\left(X^{-1}(A)\right) = \int_A f(x)dx$. $\lozenge$
+``$P(A)$'' $= P\left(X^{-1}(A)\right) = \int_A f(x)dx$.
+\end{example}
+$\lozenge$
 
 \section{Expectation}
 The expectation of a R.V. taking a certain value is also known as the mean or average. Let $g: \mathbb{R}^n \to \mathbb{R}^m$, then
@@ -238,7 +259,9 @@ The expectation of a R.V. taking a certain value is also known as the mean or av
 E[g(X)] &\doteq \int_{\mathbb{R}^n} g(x)f(x)dx \textnormal{ if } f ~ \exists \\
 E[X] &= \int_{\mathbb{R}^n}xf(x)dx.
 \end{align*}
-\textit{Example:} Using (\ref{eq:probEg}) we have
+
+\begin{example}
+Using (\ref{eq:probEg}) we have
 \begin{align*}
 E[x] &= \int_{-\infty}^\infty xf(x)dx \\
 &= \int_0^\infty xe^{-x}dx \\
@@ -248,22 +271,32 @@ E[x] &= \int_{-\infty}^\infty xf(x)dx \\
 &= 0 - 0 - e^{-x}\rvert_0^\infty \\
 &= 1.
 \end{align*}
+\end{example}
 $\lozenge$
 
 \section{Variance}
-\textit{Example:} Using (\ref{eq:probEg}) in $\mathbb{R}^1$ we have
+\begin{example}
+Using (\ref{eq:probEg}) in $\mathbb{R}^1$ we have
 $$E[(x - E(x))^2] = \int_0^\infty (x-1)^2e^xdx.$$
-Since $x$ is a R.V. and $E(x)$ is a scalar the variance is a scalar as well. $\lozenge$
+Since $x$ is a R.V. and $E(x)$ is a scalar the variance is a scalar as well.
+\end{example}
+$\lozenge$
 
 \section{Covariance}
-\textit{Example:} Using (\ref{eq:probEg}) in $\mathbb{R}^n$ we have $$C_{ij} \doteq E[(x_i - E(x_i))(x_j - E(x_j)].$$ Note that $E(x_i) = \lbrace E(x) \rbrace_i$. $\lozenge$
+\begin{example}
+Using (\ref{eq:probEg}) in $\mathbb{R}^n$ we have $$C_{ij} \doteq E[(x_i - E(x_i))(x_j - E(x_j)].$$ Note that $E(x_i) = \lbrace E(x) \rbrace_i$.
+\end{example}
+$\lozenge$
 
-\textit{Example:} Given
+\begin{example}
+Given
 \begin{align*}
 f(x) &= \begin{cases} 1 & x_1 \in [0,1] \\ 0 & x_2 \in [0,1] \end{cases} \\
 E[x_1] &= \int_0^1 \int_0^1 x_1f(x_1,x_2)dx_1dx_2 = \int_0^1 \int_0^1 x_1dx_1dx_2 = \int_0^1 \frac{1}{2}dx_2 = \frac{1}{2}
 \end{align*}
-and by symmetry $E[x_2] = \frac{1}{2}$. This makes sense because we expect the value to be right in the middle of the area described by the function. $\lozenge$
+and by symmetry $E[x_2] = \frac{1}{2}$. This makes sense because we expect the value to be right in the middle of the area described by the function.
+\end{example}
+$\lozenge$
 \begin{figure}[ht!]
 	\centering
 	\includegraphics[width=.45\textwidth]{images/01box}
