@@ -22,12 +22,7 @@
 \lecture{Value Iteration Convergence}
 
 \section{Contraction Mapping Theorem Review}
-\begin{theorem}{Contraction Mapping Principle.}
-\label{th:cmp}
-This is also called the Banach Fixed Point Theorem. Let $\vsp$ be a Banach space and $F$ be a contraction, then there exists a unique solution to $y=F[y]$. Also, given $y_0\in\mathbb{Y}$ and letting $y_n\to y$ yields the solution.
-\end{theorem}
-
-We can use this to show that iterative value functions will converge to a solution.
+The Contraction Mapping Principle, or Banach Fixed Point Theorem, was given in Theorem \ref{th:bfp}. We can use this to show that iterative value functions will converge to a solution.
 
 \section{Dynamic Programming Equation}
 The DPE has
@@ -38,7 +33,7 @@ J(x,w) &= E[\sum\alpha^tl(\xi_tw_t(\xi_t))] \\
 V(x) &= \inf_{\mu\in\mathcal{M}}J(x,\mu)
 \end{align*}
 
-We want to apply Theorem \ref{th:cmp} to bounded functions.
+We want to apply Theorem \ref{th:bfp} to bounded functions.
 
 \subsection{Bounded Functions}
 Let
@@ -80,6 +75,7 @@ Let $F,H:\mathbb{X}\to\mathbb{R}$, then $\mathbb{X}$ is a normed vector space.
 \end{theorem}
 
 \subsection{Show that $F$ is a contraction.}
+\label{sec:showfcontraction}
 Let $V,\tilde{V}\in\mathbb{Y}$, we need to show that $||\mathcal{G}[V]-\mathcal{G}[\tilde{V}]||_\infty \leq ||V-\tilde{V}||_\infty$.
 \begin{align*}
 &|V(f(x,u,w)) - \tilde{V}(f(x,u,w))| \leq ||V-\tilde{V}||_\infty \\

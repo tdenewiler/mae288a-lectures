@@ -11,7 +11,7 @@
 \lectureseries[\course]{\course}
 
 \auth[\lecAuth]{Lecturer: \lecAuth\\ Scribe: \scribe}
-\date{September 24, 2009}
+\date{November 3, 2009}
 
 \setaddress
 
@@ -19,7 +19,183 @@
 \setcounter{lecture}{10}
 \setcounter{chapter}{10}
 
-\lecture{??}
+\lecture{Controlled Markov Chains II}
+
+\section{Markov Chains Review}
+We say that if $N$ is the dimension of the space $\mathbb{X}$ and $N<\infty$ then it means we are working in finite space. $\pij(u)$ with $u\in\mathcal{U}$ is the probability transition matrix and describes the dynamics of the Markov chain. The control is $\mu\in\mathcal{M} = \{\mu:\mathbb{X}\to\mathcal{U}\}$.
+
+\begin{align}
+\label{eq:pij}
+\pij^\mu = \pij(\mu(i))
+\end{align}
+
+The cost function and the value function are given by
+\begin{align*}
+J(i,\mu) &= E\left\lbrace \sum_{t=0}^\infty \alpha^tl(\xi_t,\mu(\xi_t))\right\rbrace \\
+V(i) &= \inf_{\mu\in\mathcal{M}}J(i,\mu)
+\end{align*}
+
+If $\dim(\mathcal{U})<\infty$, $\dim(\mathcal{M})=\dim(\mathcal{M})<\infty\Rightarrow V(i)=\min_{\mu\in\mathcal{M}}J(i,\mu)$.
+
+The Dynamic Programming Equation (DPE) is found to be
+\begin{align}
+\label{eq:mcdpe}
+V(i) &= \min_{u\in\mathcal{U}}\{l(i,u)+\alpha E[V(\xi_1^\mu)]\} \nonumber \\
+&[\text{find } \mu \text{ and } \xi^\mu \text{ by (\ref{eq:pij})}] \nonumber \\
+&= \min_{u\in\mathcal{U}} \left\lbrace l(i,u)+\alpha\sum_{j\in\mathbb{X}}\pij(u)V(j)\right\rbrace
+\end{align}
+
+\section{Value Iteration}
+Let
+$$\mathcal{G}[\vp](x) \doteq \min_{u\in\mathcal{U}}\left\lbrace l(i,u)+\alpha\sum_{j\in\mathbb{X}}\pij(u)\vp(j)\right\rbrace$$
+We solve for $V=\mathcal{G}[V]$ using the following steps:
+\begin{enumerate}
+\item Guess $V_0$.
+\item Find $V_{k+1}=\mathcal{G}[V_k]$.
+\item Iterate until convergence criterion is met.
+\end{enumerate}
+
+We can use Theorem \ref{th:bfp} to test if $\mathcal{G}$ is a contraction.
+\begin{itemize}
+\item Let $||V||_\infty = \max_{i\in\mathbb{X}}|V(i)|$.
+\item Let $\mathbb{Y}=\{V:\mathbb{X}\to\mathbb{R}\}$ be the set of real numbers, $\mathbb{R}^N$.
+\item Let $V,\tilde{V}\in\mathbb{Y}$.
+\end{itemize}
+We want to show that $||\mathcal{G}[V]-\mathcal{G}[\tilde{V}]||_\infty\leq\alpha||V-\tilde{V}||_\infty$.
+\begin{align*}
+||\calg[V]-\calg[\tilde{V}]||_\infty &= \max_{i\in\mathbb{X}}\left[\left|\min_{\uinu}\left\lbrace l(i,u)+\alpha\sum_{j\in\mathbb{X}}\pij(u)V(j)\right\rbrace \right.\right. \\
+&\left.\left.\quad - \min_{v\in\mathcal{U}}\left\lbrace l(i,v)+\alpha\sum_{j\in\mathbb{X}}\pij(v)\tilde{V}(j)\right\rbrace \right|\right] \\
+&\leq \max_{i\in\mathbb{X}}\max_{\uinu}\left|\alpha\sum_j\pij(u)[V(j)-\tilde{V}(j)]\right| \\
+&\leq \max_{i,u}\alpha\sum_j\pij(u)|V(j)-\tilde{V}(j)| \\
+&\leq \alpha\max_{i,u}\sum_j\pij(u)||V-\tilde{V}||_\infty \\
+&= \alpha||V-\tilde{V}||_\infty\max_{i,u}\sum_j\pij(u) \\
+&= \alpha||V-\tilde{V}||_\infty
+\end{align*}
+Therefore, $\calg$ is a contraction and by Theorem \ref{th:bfp} the value iteration converges to the unique solution of the DPE. Note that the term $\sum_j\pij(u)=1$ because the probability transition matrix is defined such that all of the probabilities in a row must add up to $1$, so that term need not be considered.
+
+\begin{example}
+Let $\mathbb{X}=\{1,2,3\}$, $U=\{a,b\}$ and $\alpha=\frac{2}{3}$. Given
+\begin{align*}
+\begin{split}
+\mathbb{P}(a) = \left[\begin{array}{c c c} \frac{3}{4} & \frac{1}{4} & 0 \\ \frac{1}{2} & \frac{1}{2} & 0 \\ 0 & \frac{3}{4} & \frac{1}{4} \end{array}\right],
+\end{split}
+\begin{split}
+\mathbb{P}(b) = \left[\begin{array}{c c c} \frac{3}{4} & 0 & \frac{1}{4} \\ \frac{1}{4} & \frac{1}{2} & \frac{1}{4} \\ 0 & \frac{1}{2} & \frac{1}{2} \end{array}\right]
+\end{split}
+\end{align*}
+\begin{align*}
+l(i,u) = \begin{cases} -2i, & u=a \\ -i, & u=b \end{cases}
+\end{align*}
+To solve the DPE use (\ref{eq:mcdpe}) to get
+\begin{align*}
+V(1) &= \min\left\lbrace-2+\frac{2}{3}\left[\frac{3}{4}V(1)+\frac{1}{4}V(2)\right], -1+\frac{2}{3}\left[\frac{3}{4}V(1)+\frac{1}{4}V(3)\right]\right\rbrace \\
+V(2) &= \min\left\lbrace-4+\frac{2}{3}\left[\frac{1}{2}V(1)+\frac{1}{2}V(2)\right], -2+\frac{2}{3}\left[\frac{1}{4}V(1)+\frac{1}{4}V(3)\right]\right\rbrace \\
+V(3) &= \min\left\lbrace-6+\frac{2}{3}\left[\frac{3}{4}V(2)+\frac{1}{4}V(3)\right], -3+\frac{2}{3}\left[\frac{1}{2}V(2)+\frac{1}{2}V(3)\right]\right\rbrace
+\end{align*}
+This yields three non-linear equations with three unknowns. The equations are non-linear because of the $\min$ operator. To solve for the three unknowns we begin by guessing a solution for $V_0\equiv0$ and getting
+\begin{align*}
+&V_1(1) = -2, \qquad &V_1(2) = -4, \qquad &V_1(3) = -6 \\
+&V_2(1) = -\frac{19}{6}, \qquad &V_2(2) = -6, \qquad &V_2(3) = -9 \\
+&\vdots
+\end{align*}
+This value iteration should continue until the convergence criterion is met. Recall from \S\ref{sec:showfcontraction} that the optimal control can be found using these values and typically the optimal control will converge before the value iteration converges.
+$\lozenge$
+\end{example}
+
+\section{Policy Iteration}
+Policy iteration will work for the previous problem calss as well but it is easier here.
+
+The steps for policy iteration are to guess some initial policy (feedback controller) $\muinm$. With $\xi^\mu$ determined from that guessed policy and $\xi_0=x$ we can find
+\begin{align*}
+\calg^\mu[\vp](x) &= l(x,\mu(x))+\alpha E[\vp(\xi^\mu)] \\
+&= l(x,\mu(x)) + \alpha\sum_{j\in\mathbb{X}}\pxj^\mu\vp(j)
+\end{align*}
+Note that the term $l(x,\mu(x))$ is the same as the running cost from value iteration. Given $\mu^k$, let $V^k$ satisfy $V=\calg^{\mu^k}[V]$. This just means that we are specifying a policy for the contraction mapping. So, by the above but with $\mathcal{M}=\{\mu^k\}$ we find that $\calg^{\mu^k}$ is a contraction. This means that there exists a unique solution $V^k$.
+
+The policy iteration is then
+\begin{itemize}
+\item Given $\mu^k$, let $V^k$ be the unique solution of $V=\calg^{\mu^k}[V]$.
+\item Let
+\begin{align}
+\label{eq:mukplus1}
+\mu^{k+1}(x)\in\arg\min_{\uinu}\{l(x,u)+\alpha E[V^k(\xi_1)]\}
+\end{align}
+with $\xi_0=x$.
+\item Go back and forth for policy $\to$ solution $\to$ policy $\to$ solution $\to$ $\ldots$.
+\end{itemize}
+
+Suppose $\mu^{\bar{k}+1}=\mu^{\bar{k}}$ so the policy repeats. Then $V^{\bar{k}+1}$ is the solution of
+\begin{align}
+\label{eq:politrepeat}
+V=\calg^{\mu^{\bar{k}+1}}[V] \therefore V=\calg^{\mu^{\bar{k}}}
+\end{align}
+But $V^{\bar{k}}$ is the unique solution of (\ref{eq:politrepeat}) so we must have $V^{\bar{k}+1}=V^{\bar{k}}$ and
+$$\therefore \mu^{\bar{k}+2}=\mu^{\bar{k}+1} \Rightarrow V^{\bar{k}+2}=V^{\bar{k}+1} \cdots$$
+We also find that
+$$V^{\bar{k}} = V^{\bar{k}+1} = \calg^{\mu^{\bar{k}+1}}[V^{\bar{k}+1}] = \calg^{\mu^{\bar{k}+1}}[V^{\bar{k}}] = \calg[V^{\bar{k}}]$$
+by the choice of $\mu^{\bar{k}+1}$. This is the same as (\ref{eq:mukplus1}) so $V^{\bar{k}}$ must be the unique solution of the DPE $V=\calg[V]$.
+
+\begin{theorem}
+Suppose $\mu^{\bar{k}+1}=\mu^{\bar{k}}$, then $\mu^{\bar{k}+l}=\mu^{\bar{k}} ~\forall l\in\mathbb{N}$ and $V^{\bar{k}+l}=V^{\bar{k}} ~\forall l\in\mathbb{N}$ and $V^{\bar{k}}$ is the unique solution of the DPE therefore it is the value function.
+\end{theorem}
+
+\begin{definition}
+For $\muinm$, define $\mathcal{L}^\mu[\vp](x)\doteq \vp(x)-\alpha E[\vp(\xi_1^\mu)]$ with $\xi_0^\mu=x$.
+\end{definition}
+
+Note that for $\beta\in\mathbb{R}$ we have
+$$\mathcal{L}^\mu[\beta\vp](x) = \beta\vp(x)-\alpha E[\beta\vp(\xi_1^\mu)] = \beta\mathcal{L}^\mu[\vp](x)$$
+and
+\begin{align*}
+\mathcal{L}^\mu[\vp+\psi](x) &= \vp(x)+\psi(x) - \alpha E[\vp(\xi_1^\mu)+\psi(\xi_1^\mu)] \\
+&= \vp(x)-\alpha E[\vp(\xi_1^\mu)]+\psi(x)-\alpha E[\psi(\xi_1^\mu)] \\
+&= \mathcal{L}^\mu[\vp](x) + \mathcal{L}^\mu[\psi](x) \\
+&\therefore \mathcal{L}^\mu \text{ is a linear operator}
+\end{align*}
+
+Let $\hat{l}^\mu(i)\doteq l(i,\mu(i))$, then $V=\calg^\mu[V]$ becomes $V(x)=l(x,\mu(x))+\alpha E[V(\xi_1^\mu)]$ can be rearranged to yield $V(x)-\alpha E[V(\xi_1^\mu)] = l(x,\mu(x))$ and leads to the expression
+$$\mathcal{L}^\mu[V](x) = \hat{l}^\mu(x) \Rightarrow \mathcal{L}^\mu[V] = \hat{l}^\mu$$
+This turns the non-linear problem involving the Banach Fixed Point Theorem \ref{th:bfp} into a linear problem.
+
+In the finite Markov chain case we get
+$$\mathcal{L}^\mu[V](x) = V(x)-\alpha\sum_{j\in\mathbb{X}}\pxj^\mu V(j)$$
+Let $V$ be in vector form such that
+\begin{align*}
+V\equiv\left[\begin{array}{c} V(1) \\ V(2) \\ V(3) \end{array}\right]
+\qquad \hat{l}^\mu\equiv \left[\begin{array}{c} \hat{l}^\mu(1) \\ \hat{l}^\mu(2) \\ \hat{l}^\mu(3) \end{array}\right]
+\end{align*}
+then $\mathcal{L}^\mu[V]=\hat{l}^\mu$ becomes
+$$\left[I-\alpha\mathbb{P}^\mu\right]V=\hat{l}^\mu$$
+which is a finite dimensional linear equality. We can solve this with linear solvers such as the inverse or pseudo-inverse depending on the specific problem. Nevertheless, we could use the following to solve $V=\calg^\mu[V]$. Let $V_0^{k+1}\doteq V^k$. Then
+$$V_{l+1}^{k+1}=\calg^{\mu^{k+1}}[V_l^{k+1}]$$
+By Theorem \ref{th:bfp} we get $V_l^{k+1}\to V^{k+1}$ is the unique solution of
+$$V=\calg^{\mu^{k+1}}[V]$$
+Note that
+\begin{align}
+\label{eq:polpayoff}
+V_1^{k+1} &= \calg^{\mu^{k+1}}[V_0^{k+1}] = \calg^{\mu^{k+1}}[V^k] = \calg[V^k] \nonumber \\
+&\qquad[\text{by the choice of } \mu^{k+1}] \nonumber \\
+&\leq \calg^{\mu^k}[V^k] = V^k = V_0^{k+1} \nonumber \\
+\Rightarrow V_1^{k+1} &\leq V_0^{k+1}
+\end{align}
+This shows that we get a better payoff at the next iteration using policy iteration.
+
+\begin{lemma}
+\label{lem:contractioninequality}
+Suppose $\vp\leq\psi \Rightarrow \vp(x)\leq\psi(x) ~\forall x\in\mathbb{X}$, then $\calg^\mu[\vp]\leq\calg^\mu[\psi]$.
+\end{lemma}
+
+Suppose $V_{l+1}^{k+1}\leq V_l^{k+1}$ (which is true at $l=0$ by (\ref{eq:polpayoff})), then by Lemma \ref{lem:contractioninequality} we have that
+$$\calg^{\mu^{k+1}}[V_{l+1}^{k+1}]\leq\calg^{\mu^{k+1}}[V_l^{k+1}] \Rightarrow V_{l+2}^{k+1}\leq V_{l+1}^{k+1}$$
+Therefore, by induction $V_l^{k+1}$ is monotonically decreasing in $l$. Further, we get convergence by Theorem \ref{th:bfp} and
+\begin{align}
+\label{eq:vmonotonic}
+V_l^{k+1}\to V^{k+1} \therefore V^{k+1}\leq V^k
+\end{align}
+
+\begin{theorem}
+Suppose there exists $k,l$ such that $\mu^{k+l} = \mu^k$. Then $\mu^{k+j}=\mu^k ~\forall j\geq 0$ by (\ref{eq:vmonotonic}) and $V^{k+j}=V^k ~\forall j\geq0$.
+\end{theorem}
 
 
 % \end{document}
