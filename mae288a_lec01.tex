@@ -187,7 +187,7 @@ The term $A^C$ means the complement of $A$.
 \Sigma_1 &= \left\lbrace \Omega, \emptyset, \left\lbrace (H,H), (H,T) \right\rbrace, \left\lbrace (T,H), (T,T) \right\rbrace \right\rbrace \\
 \Sigma_2 &= P(\Omega) = \textnormal{ power set } = \textnormal{ collection of \textit{all} subsets of } \Omega.
 \end{align*}
-The subscripts of $\Sigma$ represent discrete time steps. It can be seen that the different $\Sigma$ time steps represent our knowledge about the system at each step. For example, $\Sigma_1$ is our knowledge of the system after one toss of the coin and the possible events contain the cases for times when heads was the first measurement and for times when tails was the first measurement. *** Double-check that this explanation is accurate. ***
+The subscripts of $\Sigma$ represent discrete time steps. It can be seen that the different $\Sigma$ time steps represent our knowledge about the system at each step. For example, $\Sigma_1$ is our knowledge of the system after one toss of the coin and the possible events contain the cases for times when heads was the first measurement and for times when tails was the first measurement. *** Double-check that this explanation is accurate. *** $\lozenge$
 
 \section{Random Variables}
 Let a variable $X$ be a random variable (R.V.) that acts according to \\
@@ -199,7 +199,7 @@ X(H,H) &= 2 \\
 X(H,T) &= X(T,H) = 0 \\
 X(T,T) &= -2
 \end{align*}
-See Fig. \ref{fig:01set2nat}. Let $X$ be a R.V. on $(\Omega, \Sigma_2)$ then we can say that $X^{-1}(\lbrace 0,2 \rbrace) = ??$. Note that $X$ is \textit{not} a R.V. on $(\Omega, \Sigma_1)$. *** Ask for more details about this part. The question marks were not written down on the board. *** After the first toss we know which subset  we're in and after the second toss we know everything about the system.
+See Figure \ref{fig:01set2nat}. Let $X$ be a R.V. on $(\Omega, \Sigma_2)$ then we can say that $X^{-1}(\lbrace 0,2 \rbrace) = ??$. Note that $X$ is \textit{not} a R.V. on $(\Omega, \Sigma_1)$. *** Ask for more details about this part. The question marks were not written down on the board. *** After the first toss we know which subset  we're in and after the second toss we know everything about the system. $\lozenge$
 \begin{figure}[ht!]
 	\centering
 	\includegraphics[width=.5\textwidth]{images/01set2nat}
@@ -230,7 +230,7 @@ $$F(x) = \int_{y \leq x} f(y)dy = \int_{-\infty}^{x_1} \int_{-\infty}^{x_2}\cdot
 Note that taking the indefinite integral of $f(x)$ yields $F(x)$.
 
 There is a theorem that says if $X$ has a density $f$ then \\
-``$P(A)$'' $= P\left(X^{-1}(A)\right) = \int_A f(x)dx$.
+``$P(A)$'' $= P\left(X^{-1}(A)\right) = \int_A f(x)dx$. $\lozenge$
 
 \section{Expectation}
 The expectation of a R.V. taking a certain value is also known as the mean or average. Let $g: \mathbb{R}^n \to \mathbb{R}^m$, then
@@ -248,21 +248,22 @@ E[x] &= \int_{-\infty}^\infty xf(x)dx \\
 &= 0 - 0 - e^{-x}\rvert_0^\infty \\
 &= 1.
 \end{align*}
+$\lozenge$
 
 \section{Variance}
 \textit{Example:} Using (\ref{eq:probEg}) in $\mathbb{R}^1$ we have
 $$E[(x - E(x))^2] = \int_0^\infty (x-1)^2e^xdx.$$
-Since $x$ is a R.V. and $E(x)$ is a scalar the variance is a scalar as well.
+Since $x$ is a R.V. and $E(x)$ is a scalar the variance is a scalar as well. $\lozenge$
 
 \section{Covariance}
-\textit{Example:} Using (\ref{eq:probEg}) in $\mathbb{R}^n$ we have $$C_{ij} \doteq E[(x_i - E(x_i))(x_j - E(x_j)].$$ Note that $E(x_i) = \lbrace E(x) \rbrace_i$.
+\textit{Example:} Using (\ref{eq:probEg}) in $\mathbb{R}^n$ we have $$C_{ij} \doteq E[(x_i - E(x_i))(x_j - E(x_j)].$$ Note that $E(x_i) = \lbrace E(x) \rbrace_i$. $\lozenge$
 
 \textit{Example:} Given
 \begin{align*}
 f(x) &= \begin{cases} 1 & x_1 \in [0,1] \\ 0 & x_2 \in [0,1] \end{cases} \\
 E[x_1] &= \int_0^1 \int_0^1 x_1f(x_1,x_2)dx_1dx_2 = \int_0^1 \int_0^1 x_1dx_1dx_2 = \int_0^1 \frac{1}{2}dx_2 = \frac{1}{2}
 \end{align*}
-and by symmetry $E[x_2] = \frac{1}{2}$. This makes sense because we expect the value to be right in the middle of the area described by the function.
+and by symmetry $E[x_2] = \frac{1}{2}$. This makes sense because we expect the value to be right in the middle of the area described by the function. $\lozenge$
 \begin{figure}[ht!]
 	\centering
 	\includegraphics[width=.45\textwidth]{images/01box}
