@@ -217,8 +217,8 @@ This represents integration over the $w$'s.
 = &\int\cdots\int P_{w_t}(w_t)\cdots P_{w_{t-1}}(w_{t-1})dw_t\cdots dw_{T-1}
 \end{align*}
 
-\begin{theorem}{Dynamic Programming Principle}
-Let $t\in~]s,T-1[$. Then
+\begin{theorem}{Dynamic Programming Principle.}
+Also called Finite Time Horizon DPP. Let $t\in~]s,T-1[$. Then
 \begin{align}
 \label{eq:dpp}
 V(s,x) = \inf_{\mu\in\mathcal{M}_{]s,t-1[}}E\left\lbrace\sum_{r=s}^{t-1}l(\xi_r,w_r(\xi)) + V(t,\xi_t)\right\rbrace
@@ -229,25 +229,25 @@ The expectation taken over $w_s,\ldots,w_{t-1} = w_{]s,t-1[}$.
 \begin{proof}
 The notation $]a,b[$ operator means greater than $a$ and less than $b$. Let $R(s,x) = $ right hand side of (\ref{eq:dpp}). For any $y\in\mathbb{R}^N$, by definition the value $V(t,y) = \inf_{\mu\in\mathcal{M}]t,T-1[}$. This gives
 $$E_{w_{]t,T-1[}}\left\lbrace \sum_{r=k}^{T-1}l(\xi_r,\mu_r(\xi))+\phi(\xi_T)\right\rbrace$$
-Introduce the notation $x$ is $\Sigma$-optimal for $\inf A$ if $x\in A, x\leq\inf A+\Sigma$. Let $\mu^{\Sigma,y}\in\tilde{M}_{]t,T-1[}$ be $\Sigma$-optimal, then
+Introduce the notation $x$ is $\epsilon$-optimal for $\inf A$ if $x\in A, x\leq\inf A+\epsilon$. Let $\mu^{\epsilon,y}\in\tilde{M}_{]t,T-1[}$ be $\epsilon$-optimal, then
 \begin{align}
 \label{eq:dppvalue}
-V(t,y) + \Sigma\geq E_{w_{]t,T-1[}}\left\lbrace \sum_{r=t}^{T-1}l(\xi_r^{\Sigma,y}, \mu_r^{\Sigma,y}(\xi^{\Sigma,y}) + \phi(\xi_T^{\Sigma,y})\right\rbrace
+V(t,y) + \epsilon\geq E_{w_{]t,T-1[}}\left\lbrace \sum_{r=t}^{T-1}l(\xi_r^{\epsilon,y}, \mu_r^{\epsilon,y}(\xi^{\epsilon,y}) + \phi(\xi_T^{\epsilon,y})\right\rbrace
 \end{align}
-with $\xi^{\Sigma,y}$ satisfying the dynamics and $\xi_t^{\Sigma,y} = y$ and control $\mu^{\Sigma,y}$. Substitute (\ref{eq:dppvalue}) into (\ref{eq:dpp}), then
+with $\xi^{\epsilon,y}$ satisfying the dynamics and $\xi_t^{\epsilon,y} = y$ and control $\mu^{\epsilon,y}$. Substitute (\ref{eq:dppvalue}) into (\ref{eq:dpp}), then
 \begin{align*}
 R(s,x) \geq &\inf_{w\in\tilde{\mathcal{M}}_{]s,t-1[}} E_{w_{]s,t-1[}}\left\lbrace \sum_{r=s}^{T-1}l(\xi_r,w_r(\xi))\right\rbrace \\
-&+ E\left\lbrace \sum_{r=t}^{T-1}l(\xi^{\Sigma,y},w^{\Sigma,y}(\xi^{\Sigma,y})\right\rbrace + \phi(\xi_T^{\Sigma,y}) - \Sigma
+&+ E\left\lbrace \sum_{r=t}^{T-1}l(\xi^{\epsilon,y},w^{\epsilon,y}(\xi^{\epsilon,y})\right\rbrace + \phi(\xi_T^{\epsilon,y}) - \epsilon
 \end{align*}
 Let
-$$\tilde{\mu}(\xi) = \begin{cases} \bar{w}_2(\xi_{]s,t-1[}, & r\leq t-1 \\ w_r^{\Sigma,\xi_\tau}(\xi_{]t,T-1[}), & r\geq t \end{cases}$$
+$$\tilde{\mu}(\xi) = \begin{cases} \bar{w}_2(\xi_{]s,t-1[}, & r\leq t-1 \\ w_r^{\epsilon,\xi_\tau}(\xi_{]t,T-1[}), & r\geq t \end{cases}$$
 \textit{Exercise:} Show $\tilde{\mu}\in\tilde{\mathcal{M}}_{]s,T-1[}$.
 
 Then we have
-$$R(s,x) \geq \cdots = E_{\mu_{]s,T-1[}}\left\lbrace\sum_{r=s}^{T-1} l(\tilde{\xi}_r,\tilde{w}_r(\tilde{\xi})) + \phi(\tilde{\xi}_r)\right\rbrace - 2\Sigma$$
+$$R(s,x) \geq \cdots = E_{\mu_{]s,T-1[}}\left\lbrace\sum_{r=s}^{T-1} l(\tilde{\xi}_r,\tilde{w}_r(\tilde{\xi})) + \phi(\tilde{\xi}_r)\right\rbrace - 2\epsilon$$
 where $\tilde{\xi}$ satisfies the dynamics, $\tilde{\xi}_s=x$, and is driven by $\tilde{\mu}$. This leads to
-$$R(s,x) \geq J(s,x,\tilde{w}) - 2\Sigma \geq V(s,x)-2\Sigma$$.
-This is true $\forall \Sigma>0\to R(s,x)\geq V(s,x)$. Note that if $A\geq B-\Sigma ~\forall \Sigma > 0$, $A,B$ independent of $\Sigma$, then $A\geq B$. This proof can be finished as an exercise.
+$$R(s,x) \geq J(s,x,\tilde{w}) - 2\epsilon \geq V(s,x)-2\epsilon$$
+This is true $\forall \epsilon>0\Rightarrow R(s,x)\geq V(s,x)$. Note that if $A\geq B-\epsilon ~\forall \epsilon > 0$, $A,B$ independent of $\epsilon$, then $A\geq B$. This proof can be finished as an exercise.
 \end{proof}
 
 DPP is ``universally'' true. This needs to be shown for particular problem classes.
