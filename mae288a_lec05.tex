@@ -144,11 +144,11 @@ The goal here is to use DP in discrete time to solve the regular LQG problem.
 \xi_{t+1} &= A\xi_t + Bu_t + \sigma w_t = f(\xi_t,u_t,w_t) \\
 \xi_s &= x \in \mathbb{R}^n, ~U=\mathbb{R} \\
 \{w_t\} &= \text{ IID }, w_t\sim N(0,Q), ~Q\in\mathbb{R}^{n\times m} \\
-J(s,x,\mu) &= E_{w]s,T-1[} \left\lbrace \sum_{t=s}^T \underbrace{\frac{1}{2}\xi_t^T(\xi_t+\frac{1}{2}u_t^TDu_t}_{l} + \underbrace{\frac{1}{2}\xi_t^TF\xi_t}_{\phi} \right\rbrace \\
+J(s,x,\mu) &= E_{w_{]s,T-1[}} \left\lbrace \sum_{t=s}^T \underbrace{\frac{1}{2}\xi_t^T C \xi_t+\frac{1}{2}u_t^TDu_t}_{l} + \underbrace{\frac{1}{2}\xi_t^TF\xi_t}_{\phi} \right\rbrace \\
 V(s,x) &= \inf_{\mu\in\mathcal{M}_{s,T-1}}J(s,x,\mu)
 \end{align*}
 where $C,D,F$ are symmetric positive definite matrices. Then
-$$V(T,) = \frac{1}{2}x^TFx$$
+$$V(T,\cdot) = \frac{1}{2}x^TFx$$
 
 If we assume that $V(t,x) = \frac{1}{2}x^TP_{t+1}x + R_{t+1}$, with $P_{t+1}$ symmetric positive definite and that this is true at $t+1=T$ with $P_T=F$, $R_t=0$, then the DPE is
 \begin{align*}
@@ -170,7 +170,7 @@ where the last equality occurs because $E_w[w]=0$ and at the second and third eq
 Continuing on we have
 \begin{align*}
 R_t &= R_{t+1} + \frac{1}{2}E_w[w^T\sigma^TP_{t+1}\sigma w] \\
-&= \frac{1}{2}x^TCx + R_t \\
+\Rightarrow V(t,x) &= \frac{1}{2}x^TCx + R_t \\
 &+ \min_u\{ \underbrace{\frac{1}{2}u^TDu + \frac{1}{2}(Ax)^TP_{t+1}Ax + \frac{1}{2}u^TB^TP_{t+1}Bu + (Ax)^TP_{t+1}Bu\}}_{G(u)}
 \end{align*}
 
@@ -182,11 +182,11 @@ Continuing on we have
 (D+B^TP_{t+1}B)u &= -B^TP_{t+1}Ax \\
 u &= -(D+B^TP_{t+1}B)^{-1}B^TP_{t+1}Ax \doteq K_tx \doteq \mu_t(x)
 \end{align*}
-where $\mu_t(x)$ is our feedback controller. Then we have that
+where $\mu_t(x)$ is our feedback controller. The first equation corresponds to (3.10-8) in Kirk\footnote{"Optimal Control Theory: An Introduction" by Donald E. Kirk.} and the third equation corresponds to (3.10-10) in Kirk. Then we have that
 $$V(t,x) = \frac{1}{2}x^TP_tx + R_t$$
 with
 $$P_t = C+ K_t^TDK_t + (A+BK_t)^TP_{t+1}(A+BK_t)$$
-and by induction $V$ has this form $\forall t\leq T$.
+and by induction $V$ has this form $\forall t\leq T$. The equation for $V(t,x)$ corresponds to (3.10-11) in Kirk.
 
 \section{Convex Analysis}
 \begin{definition}
@@ -227,7 +227,7 @@ A function $f:\mathbb{R}^n\to\mathbb{R}$ is convex if $\text{epi}[f]$ is a conve
 \end{definition}
 
 \begin{theorem}
-$f$ is convex $\Leftrightarrow f(\lambda x + (1-\lambda)y)\leq \lambda F(x) + (1-\lambda)f(y) ~\forall x,y\in\mathbb{R}^n, ~\forall \lambda\in[0,1]$.
+$f$ is convex $\Leftrightarrow f(\lambda x + (1-\lambda)y)\leq \lambda f(x) + (1-\lambda)f(y) ~\forall x,y\in\mathbb{R}^n, ~\forall \lambda\in[0,1]$.
 \end{theorem}
 Figure \ref{fig:05convexGeoProof} gives an illustration.
 \begin{proof}
@@ -247,7 +247,7 @@ This proof is for the if portion, not the only if portion. Let $x,y\in\mathbb{R}
 	\label{fig:05convexGeoProof}
 \end{figure}
 
-It is nice to optimize convex functions because there is only a global minimum and no local minimums to get trapped in.
+It is nice to optimize convex functions because there is only a single global minimum and no local minimums to get trapped in.
 
 \begin{theorem}
 If $f$ is convex and real-valued then $f$ is continuous.
@@ -262,7 +262,7 @@ $f\to\infty$ as $x\to\infty$ if given $M<\infty \exists R<\infty$ such that $f(x
 \end{definition}
 
 \begin{theorem}
-$f:\mathbb{R}^n\to\mathbb{R}$ is convex if $f\to\infty$ as $x\to\infty$ then $\exists \bar{x}\in\mathbb{R}^n$ such that $f(\bar{x}\leq f(x) ~\forall x$.
+$f:\mathbb{R}^n\to\mathbb{R}$ is convex if $f\to\infty$ as $x\to\infty$ then $\exists \bar{x}\in\mathbb{R}^n$ such that $f(\bar{x})\leq f(x) ~\forall x$.
 \end{theorem}
 
 \begin{theorem}
@@ -334,7 +334,7 @@ E[f(\lambda x+(1-\lambda)y) + Z] &= E[f(\lambda(x+Z) + (1-\lambda)(y+Z))] \\
 \section{Inventory Control}
 Let $\xi_t$ be current inventory, $u_t$ be the amount of new inventory to purchase, $w_t$ a radom process involving selling inventory and let these three variables be IID. Let $\xi_{t+1} = \xi_t+u_t+w_t$ and the values of $c,p,h>0$ be constants. Then the cost function can be written as
 \begin{align*}
-J(s,x,\mu) =& E_{w]s,T-1[} \\
+J(s,x,\mu) =& E_{w_{]s,T-1[}} \\
 &\left[\sum_{t=s}^{T-1}cu+p\max[0,-(\underbrace{\xi_t+u_t+w_t}_{\xi_{t+1}})] + h\max[0,\underbrace{\xi_t,u_t,w_t}_{\xi_{t+1}}] \right]
 \end{align*}
 where the first $\xi_{t+1}$ represents the cost of having backlogged orders and the second one represents the cost of storing excess inventory. To determine the optimal amount of inventory to purchase (or our system input) we can use DP with $\phi=0$ to mean that no terminal cost exists. This means that $V(t,x)=0$ and gives

@@ -137,8 +137,8 @@ The cost function is
 $$J(s,x,w) = E[\sum_{t=s}^{T-1}l(\xi_t,u_t) + \phi(\xi_t)]$$
 with $u_t=w_t(\xi_t)$. The value function is given by
 $$V(\Delta,x) = \inf_{w\in M_{s,T-1}} j(s,x,w)$$
-Also, *** ask Gideon for clarification ***
-$$\tilde{M}_{\tau_1,\tau_2} = \{\{w_r\}_{r=\tau_1}^{\tau_2} | w_r:\{\xi_r\}_{r=\tau_1}^{\tau_2}\} \to u\in\mathcal{V}$$
+Also,
+$$\tilde{M}_{\tau_1,\tau_2} = \{\{w_r\}_{r=\tau_1}^{\tau_2} | w_r:\{\xi_r\}_{r=\tau_1}^{\tau_2}\} \to u\in\mathcal{U}$$
 This holds $\forall r\in\tau_1,\ldots,\tau_2 \text{ s.t. } \forall t\in\tau_1,\ldots,\tau_2, ~\forall \xi, ~\forall \eta$. Then,
 $$w_r(\xi_\tau,\xi_{\tau+1},\ldots,\xi_t,\eta_t,\eta_{t-1},\ldots,\eta_{\tau_2}) = w_r(\xi_{\tau_1},\xi_{\tau_1+1},\xi_{\tau_2})$$
 These are non-anticipative controls and are known as dynamic programming (DP).
@@ -148,8 +148,8 @@ Let $A\subseteq\mathbb{R}$ and $\min A$ is the smallest element of $A$.
 
 \begin{example}
 \begin{align*}
-\min([2.7,\pi)) &= 2.7 \\
-\min((2.7,\pi)) \text{ DNE}
+&\min([2.7,\pi)) = 2.7 \\
+&\min((2.7,\pi)) \text{ DNE}
 \end{align*}
 where DNE means ``does not exist''.
 \end{example}
@@ -198,7 +198,7 @@ $\lozenge$
 \section{Dynamic Programming}
 What is the cheapest flight from San Diego to Boston with two stops or less when the allowable cities for stops are San Diego, Los Angeles, Chicago, Atlanta, New York City and Boston? The state space is
 $$\{\text{San Diego, Los Angeles, Chicago, Atlanta, New York City, Boston}\}$$
-Each city to a different city has a cost. Let $C(x,y)$ be the cost from city $x$ to city $y$.
+Each flight from one city to a different city has a cost. Let $C(x,y)$ be the cost from city $x$ to city $y$.
 
 \subsection{Dynamic Programming Principle}
 $$\min C\{\text{SAN, BOS}\} = \min\{C(SAN,x) + \min(\text{1 stop cost from }x\to\text{BOS}\}$$
@@ -213,11 +213,11 @@ Recall that $\xi_{t+1}=f(\xi_t,w_t)$ where we are ignoring control for the momen
 $$E[\{\xi_{t+1},\xi_{t+2},\ldots,\xi_T\}|\xi_t=y] = E[f(y,f(y,w_t)),f(f(y,w_t),w_{t+1}),\ldots]$$
 This represents integration over the $w$'s.
 \begin{align*}
-&\int_{w_{T-1}}\cdots\int_{w_{t+1}}\int_{w_t}f(y,f(y,w_t)),f(f(y,w_t),w_{t+1}),\ldots,f(f(y,w_t),w_{T-1})dw \\
-= &\int\cdots\int P_{w_t}(w_t)\cdots P_{w_{t-1}}(w_{t-1})dw_tdw_{T-1}
+&\int_{w_{T-1}}\cdots\int_{w_{t+1}}\int_{w_t}f(y,f(y,w_t)),f(f(y,w_t),w_{t+1}),\ldots,f(f(y,w_t),w_{T-1})dw_t\cdots dw_{T-1} \\
+= &\int\cdots\int P_{w_t}(w_t)\cdots P_{w_{t-1}}(w_{t-1})dw_t\cdots dw_{T-1}
 \end{align*}
 
-\begin{theorem}{Dynamic Programming Principles}
+\begin{theorem}{Dynamic Programming Principle}
 Let $t\in~]s,T-1[$. Then
 \begin{align}
 \label{eq:dpp}
@@ -226,26 +226,26 @@ V(s,x) = \inf_{\mu\in\mathcal{M}_{]s,t-1[}}E\left\lbrace\sum_{r=s}^{t-1}l(\xi_r,
 The expectation taken over $w_s,\ldots,w_{t-1} = w_{]s,t-1[}$.
 \end{theorem}
 
-The notation $]a,b[$ operator means greater than $a$ and less than $b$.
 \begin{proof}
-Let $R(s,x) = $ right hand side of (\ref{eq:dpp}). For any $y\in\mathbb{R}^N$, by definition the value $V(t,y) = \inf_{\mu\in\mathcal{M}]t,T-1[}$. This gives
-$$E_{w]t,T-1[}\left\lbrace \sum_{r=k}^{T-1}l(\xi_r,\mu_r(\xi))+\phi(\xi_T)\right\rbrace$$
+The notation $]a,b[$ operator means greater than $a$ and less than $b$. Let $R(s,x) = $ right hand side of (\ref{eq:dpp}). For any $y\in\mathbb{R}^N$, by definition the value $V(t,y) = \inf_{\mu\in\mathcal{M}]t,T-1[}$. This gives
+$$E_{w_{]t,T-1[}}\left\lbrace \sum_{r=k}^{T-1}l(\xi_r,\mu_r(\xi))+\phi(\xi_T)\right\rbrace$$
 Introduce the notation $x$ is $\Sigma$-optimal for $\inf A$ if $x\in A, x\leq\inf A+\Sigma$. Let $\mu^{\Sigma,y}\in\tilde{M}_{]t,T-1[}$ be $\Sigma$-optimal, then
 \begin{align}
 \label{eq:dppvalue}
-V(t,y) + \Sigma\geq E_{w]t,T-1}\left\lbrace \sum_{r=t}^{T-1}l(\xi_r^{\Sigma,y}, \mu_r^{\Sigma,y}(\xi^{\Sigma,y}) + \phi(\xi_T^{\Sigma,y})\right\rbrace
+V(t,y) + \Sigma\geq E_{w_{]t,T-1[}}\left\lbrace \sum_{r=t}^{T-1}l(\xi_r^{\Sigma,y}, \mu_r^{\Sigma,y}(\xi^{\Sigma,y}) + \phi(\xi_T^{\Sigma,y})\right\rbrace
 \end{align}
 with $\xi^{\Sigma,y}$ satisfying the dynamics and $\xi_t^{\Sigma,y} = y$ and control $\mu^{\Sigma,y}$. Substitute (\ref{eq:dppvalue}) into (\ref{eq:dpp}), then
 \begin{align*}
-R(s,x) \geq &\inf_{w\in\tilde{\mathcal{M}}]s,t-1[} E_{w]s,t-1[}\left\lbrace \sum_{r=s}^{T-1}l(\xi_r,w_r(\xi))\right\rbrace \\
+R(s,x) \geq &\inf_{w\in\tilde{\mathcal{M}}_{]s,t-1[}} E_{w_{]s,t-1[}}\left\lbrace \sum_{r=s}^{T-1}l(\xi_r,w_r(\xi))\right\rbrace \\
 &+ E\left\lbrace \sum_{r=t}^{T-1}l(\xi^{\Sigma,y},w^{\Sigma,y}(\xi^{\Sigma,y})\right\rbrace + \phi(\xi_T^{\Sigma,y}) - \Sigma
 \end{align*}
 Let
 $$\tilde{\mu}(\xi) = \begin{cases} \bar{w}_2(\xi_{]s,t-1[}, & r\leq t-1 \\ w_r^{\Sigma,\xi_\tau}(\xi_{]t,T-1[}), & r\geq t \end{cases}$$
 \textit{Exercise:} Show $\tilde{\mu}\in\tilde{\mathcal{M}}_{]s,T-1[}$.
+
 Then we have
-$$R(s,x) \geq \cdots = E_{\mu]s,T-1[}\left\lbrace\sum_{r=s}^{T-1} l(\tilde{\xi}_r,\tilde{w}_r(\tilde{\xi})) + \phi(\tilde{\xi}_r)\right\rbrace - 2\Sigma$$
-where $\tilde{\xi}$ satisfies the dynamics, $\tilde{\xi}_s=x$ and is driven by $\tilde{\mu}$. This leads to
+$$R(s,x) \geq \cdots = E_{\mu_{]s,T-1[}}\left\lbrace\sum_{r=s}^{T-1} l(\tilde{\xi}_r,\tilde{w}_r(\tilde{\xi})) + \phi(\tilde{\xi}_r)\right\rbrace - 2\Sigma$$
+where $\tilde{\xi}$ satisfies the dynamics, $\tilde{\xi}_s=x$, and is driven by $\tilde{\mu}$. This leads to
 $$R(s,x) \geq J(s,x,\tilde{w}) - 2\Sigma \geq V(s,x)-2\Sigma$$.
 This is true $\forall \Sigma>0\to R(s,x)\geq V(s,x)$. Note that if $A\geq B-\Sigma ~\forall \Sigma > 0$, $A,B$ independent of $\Sigma$, then $A\geq B$. This proof can be finished as an exercise.
 \end{proof}
@@ -254,22 +254,23 @@ DPP is ``universally'' true. This needs to be shown for particular problem class
 
 \begin{example}
 One step forward in time.
-\begin{align*}
-t &= s+1 \\
-V(s,x) &= \inf_{w\in\tilde{\mathcal{M}}} E_{w_s}\left\lbrace l(\xi_s,w_s(\xi_s)) + V(s+1,\xi_{s+1})\right\rbrace \\
-&= \inf_{w\in\tilde{\mathcal{M}}_{s,s}} \left\lbrace l(x,w_s(x)) + E_{w_s}[V(s+1,f(x,w_s(x),w_s)]\right\rbrace \\
-&= \inf_{u\in\mathcal{V}} \left\lbrace l(x,u) + E[V(s+1,f(x,u,w_s))]\right\rbrace \\
-&\text{in integral form} \\
+\begin{align}
+\label{eq:dpe}
+t &= s+1 \nonumber \\
+V(s,x) &= \inf_{w\in\tilde{\mathcal{M}}} E_{w_s}\left\lbrace l(\xi_s,w_s(\xi_s)) + V(s+1,\xi_{s+1})\right\rbrace \nonumber \\
+&= \inf_{w\in\tilde{\mathcal{M}}_{s,s}} \left\lbrace l(x,w_s(x)) + E_{w_s}[V(s+1,f(x,w_s(x),w_s)]\right\rbrace \nonumber \\
+&= \inf_{u\in\mathcal{V}} \left\lbrace l(x,u) + E[V(s+1,f(x,u,w_s))]\right\rbrace \nonumber \\
+&\text{in integral form} \nonumber \\
 V(s,x) &= \inf_{u\in U} \left\lbrace l(x,u) + \int_{\mathbb{R}}V(s+1)f(x,u,w))P_{w_s}(w)dw\right\rbrace
-\end{align*}
-This is known as the Dynamic Programming Equation (DPE). For the third equality we used the definition $\xi_s \doteq x$.
+\end{align}
+Equation (\ref{eq:dpe}) is known as the Dynamic Programming Equation (DPE). For the third equality we used the definition $\xi_s \doteq x$.
 \end{example}
 $\lozenge$
 
 \section{Backward DP}
 \begin{align*}
 V(T,x) &= \phi(x) \\
-V(T-1,x) &= \inf_{u\in\mathcal{V}} \left\lbrace l(x,u) + E_{w_r}[V(T,f(x,u,w_s))]\right\rbrace \\
+V(T-1,x) &= \inf_{u\in\mathcal{U}} \left\lbrace l(x,u) + E_{w_r}[V(T,f(x,u,w_s))]\right\rbrace \\
 V(T-1,x) &= \cdots \\
 &\vdots \\
 &= V(s,x)

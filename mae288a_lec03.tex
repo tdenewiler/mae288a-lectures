@@ -181,7 +181,7 @@ Then, using (\ref{eq:distFn}) gives
 P_{X|Y=d}(x) &= \lim_{\epsilon\downarrow 0}\frac{1}{\epsilon}\left[\lim_{\delta\downarrow 0} \frac{P(X\leq x+\epsilon, y\in B_\delta(d))}{P(Y\in B_\delta(d))} - \lim_{\delta\downarrow 0} \frac{P(X\leq x, Y\in B_\delta(d))}{P(Y\in B_\delta(d))}\right] \\
 &= \lim_{\epsilon\downarrow 0}\frac{1}{\epsilon}\left[ \frac{P(X\in(x,x+\epsilon],y\in B_\delta(d))}{P(Y\in B_\delta(d))}\right] \\
 &= \lim_{\delta\downarrow 0}\lim_{\epsilon\downarrow 0}\frac{1}{\epsilon} \left[ \frac{\int_x^{x+\epsilon} \int_{d-\delta}^{d+\delta} p(z,y)dzdy}{\int_{-\infty}^\infty \int_{d-\delta}^{d+\delta} p(z,y)dzdy}\right] \\
-&= lim_{\delta\downarrow 0}\left[ \frac{\int_{d-\delta}^{d+\delta}\lim_{\epsilon\downarrow 0} \frac{1}{\epsilon} \int_x^{x+\epsilon} p(z,y)dzdy}{\int_{-\infty}^\infty \int_{d-\delta}^{d+\delta} p(z,y)dzdy}\right] \\
+&= \lim_{\delta\downarrow 0}\left[ \frac{\int_{d-\delta}^{d+\delta}\lim_{\epsilon\downarrow 0} \frac{1}{\epsilon} \int_x^{x+\epsilon} p(z,y)dzdy}{\int_{-\infty}^\infty \int_{d-\delta}^{d+\delta} p(z,y)dzdy}\right] \\
 &= \lim_{\delta\downarrow 0} \frac{\int_{d-\delta}^{d+\delta}p(x,y)dy}{\int_{-\infty}^\infty p(z,y)dydz} \\
 &= \frac{\lim_{\delta\downarrow 0}\frac{1}{2\delta}\int_{d-\delta}^{d+\delta} p(x,y)dy}{\int_{-\infty}^\infty \lim_{\delta\downarrow 0}\frac{1}{2\delta}\int_{d-\delta}^{d+\delta} p(z,y)dzdy} \\
 &= \frac{p(x,d)}{\int_{-\infty}^\infty p(z,d)dz} \\
@@ -301,7 +301,7 @@ The working regime is discrete-time and continuous space. The dynamics are given
 \end{cases}
 \end{align*}
 The cost-criterion or payoff, also known as the ``control policy'', is
-$$J(x,x,\mu_\bullet) = E\left[\sum_{t=s}^{T-1} l(\xi_t,u_t) + C(\xi_t)\right]$$
+$$J(s,x,u_\cdot) = E\left[\sum_{t=s}^{T-1} l(\xi_t,u_t) + C(\xi_t)\right]$$
 where $T$ is the terminal time, $l(\cdot)$ is the running cost and $C(\xi_t)$ is the terminal cost.
 
 The value function is

@@ -148,8 +148,8 @@ with $\phi=0$. Note that $V(T,x)=0$ indicating zero terminal cost, $\xi_{t+1}<0$
 
 Using this information the value function is given by
 \begin{align*}
-V(t,x) &= \inf_{u\geq 0} \{c(u+x) + pE_w[max(0,-(\xi_t+u_t+w_t)] \\
-&+ hE_u[max(0,\xi_t+u_t+w_t)] + E_w[V(t_+1,x+u+w)]\} - cx \\
+V(t,x) &= \inf_{u\geq 0} \{c(u+x) + pE_w[\max(0,-(\xi_t+u_t+w_t)] \\
+&+ hE_u[\max(0,\xi_t+u_t+w_t)] + E_w[V(t+1,x+u+w)]\} - cx \\
 &= \inf_{u\geq 0} \{H_t(x+u)\} - cx \\
 &= \inf_{y\geq x}\{H_t(y)\} - cx \\
 &= \begin{cases} H_t(\bar{y})-cx, & x\leq\bar{y} \\ H_t(x)-cx, & x>\bar{y} \end{cases}
@@ -196,7 +196,7 @@ H_t(z_\lambda) &\leq \beta H_t(\bar{y})+(1-\beta)H_t(x_2) \\
 The system is given as
 \begin{align*}
 \begin{split}
-\xi_{t+1} = f(\xi_t,u_t,w_t)
+\xi_{t+1} = f(\xi_t,u_t,w_t),
 \end{split}
 \begin{split}
 \xi_0 = x
@@ -205,7 +205,7 @@ The system is given as
 The cost is
 \begin{align*}
 \begin{split}
-J(x,\mu) = E_{w_{]0,\infty[}}\{\sum_{t=0}^\infty \alpha^tl(\xi_t,\mu_t(\xi_t))\}
+J(x,\mu) = E_{w_{]0,\infty[}}\{\sum_{t=0}^\infty \alpha^tl(\xi_t,\mu_t(\xi_t))\},
 \end{split}
 \begin{split}
 \alpha\in(0,1)
@@ -227,22 +227,22 @@ This is used in non-linear $H_\infty$. We are not going to spend time on this me
 \subsection{Dynamic Programming Principle}
 $$V(x) = \inf_{\mu\in\mathcal{M}_{0,\infty}} J(x,\mu)$$
 The following is \textit{not} a proof and we are assuming Markov processes. Let $r=t-\tau$, $\hat{\xi}_r=\xi_{\tau+r}$, $\hat{\mu}_r=\mu_{\tau+r}$ and $\hat{w}_r=w_{\tau+r}$. Then we can get the value function as
-\begin{align*}
-V(x) &= \inf_{\mu\in\mathcal{M}_{0,\infty}} E_{w_]0,\infty)} \left\lbrace \sum_{t=1}^{T-1} \alpha^tl(\xi_t,\mu_t(\xi_t)) + \sum_{t=-\tau}^\infty \alpha^tl(\xi_t,\mu_t(\xi_t))\right\rbrace \\
-&= \inf_{\mu\in\mathcal{M}_{0,\infty}} E_{w_]0,\infty)} \left\lbrace \sum_{t=1}^{T-1} \alpha^tl(\xi_t,\mu_t(\xi_t)) +  \alpha^t \sum_{r=0}^\infty \alpha^rl(\xi_{\tau+r},\mu_{\tau+r}(\xi_{\tau+r})) \right\rbrace \\
-&= \inf_{\mu\in\mathcal{M}_{]0,\tau-1[}} E_{]0,\tau-1[} \left\lbrace \sum_{t=0}^{\tau-1} \alpha^tl(\xi_t,\mu_t(\xi_t))\right\rbrace \\
-&+ \alpha^\tau\inf_{\mu\in\mathcal{M}_{]\tau,\infty[}} E_{w_{]\tau,\infty[}} \left\lbrace \sum_{r=0}^\infty\alpha^rl(\xi_{\tau+r},\mu_{\tau+r}(\xi_{\tau+r}))\right\rbrace \\
-&= \inf_{\mu\in\mathcal{M}_{]0,\tau-1[}} E_{]0,\tau-1[} \left\lbrace \sum_{t=0}^{\tau-1} l(\xi_t,\mu(\xi_t)) + \alpha^\tau \inf_{\mu\in\mathcal{M}_{]0,\tau-1[}} \sum_{r=0}^\infty \alpha^rl(\hat{\xi}_r,\hat{\mu}_r(\hat{\xi}_r)) \right\rbrace \\
-&= \inf_{\mu\in\mathcal{M}_{]0,\tau-1[}} E_{]0,\tau-1[} \left\lbrace \sum_{t=0}^{\tau-1} l(\xi_t,\mu(\xi_t)) + \alpha^\tau V(\xi_\tau) \right\rbrace \\
+\begin{align}
+V(x) &= \inf_{\mu\in\mathcal{M}_{0,\infty}} E_{w_]0,\infty)} \left\lbrace \sum_{t=1}^{T-1} \alpha^tl(\xi_t,\mu_t(\xi_t)) + \sum_{t=-\tau}^\infty \alpha^tl(\xi_t,\mu_t(\xi_t))\right\rbrace \nonumber \\
+&= \inf_{\mu\in\mathcal{M}_{0,\infty}} E_{w_]0,\infty)} \left\lbrace \sum_{t=1}^{T-1} \alpha^tl(\xi_t,\mu_t(\xi_t)) +  \alpha^t \sum_{r=0}^\infty \alpha^rl(\xi_{\tau+r},\mu_{\tau+r}(\xi_{\tau+r})) \right\rbrace \nonumber \\
+&= \inf_{\mu\in\mathcal{M}_{]0,\tau-1[}} E_{]0,\tau-1[} \left\lbrace \sum_{t=0}^{\tau-1} \alpha^tl(\xi_t,\mu_t(\xi_t))\right\rbrace \nonumber \\
+&+ \alpha^\tau\inf_{\mu\in\mathcal{M}_{]\tau,\infty[}} E_{w_{]\tau,\infty[}} \left\lbrace \sum_{r=0}^\infty\alpha^rl(\xi_{\tau+r},\mu_{\tau+r}(\xi_{\tau+r}))\right\rbrace \nonumber \\
+&= \inf_{\mu\in\mathcal{M}_{]0,\tau-1[}} E_{]0,\tau-1[} \left\lbrace \sum_{t=0}^{\tau-1} l(\xi_t,\mu(\xi_t)) + \alpha^\tau \inf_{\mu\in\mathcal{M}_{]0,\tau-1[}} \sum_{r=0}^\infty \alpha^rl(\hat{\xi}_r,\hat{\mu}_r(\hat{\xi}_r)) \right\rbrace \nonumber \\
+&= \inf_{\mu\in\mathcal{M}_{]0,\tau-1[}} E_{]0,\tau-1[} \left\lbrace \sum_{t=0}^{\tau-1} l(\xi_t,\mu(\xi_t)) + \alpha^\tau V(\xi_\tau) \right\rbrace \nonumber \\
 \Rightarrow V(x) &= \inf_{\mu\in\mathcal{M}_{]0,\tau-1[}} E_{]0,\tau-1[} \left\lbrace \sum_{t=0}^{\tau-1} l(\xi_t,\mu(\xi_t)) + \alpha^\tau V(\xi_\tau) \right\rbrace
-\end{align*}
+\end{align}
 This is the dynamic programming principle (DPP)! When $\tau=1$ we get the Dynamic Programming Equation (DPE).
 
 \subsection{Dynamic Programming Equation}
-\begin{align*}
-V(x) &= \inf_{\mu\in\mathcal{M}_{0,0}} E_{\mu_0} \left\lbrace l(x,\mu_0(x)) + \alpha V(\xi_1) \right\rbrace \\
+\begin{align}
+V(x) &= \inf_{\mu\in\mathcal{M}_{0,0}} E_{\mu_0} \left\lbrace l(x,\mu_0(x)) + \alpha V(\xi_1) \right\rbrace \nonumber \\
 \Rightarrow V(x) &= \inf_{u\in\mathcal{U}} \left\lbrace l(x,u) + \alpha E_w[V(f(x,u,w))] \right\rbrace
-\end{align*}
+\end{align}
 This is the Dynamic Programming Equation! To get the minimum we have to solve for $V$, the value function. If $\min\exists$ then
 $$\mu(x)\in\arg\min\{l(x,u)+\alpha E_u[V(f(x,u,w))]\}$$
 The DPE is of the form $V=\mathcal{G}[V]$, where $\mathcal{G}$ is a non-linear operator that maps one function to another function. It is a recursive operator.
