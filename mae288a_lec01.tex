@@ -199,7 +199,13 @@ X(H,H) &= 2 \\
 X(H,T) &= X(T,H) = 0 \\
 X(T,T) &= -2
 \end{align*}
-and letting $X$ be a R.V. on $(\Omega, \Sigma_2)$ then we can say that $X^{-1}(\lbrace 0,2 \rbrace) = ??$. Note that $X$ is \textit{not} a R.V. on $(\Omega, \Sigma_1)$. *** Ask for more details about this part. The question marks were not written down on the board. *** After the first toss we know which subset  we're in and after the second toss we know everything about the system.
+See Fig. \ref{fig:01set2nat}. Let $X$ be a R.V. on $(\Omega, \Sigma_2)$ then we can say that $X^{-1}(\lbrace 0,2 \rbrace) = ??$. Note that $X$ is \textit{not} a R.V. on $(\Omega, \Sigma_1)$. *** Ask for more details about this part. The question marks were not written down on the board. *** After the first toss we know which subset  we're in and after the second toss we know everything about the system.
+\begin{figure}[ht!]
+	\centering
+	\includegraphics[width=.5\textwidth]{images/01set2nat}
+	\caption{Members of a set being mapped to the natural numbers.}
+	\label{fig:01set2nat}
+\end{figure}
 
 \section{Probability}
 In this course $P$ means the probability measure on a set. $P: \Sigma \to [0,1]$ is a probability measure if given $A,B \in \Sigma$,
@@ -217,9 +223,9 @@ $$F(x) = \int_{y \leq x} f(y)dy = \int_{-\infty}^{x_1} \int_{-\infty}^{x_2}\cdot
 
 \textit{Example:} Given
 \begin{align}
-F(x) &= \begin{cases} 0 & x \leq 0 \\ 1-e^{-x} & x > 0 \end{cases} \nonumber \\
-f(x) &= \begin{cases} 0 & x \leq 0 \\ e^{-x} & x > 0 \end{cases}
 \label{eq:probEg}
+\begin{split}F(x) &= \begin{cases} 0 & x \leq 0 \\ 1-e^{-x} & x > 0 \end{cases}\end{split} \nonumber \\
+\begin{split}f(x) &= \begin{cases} 0 & x \leq 0 \\ e^{-x} & x > 0 \end{cases}\end{split}
 \end{align}
 Note that taking the indefinite integral of $f(x)$ yields $F(x)$.
 
@@ -232,7 +238,7 @@ The expectation of a R.V. taking a certain value is also known as the mean or av
 E[g(X)] &\doteq \int_{\mathbb{R}^n} g(x)f(x)dx \textnormal{ if } f ~ \exists \\
 E[X] &= \int_{\mathbb{R}^n}xf(x)dx.
 \end{align*}
-\textit{Example:} Using Equation \ref{eq:probEg} we have
+\textit{Example:} Using (\ref{eq:probEg}) we have
 \begin{align*}
 E[x] &= \int_{-\infty}^\infty xf(x)dx \\
 &= \int_0^\infty xe^{-x}dx \\
@@ -244,12 +250,12 @@ E[x] &= \int_{-\infty}^\infty xf(x)dx \\
 \end{align*}
 
 \section{Variance}
-\textit{Example:} Using Equation \ref{eq:probEg} in $\mathbb{R}^1$ we have
+\textit{Example:} Using (\ref{eq:probEg}) in $\mathbb{R}^1$ we have
 $$E[(x - E(x))^2] = \int_0^\infty (x-1)^2e^xdx.$$
 Since $x$ is a R.V. and $E(x)$ is a scalar the variance is a scalar as well.
 
 \section{Covariance}
-\textit{Example:} Using Equation \ref{eq:probEg} in $\mathbb{R}^n$ we have $$C_{ij} \doteq E[(x_i - E(x_i))(x_j - E(x_j)].$$ Note that $E(x_i) = \lbrace E(x) \rbrace_i$.
+\textit{Example:} Using (\ref{eq:probEg}) in $\mathbb{R}^n$ we have $$C_{ij} \doteq E[(x_i - E(x_i))(x_j - E(x_j)].$$ Note that $E(x_i) = \lbrace E(x) \rbrace_i$.
 
 \textit{Example:} Given
 \begin{align*}
@@ -257,6 +263,12 @@ f(x) &= \begin{cases} 1 & x_1 \in [0,1] \\ 0 & x_2 \in [0,1] \end{cases} \\
 E[x_1] &= \int_0^1 \int_0^1 x_1f(x_1,x_2)dx_1dx_2 = \int_0^1 \int_0^1 x_1dx_1dx_2 = \int_0^1 \frac{1}{2}dx_2 = \frac{1}{2}
 \end{align*}
 and by symmetry $E[x_2] = \frac{1}{2}$. This makes sense because we expect the value to be right in the middle of the area described by the function.
+\begin{figure}[ht!]
+	\centering
+	\includegraphics[width=.45\textwidth]{images/01box}
+	\caption{The function $f(x)$.}
+	\label{fig:01box}
+\end{figure}
 
 The off-diagonal elements of the covariance matrix can be calculated using
 \begin{align*}
