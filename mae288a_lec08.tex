@@ -104,7 +104,8 @@
 
 % A command to show a vector norm that will have the pipe signs scale with the contents.
 \newcommand{\vectornorm}[1]{\left|\left|#1\right|\right|}
-\newcommand{\SI}{System Identification}
+\newcommand{\w}{\omega}
+\newcommand{\vsp}{(\mathbb{Y},||\cdot||)}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -117,7 +118,7 @@
 \lectureseries[\course]{\course}
 
 \auth[\lecAuth]{Lecturer: \lecAuth\\ Scribe: \scribe}
-\date{September 24, 2009}
+\date{October 22, 2009}
 
 \setaddress
 
@@ -125,7 +126,135 @@
 \setcounter{lecture}{7}
 \setcounter{chapter}{7}
 
-\lecture{??}
+\lecture{Value Iteration Convergence}
+
+\section{Contraction Mapping Theorem Review}
+\begin{theorem}{Contraction Mapping Principle.}
+\label{th:cmp}
+This is also called the Banach Fixed Point Theorem. Let $\vsp$ be a Banach space and $F$ be a contraction, then there exists a unique solution to $y=F[y]$. Also, given $y_0\in\mathbb{Y}$ and letting $y_n\to y$ yields the solution.
+\end{theorem}
+
+We can use this to show that iterative value functions will converge to a solution.
+
+\section{Dynamic Programming Equation}
+The DPE has
+\begin{align*}
+V&=\mathcal{G}[V] \\
+J(x,w) &= E[\sum\alpha^tl(\xi_tw_t(\xi_t))] \\
+\xi_{t+1} &= f(\xi_t,u+t,w_t) \\
+V(x) &= \inf_{\mu\in\mathcal{M}}J(x,\mu)
+\end{align*}
+
+We want to apply Theorem \ref{th:cmp} to bounded functions.
+
+\subsection{Bounded Functions}
+Let
+$$\mathbb{Y} = C_B(\mathbb{R}^N) = \{V:\mathbb{R}^n\to\mathbb{R} | V \text{ cont., } \exists C_v \text{ s.t. } |V(x)|\leq C_v ~\forall x\in\mathbb{R}^n\}$$
+Note that $C_v$ depends on $V$. Let
+$$||V||_\infty = \sup_{x\in\mathbb{R}^n}|V(x)|$$
+and $\vsp$ be a Banach space.
+
+Assume that there exists $M<\infty$ such that $|l(x,u)|\leq M ~\forall x,u$. Then a bounded function is
+\begin{align*}
+&\epsilon>0 \exists \delta>0 \text{ s.t. } |l(x,u)-l(z,u)|<\epsilon ~\forall x,z\in\mathbb{R}^n \text{ s.t. } |x-z|<\delta \\
+&\epsilon>0 \exists \delta>0 \text{ s.t. } |F(x,u,w)-F(z,u,w|<\epsilon ~\forall u\in\mathcal{U},w\in\mathbb{R}^n, ~\forall x,z \text{ s.t. } |x-z|<\delta
+\end{align*}
+
+\subsection{Show $\mathcal{G}$ Maps Into $\mathbb{R}^n$}
+For iterative value functions to converge to a solution we need
+\begin{enumerate}
+\item $\mathcal{G}$ to map into the space.
+\item $F$ is a contraction.
+\end{enumerate}
+Suppose $||V||_\infty<C_v$. When we apply $\mathcal{G}$ we want $|\mathcal{G}[V](x)|$ to be bounded.
+\begin{align*}
+|V(f(x,u,w))| &\leq C_v \\
+\Rightarrow E[|V(f(x,u,w))|] &= E[\int|V(f(x,u,w))|p_w(w)dw] \leq C_v \\
+\Rightarrow |\alpha E[V(f(x,u,w))]| &\leq \alpha C_v \\
+\text{but } |l(x,u)| &\leq M ~\forall x,u \\
+\therefore |\mathcal{G}[V](x)| &\leq M + \alpha C_v \\
+\Rightarrow ||\mathcal{G}[V]||_\infty &\leq M + \alpha C_v
+\end{align*}
+We claim without proving that $\mathcal{G}[V](\cdot)$ is continuous. This leads to $\mathcal{G}:\mathbb{Y}\to\mathbb{Y}$ which shows that $\mathcal{G}$ maps into the space. We still need to show that $F$ is a contraction.
+
+\begin{theorem}
+\label{th:nvs}
+Let $F,H:\mathbb{X}\to\mathbb{R}$, then $\mathbb{X}$ is a normed vector space.
+\begin{align*}
+|\sup_{x\in\mathbb{X}}F(x) - \sup_{z\in\mathbb{X}}H(z)| &\leq \sup_{x\in\mathbb{X}}|F(x)-H(x)| \\
+|\inf_{x\in\mathbb{X}}F(x) - \inf_{z\in\mathbb{X}}H(z)| &\leq \sup_{x\in\mathbb{X}}|F(x)-H(x)|
+\end{align*}
+\end{theorem}
+
+\subsection{Show that $F$ is a contraction.}
+Let $V,\tilde{V}\in\mathbb{Y}$, we need to show that $||\mathcal{G}[V]-\mathcal{G}[\tilde{V}]||_\infty \leq ||V-\tilde{V}||_\infty$.
+\begin{align*}
+&|V(f(x,u,w)) - \tilde{V}(f(x,u,w))| \leq ||V-\tilde{V}||_\infty \\
+&\Rightarrow E[|V(f(x,u,w)) - \tilde{V}(f(x,u,w))| \leq ||V-\tilde{V}||_\infty \\
+&\Rightarrow |l(x,u)+\alpha E[V(f(x,u,w))] - l(x,u)+\alpha E[\tilde{V}(f(x,u,w))]| \leq \alpha||V-\tilde{V}||_\infty ~\forall x,u
+\end{align*}
+Using Theorem \ref{th:nvs} we have
+\begin{align*}
+|\inf_u\{l(x,u)+\alpha E[V(f(x,u,w))]\} &- \inf_u\{l(x,u)+\alpha E[\tilde{V}(f(x,u,w))]\}| \leq ||V-\tilde{V}||_\infty \\
+\Rightarrow ||\mathcal{G}[V]-\mathcal{G}[\tilde{V}]||_\infty &\leq \alpha||V-\tilde{V}||_\infty
+\end{align*}
+Under the conditions that $\mathcal{G}$ is continuous and bounded and that $F$ is a contraction then the value iteration converges to the solution.
+
+\begin{example}
+Given
+\begin{align*}
+\xi_{t+1} &= \xi_t+u_t+w_t \\
+u_t\in\mathcal{U} &= \{0,-1\} \\
+\{w_t\} &\text{ is IID} \\
+p_{w_t}(w) &= \begin{cases} 1, & w\in[0,1) \\ 0, & w\notin[0,1) \end{cases} \\
+l(x,u) &= \begin{cases} e^{\frac{x}{2}}, & u=0 \\ e^x, & u=-1 \end{cases} \\
+J(x,w) &= E[\sum_{t=0}^\infty \alpha^tl(\xi_t,w_t(\xi_t))] \\
+V(x) &= \min\{e^{\frac{x}{2}} + \alpha E[V(x+w)], e^x + \alpha E[V(x-1+w)]\}
+\end{align*}
+We start by guessing a solution $V_0(x)=0 ~\forall x$. Then
+\begin{align*}
+V_1(x) &= \mathcal{G}[V_0](x) = \min\{e^{\frac{x}{2}}+\alpha E[0], e^x + \alpha E[0]\} \\
+&= \begin{cases} e^{\frac{x}{2}}, & x\geq0 \\ e^x, & x<0 \end{cases}
+\end{align*}
+If we stopped here the optimal control would be
+$$\mu(x) = \begin{cases} 0, & x\geq0 \\ -1, & x<0 \end{cases}$$
+Continuing we have
+\begin{align*}
+V_2(x) &= \min\{e^{\frac{x}{2}} + \alpha[\int_{-\infty}^{-x} e^{x+w}p_w(w)dw + \int_{-x}^\infty e^{\frac{x+w}{2}}p_w(w)dw, \\
+&e^x+\alpha[\int_{-\infty}^{-(x-1)}e^{x-1+w}p_w(w)dw + \int_{-(x-1)}^\infty e^{x-1+w}p_w(w)dw]\}
+\end{align*}
+This will generate a new optimal control, $\mu(x)$. If we were to continue in this fashion until $||V_{n+1}-V_n||_\infty<\epsilon$, where $\epsilon$ is the convergence criterion selected for a problem, then we would get value iteration convergence. Typically, the control, $\mu(x)$, converges to a steady-state faster than the value iteration so in practice this can be used instead of $||V_{n+1}-V_n||_\infty$.
+$\lozenge$
+\end{example}
+
+\begin{example}
+We will now look at the Linear Quadratic Gaussian (LQG) case. Let
+\begin{align*}
+\xi_{t+1} &= A\xi_t+Bu_t+\sigma w_t \\
+J(x,w) &= E[\sum_{t=0}^\infty \alpha^t[\frac{1}{2}\xi_t^TC\xi_t + \frac{1}{2}(w_t\xi_t)^TDw_t\xi_t]] \\
+V(x) &= \inf_{\mu\in\mathcal{M}}J(x,w) \\
+\{u(t)\} &\in\mathbb{R}^l \\
+\{w_t\} & \text{ IID, } \sim N(0,Q)
+\end{align*}
+The DPE is
+$$V(x) = \inf_{u\in\mathbb{R}^l}\{\frac{1}{2}x^TCx + \frac{1}{2}u^TDu + \alpha E[V(Ax+Bu+\sigma w)]\}$$
+We start by guessing $V_0(x)=0 = \frac{1}{2}x^TP_0x+R_0$, where $P_0=0$ is an $n\times n$ matrix and $R_0=0$. Suppose that $V_k(x) = \frac{1}{2}x^TP_kx+R_k$ where $k$ is an iteration step and not a time step so that we can go from $V_0\to V_1$. Then we get
+\begin{align*}
+V_{k+1}(x) &= \inf_u\{\frac{1}{2}x^TCx+\frac{1}{2}u^TDu + \frac{\alpha}{2}(Ax+Bu)^TP_k(Ax+Bu) \\
+&+ \frac{\alpha}{2}(Ax+Bu)^TP_k\sigma E[w] + \frac{\alpha}{2}E[(\sigma w)^TP_k\sigma w] + \alpha R_k\} \\
+&= \frac{1}{2}x^TCx + R_{k+1} + \min_u\{\underbrace{\frac{1}{2}u^TDu + \frac{\alpha}{2}(Ax+Bu)^TP_k(Ax+Bu)}_{G(u)}\}
+\end{align*}
+We then want to minimize $G(u)$ such that
+\begin{align*}
+\nabla G(u) &= Du+\alpha B^TP_k(Ax+Bu) = Du + \alpha B^TP_kAx + \alpha B^TP_kBu = 0 \\
+\Rightarrow u &= -\alpha(D+\alpha B^TP_kB)^{-1}B^TP_kx \doteq -\alpha K_k
+\end{align*}
+This leads to an expression for the value iteration as
+$$V_{k+1}(x) = \frac{1}{2}x^TP_{k+1}x + R_{k+1}$$
+with
+$$P_{k+1} = \frac{\alpha^2}{2}K_k^TDK_k + \frac{\alpha}{2}(A-\alpha BK_k)^TP_k(A-\alpha BK_k)$$
+$\lozenge$
+\end{example}
 
 
 \end{document}
