@@ -74,6 +74,7 @@ We want to show that $||\mathcal{G}[V]-\mathcal{G}[\tilde{V}]||_\infty\leq\alpha
 Therefore, $\calg$ is a contraction and by Theorem \ref{th:bfp} the value iteration converges to the unique solution of the DPE. Note that the term $\sum_j\pij(u)=1$ because the probability transition matrix is defined such that all of the probabilities in a row must add up to $1$, so that term need not be considered.
 
 \begin{example}
+\label{ex:valit}
 Let $\mathbb{X}=\{1,2,3\}$, $U=\{a,b\}$ and $\alpha=\frac{2}{3}$. Given
 \begin{align*}
 \begin{split}
@@ -136,6 +137,7 @@ $$V^{\bar{k}} = V^{\bar{k}+1} = \calg^{\mu^{\bar{k}+1}}[V^{\bar{k}+1}] = \calg^{
 by the choice of $\mu^{\bar{k}+1}$. This is the same as (\ref{eq:mukplus1}) so $V^{\bar{k}}$ must be the unique solution of the DPE $V=\calg[V]$.
 
 \begin{theorem}
+\label{th:dpeuniquesol}
 Suppose $\mu^{\bar{k}+1}=\mu^{\bar{k}}$, then $\mu^{\bar{k}+l}=\mu^{\bar{k}} ~\forall l\in\mathbb{N}$ and $V^{\bar{k}+l}=V^{\bar{k}} ~\forall l\in\mathbb{N}$ and $V^{\bar{k}}$ is the unique solution of the DPE therefore it is the value function.
 \end{theorem}
 
@@ -194,8 +196,55 @@ V_l^{k+1}\to V^{k+1} \therefore V^{k+1}\leq V^k
 \end{align}
 
 \begin{theorem}
-Suppose there exists $k,l$ such that $\mu^{k+l} = \mu^k$. Then $\mu^{k+j}=\mu^k ~\forall j\geq 0$ by (\ref{eq:vmonotonic}) and $V^{k+j}=V^k ~\forall j\geq0$.
+Suppose there exists $k,l$ such that $\mu^{k+l} = \mu^k$. Then
+\begin{align}
+\label{eq:muconverge}
+\mu^{k+j}=\mu^k ~\forall j\geq 0
+\end{align}
+and $V^{k+j}=V^k ~\forall j\geq0$.
 \end{theorem}
+
+\begin{proof}
+If $\mu^{k+l}=\mu^k \therefore V^{k+1}=V^k$ since they solve $V=\calg^{\mu^{k+l}}[V]$. So, by (\ref{eq:vmonotonic})
+\begin{align*}
+V^{k+j} &= V^k ~\forall j\in ]0,l[ \\
+\Rightarrow \mu^{k+j+1} &= \mu^{k+1} \forall j\in [0,l] \\
+&= \mu^k \text{ by (\ref{eq:muconverge})}
+\end{align*}
+Then, by Theorem \ref{th:dpeuniquesol} the proof is done.
+\end{proof}
+This shows that we can \textit{never} get into a loop.
+
+\begin{corollary}
+If $\dim(\mathcal{M})<\infty$ then policy iteration converges exactly in less than $\dim(\mathcal{M})$ steps.
+\end{corollary}
+
+Remember that value iteration converges within $\epsilon$, not exactly, so this is a nice feature that is available with policy iteration.
+
+\begin{example}
+Start by using the probability transition matrices from Example \ref{ex:valit}. Let
+$$l(i,u) = \begin{cases} -2i, & u=a \\ -i, & u=b \end{cases}$$
+and guess
+$$\mu^0(x) = \begin{cases} a, & x=2 \\ b, & x=1,3 \end{cases}$$
+Then we get
+$$\mathcal{L}^{\mu^0}[V]=\hat{l}^{\mu^0} \to V^0$$
+by
+$$[I-\alpha\mathbb{P}^{\mu^0}]V=\hat{l}^{\mu^0}$$
+Writing this out yields
+\begin{align}
+\left[\begin{array}{c c c}
+1-\frac{2}{4} & 0 & -\frac{2}{12} \\
+\frac{1}{3} & 1-\frac{1}{3} & 0 \\
+0 & -\frac{1}{3} & 1-\frac{1}{3}
+\end{array}\right] V^0 =
+\left[\begin{array}{c}
+-1 \\ -4 \\ -3
+\end{array}\right]
+\end{align}
+We can then solve for $V^0$ and find the optimal controller as
+$$\mu(x) = \arg\min\left\lbrace l(x,u)+\alpha\sum\pxj(u)V^0(x)\right\rbrace$$
+$\lozenge$
+\end{example}
 
 
 % \end{document}
