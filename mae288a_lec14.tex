@@ -165,12 +165,12 @@ W_t &= \frac{1}{2}(x-\bar{x}_t)^T\dot{P}_t(x-\bar{x}_t)+\dot{r}_t - \frac{1}{2}\
 \end{align*}
 Notice that $\lambda$ is a scalar value and $P_t$ is symmetric so the term $x^TA^T\nabla_xW$ was separated into two components above.
 
-Since we are using a quadratic form for the cost function it is of the form $a(t)x^2+b(t)x+c(t)$ and we want this to be equal to zero for all $t$ and $x$. The only way for that to occur is if $a(t)=b(t)=c(t)=0$, and we have that $\dot{P}_t = a(t)$, $\dot{\bar{x}}_t=b(t)$ and $\dot{r}_t=c(t)$. Looking for $a(t) = \dot{P}_t$ gives the Riccati equation as
+Since we are using a quadratic form for the cost function it is of the form $a(t)x^2+b(t)x+c(t)$ and we want this to be equal to zero for all $t$ and $x$. The only way for that to occur is if $a(t)=b(t)=c(t)=0$. Looking at the quadratic terms such that $a(t)=0$ gives the Riccati equation as
 \begin{align*}
 0 &= \frac{1}{2}\dot{P}_t + \frac{1}{2}AP_t + \frac{1}{2}P_tA^T + \frac{1}{2}C - \frac{1}{2}P_t\Sigma P_t \\
 \Rightarrow \dot{P}_t &= -AP_t - P_tA^T - C + P_t\Sigma P_t
 \end{align*}
-Next, we separate out the $x^T(\cdot)$ and $(\cdot)x$ terms and find $b(t) = \dot{\bar{x}}_t$ such that
+Next, we separate out the $x^T(\cdot)$ and $(\cdot)x$ linear terms and find $b(t) = 0$ such that
 \begin{align*}
 0 &= -\frac{1}{2}\dot{P}_t\bar{x}_t - \frac{1}{2}P_t\dot{\bar{x}}_t - \frac{1}{2}AP_t\bar{x}_t + \frac{1}{2}P_t\Sigma P_t\bar{x}_t \\
 P_t\dot{\bar{x}}_t &= -\dot{P}_t\bar{x}_t - AP_t\bar{x}_t + P_t\Sigma P_t\bar{x}_t \\
