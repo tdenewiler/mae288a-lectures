@@ -278,7 +278,7 @@ $\lozenge$
 \end{example}
 
 \begin{example}
-Let $(\mathcal{C}[0,1],||\cdot||)$ be a normal vector space. Then
+Let $(\mathcal{C}[0,1],||\cdot||)$ be a normal vector space. See Figure \ref{fig:07contraction} to see how the contraction operator affects a sequence. Then
 \begin{align}
 \label{eq:exf}
 F[y](t) &= \frac{1}{2}\max_{r\leq t}y(r) \nonumber \\
@@ -306,6 +306,18 @@ Substituting (\ref{eq:exr}) and (\ref{eq:exs}) into (\ref{eq:exf}) yields
 \end{align*}
 $\lozenge$
 \end{example}
+
+\begin{figure}[ht!]
+	\centering
+	\subfloat[Increasing sequence.]{
+		\label{fig:07contraction1}\includegraphics[width=0.45\textwidth]{images/07contraction1}
+	} \hfill
+	\subfloat[Decreasing sequence.]{
+		\label{fig:07contraction2}\includegraphics[width=0.45\textwidth]{images/07contraction2}
+	}
+	\caption{Example of the contraction operator $F$ acting on two sequences $y$.}
+	\label{fig:07contraction}
+\end{figure}
 
 \subsection{Fixed Points}
 Let $\vsp$ be a Banach space. Then $F:\mathbb{Y}\to\mathbb{Y}$ is a contraction with constant $K\in(0,1)$. Let $y_0\in\mathbb{Y}$. Given any $y_n$, let $y_{n+1}=F[y_n]$. We want to show that the sequence converges and that will give the solution, $y_{n+1}$.
