@@ -18,11 +18,11 @@
 
 \section{Probability of Sets}
 For a $\sigma$-algebra $(\Omega, \Sigma, P)$ is the probability triple. $\Sigma$ is the $\sigma$-algebra. Then we have
-\begin{enumerate}
+\begin{itemize}
 \item $A\in\Sigma \Rightarrow A^C\in\Sigma$
 \item $A, B\in\Sigma \Rightarrow A\cup B\in\Sigma$
 \item $A_i\in\Sigma ~\forall i\in\mathbb{N} \Rightarrow \bigcup_{i=1}^\infty A_i\in\Sigma$
-\end{enumerate}
+\end{itemize}
 Suppose $A,B\in\Sigma$, then
 \begin{itemize}
 \item By (a) $\Rightarrow A^C,B^C\in\Sigma$
@@ -30,6 +30,7 @@ Suppose $A,B\in\Sigma$, then
 \item By (a) $\Rightarrow (A^C\cup B^C)^C = A\cap C \therefore A\cap B\in\Sigma$
 \end{itemize}
 See Figure \ref{fig:03vennProb}.
+
 \begin{figure}[ht!]
 	\centering
 	\includegraphics[width=.5\textwidth]{images/03vennProb}
@@ -48,6 +49,7 @@ This means that if two events are independent then learning information about on
 Using two tosses of a fair coin the results can be those shown in Figure \ref{fig:03coinProb}. In set $A$ we know the outcome of the first event was heads. In set B we know the outcome of the second event was heads. Knowing that we are in set $B$ tells us nothing about set $A$. In other words, knowing the outcome of the second toss tells us nothing about the outcome of the first toss. This means that the sets $A$ and $B$ are independent.
 \end{example}
 $\lozenge$
+
 \begin{figure}[ht!]
 	\centering
 	\includegraphics[width=.3\textwidth]{images/03coinProb}
@@ -66,8 +68,10 @@ This gives
 $$P_{X|Y=d}(x) = \lim_{\epsilon\downarrow 0}\frac{1}{\epsilon}[F_{X|Y=d}(x+\epsilon) - F_{X|Y=d}(x)]$$
 which is shown in Figure \ref{fig:03probR1}.
 Then, using (\ref{eq:distFn}) gives
+
 \begin{align*}
-P_{X|Y=d}(x) &= \lim_{\epsilon\downarrow 0}\frac{1}{\epsilon}\left[\lim_{\delta\downarrow 0} \frac{P(X\leq x+\epsilon, y\in B_\delta(d))}{P(Y\in B_\delta(d))} - \lim_{\delta\downarrow 0} \frac{P(X\leq x, Y\in B_\delta(d))}{P(Y\in B_\delta(d))}\right] \\
+P_{X|Y=d}(x) &= \lim_{\epsilon\downarrow 0}\frac{1}{\epsilon}\left[\lim_{\delta\downarrow 0} \frac{P(X\leq x+\epsilon, y\in B_\delta(d))}{P(Y\in B_\delta(d))} \right. \\
+&\left.\quad - \lim_{\delta\downarrow 0} \frac{P(X\leq x, Y\in B_\delta(d))}{P(Y\in B_\delta(d))}\right] \\
 &= \lim_{\epsilon\downarrow 0}\frac{1}{\epsilon}\left[ \frac{P(X\in(x,x+\epsilon],y\in B_\delta(d))}{P(Y\in B_\delta(d))}\right] \\
 &= \lim_{\delta\downarrow 0}\lim_{\epsilon\downarrow 0}\frac{1}{\epsilon} \left[ \frac{\int_x^{x+\epsilon} \int_{d-\delta}^{d+\delta} p(z,y)dzdy}{\int_{-\infty}^\infty \int_{d-\delta}^{d+\delta} p(z,y)dzdy}\right] \\
 &= \lim_{\delta\downarrow 0}\left[ \frac{\int_{d-\delta}^{d+\delta}\lim_{\epsilon\downarrow 0} \frac{1}{\epsilon} \int_x^{x+\epsilon} p(z,y)dzdy}{\int_{-\infty}^\infty \int_{d-\delta}^{d+\delta} p(z,y)dzdy}\right] \\
@@ -76,13 +80,17 @@ P_{X|Y=d}(x) &= \lim_{\epsilon\downarrow 0}\frac{1}{\epsilon}\left[\lim_{\delta\
 &= \frac{p(x,d)}{\int_{-\infty}^\infty p(z,d)dz} \\
 &\doteq k_dp(x,d)
 \end{align*}
+
 So, $P_{X|Y=d}(x) = k_dp(x,d)$ with $k=\frac{1}{\int_{-\infty}^\infty p(z,d)dz}$. Note that $k$ is such that $\int_{-\infty}^\infty P_{X|Y=d}(x)dx=1$. To check that do
+
 \begin{align*}
 \int_{-\infty}^\infty kp(z,d)dz &= k\int_{-\infty}^\infty p(z,d)dz \\
 &= \frac{\int_{-\infty}^\infty p(z,d)dz}{\int_{-\infty}^\infty p(z,d)dz} \\
 &= 1
 \end{align*}
+
 The term $p(x,d)$ is known as the ``unnormalized conditional density''. Figure \ref{fig:03deltaSpace} shows graphically the regions that are being integrated over, with those regions exagerrated for clarity.
+
 \begin{figure}[ht!]
 	\centering
 	\includegraphics[width=.5\textwidth]{images/03probR1}
@@ -98,7 +106,15 @@ The term $p(x,d)$ is known as the ``unnormalized conditional density''. Figure \
 \end{figure}
 
 \section{Gaussian Distributions}
-Let $\left(\begin{array}{c}x \\y\end{array}\right) \sim \mathcal{N}\left(\left(\begin{array}{c}0\\0\end{array}\right), C\right)$ and $C^{-1} = \left[\begin{array}{c c} \rho_{xx} & \rho_{xy} \\ \rho_{xy} & \rho_{yy} \end{array}\right]$. Also, let $\hat{k}=e^{-\frac{1}{2}\rho_{yy}d^2}$, $\bar{k}=\frac{1}{2\pi|C|^{1/2}}$ $\sigma^2=\frac{1}{\rho_{xx}}$, $m=-\frac{\rho_{xy}}{\rho_{xx}}d$ and $\tilde{k}=\frac{1}{\sqrt{2\pi}\sigma}$. Then,
+Let
+$$\left(\begin{array}{c}x \\y\end{array}\right) \sim \mathcal{N}\left(\left(\begin{array}{c}0\\0\end{array}\right), C\right)$$
+and
+$$C^{-1} = \left[\begin{array}{c c} \rho_{xx} & \rho_{xy} \\ \rho_{xy} & \rho_{yy} \end{array}\right]$$
+Also, let
+\begin{align*}
+\hat{k}=e^{-\frac{1}{2}\rho_{yy}d^2}, \qquad \bar{k}=\frac{1}{2\pi|C|^{1/2}},\qquad \sigma^2=\frac{1}{\rho_{xx}}, \\ m=-\frac{\rho_{xy}}{\rho_{xx}}d, \qquad \tilde{k}=\frac{1}{\sqrt{2\pi}\sigma}
+\end{align*}
+Then,
 \begin{align*}
 P_{X|Y=d}(x) &= k_dp(x,d) = k\frac{1}{2\pi|C|^{1/2}} e^{-\frac{1}{2}\left(\begin{array}{c}x\\d\end{array}\right)^TC^{-1} \left(\begin{array}{c}x\\d\end{array}\right)} \\
 &= \bar{k}e^{-\frac{1}{2}\left(\rho_{xx}x^2+2\rho_{xy}xd+\rho_{yy}d^2\right)} \\
@@ -109,8 +125,7 @@ P_{X|Y=d}(x) &= k_dp(x,d) = k\frac{1}{2\pi|C|^{1/2}} e^{-\frac{1}{2}\left(\begin
 \end{align*}
 
 \section{Markov Processes}
-\begin{definition}{Markov Process}
-
+\begin{definition}{Markov Process} \\
 Let $\{\xi_k\}$ be a sequence of RVs. It is a Markov process if
 $$P(\xi_{t+1}\in A|\xi_r=x_r ~\forall r\leq t) = P(\xi_{t+1}\in A|\xi_t=x_t)$$
 \end{definition}
@@ -123,12 +138,13 @@ Let $\{w_t\}_{t=0}^\infty$ be independent and identically distributed (IID). Sup
 \begin{proof}
 \begin{align*}
 &P(\xi_{t+1}\in A | \xi_t=x_t, \xi_{t-1}=x_{t-1}, \ldots, \xi_0=x_0) \\
-&= P(f(\xi_t,w_t)\in A|\xi_t=x_t, \xi_{t-1}=x_{t-1}, \ldots, \xi_0=x_0) \\
-&= P(f(x_t,w_t)\in A|f(x_{t-1},w_t)=x_{t-1}, f(x_{t-2},w_{t-2})=x_{t-2},\ldots,f(x_0,w_0)=x_1,\xi_0=x_0) \\
-&\text{Let }g_x(w) \doteq f(x,w) \\
+&\qquad = P(f(\xi_t,w_t)\in A|\xi_t=x_t, \xi_{t-1}=x_{t-1}, \ldots, \xi_0=x_0) \\
+&= P(f(x_t,w_t)\in A ~|~ f(x_{t-1},w_t)=x_{t-1}, f(x_{t-2},w_{t-2})=x_{t-2},\ldots, \\
+&\qquad \ldots,f(x_0,w_0)=x_1,\xi_0=x_0) \\
+&\qquad [\text{let }g_x(w) \doteq f(x,w)] \\
 &= P(g_{x_t}(w_t)\in A|g_{x_{t-1}}(w_{t-1})=x_t,\dots,\xi_0=x_0) \\
 &= P(w_t\in(g_{x_t})^{-1}(A)|w_{t-1}\in g_{x_{t-1}}^{-1}(x_t),\ldots, w_0\in g_{x_0}^{-1}(x_1),\xi_0=x_0) \\
-&= P(w_t\in g_{x_t}^{-1}(A)) \text{ because of IID condition} \\
+&= P(w_t\in g_{x_t}^{-1}(A)) ~ [\text{because of IID condition}] \\
 &= P(g_{x_t}(w_t)\in A) \\
 &= P(f(x_t,w_t)\in A) \\
 &= P(f(\xi_t,w_t)\in A|\xi_t=x_t) \\
@@ -158,8 +174,8 @@ The last equation is used to solve for $\bar{C}$.
 
 \begin{example}
 Let $w\sim\mathcal{N}(0,\rho_w^2)$, $\rho_w^2=9$, $A=\frac{1}{2}$ and $\sigma=2$. The steady-state distribution is found by $\xi_t \sim\mathcal{N}(\bar{m}, \bar{\rho}^2)$. This gives $\bar{m}=0$, $\bar{\rho}^2 = \frac{1}{2}^2(\bar{\rho})^2 + 2^2\cdot 9$.
-\end{example}
 $\lozenge$
+\end{example}
 
 \section{Optimal Controller}
 Suppose the system dynamics are described by $\xi_{t+1} = f(\xi_t,u_t,w_t)$, with $\xi_t\in\mathbb{R}^n$, $u(t)\in\mathbb{R}^n$ and $w(t)\in\mathbb{R}^k$. Also, $\xi_r=x_r, ~\forall r\leq t$ are known states. Then,

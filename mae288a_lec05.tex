@@ -58,14 +58,16 @@ where the last equality occurs because $E_w[w]=0$ and at the second and third eq
 
 Continuing on we have
 \begin{align*}
-R_t &= R_{t+1} + \frac{1}{2}E_w[w^T\sigma^TP_{t+1}\sigma w] \\
-\Rightarrow V(t,x) &= \frac{1}{2}x^TCx + R_t \\
-&+ \min_u\{ \underbrace{\frac{1}{2}u^TDu + \frac{1}{2}(Ax)^TP_{t+1}Ax + \frac{1}{2}u^TB^TP_{t+1}Bu + (Ax)^TP_{t+1}Bu\}}_{G(u)}
+R_t = R_{t+1} + \frac{1}{2}E_w[w^T\sigma^TP_{t+1}\sigma w]
+\end{align*}
+\begin{align*}
+&\Rightarrow V(t,x) = \frac{1}{2}x^TCx + R_t \\
+&\qquad + \min_u\{ \underbrace{\frac{1}{2}u^TDu + \frac{1}{2}(Ax)^TP_{t+1}Ax + \frac{1}{2}u^TB^TP_{t+1}Bu + (Ax)^TP_{t+1}Bu\}}_{G(u)}
 \end{align*}
 
-\textit{Exercise:} Find the grandient of $\frac{1}{2}u^TAu$ and $b^Tu$.
+\textit{Exercise:} Find the grandient of $\frac{1}{2}u^TAu$ and $B^Tu$.
 
-Continuing on we have
+This leads to
 \begin{align*}
 \nabla G &= Du + B^TP_{t+1}Bu + B^TP_{t+1}Ax = 0 \\
 (D+B^TP_{t+1}B)u &= -B^TP_{t+1}Ax \\

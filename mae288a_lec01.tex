@@ -80,7 +80,10 @@ A set $\Omega$ is considered a sample space. We will be using $\sigma$-algebra i
 The term $A^C$ means the complement of $A$.
 
 \begin{example}
-Taking a fair coin and tossing it twice in a row has four possible outcomes that can be considered a set or a sample space, $\Omega = \left\lbrace (H,H), (H,T), (T,H), (T,T) \right\rbrace$. Each of the coin tosses can be represented by $A$, where $A$ is known as an event. Using $\sigma$-algebra we can say
+\label{ex:cointoss}
+Taking a fair coin and tossing it twice in a row has four possible outcomes that can be considered a set or a sample space such that
+$$\Omega = \left\lbrace (H,H), (H,T), (T,H), (T,T) \right\rbrace$$
+Each of the coin tosses can be represented by $A$, where $A$ is known as an event. Using $\sigma$-algebra we can say
 \begin{align*}
 \Sigma_0 &= \left\lbrace \Omega, \emptyset \right\rbrace \\
 \Omega &\in \Sigma_0 \textnormal{ and } \Omega^C = \emptyset \in \Sigma_0 \\
@@ -90,23 +93,24 @@ Taking a fair coin and tossing it twice in a row has four possible outcomes that
 \Sigma_2 &= P(\Omega) = \textnormal{ power set } = \textnormal{ collection of \textit{all} subsets of } \Omega.
 \end{align*}
 The subscripts of $\Sigma$ represent discrete time steps. It can be seen that the different $\Sigma$ time steps represent our knowledge about the system at each step. For example, $\Sigma_1$ is our knowledge of the system after one toss of the coin and the possible events contain the cases for times when heads was the first measurement and for times when tails was the first measurement.
-\end{example}
 $\lozenge$
+\end{example}
 
 \section{Random Variables}
 Let a variable $X$ be a random variable (R.V.) that acts according to \\
 $X: (\Omega, \Sigma) \to (\mathbb{R}^n, \mathcal{B})$, where $\mathbb{R}^n$ is the set of natural numbers and $\mathcal{B}$ is the Borel measurable set. $\mathcal{B}$ is any collection of sets that can be formed through the operations of unions, intersections and complements. Essentially, $X$ takes elements of the $\sigma$-algebra and maps them to the space of $(\mathbb{R}^n, \mathcal{B})$ such that $X^{-1}(A) \in \Sigma ~ \forall ~ A \in \mathcal{B}$ is a R.V. More precisely $X^{-1}(A) = \left\lbrace \omega \in \Omega | X(\omega) \in A \right\rbrace$.
 
 \begin{example}
-Based on the previous coin toss example and specifying
+Based on the previous coin toss example, Example \ref{ex:cointoss} and specifying
 \begin{align*}
 X(H,H) &= 2 \\
 X(H,T) &= X(T,H) = 0 \\
 X(T,T) &= -2
 \end{align*}
-See Figure \ref{fig:01set2nat}. Let $X$ be a R.V. on $(\Omega, \Sigma_2)$ then we can say that $X^{-1}(\lbrace 0,2 \rbrace) = ??$. Note that $X$ is \textit{not} a R.V. on $(\Omega, \Sigma_1)$. After the first toss we know which subset  we're in and after the second toss we know everything about the system.
-\end{example}
+See Figure \ref{fig:01set2nat}. Let $X$ be a R.V. on $(\Omega, \Sigma_2)$. Note that $X$ is \textit{not} a R.V. on $(\Omega, \Sigma_1)$. After the first toss we know which subset  we're in and after the second toss we know everything about the system.
 $\lozenge$
+\end{example}
+
 \begin{figure}[ht!]
 	\centering
 	\includegraphics[width=.5\textwidth]{images/01set2nat}
@@ -120,7 +124,7 @@ In this course $P$ means the probability measure on a set. $P: \Sigma \to [0,1]$
 &A \cap B \in \emptyset \\
 &P(A \cup B) = P(A) + P(B) \\
 &A_i \in \Sigma ~ \forall ~ i \in \mathbb{N} \textnormal{ s.t. } A_i \cap A_j \neq \emptyset \textnormal{ if } i \neq j \\
-&\textnormal{then } P(\bigcup_{i=1}^\infty A_i) = \sum_{i=1}^\infty P(A_i).
+&\Rightarrow P\left(\bigcup_{i=1}^\infty A_i\right) = \sum_{i=1}^\infty P(A_i).
 \end{align*}
 Given a R.V. $X$ then $F: \mathbb{R}^n \to [0,1]$ is the distribution function for $X$ if $F(x) = F\left((x_1,x_2,\ldots,x_n)\right) = \textnormal{``}P(X \leq x)\textnormal{''}$. More precisely we have $\textnormal{``}P(X \leq x)\textnormal{''} = P\left(\left\lbrace \omega \in \Omega | X(\omega) \leq x \right\rbrace \right)$. In this course inequalities are defined such that given $x, y \in \mathbb{R}^n$, if $x_i \leq y_i ~ \forall ~ i \in \lbrace 1,2,\ldots,n\rbrace$ then $x \leq y$. Using this definition we can restate the probability measure as
 $$P\left(\left\lbrace \omega \in \Omega | X_1(\omega) \leq x_1, X_2(\omega) \leq x_2, \ldots, X_n(\omega) \leq x_n \right\rbrace \right).\footnote{This theorem is found in the text ``Probability'' by A. N. Shiryayev.}$$
@@ -141,8 +145,8 @@ Note that taking the indefinite integral of $f(x)$ yields $F(x)$.
 
 There is a theorem that says if $X$ has a density $f$ then \\
 ``$P(A)$'' $= P\left(X^{-1}(A)\right) = \int_A f(x)dx$.
-\end{example}
 $\lozenge$
+\end{example}
 
 \section{Expectation}
 The expectation of a R.V. taking a certain value is also known as the mean or average. Let $g: \mathbb{R}^n \to \mathbb{R}^m$, then
@@ -156,28 +160,28 @@ Using (\ref{eq:probEg}) we have
 \begin{align*}
 E[x] &= \int_{-\infty}^\infty xf(x)dx \\
 &= \int_0^\infty xe^{-x}dx \\
-&(\textnormal{use integration by parts with } u = x, dv = e^{-x}, v = -e^{-x}, du = 1) \\
+&\quad [\text{use integration by parts with } u = x, dv = e^{-x}, v = -e^{-x}, du = 1] \\
 &= -xe^{-x}\rvert_0^\infty + \int_0^\infty e^{-x}dx \\
-&(\textnormal{use l'H\^opital's rule: } \lim_{x \to \infty} xe^{-x} = \lim_{x \to \infty} \frac{x}{e^x} = \lim_{x \to \infty} \frac{1}{e^x} = 0) \\
+&\quad [\text{use l'H\^opital's rule: } \lim_{x \to \infty} xe^{-x} = \lim_{x \to \infty} \frac{x}{e^x} = \lim_{x \to \infty} \frac{1}{e^x} = 0] \\
 &= 0 - 0 - e^{-x}\rvert_0^\infty \\
 &= 1.
 \end{align*}
-\end{example}
 $\lozenge$
+\end{example}
 
 \section{Variance}
 \begin{example}
 Using (\ref{eq:probEg}) in $\mathbb{R}^1$ we have
 $$E[(x - E(x))^2] = \int_0^\infty (x-1)^2e^xdx.$$
 Since $x$ is a R.V. and $E(x)$ is a scalar the variance is a scalar as well.
-\end{example}
 $\lozenge$
+\end{example}
 
 \section{Covariance}
 \begin{example}
 Using (\ref{eq:probEg}) in $\mathbb{R}^n$ we have $$C_{ij} \doteq E[(x_i - E(x_i))(x_j - E(x_j)].$$ Note that $E(x_i) = \lbrace E(x) \rbrace_i$.
-\end{example}
 $\lozenge$
+\end{example}
 
 \begin{example}
 Given
@@ -186,8 +190,9 @@ f(x) &= \begin{cases} 1 & x_1 \in [0,1] \\ 0 & x_2 \in [0,1] \end{cases} \\
 E[x_1] &= \int_0^1 \int_0^1 x_1f(x_1,x_2)dx_1dx_2 = \int_0^1 \int_0^1 x_1dx_1dx_2 = \int_0^1 \frac{1}{2}dx_2 = \frac{1}{2}
 \end{align*}
 and by symmetry $E[x_2] = \frac{1}{2}$. This makes sense because we expect the value to be right in the middle of the area described by the function, as shown in Figure \ref{fig:01box}.
-\end{example}
 $\lozenge$
+\end{example}
+
 \begin{figure}[ht!]
 	\centering
 	\includegraphics[width=.45\textwidth]{images/01box}
@@ -203,9 +208,7 @@ C_{12} &= E[(x_1 - \frac{1}{2})(x_2 - \frac{1}{2})] \\
 &= \int_0^1 (x_1 - \frac{1}{2})[\int_0^1 (x_2 - \frac{1}{2})dx_2]dx_1 \\
 &= \int_0^1 (x_1 - \frac{1}{2})[\underbrace{\int_0^1 x_2dx_2}_{= \frac{1}{2}} - \underbrace{\int_0^1 \frac{1}{2}dx_2}_{= \frac{1}{2}}]dx_1 \\
 &= 0 \\
-&\Rightarrow C = \left[\begin{array}{c c}
-                         s & 0 \\ 0 & s
-                       \end{array}\right]
+&\Rightarrow C = \left[\begin{array}{c c} s & 0 \\ 0 & s \end{array}\right]
 \end{align*}
 where $s$ is some scalar. Furthermore, we can see that \\
 $C_{11} = \int_0^1\int_0^1(x_1-\frac{1}{2})^2dx_1dx_2$ leads to $s$ being a positive scalar because of the quadratic term inside the integrals.

@@ -16,7 +16,8 @@
 
 \lecture{Probability Review II}
 
-\section{Multiple Random Variables}Start with a pair of RVs that are put together where $(X,Y):(\Omega,\Sigma) \to (\mathbb{R}^m\times \mathbb{R}^n,B)$. Note that $X$ and $Y$ are in some sample space. In the remainder of this course we will assume that probability density functions exist.
+\section{Multiple Random Variables}
+Start with a pair of RVs that are put together where $(X,Y):(\Omega,\Sigma) \to (\mathbb{R}^m\times \mathbb{R}^n,B)$. Note that $X$ and $Y$ are in some sample space. In the remainder of this course we will assume that probability density functions exist.
 
 \begin{theorem}
 \label{th:02expectationlo}
@@ -34,7 +35,9 @@ E[AX+BY] &= \int_{\mathbb{R}\times\mathbb{R}}(AX+BY)p(x,y)dxdy \\
 \end{align*}
 \end{proof}
 
-Let $X\sim N(m\in\mathbb{R}^n,C)$, then $p(x)=\frac{1}{(2\pi)^{n/2}|C|^{1/2}}\exp\left[-\frac{1}{2}(x-m)^TC^{-1}(x-m)\right]$. Let $k=\frac{1}{(2\pi)^{n/2}|C|^{1/2}}$.
+Let $X\sim N(m\in\mathbb{R}^n,C)$, then
+$$p(x)=\frac{1}{(2\pi)^{n/2}|C|^{1/2}}e^{\left[-\frac{1}{2}(x-m)^TC^{-1}(x-m)\right]}$$
+Let $k=\frac{1}{(2\pi)^{n/2}|C|^{1/2}}$.
 
 \begin{theorem}
 \label{th:02mean}
@@ -56,6 +59,7 @@ E[x] &= \int xke^{-\frac{1}{2\sigma^2}(x-m)^2}dx \\
 \end{align*}
 In the third equality a change of variables was used where $y=x-m$ and $dy=dx$. Then, since $f(y)$ is an odd function ($f(y)=-f(-y)$, see Figure \ref{fig:02oddFunction}) and $\int_{-\infty}^\infty|f(y)|dy < \infty$ then that term is equal to zero.
 \end{proof}
+
 \begin{figure}[ht!]
 	\centering
 	\includegraphics[width=.5\textwidth]{images/02oddFunction}
@@ -68,7 +72,7 @@ If $X$ and $Y$ are normal RVs, then $AX+BY$ is also a normal RV.
 \end{theorem}
 
 \begin{example}
-This example is similar to a problem in Homework 1. Let $(X(\omega),Y(\omega)) \in \mathbb{R}^2$ so that $X$ and $Y$ are scalars and let $Z=(X,Y)$. Recall that
+Let $(X(\omega),Y(\omega)) \in \mathbb{R}^2$ so that $X$ and $Y$ are scalars and let $Z=(X,Y)$. Recall that
 \begin{align*}
 F(x,y) &= P(X\leq x, Y\leq y) \\
 &= P(\lbrace \omega\in\Omega | X(\omega)\leq x, Y(\omega)\leq y\rbrace) \\
@@ -89,6 +93,7 @@ C &= F(b_1,b_2) - F(a_1,b_2) \\
 \end{align*}
 $\lozenge$
 \end{example}
+
 \begin{figure}[ht!]
 	\centering
 	\includegraphics[width=.35\textwidth]{images/02twoSets}
@@ -103,7 +108,7 @@ $$P(x\in A)=P(X^{-1}(A)) = \int_Ap(x)dx$$
 
 \section{Independence}
 \begin{definition}
-The RVs $(X,Y)$ are independent if
+The random variables $X$ and $Y$ are independent if
 \begin{align*}
 P(X\in A, Y\in B) &= P(X^{-1}(A) \cap Y^{-1}(B)) \\
 &= P(X^{-1}(A)) P(Y^{-1}(B)) \\
@@ -125,6 +130,7 @@ P(X^{-1}(A) \cap Y^{-1}(B)) &= {\int\int}_{A\times B} p(x,y)dydx \\
 \end{align*}
 $\lozenge$
 \end{example}
+
 \begin{figure}[ht!]
 	\centering
 	\includegraphics[width=.3\textwidth]{images/02unitSquare}
@@ -140,9 +146,10 @@ Let $A=[0,\frac{1}{2}]$ and $B=[0,\frac{1}{2}]$, as shown in Figure \ref{fig:02u
 &P(Y\in[1,\frac{1}{2}] = \frac{3}{4} \\
 &\Rightarrow \frac{1}{4} \neq \frac{3}{4}
 \end{align*}
-The inequality means that $X$ and $Y$ are not independent variables. This makes sense because knowing information about the RV $X$ will tell us something about constraints on the RV $Y$ and vice-versa.
+The inequality means that $X$ and $Y$ are not independent variables. This makes sense because knowing information about the random $X$ will tell us something about constraints on the random variable $Y$ and vice-versa.
 $\lozenge$
 \end{example}
+
 \begin{figure}[ht!]
 	\centering
 	\includegraphics[width=.3\textwidth]{images/02unitTriangle}
@@ -151,7 +158,7 @@ $\lozenge$
 \end{figure}
 
 \begin{example}
-Let $X$ and $Y$ be scalar RVs.
+Let $X$ and $Y$ be scalar random variables.
 \begin{align*}
 P(X\leq a) &= \int_{-\infty}^a \int_{-\infty}^\infty p(x,y)dydx = F_x(a) \\
 &\doteq \int_{-\infty}^a p_x(x)dx
@@ -161,7 +168,7 @@ $\lozenge$
 \end{example}
 
 \begin{example}
-This is similar to a problem in Homework 1.
+Let
 \begin{align}
 \label{eq:02probXY1}
 P(X\in[l_1,u_1], Y\in[l_2,u_2]) = \int_{l_2}^{u_2} \int_{l_1}^{u_1} p(x,y)dxdy
@@ -177,7 +184,7 @@ P(X\in[l_1,u_1], Y\in[l_2,u_2]) &= P(X\in[l_1,u_1]) P(Y\in[l_2,u_2]) \\
 For all $A$ that are rectangular, then by (\ref{eq:02probXY1}) and (\ref{eq:02probXY2}) we have
 \begin{align*}
 \int_A\int p(x,y)dxdy &= \int_A\int p_x(x)p_y(y)dxdy \\
-&\Rightarrow p(x,y) = p_x(x)p_y(y)
+\Rightarrow p(x,y) &= p_x(x)p_y(y)
 \end{align*}
 $\lozenge$
 \end{example}
@@ -202,7 +209,7 @@ E[XY] &= \int_\mathbb{R}\int_\mathbb{R} xyp(x,y)dxdy \\
 
 \begin{theorem}
 \label{th:02covariance}
-Given $X$ and $Y$ are independent RVs, $X\sim N(m_x,C_x)$, $Y\sim N(m_y,C_y)$ and $Z=AX+BY$, then
+Given $X$ and $Y$ are independent random variables, $X\sim N(m_x,C_x)$, $Y\sim N(m_y,C_y)$ and $Z=AX+BY$, then
 \begin{align}
 \label{eq:02meanz}
 \bar{z} = E[Z] = Am_x+Bm_y \\
@@ -210,17 +217,19 @@ Given $X$ and $Y$ are independent RVs, $X\sim N(m_x,C_x)$, $Y\sim N(m_y,C_y)$ an
 C_z = E[(z-\bar{z})(z-\bar{z})^T] = AC_xA^T + BC_yB^T
 \end{align}
 \end{theorem}
+
 The proof for (\ref{eq:02meanz}) was done earlier in this lecture following Theorem \ref{th:02mean}.
+
 \begin{proof}
 The proof for (\ref{eq:02covariancez}) follows. Let $z=AX+BY$ and $\bar{z}=Am_x+Bm_y$. Recall that $E[(\cdot)]$ is a linear operator from Theorem \ref{th:02expectationlo}.
 \begin{align*}
 C_z &= E\left[[A(X-m_x)+B(Y-m_y)][A(X-m_x)+B(Y-m_y)]^T\right] \\
 &= E[A(X-m_x)(X-m_x)^TA^T] + E[B(Y-m_y)(Y-m_y)^TB^T] \\
-&+ E[A(X-m_x)(Y-m_y)^TB^T] + E[B(Y-m_y)(X-m_x)^TA^T] \\
+&\quad + E[A(X-m_x)(Y-m_y)^TB^T] + E[B(Y-m_y)(X-m_x)^TA^T] \\
 &= AE[(X-m_x)(X-m_x)^T]A^T + BE[(Y-m_y)(Y-m_y)^T]B^T \\
-&+ AE[(X-m_x)(Y-m_y)^T]B^T + BE[(Y-m_y)(X-m_x)^T]A^T \\
+&\quad + AE[(X-m_x)(Y-m_y)^T]B^T + BE[(Y-m_y)(X-m_x)^T]A^T \\
 &= AC_xA^T + BC_yB^T \\
-&+ AE[X-m_x]E[Y-m_y]^TB^T + BE[Y-m_y]E[X-m_x]^T]A^T \\
+&\quad + AE[X-m_x]E[Y-m_y]^TB^T + BE[Y-m_y]E[X-m_x]^T]A^T \\
 &= AC_xA^T + BC_yB^T
 \end{align*}
 The last two terms in the fourth equality are both equal to zero because $X$ and $Y$ are independent. Also, note that when $X$ and $Y$ are independent RVs it implies that $X-m_x$ and $Y-m_y$ are also independent.
@@ -237,9 +246,10 @@ P(\xi_1\in[a,b]) &= P(\xi_0 + w_0\in[a,b]) \\
 &= \int_A q_0(x)p_0(w)dxdw \\
 &= \#
 \end{align*}
-The distribution can be seen in Figure \ref{fig:02iid}.
+where $\#$ indicates a scalar value. The distribution can be seen in Figure \ref{fig:02iid}.
 $\lozenge$
 \end{example}
+
 \begin{figure}[ht!]
 	\centering
 	\includegraphics[width=.3\textwidth]{images/02iid}

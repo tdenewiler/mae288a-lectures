@@ -68,13 +68,14 @@ If $\vp(i)\geq0 ~\forall i$, then we will start with $V(i)=0 ~\forall i$ because
 \begin{proof}
 Let $V,\tilde{V}\in\xnote$. Then
 \begin{align*}
-||\calg[V]-\calg[\tilde{V}]||_\infty &= \max_{i\in\xnote}\left\lbrace \left| \min_{\uinu}\left\lbrace l(i,u) + \sum_{\jinxe}\pij(u)V(j) + \sum_{j\in\cale}\pij(u)\vp(j)\right\rbrace \right.\right. \\
-&\left.\left.\quad - \min_{\uinu}\left\lbrace l(i,u) + \sum_{\jinxe}\pij(u)\tilde{V}(j) + \sum_{j\in\cale}\pij(u)\vp(j) \right\rbrace\right|\right\rbrace \\
-&\leq \max_{i\in\xnote} \max_{\uinu} \left|\sum_{\jinxe}\pij(u)V(j) - \sum_{\jinxe}\pij(u)\tilde{V}(j)\right| \\
-&= \max_{i,u} \left| \sum_{\jinxe}\pij(u)[V(j)-\tilde{V}(j)]\right| \\
-&\leq \max_{i,u} \sum_{\jinxe}\pij(u)|V(j)-\tilde{V}(j)| \\
-&\leq \min_{i,u} \left\lbrace \sum_{\jinxe}\pij(u)\right\rbrace ||V-\tilde{V}||_\infty \\
-&\leq (1-\epsilon)||V-\tilde{V}||_\infty
+&||\calg[V]-\calg[\tilde{V}]||_\infty = \\
+&\quad = \max_{i\in\xnote}\left\lbrace \left| \min_{\uinu}\left\lbrace l(i,u) + \sum_{\jinxe}\pij(u)V(j) + \sum_{j\in\cale}\pij(u)\vp(j)\right\rbrace \right.\right. \\
+&\left.\left.\qquad - \min_{\uinu}\left\lbrace l(i,u) + \sum_{\jinxe}\pij(u)\tilde{V}(j) + \sum_{j\in\cale}\pij(u)\vp(j) \right\rbrace\right|\right\rbrace \\
+&\quad\leq \max_{i\in\xnote} \max_{\uinu} \left|\sum_{\jinxe}\pij(u)V(j) - \sum_{\jinxe}\pij(u)\tilde{V}(j)\right| \\
+&\quad= \max_{i,u} \left| \sum_{\jinxe}\pij(u)[V(j)-\tilde{V}(j)]\right| \\
+&\quad\leq \max_{i,u} \sum_{\jinxe}\pij(u)|V(j)-\tilde{V}(j)| \\
+&\quad\leq \min_{i,u} \left\lbrace \sum_{\jinxe}\pij(u)\right\rbrace ||V-\tilde{V}||_\infty \\
+&\quad\leq (1-\epsilon)||V-\tilde{V}||_\infty
 \end{align*}
 The last step was accomplished because $\sum_{j\in\cale}\pij(u)>\epsilon$ so what is left is $\sum_{\jinxe}\pij(u)\leq1-\epsilon$ because they are all probabilities that add up to $1$.
 \end{proof}
@@ -121,16 +122,16 @@ Suppose there exists an optimal control, $\mu^\ast$. Then
 \Rightarrow &\int_0^Tl(\xi_t,\mu^\ast(\xi_t)) \leq V(x) + \frac{\gamma^2}{2}||w||_{\lT}
 \end{align*}
 If $l(x,u)  = \frac{1}{2}|x|^2+\frac{1}{}|u|^2$ then
-$$\frac{1}{2}||\xi||^2_{\lT} + \frac{1}{2}||\mu^\ast(\xi)||_{\lT} \leq V(x) + \frac{\gamma^2}{2}||w||^2_{\lT}$$
-$V(x)$ is called the available storage and $\frac{\gamma^2}{2}$ is called the disturbance attenuation coefficient. We can think of $V(x)$ as the potential energy in the initial conditions. The engineer gets to pick $\gamma$ so that the system is bounded and such that a solution will exist.
+$$\frac{1}{2}||\xi||^2_{\lT} + \frac{1}{2}||\mu^\ast(\xi)||_{\lT}^2 \leq V(x) + \frac{\gamma^2}{2}||w||^2_{\lT}$$
+$V(x)$ is called the \textit{available storage} and $\frac{\gamma^2}{2}$ is called the \textit{disturbance attenuation coefficient}. We can think of $V(x)$ as the potential energy in the initial conditions. The engineer gets to pick $\gamma$ so that the system is bounded and such that a solution will exist.
 
 \section{Deterministic Control}
-Shifting back to deterministic systems recall that the dynamics and initial conditions were given by (\ref{eq:ctcsdynamics}). We have that if there exists a $K$ such that
+Shifting back to deterministic systems recall that the dynamics and initial conditions were given by (\ref{eq:ctcsdynamics}). We have that if there exists a $K$ satisfying
 \begin{align}
 \label{eq:lipschitz}
 ||f(x,u)-f(y,u)||\leq K|x-y|
 \end{align}
-then there exists a unique solution to (\ref{eq:ctcsdynamics}). Above, we wanted to find finite $L_2$-norm controllers. We still need to have that
+then there exists a unique solution to (\ref{eq:ctcsdynamics}). This is known as the Lipschitz condition. Above, we wanted to find finite $L_2$-norm controllers. We still need to have that
 \begin{align}
 \label{eq:controlspace}
 \mathcal{M}_s = \left\lbrace \mu:[0,T]\times\mathbb{R}^n\to\mathcal{U} ~|~ ||\mu(\xi)||^2_{\lT}<\infty, ~\exists~ ! \text{ sol of \ref{eq:ctcsdynamics} } \forall s,x \right\rbrace

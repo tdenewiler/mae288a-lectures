@@ -105,7 +105,8 @@ Recall that $\xi_{t+1}=f(\xi_t,w_t)$ where we are ignoring control for the momen
 $$E[\{\xi_{t+1},\xi_{t+2},\ldots,\xi_T\}|\xi_t=y] = E[f(y,f(y,w_t)),f(f(y,w_t),w_{t+1}),\ldots]$$
 This represents integration over the $w$'s.
 \begin{align*}
-&\int_{w_{T-1}}\cdots\int_{w_{t+1}}\int_{w_t}f(y,f(y,w_t)),f(f(y,w_t),w_{t+1}),\ldots,f(f(y,w_t),w_{T-1})dw_t\cdots dw_{T-1} \\
+&\int_{w_{T-1}}\cdots\int_{w_{t+1}}\int_{w_t}f(y,f(y,w_t)),f(f(y,w_t),w_{t+1}),\ldots, \\
+&\qquad \ldots,f(f(y,w_t),w_{T-1})dw_t\cdots dw_{T-1} \\
 = &\int\cdots\int P_{w_t}(w_t)\cdots P_{w_{t-1}}(w_{t-1})dw_t\cdots dw_{T-1}
 \end{align*}
 
@@ -152,12 +153,12 @@ t &= s+1 \nonumber \\
 V(s,x) &= \inf_{w\in\tilde{\mathcal{M}}} E_{w_s}\left\lbrace l(\xi_s,w_s(\xi_s)) + V(s+1,\xi_{s+1})\right\rbrace \nonumber \\
 &= \inf_{w\in\tilde{\mathcal{M}}_{s,s}} \left\lbrace l(x,w_s(x)) + E_{w_s}[V(s+1,f(x,w_s(x),w_s)]\right\rbrace \nonumber \\
 &= \inf_{u\in\mathcal{V}} \left\lbrace l(x,u) + E[V(s+1,f(x,u,w_s))]\right\rbrace \nonumber \\
-&\text{in integral form} \nonumber \\
+&\qquad [\text{in integral form}] \nonumber \\
 V(s,x) &= \inf_{u\in U} \left\lbrace l(x,u) + \int_{\mathbb{R}}V(s+1)f(x,u,w))P_{w_s}(w)dw\right\rbrace
 \end{align}
 Equation (\ref{eq:dpe}) is known as the Dynamic Programming Equation (DPE). For the third equality we used the definition $\xi_s \doteq x$.
-\end{example}
 $\lozenge$
+\end{example}
 
 \section{Backward DP}
 \begin{align*}

@@ -17,23 +17,16 @@
 \lecture{Inventory Control and Infinite Time Horizon}
 
 \section{Inventory Control}
-This is a continuation of Lecture 5 and looking at the inventory control problem\footnote{Additional material for this section can be found in the class handout, specifically ``The Dynamic Programming Algorithm'' by Dimitri Bertsekas from the book ``Dynamic Programming: Deterministic and Stochastic Models''.}. The system is given by
+This is a continuation of Lecture 5 and looking at the inventory control problem\footnote{Additional material for this section can be found in the class handout, specifically ``The Dynamic Programming Algorithm'' by Dimitri Bertsekas from the book \href{http://www.amazon.com/Dynamic-Programming-Deterministic-Stochastic-Models/dp/0132215810}{``Dynamic Programming: Deterministic and Stochastic Models''}.}. The system is given by
 \begin{align*}
-\begin{split}
-\xi_{t+1} &= \xi_t+u_t+w_t,
-\end{split}
-\begin{split}
-u_t\in\mathcal{U}&=[0,\infty),
-\end{split}
-\begin{split}
-\{w_t\} &= \text{IID},
-\end{split}
-\begin{split}
-w_t(\w) &\in (-\infty,0] ~\forall \w\in\Omega
-\end{split}
+\xi_{t+1} = \xi_t+u_t+w_t, \qquad u_t\in\mathcal{U} = [0,\infty), \\
+\{w_t\} = \text{IID}, \qquad w_t(\w) \in (-\infty,0] ~\forall \w\in\Omega
 \end{align*}
 The cost is given by
-$$J(s,x,\mu) = E\{\sum_{t=s}^{T-1} cu_t + p\max\{0,-(\xi_t+u_t+w_t)\} + h\max\{0,\xi_t+u_t+w_t\}\}$$
+\begin{align*}
+J(s,x,\mu) &= E\left\lbrace\sum_{t=s}^{T-1} cu_t + p\max\{0,-(\xi_t+u_t+w_t)\} \right. \\
+&\left. \qquad + h\max\{0,\xi_t+u_t+w_t\}\right\rbrace
+\end{align*}
 with $\phi=0$. Note that $V(T,x)=0$ indicating zero terminal cost, $\xi_{t+1}<0$ implying ``backlogged'' inventory, $u_t=\mu_t(\xi_k)$, $y=x+u$, $u\geq 0\Leftrightarrow y\geq x$. We will assume that $V(t+1,\cdot)$ is convex, with $\cdot$ representing the state of the system. Also, let $\bar{y}\in\arg\min H_t(y)$. We will also propose that if $H$ is convex on $\mathbb{R}$ and $\bar{y}\in\arg\min H_t(y)$ then $H_t$ is monotonically increasing on $[\bar{y},\infty)$ and monotonically decreasing on $(-\infty,\bar{y}]$.
 
 Using this information the value function is given by
@@ -50,7 +43,7 @@ Using this value function gives
 $$y^{\text{opt}} = \begin{cases} \bar{y}, & x\leq\bar{y} \\ x & x\geq y \end{cases}$$
 and leads to an optimal control policy of
 $$\mu_t = y^{\text{opt}}-x = \begin{cases} \bar{y}-x, & x\leq\bar{y} \\ 0, & x>\bar{y} \end{cases}$$
-We used that $V(t+1,\cdot)$ is convex  so to induction we still need to show that $V(t,\cot)$ is convex to complete the proof.
+We used that $V(t+1,\cdot)$ is convex  so to induction we still need to show that $V(t,\cdot)$ is convex to complete the proof.
 
 \begin{theorem}
 $V(t,\cdot)$ is convex.
@@ -85,33 +78,23 @@ H_t(z_\lambda) &\leq \beta H_t(\bar{y})+(1-\beta)H_t(x_2) \\
 \section{Infinite Time Horizon, Discounted Cost}
 The system is given as
 \begin{align*}
-\begin{split}
-\xi_{t+1} = f(\xi_t,u_t,w_t),
-\end{split}
-\begin{split}
-\xi_0 = x
-\end{split}
+\xi_{t+1} = f(\xi_t,u_t,w_t), \qquad \xi_0 = x
 \end{align*}
 The cost is
 \begin{align*}
-\begin{split}
-J(x,\mu) = E_{w_{]0,\infty[}}\{\sum_{t=0}^\infty \alpha^tl(\xi_t,\mu_t(\xi_t))\},
-\end{split}
-\begin{split}
-\alpha\in(0,1)
-\end{split}
+J(x,\mu) = E_{w_{]0,\infty[}}\left\lbrace\sum_{t=0}^\infty \alpha^tl(\xi_t,\mu_t(\xi_t))\right\rbrace, \qquad \alpha\in(0,1)
 \end{align*}
 Note that a smaller $\alpha$ implies more myopic behavior and $\alpha=0$ implies a completely greedy controller. If
-$$|l(x,u)|\leq L \Rightarrow J(x,\mu)\leq E\{\sum_{t=0}^\infty \alpha^TL\}\leq \frac{1}{1-\alpha}L<\infty$$
+$$|l(x,u)|\leq L \Rightarrow J(x,\mu)\leq E\left\lbrace\sum_{t=0}^\infty \alpha^TL\right\rbrace \leq \frac{1}{1-\alpha}L<\infty$$
 
 \begin{example}
 Given $\xi_{t+1}=u_t\xi_t$, $\mu_t(\xi_t)=2$, $\xi_t=2^tx$ and $\alpha=3/4$ gives
-$$J(x,\mu) = \sum(\frac{3}{4})^t2^tx\to+\infty$$
-\end{example}
+$$J(x,\mu) = \sum\left(\frac{3}{4}\right)^t2^tx\to+\infty$$
 $\lozenge$
+\end{example}
 
 An alternative method for solving this type of problem is to average the cost per unit time such that
-$$J(x,\mu) = \lim_{T\to\infty}\sup \frac{1}{T}E[\sum_{t=0}^Tl(xi_t,u_t)]$$
+$$J(x,\mu) = \lim_{T\to\infty}\sup \frac{1}{T}E\left[\sum_{t=0}^Tl(xi_t,u_t)\right]$$
 This is used in non-linear $H_\infty$. We are not going to spend time on this method in this course though.
 
 \subsection{Dynamic Programming Principle}
@@ -119,10 +102,12 @@ $$V(x) = \inf_{\mu\in\mathcal{M}_{0,\infty}} J(x,\mu)$$
 The following is \textit{not} a proof and we are assuming Markov processes. Let $r=t-\tau$, $\hat{\xi}_r=\xi_{\tau+r}$, $\hat{\mu}_r=\mu_{\tau+r}$ and $\hat{w}_r=w_{\tau+r}$. Then we can get the value function as
 \begin{align}
 V(x) &= \inf_{\mu\in\mathcal{M}_{0,\infty}} E_{w_]0,\infty)} \left\lbrace \sum_{t=1}^{T-1} \alpha^tl(\xi_t,\mu_t(\xi_t)) + \sum_{t=-\tau}^\infty \alpha^tl(\xi_t,\mu_t(\xi_t))\right\rbrace \nonumber \\
-&= \inf_{\mu\in\mathcal{M}_{0,\infty}} E_{w_]0,\infty)} \left\lbrace \sum_{t=1}^{T-1} \alpha^tl(\xi_t,\mu_t(\xi_t)) +  \alpha^t \sum_{r=0}^\infty \alpha^rl(\xi_{\tau+r},\mu_{\tau+r}(\xi_{\tau+r})) \right\rbrace \nonumber \\
+&= \inf_{\mu\in\mathcal{M}_{0,\infty}} E_{w_]0,\infty)} \left\lbrace \sum_{t=1}^{T-1} \alpha^tl(\xi_t,\mu_t(\xi_t)) \right. \\
+&\left. \qquad +  \alpha^t \sum_{r=0}^\infty \alpha^rl(\xi_{\tau+r},\mu_{\tau+r}(\xi_{\tau+r})) \right\rbrace \nonumber \\
 &= \inf_{\mu\in\mathcal{M}_{]0,\tau-1[}} E_{]0,\tau-1[} \left\lbrace \sum_{t=0}^{\tau-1} \alpha^tl(\xi_t,\mu_t(\xi_t))\right\rbrace \nonumber \\
-&+ \alpha^\tau\inf_{\mu\in\mathcal{M}_{]\tau,\infty[}} E_{w_{]\tau,\infty[}} \left\lbrace \sum_{r=0}^\infty\alpha^rl(\xi_{\tau+r},\mu_{\tau+r}(\xi_{\tau+r}))\right\rbrace \nonumber \\
-&= \inf_{\mu\in\mathcal{M}_{]0,\tau-1[}} E_{]0,\tau-1[} \left\lbrace \sum_{t=0}^{\tau-1} l(\xi_t,\mu(\xi_t)) + \alpha^\tau \inf_{\mu\in\mathcal{M}_{]0,\tau-1[}} \sum_{r=0}^\infty \alpha^rl(\hat{\xi}_r,\hat{\mu}_r(\hat{\xi}_r)) \right\rbrace \nonumber \\
+&\qquad + \alpha^\tau\inf_{\mu\in\mathcal{M}_{]\tau,\infty[}} E_{w_{]\tau,\infty[}} \left\lbrace \sum_{r=0}^\infty\alpha^rl(\xi_{\tau+r},\mu_{\tau+r}(\xi_{\tau+r}))\right\rbrace \nonumber \\
+&= \inf_{\mu\in\mathcal{M}_{]0,\tau-1[}} E_{]0,\tau-1[} \left\lbrace \sum_{t=0}^{\tau-1} l(\xi_t,\mu(\xi_t)) \right. \\
+&\left. \qquad + \alpha^\tau \inf_{\mu\in\mathcal{M}_{]0,\tau-1[}} \sum_{r=0}^\infty \alpha^rl(\hat{\xi}_r,\hat{\mu}_r(\hat{\xi}_r)) \right\rbrace \nonumber \\
 &= \inf_{\mu\in\mathcal{M}_{]0,\tau-1[}} E_{]0,\tau-1[} \left\lbrace \sum_{t=0}^{\tau-1} l(\xi_t,\mu(\xi_t)) + \alpha^\tau V(\xi_\tau) \right\rbrace \nonumber \\
 \Rightarrow V(x) &= \inf_{\mu\in\mathcal{M}_{]0,\tau-1[}} E_{]0,\tau-1[} \left\lbrace \sum_{t=0}^{\tau-1} l(\xi_t,\mu(\xi_t)) + \alpha^\tau V(\xi_\tau) \right\rbrace
 \end{align}
@@ -136,11 +121,12 @@ V(x) &= \inf_{\mu\in\mathcal{M}_{0,0}} E_{\mu_0} \left\lbrace l(x,\mu_0(x)) + \a
 This is the Dynamic Programming Equation! To get the minimum we have to solve for $V$, the value function. If $\min\exists$ then
 $$\mu(x)\in\arg\min\{l(x,u)+\alpha E_u[V(f(x,u,w))]\}$$
 The DPE is of the form $V=\mathcal{G}[V]$, where $\mathcal{G}$ is a non-linear operator that maps one function to another function. It is a recursive operator.
-$$\mathcal{G}[\phi](x) = \inf_u\{l(x,u)+\alpha E_u[\phi(f(x,u,w))]\}$$
+$$\mathcal{G}[\vp](x) = \inf_u\{l(x,u)+\alpha E_u[\vp(f(x,u,w))]\}$$
 
 There are two methods that can be used to solve the DPE: value iteration (contraction mapping principle) and policy iteration.
 
 \section{Normed Vector Space Review}
+\label{sec:normedvectorspace}
 \begin{definition}
 A space is a set.
 \end{definition}
@@ -160,18 +146,18 @@ Let $\vectornorm{\cdot}: \mathcal{X}\to[0,\infty)$, not including $+\infty$, the
 
 \begin{example}
 $\mathbb{R}^2$, $||x||=\sqrt{x_1^2+x_2^2}$
-\end{example}
 $\lozenge$
+\end{example}
 
 \begin{example}
 $\mathcal{X}=\mathbb{R}^2$ with $||x|| = \max\{|x_1|,|x_2|\}$
-\end{example}
 $\lozenge$
+\end{example}
 
 \begin{example}
 $\mathcal{X} = \mathbb{R}^2$, $||x||=|x_1|+|x_2|$
-\end{example}
 $\lozenge$
+\end{example}
 
 \begin{example}
 $\mathcal{X} = C([a,b]) = \{y:[a,b]\to\mathbb{R} | \text{ continuous}\}$ and $||y|| = \max\{|y(t)| | t\in[a,b]\}$. Do the conditions hold?
@@ -179,8 +165,8 @@ $\mathcal{X} = C([a,b]) = \{y:[a,b]\to\mathbb{R} | \text{ continuous}\}$ and $||
 (a) $||y|| = \max\{|y(t)| | t\in[a,b]\}\geq 0$ holds and if $||y||=0 \Rightarrow \max\{|y(t)|\} = 0 \Rightarrow y(t)=0 ~\forall t$ holds.
 \newline
 (c) $||x+y|| = \max_{t\in[a,b]}\{|x(t)+y(t)|\} \leq \max_t\{|x(t)|+|y(t)|\} \leq \max_t\{|x(t)|\} + \max_t\{|y(t)|\} = ||x|| + ||y||$ holds.
-\end{example}
 $\lozenge$
+\end{example}
 
 \begin{example}
 Let $B_R=B_R(0)\subset\mathbb{R}^n$ is
@@ -190,7 +176,7 @@ B_R(0) &= \{x\in\mathbb{R}^n | ||x||\subset R\} \\
 \end{align*}
 and let $\mathcal{X}=C(\overline{B_R(0)}$. Then
 $$||y||=\max_{x\in B_R} |y(x)|$$
-\end{example}
 $\lozenge$
+\end{example}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

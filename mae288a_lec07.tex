@@ -19,28 +19,17 @@
 \section{Infinite Time Horizon, Discounted Cost}
 The Dynamic Programming Equation (DPE) is given by
 \begin{align*}
-\begin{split}
-V(x) &= \inf_{u\in\mathcal{U}}\{l(x,u)+\alpha E_w[V(f(x,u,w))]\},
-\end{split}
-\begin{split}
-\alpha\in[0,1]
-\end{split} \\
-V &= \mathcal{G}[V]
+V(x) = \inf_{u\in\mathcal{U}}\{l(x,u)+\alpha E_w[V(f(x,u,w))]\}, \qquad \alpha\in[0,1], \qquad V = \mathcal{G}[V]
 \end{align*}
 We are looking for a fixed point of the operator $\mathcal{G}$. We start by guessing that the form of $\mathcal{G}$ is
 \begin{align*}
-\begin{split}
-V_{n+1} &= \mathcal{G}[V_n],
-\end{split}
-\begin{split}
-V_n\to V
-\end{split} \\
-w^*(x) &\in \arg\min\{l(x,u)+\alpha E_w[V(f(x,u,w))]\}
+&V_{n+1} = \mathcal{G}[V_n], \qquad V_n\to V, \\
+&w^\ast(x) \in \arg\min\{l(x,u)+\alpha E_w[V(f(x,u,w))]\}
 \end{align*}
 
 \section{Cauchy Sequence}
 \subsection{Normed Vector Space}
-Recall from Lecture 6 that $\vsp$ is a normed vector space if
+Recall from \S\ref{sec:normedvectorspace} that $\vsp$ is a normed vector space if
 \begin{enumerate}
 \item $\vectornorm{y}\geq0 ~\forall y\in\mathbb{Y}$ and $\vectornorm{y}=0\Leftrightarrow y=0$
 \item $||cy|| = |c|\vectornorm{y} ~\forall c\in\mathbb{R}, y\in\mathbb{Y}$
@@ -60,7 +49,7 @@ $\lozenge$
 \begin{definition}
 For a sequence such that
 $$\{y_n\}_{n=1}^\infty \leq \vsp$$
-If this is true then $\{y_n\}$ is a Cauchy sequence if given
+If this is true then $\{y_n\}$ is a \textit{Cauchy sequence} if given
 $$\epsilon>0 ~\exists ~N<\infty \text{ s.t. } ||y_n-y_m||<\epsilon ~\forall n,m\geq N$$
 \end{definition}
 
@@ -119,7 +108,7 @@ $\lozenge$
 
 \section{Complete Norm Vector Space}
 \begin{definition}
-Let $\vsp$ be a normal vecotr space. The space is complete if given any Cauchy sequence $\{y_n\}$ there exists $\bar{y}\in\mathbb{Y}$ such that $y_n\to\bar{y}$. A complete normed vector space is a Banach space.
+Let $\vsp$ be a normal vector space. The space is complete if given any Cauchy sequence $\{y_n\}$ there exists $\bar{y}\in\mathbb{Y}$ such that $y_n\to\bar{y}$. A \textit{complete normed vector space} is a \textit{Banach space}.
 \end{definition}
 
 \begin{example}

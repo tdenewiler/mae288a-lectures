@@ -61,18 +61,10 @@ Let
 $$\mathbb{P} = \left[\begin{array}{c c} 0 & 1 \\ 1 & 0 \end{array}\right]$$
 Then $\mathbb{P}^2=I \Rightarrow \mathbb{P}^{2n+1}=\mathbb{P}, \mathbb{P}^{2n}=I ~\forall n$. This leads to
 \begin{align*}
-\begin{split}
-p_0 = \left[\begin{array}{c} q \\ 1-q \end{array}\right]
-\end{split}
-\begin{split}
-p_1 = \left[\begin{array}{c} 1-q \\ q \end{array}\right]
-\end{split} \\
-\begin{split}
-p_2=p_0
-\end{split}
-\begin{split}
-p_3=p_1\ldots
-\end{split}
+p_0 = \left[\begin{array}{c} q \\ 1-q \end{array}\right],
+\qquad p_1 = \left[\begin{array}{c} 1-q \\ q \end{array}\right],
+\qquad p_2 = p_0,
+\qquad p_3=p_1\ldots
 \end{align*}
 See Figure \ref{fig:10mc2}.
 $\lozenge$
@@ -104,18 +96,10 @@ Let
 $$\mathbb{P} = \left[\begin{array}{c c c} \frac{1}{2} & \frac{1}{2} & 0 \\ 0 & 0 & 1 \\ \frac{1}{2} & \frac{1}{2} & 0 \end{array}\right]$$
 From Figure \ref{fig:10mc3b} we can see that $1\leftrightarrow 3$, $1\leftrightarrow 2$ and $2\leftrightarrow 3$ meaning that the system is irreducible. Also, $d(1)=1$ so by the Theorem in Lecture 9 about equivalence classes it must be true that $d(2)=d(3)=d(1)=1$ and the system is aperiodic. Let
 \begin{align*}
-\begin{split}
-p_0 = \left[\begin{array}{c} 0 \\ 0 \\ 1 \end{array}\right]
-\end{split}
-\begin{split}
-p_1 = \mathbb{P}^Tp_0 = \left[\begin{array}{c} \frac{1}{2} \\ \frac{1}{2} \\ 0 \end{array}\right]
-\end{split} \\
-\begin{split}
-p_2 = \mathbb{P}^Tp_1 = \left[\begin{array}{c} \frac{1}{4} \\ \frac{1}{4} \\ \frac{1}{2} \end{array}\right]
-\end{split}
-\begin{split}
-p_3 = \mathbb{P}^Tp_2 = \left[\begin{array}{c} \frac{3}{8} \\ \frac{3}{8} \\ \frac{1}{4} \end{array}\right]
-\end{split}
+p_0 &= \left[\begin{array}{c} 0 \\ 0 \\ 1 \end{array}\right],
+\qquad p_1 = \mathbb{P}^Tp_0 = \left[\begin{array}{c} \frac{1}{2} \\ \frac{1}{2} \\ 0 \end{array}\right], \\
+p_2 = \mathbb{P}^Tp_1 &= \left[\begin{array}{c} \frac{1}{4} \\ \frac{1}{4} \\ \frac{1}{2} \end{array}\right],
+\qquad p_3 = \mathbb{P}^Tp_2 = \left[\begin{array}{c} \frac{3}{8} \\ \frac{3}{8} \\ \frac{1}{4} \end{array}\right]
 \end{align*}
 Next we can look for the eigenvector corresponding to $\lambda=1$.
 \begin{align*}

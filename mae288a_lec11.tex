@@ -36,7 +36,7 @@ The Dynamic Programming Equation (DPE) is found to be
 \begin{align}
 \label{eq:mcdpe}
 V(i) &= \min_{u\in\mathcal{U}}\{l(i,u)+\alpha E[V(\xi_1^\mu)]\} \nonumber \\
-&[\text{find } \mu \text{ and } \xi^\mu \text{ by (\ref{eq:pij})}] \nonumber \\
+&\qquad [\text{find } \mu \text{ and } \xi^\mu \text{ by (\ref{eq:pij})}] \nonumber \\
 &= \min_{u\in\mathcal{U}} \left\lbrace l(i,u)+\alpha\sum_{j\in\mathbb{X}}\pij(u)V(j)\right\rbrace
 \end{align}
 
@@ -59,7 +59,7 @@ We can use Theorem \ref{th:bfp} to test if $\mathcal{G}$ is a contraction.
 We want to show that $||\mathcal{G}[V]-\mathcal{G}[\tilde{V}]||_\infty\leq\alpha||V-\tilde{V}||_\infty$.
 \begin{align*}
 ||\calg[V]-\calg[\tilde{V}]||_\infty &= \max_{i\in\mathbb{X}}\left[\left|\min_{\uinu}\left\lbrace l(i,u)+\alpha\sum_{j\in\mathbb{X}}\pij(u)V(j)\right\rbrace \right.\right. \\
-&\left.\left.\quad - \min_{v\in\mathcal{U}}\left\lbrace l(i,v)+\alpha\sum_{j\in\mathbb{X}}\pij(v)\tilde{V}(j)\right\rbrace \right|\right] \\
+&\left.\left.\qquad - \min_{v\in\mathcal{U}}\left\lbrace l(i,v)+\alpha\sum_{j\in\mathbb{X}}\pij(v)\tilde{V}(j)\right\rbrace \right|\right] \\
 &\leq \max_{i\in\mathbb{X}}\max_{\uinu}\left|\alpha\sum_j\pij(u)[V(j)-\tilde{V}(j)]\right| \\
 &\leq \max_{i,u}\alpha\sum_j\pij(u)|V(j)-\tilde{V}(j)| \\
 &\leq \alpha\max_{i,u}\sum_j\pij(u)||V-\tilde{V}||_\infty \\

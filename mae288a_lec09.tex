@@ -36,11 +36,16 @@ $$A\cap[B\cup C] = [A\cap B] \cup [A\cap C]$$
 This gives
 \begin{align*}
 P\left(\xi_{t+2}=j | \xi_t=i\right) &= P\left(\{\xi_{t+2}=j\} \cap \left[\bigcup_{k\in\mathbb{X}}\{\xi_{t+1}=k\}\right] | \{\xi_t=i\}\right) \\
-&= P\left(\{\xi_{t+2}=j\} \cap \left[\bigcup_{k\in\mathbb{X}}\{\xi_{t+1}=k\} \cap \{\xi_t=i\}\right]\right) / P(\xi_t=i) \\
-&= P\left(\bigcup_{k\in\mathbb{X}}[\{\xi_{t+2}=j\} \cap \{\xi_{t+1}=k\} \cap \{\xi_t=i\}]\right) / P(\xi_t=i) \\
-&= \sum_{k\in\mathbb{X}} P(\{\xi_{t+2}=j\} \cap \{\xi_{t+1}=k\} \cap \{\xi_t=i\}) / P(\xi_t=i) \\
-&= \sum_{k\in\mathbb{X}} P(\xi_{t+2}=j | \xi_{t+1}=k,\xi_t=i) \cdot P(\xi_{t+1}=k,\xi_t=i) / P(\xi_t=i) \\
-&= \sum_{k\in\mathbb{X}} P(\xi_{t+2}=j | \xi_{t+1}=k) \cdot P(\xi_{t+1}=k,\xi_t=i) \cdot P(\xi_t=i) / P(\xi_t=i) \\
+&= P\left(\{\xi_{t+2}=j\} \cap \left[\bigcup_{k\in\mathbb{X}}\{\xi_{t+1}=k\} \cap \{\xi_t=i\}\right]\right) \\
+&\qquad / P(\xi_t=i) \\
+&= P\left(\bigcup_{k\in\mathbb{X}}[\{\xi_{t+2}=j\} \cap \{\xi_{t+1}=k\} \cap \{\xi_t=i\}]\right) \\
+&\qquad / P(\xi_t=i) \\
+&= \sum_{k\in\mathbb{X}} P(\{\xi_{t+2}=j\} \cap \{\xi_{t+1}=k\} \cap \{\xi_t=i\}) \\
+&\qquad / P(\xi_t=i) \\
+&= \sum_{k\in\mathbb{X}} P(\xi_{t+2}=j | \xi_{t+1}=k,\xi_t=i) \cdot P(\xi_{t+1}=k,\xi_t=i) \\
+&\qquad / P(\xi_t=i) \\
+&= \sum_{k\in\mathbb{X}} P(\xi_{t+2}=j | \xi_{t+1}=k) \cdot P(\xi_{t+1}=k,\xi_t=i) \\
+&\qquad \cdot P(\xi_t=i) / P(\xi_t=i) \\
 &= \sum_{k\in\mathbb{X}} P(\xi_{t+2}=j | \xi_{t+1}=k) \cdot P(\xi_{t+1}=k,\xi_t=i) \\
 &= \sum_{k\in\mathbb{X}} \mathbb{P}_{k,j}\mathbb{P}_{i,k} = \sum_{k\in\mathbb{X}} \mathbb{P}_{i,k}\mathbb{P}_{k,j} = \left[\mathbb{P}^2\right]_{i,j}
 \end{align*}
@@ -252,12 +257,10 @@ $\lozenge$
 \subsection{Infinite Size Gets Strange}
 See Figure \ref{fig:09mcinf}. Suppose
 \begin{align*}
-\begin{split}
 p_0 = \left[\begin{array}{c} 1 \\ 0 \\ 0 \\ 0 \\ \vdots \end{array}\right],
-p_1 = \left[\begin{array}{c} \frac{1}{4} \\ \frac{3}{4} \\ 0 \\ 0 \\ \vdots \end{array}\right],
-p_2 = \left[\begin{array}{c} \frac{1}{4} \\ \frac{3}{16} \\ \frac{9}{16} \\ 0 \\ \vdots \end{array}\right],
-\ldots
-\end{split}
+\qquad p_1 = \left[\begin{array}{c} \frac{1}{4} \\ \frac{3}{4} \\ 0 \\ 0 \\ \vdots \end{array}\right],
+\qquad p_2 = \left[\begin{array}{c} \frac{1}{4} \\ \frac{3}{16} \\ \frac{9}{16} \\ 0 \\ \vdots \end{array}\right],
+\qquad \ldots
 \end{align*}
 This leads to $\sum p_{t_i}=1$, but $p_{t_i}\rightarrow 0 ~\forall i$ as $i\to\infty$.
 
