@@ -15,7 +15,7 @@
    inkscape:version="0.46"
    sodipodi:docname="10mc4.svg"
    inkscape:output_extension="org.inkscape.output.svg.inkscape"
-   inkscape:export-filename="/home/thomas/school/mae288a/lectures/images/10mc4.png"
+   inkscape:export-filename="/home/ibotics/classes/mae288a/lectures/images/10mc4.png"
    inkscape:export-xdpi="150"
    inkscape:export-ydpi="150">
   <defs
@@ -58,8 +58,8 @@
      inkscape:current-layer="layer1"
      showgrid="false"
      inkscape:window-width="1280"
-     inkscape:window-height="974"
-     inkscape:window-x="0"
+     inkscape:window-height="846"
+     inkscape:window-x="150"
      inkscape:window-y="25" />
   <metadata
      id="metadata5606">
@@ -219,12 +219,12 @@
     <text
        sodipodi:linespacing="125%"
        id="text3849"
-       y="107.63188"
-       x="276.91974"
+       y="101.57097"
+       x="275.40451"
        style="font-size:12px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:#0000ff;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Liberation Serif;-inkscape-font-specification:Liberation Serif Italic"
        xml:space="preserve"><tspan
-         y="107.63188"
-         x="276.91974"
+         y="101.57097"
+         x="275.40451"
          id="tspan3851"
          sodipodi:role="line">1</tspan></text>
     <text
