@@ -32,13 +32,20 @@ In this lecture we will go to the one dimensional case and find a viscosity solu
 \end{align}
 (\ref{eq:16exit}) implies $W_x(x)=\pm1 ~\forall x$ which also implies that there does not exist a classical solution for (\ref{eq:16exit}) and (\ref{eq:16exittc}).
 
-Note that a weak solution requires that (\ref{eq:16exit}) is satisfied A.E. (almost everywhere). It is sufficient to satisfy (\ref{eq:16exit}) except on a finite (or countably infinite) set of points. Examples of weak solutions are (see Figure ??)
+Note that a weak solution requires that (\ref{eq:16exit}) is satisfied A.E. (almost everywhere). It is sufficient to satisfy (\ref{eq:16exit}) except on a finite (or countably infinite) set of points. Examples of weak solutions are (see Figure \ref{fig:16w})
 \begin{align*}
 W^1(x) &= |x|-1 \\
 W^2(x) &= 1-|x| \\
 W^3(x) &= \ldots
 \end{align*}
 There are an infinite number of weak solutions that satisfy (\ref{eq:16exit}) and (\ref{eq:16exittc}) but we only want one of them.
+
+\begin{figure}[ht!]
+	\centering
+	\includegraphics[width=.4\textwidth]{images/16w}
+	\caption{Possible solutions using classical methods.}
+	\label{fig:16w}
+\end{figure}
 
 \section{Viscosity Solutions}
 Typically there exists a viscosity solution to the HJB and HJI PDE problems. Recall that HJB is for control problems and HJI is for game theory problems. For a solution to be a viscosity solution it must satisfy
@@ -77,22 +84,36 @@ Further, suppose that $\vp\in C^1$ and $W-\vp$ is a local minimum at $x_0$. Then
 \item $0 = \nabla[W-\vp](x_0) = \nabla W(x_0)-\nabla\vp(x_0)$
 \item $0 = F(x_0,\nabla u(x_0)) = F(x_0,\nabla\vp(x_0))$
 \item The viscosity subsolution conditions are satisfied. Similarly, the viscosity supersolution conditions are satisfied. Therefore $W$ is a viscosity solution at $x_0$.
-\item Any classical solution is a viscosity solution! See Figure ??.
+\item Any classical solution is a viscosity solution! See Figure \ref{fig:16x0}.
 \end{itemize}
 \end{remark}
+
+\begin{figure}[ht!]
+	\centering
+	\includegraphics[width=.4\textwidth]{images/16x0}
+	\caption{Gradient at $x_0$.}
+	\label{fig:16x0}
+\end{figure}
 
 \begin{example}
 We start by examining (\ref{eq:16exit}) for $W^1$. We have that
 $$W^1\in C^1(\mathcal{A}), \mathcal{A}=(-1,0)\cup(0,1)$$
 satisfies (\ref{eq:16exit}) on $\mathcal{A}$ so $W^1$ is a viscosity solution on $\mathcal{A}$. However, we still need to check $x_0=0$.
 
-Suppose that $\vp\in C^1(G)$ and $W-\vp$ has a local maximum at $x_0=0$. This is not possible (see Figure ?? where it can be seen that $W^1$ only has a local minimum at $x_0=0$). By default $W^1$ is a viscosity supersolution.
+Suppose that $\vp\in C^1(G)$ and $W-\vp$ has a local maximum at $x_0=0$. This is not possible (see Figure \ref{fig:16vs} where it can be seen that $W^1$ only has a local minimum at $x_0=0$). By default $W^1$ is a viscosity supersolution.
+
+\begin{figure}[ht!]
+	\centering
+	\includegraphics[width=.4\textwidth]{images/16vs}
+	\caption{Convexity means no viscosity solution.}
+	\label{fig:16vs}
+\end{figure}
 
 Now, suppose that $\vp\in C^1(G)$ and $W-\vp$ has a local minimum at $x_0=0$. Then let $\vp(x)\equiv-1$. This shows that conditions (\ref{eq:16exit}) and (\ref{eq:16exittc}) are satisfied. But, we see that
 $$F(0,\vp_x(0))=1-0^2=1>0$$
 therefore $W^1$ is not a viscosity subsolution and hence $W^1$ is not a viscosity solution.
 
-This result can be generalized more than that though. Suppose that $W$ has a convex corner as in Figure ??, then $W$ is not a viscosity solution.
+This result can be generalized more than that though. Suppose that $W$ has a convex corner as in Figure \ref{fig:16vs}, then $W$ is not a viscosity solution.
 
 Next, we will look at $W^2$. Clearly this is a solution for all $x\in\mathcal{A}$. Checking $x_0=0$ shows that there does not exist $\vp\in C^1(G)$ such that $W-\vp$ has a local minimum at $x_0=0$ because there is no $\vp$ that exists so we don't have to check $F(x_0,\nabla\vp(x_0))$, therefore $W^2$ is a viscosity subsolution.
 
@@ -103,6 +124,13 @@ Now, let $\vp\in C^1(G)$. Then $W^2-\vp$ has a local maximum at $x_0=0$ and $\vp
 Therefore, $W^2$ is a viscosity solution.
 $\lozenge$
 \end{example}
+
+\begin{figure}[ht!]
+	\centering
+	\includegraphics[width=.4\textwidth]{images/16subsol}
+	\caption{Viscosity subsolution.}
+	\label{fig:16subsol}
+\end{figure}
 
 \section{Finite Time Horizon Deterministic Control}
 Let the system dynamics and initial conditions be
@@ -198,12 +226,26 @@ The DPP is
 $$V(x) = \inf_{\uinu}\left\lbrace \int_0^{t\wedge\tau}l(\xi_r,u_r)dr + I_{t\leq\tau}V(\xi_t) + I_{t\geq\tau}\psi(\xi_t)\right\rbrace$$
 Here we have introduced the notation $t\wedge\tau$ which means $\min\{t,\tau\}$ and $I_{t\leq\tau}$ which means to use the expression following the $I$ operator if the subscript is true or to move on to the next $I$ operator if the subscript is false.
 
-Let $x_{i,j}$ be an interior point on $G$ (see Figures ?? and ??) and let $h=t\ll 1$ such that $h<\tau(x_{i,j},u)$ for all $\epsilon$-optimal $u$ so that we cannot exit the interior of $G$ in one time step. Then, the value function is
+Let $x_{i,j}$ be an interior point on $G$ (see Figures \ref{fig:16grid} and \ref{fig:16x}) and let $h=t\ll 1$ such that $h<\tau(x_{i,j},u)$ for all $\epsilon$-optimal $u$ so that we cannot exit the interior of $G$ in one time step. Then, the value function is
 $$V(x_{i,j}) = \inf_u\left\lbrace \int_0^hl(\xi_t,u_t)dt+V(\xi_h)\right\rbrace$$
 We iterate $V^k$ on the grid points as seen in Figure ??. Let the iteration follow
 $$V^{k+1}(x_{i,j}) = \inf_u\left\lbrace \int_0^hl(\xi_t,u_t)dt + V^k(\xi_t)\right\rbrace$$
 Suppose $h\ll 1$ such that $\xi_h\in\mathcal{S}$ and linearize and we get
 $$V^{k+1}(x_{i,j}) = \inf_u\left\lbrace \int_0^h l(x_{i,j},u)dr+V^k(x_{i,j}+hf(x_{i,j},u))\right\rbrace$$
+
+\begin{figure}[ht!]
+	\centering
+	\includegraphics[width=.4\textwidth]{images/16grid}
+	\caption{Grid for the space $G$.}
+	\label{fig:16grid}
+\end{figure}
+
+\begin{figure}[ht!]
+	\centering
+	\includegraphics[width=.4\textwidth]{images/16x}
+	\caption{Zoomed in area around the point $x_{ij}$.}
+	\label{fig:16x}
+\end{figure}
 
 Note that we will continue this topic in the next lecture.
 
