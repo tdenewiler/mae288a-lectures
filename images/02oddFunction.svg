@@ -16,7 +16,7 @@
    inkscape:version="0.46"
    sodipodi:docname="02oddFunction.svg"
    inkscape:output_extension="org.inkscape.output.svg.inkscape"
-   inkscape:export-filename="/home/thomas/school/mae288a/lectures/images/02oddFunction.png"
+   inkscape:export-filename="/home/ibotics/classes/mae288a/lectures/images/02oddFunction.png"
    inkscape:export-xdpi="150"
    inkscape:export-ydpi="150">
   <metadata
@@ -31,8 +31,8 @@
     </rdf:RDF>
   </metadata>
   <sodipodi:namedview
-     inkscape:window-height="974"
-     inkscape:window-width="1280"
+     inkscape:window-height="850"
+     inkscape:window-width="1440"
      inkscape:pageshadow="2"
      inkscape:pageopacity="0.0"
      guidetolerance="10.0"
@@ -43,9 +43,9 @@
      pagecolor="#ffffff"
      id="base"
      showgrid="false"
-     inkscape:zoom="0.98464619"
-     inkscape:cx="403.16914"
-     inkscape:cy="279.13793"
+     inkscape:zoom="0.69625"
+     inkscape:cx="337.0267"
+     inkscape:cy="286.20632"
      inkscape:window-x="0"
      inkscape:window-y="25"
      inkscape:current-layer="svg2571" />
@@ -123,10 +123,15 @@
   </defs>
   <g
      style="fill:none; color:white; stroke:currentColor; stroke-width:1.00; stroke-linecap:butt; stroke-linejoin:miter"
-     id="g2591" />
+     id="g2591"
+     inkscape:export-xdpi="150"
+     inkscape:export-ydpi="150" />
   <g
      style="fill:none; color:black; stroke:currentColor; stroke-width:1.00; stroke-linecap:butt; stroke-linejoin:miter"
-     id="g2593">
+     id="g2593"
+     inkscape:export-filename="/home/ibotics/classes/mae288a/lectures/images/g2591.png"
+     inkscape:export-xdpi="150"
+     inkscape:export-ydpi="150">
     <path
        d="M75.4,564.0 L84.4,564.0 M782.7,564.0 L773.7,564.0 "
        id="path2595" />
@@ -273,25 +278,39 @@
   </g>
   <g
      style="fill:none; color:red; stroke:currentColor; stroke-width:1.00; stroke-linecap:butt; stroke-linejoin:miter"
-     id="g2681" />
+     id="g2681"
+     inkscape:export-filename="/home/ibotics/classes/mae288a/lectures/images/g2591.png"
+     inkscape:export-xdpi="150"
+     inkscape:export-ydpi="150" />
   <g
      style="fill:none; color:black; stroke:currentColor; stroke-width:1.00; stroke-linecap:butt; stroke-linejoin:miter"
-     id="g2683">
+     id="g2683"
+     inkscape:export-filename="/home/ibotics/classes/mae288a/lectures/images/g2591.png"
+     inkscape:export-xdpi="150"
+     inkscape:export-ydpi="150">
     <g
        transform="translate(715.6,39.1)"
        style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end"
        id="g2685">
       <text
-         id="text2687">x*exp(-.5*x**2)</text>
+         id="text2687"
+         style="-inkscape-font-specification:Bitstream Vera Serif Italic;font-family:Bitstream Vera Serif;font-weight:normal;font-style:italic;font-stretch:normal;font-variant:normal;font-size:20px;text-anchor:end;text-align:end;writing-mode:lr;line-height:125%"
+         sodipodi:linespacing="125%">x*exp(-.5*x**2)</text>
     </g>
   </g>
   <path
-     style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1.57288992px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-     d="M 76.140457,290.12568 L 782.35814,290.12568"
-     id="path3477" />
+     style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.7524423;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     d="M 74.933192,290.30521 L 782.78776,290.30521"
+     id="path3477"
+     inkscape:export-filename="/home/ibotics/classes/mae288a/lectures/images/g2591.png"
+     inkscape:export-xdpi="150"
+     inkscape:export-ydpi="150" />
   <g
      style="fill:none;color:red;stroke:#ff0000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-     id="g2689">
+     id="g2689"
+     inkscape:export-filename="/home/ibotics/classes/mae288a/lectures/images/g2591.png"
+     inkscape:export-xdpi="150"
+     inkscape:export-ydpi="150">
     <path
        d="M723.9,34.6 L766.1,34.6 M75.4,290.3 L82.5,290.3 L89.7,290.3 L96.8,290.3 L104.0,290.3 L111.1,290.3    L118.3,290.3 L125.4,290.3 L132.6,290.3 L139.7,290.3 L146.8,290.3 L154.0,290.3 L161.1,290.3 L168.3,290.3    L175.4,290.3 L182.6,290.3 L189.7,290.3 L196.9,290.3 L204.0,290.3 L211.1,290.3 L218.3,290.3 L225.4,290.3    L232.6,290.3 L239.7,290.3 L246.9,290.3 L254.0,290.3 L261.2,290.3 L268.3,290.4 L275.4,290.4 L282.6,290.6    L289.7,290.9 L296.9,291.5 L304.0,292.6 L311.2,294.7 L318.3,298.3 L325.5,304.0 L332.6,312.9 L339.7,325.9    L346.9,343.8 L354.0,366.8 L361.2,394.4 L368.3,424.8 L375.5,454.8 L382.6,480.0 L389.8,495.3 L396.9,496.0    L404.0,478.7 L411.2,442.4 L418.3,389.3 L425.5,324.7 L432.6,255.9 L439.8,191.3 L446.9,138.2 L454.1,101.9    L461.2,84.6 L468.3,85.3 L475.5,100.6 L482.6,125.8 L489.8,155.8 L496.9,186.2 L504.1,213.8 L511.2,236.8    L518.4,254.7 L525.5,267.7 L532.6,276.6 L539.8,282.3 L546.9,285.9 L554.1,288.0 L561.2,289.1 L568.4,289.7    L575.5,290.0 L582.7,290.2 L589.8,290.2 L596.9,290.3 L604.1,290.3 L611.2,290.3 L618.4,290.3 L625.5,290.3    L632.7,290.3 L639.8,290.3 L647.0,290.3 L654.1,290.3 L661.2,290.3 L668.4,290.3 L675.5,290.3 L682.7,290.3    L689.8,290.3 L697.0,290.3 L704.1,290.3 L711.3,290.3 L718.4,290.3 L725.5,290.3 L732.7,290.3 L739.8,290.3    L747.0,290.3 L754.1,290.3 L761.3,290.3 L768.4,290.3 L775.6,290.3 L782.7,290.3 "
        id="path2691"
@@ -299,26 +318,24 @@
   </g>
   <g
      style="fill:none; color:black; stroke:currentColor; stroke-width:1.00; stroke-linecap:butt; stroke-linejoin:miter"
-     id="g2693">
+     id="g2693"
+     inkscape:export-filename="/home/ibotics/classes/mae288a/lectures/images/g2591.png"
+     inkscape:export-xdpi="150"
+     inkscape:export-ydpi="150">
     <path
        d="M75.4,16.6 L75.4,564.0 L782.7,564.0 L782.7,16.6 L75.4,16.6 Z "
        id="path2695" />
   </g>
-  <path
-     style="opacity:0.7;fill:#fb8ba9;fill-opacity:1;stroke:#ed5b7a;stroke-width:0.50779659;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-     d="M 392.12385,494.7723 C 390.18082,494.4534 390.17601,494.44649 386.70862,487.03123 C 381.61283,476.13349 377.56232,461.32382 365.33649,408.88937 C 350.12802,343.66284 337.96347,312.92512 322.50484,300.6612 C 316.90372,296.21762 308.17402,292.36034 301.64961,291.44617 C 300.81175,291.32876 328.98577,291.19848 364.25855,291.15664 L 428.39089,291.08055 L 428.12113,292.73089 C 427.97275,293.63858 427.38277,299.06565 426.81004,304.79106 C 423.90929,333.78919 417.2327,391.8639 414.08342,415.49072 C 411.31352,436.27116 409.73075,446.17056 406.9059,460.38213 C 403.35538,478.24443 403.21335,478.77997 399.90303,486.78755 C 396.19277,495.7626 396.46359,495.48458 392.12385,494.7723 L 392.12385,494.7723 z"
-     id="path3487" />
-  <path
-     style="opacity:0.69999999999999996;fill:#8bfbf5;fill-opacity:1;stroke:#ed5b7a;stroke-width:0.50779658999999999;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-     d="M 430.09547,286.89123 C 430.25468,285.70426 431.07414,277.99209 431.91651,269.75309 C 435.2587,237.06378 440.77684,189.44839 444.12753,164.3853 C 446.87182,143.85804 448.45868,133.96811 451.25586,119.95852 C 454.74762,102.47015 454.9527,101.69673 458.18993,93.806997 C 460.02468,89.335396 461.58685,85.595631 461.66147,85.496397 C 461.73609,85.397169 463.15421,85.47348 464.81288,85.665986 L 467.82863,86.016005 L 471.43357,93.717259 C 476.60551,104.76618 479.67523,115.93075 492.12047,168.95547 C 506.08464,228.45177 515.8094,256.30242 528.16912,272.19477 C 534.13169,279.86155 541.97802,285.23039 551.23165,287.97529 L 554.53233,288.95437 L 492.16917,289.00185 L 429.80602,289.04937 L 430.09547,286.89123 z"
-     id="path3489" />
   <text
      xml:space="preserve"
      style="font-size:24px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Liberation Serif;-inkscape-font-specification:Liberation Serif Italic"
      x="461.07932"
      y="200.87186"
      id="text3491"
-     sodipodi:linespacing="125%"><tspan
+     sodipodi:linespacing="125%"
+     inkscape:export-filename="/home/ibotics/classes/mae288a/lectures/images/g2591.png"
+     inkscape:export-xdpi="150"
+     inkscape:export-ydpi="150"><tspan
        sodipodi:role="line"
        id="tspan3493"
        x="461.07932"
@@ -329,9 +346,47 @@
      x="376.7851"
      y="361.3356"
      id="text3495"
-     sodipodi:linespacing="125%"><tspan
+     sodipodi:linespacing="125%"
+     inkscape:export-filename="/home/ibotics/classes/mae288a/lectures/images/g2591.png"
+     inkscape:export-xdpi="150"
+     inkscape:export-ydpi="150"><tspan
        sodipodi:role="line"
        id="tspan3497"
        x="376.7851"
        y="361.3356">-A</tspan></text>
+  <path
+     style="opacity:0.50000000000000000;fill:#5cf254;fill-opacity:1;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none"
+     d="M 430.31584,287.35625 C 430.31584,281.51133 439.69056,198.40073 444.01011,165.95116 C 448.90027,129.21485 453.55465,105.59605 458.12641,94.317409 L 461.54673,85.879348 L 464.61663,85.879348 L 467.68654,85.879348 L 471.24254,93.475405 C 476.25785,104.18878 481.86807,124.91778 494.25911,178.51849 C 499.89638,202.90391 508.15699,231.20751 513.75118,245.30484 C 523.86672,270.79586 533.90608,282.47455 550.24403,287.75673 C 554.09523,289.00185 552.6487,289.03467 492.2548,289.07233 L 430.31584,289.11095 L 430.31584,287.35625 z M 464.78622,200.84045 C 464.78622,200.47839 464.43712,200.0658 464.01044,199.92356 C 463.47113,199.74379 463.50629,199.06881 464.12571,197.70932 C 464.82733,196.16939 465.50876,195.75367 467.33124,195.75367 C 469.2486,195.75367 469.70646,196.07143 469.99974,197.60561 C 470.22455,198.78171 469.99304,199.59596 469.36532,199.83684 C 467.31479,200.62369 468.4959,201.49874 471.60848,201.49874 C 474.5166,201.49874 475.99744,200.56795 474.09711,199.93451 C 473.6885,199.79829 472.83336,196.45897 472.19684,192.5138 C 471.56034,188.56863 470.79642,185.06657 470.4993,184.73148 C 470.20218,184.39638 468.60367,186.49691 466.94709,189.39934 C 465.29049,192.30177 462.99556,196.05936 461.8472,197.74954 C 460.69886,199.43972 459.75929,200.97473 459.75929,201.16067 C 459.75929,201.34661 460.89035,201.49874 462.27276,201.49874 C 463.65516,201.49874 464.78622,201.20251 464.78622,200.84045 L 464.78622,200.84045 z"
+     id="path3374"
+     inkscape:export-filename="/home/ibotics/classes/mae288a/lectures/images/g2591.png"
+     inkscape:export-xdpi="150"
+     inkscape:export-ydpi="150" />
+  <path
+     style="opacity:0.5;fill:#65e9d5;fill-opacity:1;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none"
+     d="M 391.70854,494.77515 C 390.2813,494.58144 389.95534,494.06502 386.5442,486.59331 C 381.38417,475.29083 378.14481,463.51856 366.31641,413.08278 C 354.42611,362.38308 346.24394,336.33389 336.78965,319.07988 C 327.84047,302.74769 318.06754,294.87013 302.84413,291.71779 C 300.35039,291.20139 311.43414,291.07786 363.90667,291.03713 L 428.01599,290.98739 L 428.01599,292.18595 C 428.01599,294.06687 424.80782,324.31797 420.92685,359.03213 C 415.4926,407.63978 410.99594,440.01884 406.7495,461.11841 C 403.36646,477.92801 403.0826,478.99327 399.91627,486.76214 L 396.61269,494.86773 L 394.92231,494.92482 C 393.9926,494.95622 392.5464,494.88887 391.70854,494.77515 z M 387.73043,360.83302 C 386.84382,360.16113 386.8405,360.03997 387.66133,358.31019 C 388.473,356.59976 388.66595,356.49315 390.95037,356.49315 C 393.52376,356.49315 393.99362,356.93076 393.99362,359.32756 C 393.99362,360.0582 393.69727,360.55552 393.2619,360.55552 C 392.85945,360.55552 392.38894,360.78403 392.21633,361.06332 C 392.01851,361.38341 393.18059,361.56514 395.36009,361.55497 C 398.38542,361.54084 398.70382,361.45245 397.90689,360.84804 C 397.23308,360.337 396.67689,358.27658 395.76934,352.92929 C 395.09463,348.9539 394.43427,345.59301 394.30188,345.46062 C 393.76048,344.91921 392.87147,346.14903 389.34785,352.3138 C 387.31565,355.86924 385.13026,359.30276 384.49142,359.94386 C 383.85257,360.58495 383.32989,361.21335 383.32989,361.3403 C 383.32989,361.46725 384.52956,361.56385 385.99582,361.55497 C 388.38147,361.54052 388.56384,361.46461 387.73042,360.83302 L 387.73043,360.83302 z M 383.74818,355.83179 C 383.90246,355.0213 383.58395,354.93412 380.96515,355.0701 C 378.59125,355.19337 377.97353,355.4042 377.83365,356.13891 C 377.67937,356.9494 377.99787,357.03658 380.61667,356.9006 C 382.99057,356.77733 383.60829,356.5665 383.74816,355.8318 L 383.74818,355.83179 z"
+     id="path3376"
+     inkscape:export-filename="/home/ibotics/classes/mae288a/lectures/images/g2591.png"
+     inkscape:export-xdpi="150"
+     inkscape:export-ydpi="150" />
+  <path
+     style="opacity:0.5;fill:#65e9d5;fill-opacity:1;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none"
+     d="M 390.82874,352.09907 C 391.73742,350.5272 392.50225,349.26249 392.52836,349.2886 C 392.59569,349.35594 393.46906,354.37318 393.46906,354.69267 C 393.46906,354.91069 393.09299,354.957 391.32282,354.957 L 389.17658,354.957 L 390.82874,352.09907 z"
+     id="path3378"
+     inkscape:export-filename="/home/ibotics/classes/mae288a/lectures/images/g2591.png"
+     inkscape:export-xdpi="150"
+     inkscape:export-ydpi="150" />
+  <path
+     style="opacity:0.5;fill:#5cf254;fill-opacity:1;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none"
+     d="M 465.54803,194.26681 C 465.64756,194.10971 466.40959,192.79579 467.24142,191.34698 C 468.07325,189.89817 468.78564,188.71279 468.82452,188.71279 C 468.86339,188.71279 469.08443,189.86961 469.31572,191.28351 C 469.547,192.6974 469.7666,194.01133 469.80372,194.20334 L 469.87121,194.55245 L 467.61913,194.55245 L 465.36705,194.55245 L 465.54803,194.26681 z"
+     id="path3382"
+     inkscape:export-filename="/home/ibotics/classes/mae288a/lectures/images/g2591.png"
+     inkscape:export-xdpi="150"
+     inkscape:export-ydpi="150" />
+  <path
+     style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.76402181;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     d="M 429.10682,563.97388 L 429.10682,16.533774"
+     id="path4248"
+     inkscape:export-filename="/home/ibotics/classes/mae288a/lectures/images/g2591.png"
+     inkscape:export-xdpi="150"
+     inkscape:export-ydpi="150" />
 </svg>
