@@ -1,10 +1,10 @@
-\documentclass[lecture,12pt,]{pcms-l}
-\input preamble.tex
-\input header.tex
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\begin{document}
+% \documentclass[lecture,12pt,]{pcms-l}
+% \input preamble.tex
+% \input header.tex
+%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% \begin{document}
 \mainmatter
 \setcounter{page}{1}
 
@@ -44,7 +44,7 @@ Brownian motion is represented by $B$.
 
 Discrete time stocahstic dynamics in continuous space are given by
 $$\xi_{t+1} = f(\xi_t,u_t) + \sigma(\xi_t)w_t.$$
-Random noise is represented by $w$. *** Was that really a $\sigma$ Prof wrote on the board? Is that the variance of the measurements of state variables? ***
+Random noise is represented by $w$.
 
 Discrete time stocahstic dynamics in discrete space are given by
 $$\xi_t \in \mathbb{X}.$$
@@ -94,7 +94,7 @@ Taking a fair coin and tossing it twice in a row has four possible outcomes that
 \Sigma_1 &= \left\lbrace \Omega, \emptyset, \left\lbrace (H,H), (H,T) \right\rbrace, \left\lbrace (T,H), (T,T) \right\rbrace \right\rbrace \\
 \Sigma_2 &= P(\Omega) = \textnormal{ power set } = \textnormal{ collection of \textit{all} subsets of } \Omega.
 \end{align*}
-The subscripts of $\Sigma$ represent discrete time steps. It can be seen that the different $\Sigma$ time steps represent our knowledge about the system at each step. For example, $\Sigma_1$ is our knowledge of the system after one toss of the coin and the possible events contain the cases for times when heads was the first measurement and for times when tails was the first measurement. *** Double-check that this explanation is accurate. ***
+The subscripts of $\Sigma$ represent discrete time steps. It can be seen that the different $\Sigma$ time steps represent our knowledge about the system at each step. For example, $\Sigma_1$ is our knowledge of the system after one toss of the coin and the possible events contain the cases for times when heads was the first measurement and for times when tails was the first measurement.
 \end{example}
 $\lozenge$
 
@@ -109,7 +109,7 @@ X(H,H) &= 2 \\
 X(H,T) &= X(T,H) = 0 \\
 X(T,T) &= -2
 \end{align*}
-See Figure \ref{fig:01set2nat}. Let $X$ be a R.V. on $(\Omega, \Sigma_2)$ then we can say that $X^{-1}(\lbrace 0,2 \rbrace) = ??$. Note that $X$ is \textit{not} a R.V. on $(\Omega, \Sigma_1)$. *** Ask for more details about this part. The question marks were not written down on the board. *** After the first toss we know which subset  we're in and after the second toss we know everything about the system.
+See Figure \ref{fig:01set2nat}. Let $X$ be a R.V. on $(\Omega, \Sigma_2)$ then we can say that $X^{-1}(\lbrace 0,2 \rbrace) = ??$. Note that $X$ is \textit{not} a R.V. on $(\Omega, \Sigma_1)$. After the first toss we know which subset  we're in and after the second toss we know everything about the system.
 \end{example}
 $\lozenge$
 \begin{figure}[ht!]
@@ -224,6 +224,6 @@ f(x) = \frac{1}{(2\pi)^{n/2}|C|^{1/2}}e^{-\frac{1}{2}(x-m)^TC^{-1}(x-m)}
 The Gaussian distribution is given by (\ref{eq:gaussDist}).
 
 
-\end{document}
+% \end{document}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
