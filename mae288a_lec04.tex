@@ -134,9 +134,9 @@ Recall that the dynamics and initial conidtions of the system are given by
 \xi_0 &= x
 \end{align*}
 The cost function is
-$$J(s,x,w) = E[\sum_{t=s}^{T-1}l(\xi_t,u_t) + \phi(\xi_t)]$$
+$$J(s,x,w) = E\left[\sum_{t=s}^{T-1}l(\xi_t,u_t) + \phi(\xi_T)\right]$$
 with $u_t=w_t(\xi_t)$. The value function is given by
-$$V(\Delta,x) = \inf_{w\in M_{s,T-1}} j(s,x,w)$$
+$$V(s,x) = \inf_{w\in M_{s,T-1}} J(s,x,w)$$
 Also,
 $$\tilde{M}_{\tau_1,\tau_2} = \{\{w_r\}_{r=\tau_1}^{\tau_2} | w_r:\{\xi_r\}_{r=\tau_1}^{\tau_2}\} \to u\in\mathcal{U}$$
 This holds $\forall r\in\tau_1,\ldots,\tau_2 \text{ s.t. } \forall t\in\tau_1,\ldots,\tau_2, ~\forall \xi, ~\forall \eta$. Then,

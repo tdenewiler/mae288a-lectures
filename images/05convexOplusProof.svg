@@ -65,7 +65,7 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.979899"
-     inkscape:cx="407.96089"
+     inkscape:cx="344.57382"
      inkscape:cy="786.63323"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
@@ -136,13 +136,13 @@
     <text
        xml:space="preserve"
        style="font-size:24px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Liberation Serif;-inkscape-font-specification:Liberation Serif Italic"
-       x="435.5127"
+       x="437.63043"
        y="168.43361"
        id="text3262"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan3264"
-         x="435.5127"
+         x="437.63043"
          y="168.43361">f<tspan
    style="font-size:12px"
    id="tspan3266"
@@ -155,11 +155,11 @@
        sodipodi:linespacing="125%"
        id="text3270"
        y="196.29076"
-       x="435"
+       x="436.60504"
        style="font-size:24px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Liberation Serif;-inkscape-font-specification:Liberation Serif Italic"
        xml:space="preserve"><tspan
          y="196.29076"
-         x="435"
+         x="436.60504"
          id="tspan3272"
          sodipodi:role="line">f<tspan
    id="tspan3274"
@@ -172,13 +172,13 @@
     <text
        xml:space="preserve"
        style="font-size:24px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Liberation Serif;-inkscape-font-specification:Liberation Serif Italic"
-       x="435.67676"
+       x="388.70465"
        y="138.67921"
        id="text3278"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan3280"
-         x="435.67676"
-         y="138.67921">g</tspan></text>
+         x="388.70465"
+         y="138.67921">epi{g}</tspan></text>
   </g>
 </svg>
