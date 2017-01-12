@@ -101,7 +101,7 @@ is a line segment from $x\to y$ as shown in Figure~\ref{fig:05convex}.
 \subfloat[Not a convex set.]{%
 \label{fig:05notConvexSet}\includegraphics[width=0.3\textwidth]{images/05notConvexSet}
 }
-\caption{\subref{fig:05convexSet} Example of a convex set and \subref{fig:05notConvexSet} example of a set that is not convex.}
+\caption{\protect\subref{fig:05convexSet} Example of a convex set and \protect\subref{fig:05notConvexSet} example of a set that is not convex.}
 \label{fig:05convex}
 \end{figure}
 
@@ -134,7 +134,7 @@ Since $f$ is convex we know that $\text{epi}[f]$ is a convex set such that
 &\left(\begin{array}{c} x \\ f(x) \end{array}\right),~\left(\begin{array}{c} y \\ f(y) \end{array}\right) \in\text{epi}[f] \\
 &\therefore\lambda\left(\begin{array}{c} x \\ f(x) \end{array}\right) + (1-\lambda)\left(\begin{array}{c} y \\ f(y) \end{array}\right) \in\text{epi}[f] \\
 &\Rightarrow\left(\begin{array}{c} \lambda x+(1-\lambda)y \\ \lambda f(x) + (1-\lambda)f(y) \end{array}\right) \in\text{epi}[f] \\
-&\Rightarrow\lambdaf(x) + (1-\lambda) f (y) \geq~f (\lambda~x + (1-\lambda) y)
+&\Rightarrow\lambda~f (x) + (1-\lambda) f (y) \geq~f (\lambda~x + (1-\lambda) y)
 \end{align*}
 \end{proof}
 
