@@ -1,17 +1,15 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\mainmatter
+\mainmatter%
 \setcounter{page}{1}
 
 \lectureseries[\course]{\course}
 
-% I missed this lecture and used Gideon's notes.
+% I missed this lecture and used Gideon Prior's notes.
 \renewcommand{\scribe}{Thomas Denewiler, Gideon Prior}
 \auth[\lecAuth]{Lecturer: \lecAuth\\ Scribe: \scribe}
 \renewcommand{\scribe}{Thomas Denewiler}
 \date{October 8, 2009}
 
-\setaddress
+\setaddress%
 
 % the following hack starts the lecture numbering at 4
 \setcounter{lecture}{3}
@@ -27,11 +25,13 @@ Recall that the dynamics and initial conidtions of the system are given by
 \end{align*}
 The cost function is
 $$J(s,x,w) = E\left[\sum_{t=s}^{T-1}l(\xi_t,u_t) + \phi(\xi_T)\right]$$
-with $u_t=w_t(\xi_t)$. The value function is given by
+with $u_t=w_t(\xi_t)$.
+The value function is given by
 $$V(s,x) = \inf_{w\in M_{s,T-1}} J(s,x,w)$$
 Also,
-$$\tilde{M}_{\tau_1,\tau_2} = \{\{w_r\}_{r=\tau_1}^{\tau_2} | w_r:\{\xi_r\}_{r=\tau_1}^{\tau_2}\} \to u\in\mathcal{U}$$
-This holds $\forall r\in\tau_1,\ldots,\tau_2 \text{ s.t. } \forall t\in\tau_1,\ldots,\tau_2, ~\forall \xi, ~\forall \eta$. Then,
+$$\tilde{M}_{\tau_1,\tau_2} = \{\{w_r\}_{r=\tau_1}^{\tau_2} | w_r:\{\xi_r\}_{r=\tau_1}^{\tau_2}\} \to u\in\mathcal{U}$$% chktex 3
+This holds $\forall r\in\tau_1,\ldots,\tau_2 \text{~s.t.~} \forall t\in\tau_1,\ldots,\tau_2,~\forall \xi,~\forall \eta$.
+Then,
 $$w_r(\xi_\tau,\xi_{\tau+1},\ldots,\xi_t,\eta_t,\eta_{t-1},\ldots,\eta_{\tau_2}) = w_r(\xi_{\tau_1},\xi_{\tau_1+1},\xi_{\tau_2})$$
 These are non-anticipative controls and are known as dynamic programming (DP).
 
@@ -40,8 +40,8 @@ Let $A\subseteq\mathbb{R}$ and $\min A$ is the smallest element of $A$.
 
 \begin{example}
 \begin{align*}
-&\min([2.7,\pi)) = 2.7 \\
-&\min((2.7,\pi)) \text{ DNE}
+&\min([2.7,\pi)) = 2.7 \\% chktex 9
+&\min((2.7,\pi)) \text{~DNE}
 \end{align*}
 where DNE means ``does not exist''.
 \end{example}
@@ -51,12 +51,14 @@ $\lozenge$
 Infinum $\doteq$ the greatest lower bound.
 \end{definition}
 
-$z = \inf A$ iff $y\leq z$ $\forall x\in A$ and $y>z\to\exists x\in A: y>x$. In english this means
+$z = \inf A$ iff $y\leq z$ $\forall x\in A$ and $y>z\to\exists x\in A: y>x$.
+In english this means
 \begin{itemize}
 \item The infinum is smaller than anything in $A$.
 \item Add anything to the infinum and there is something in $A$ larger than it.
 \end{itemize}
-$\inf A = \min A$ if $\min A$ exists. And yet
+$\inf A = \min A$ if $\min A$ exists.
+And yet
 \begin{align*}
 \inf((2.7,\pi)) &= 2.7 \\
 \inf\left(\left\lbrace\frac{1}{n}\right\rbrace_{n=1}^\infty\right) &= 0
@@ -69,31 +71,35 @@ Note the the supremum is the opposite, or the least upper bound.
 \xi_0 &= 0 \\
 U_t&\in\{-1,1\}
 \end{align*}
-The last expression means that $U_t$ is either $1$ or $-1$ and is not convex. Minimize
+The last expression means that $U_t$ is either $1$ or $-1$ and is not convex.
+Minimize
 $$\int_0^T|\xi_t|^2 + |u_t|^2dt = \int_0^T|\xi_t|^2 + 1dt$$
-See Figure \ref{fig:04signal} to see $u_t$. This leads to
+See Figure~\ref{fig:04signal} to see $u_t$.
+This leads to
 \begin{align*}
-|\xi_t| &\leq \frac{T}{2N} ~\forall t \\
-\Rightarrow \int_0^T|\xi_t|^2+|u_t|^2dt &\leq \int_0^t\frac{T^2}{(2N)^2} + 1 \to 1 \text{ as } N\to\infty
+|\xi_t| &\leq \frac{T}{2N}~\forall t \\
+\Rightarrow \int_0^T|\xi_t|^2+|u_t|^2dt &\leq \int_0^t\frac{T^2}{{(2N)}^2} + 1 \to 1 \text{~as~} N\to\infty
 \end{align*}
 Therefore, the infinum of $\int_0^T|\xi_t|^2+|N_t|^2dt = 1$ but its minimum does not exist.
 $\lozenge$
 \end{example}
 
 \begin{figure}[ht!]
-	\centering
-	\includegraphics[width=.4\textwidth]{images/04signal}
-	\caption{Original signal in red and integrated signal in blue.}
-	\label{fig:04signal}
+\centering
+\includegraphics[width=.4\textwidth]{images/04signal}
+\caption{Original signal in red and integrated signal in blue.}
+\label{fig:04signal}
 \end{figure}
 
 \section{Dynamic Programming}
-What is the cheapest flight from San Diego to Boston with two stops or less when the allowable cities for stops are San Diego, Los Angeles, Chicago, Atlanta, New York City and Boston? The state space is
-$$\{\text{San Diego, Los Angeles, Chicago, Atlanta, New York City, Boston}\}$$
-Each flight from one city to a different city has a cost. Let $C(x,y)$ be the cost from city $x$ to city $y$.
+What is the cheapest flight from San Diego to Boston with two stops or less when the allowable cities for stops are San Diego, Los Angeles, Chicago, Atlanta, New York City and Boston?
+The state space is
+$$\{\text{San Diego,~Los~Angeles,~Chicago,~Atlanta,~New~York~City,~Boston}\}$$
+Each flight from one city to a different city has a cost.
+Let $C(x,y)$ be the cost from city $x$ to city $y$.
 
 \subsection{Dynamic Programming Principle}
-$$\min C\{\text{SAN, BOS}\} = \min\{C(SAN,x) + \min(\text{1 stop cost from }x\to\text{BOS}\}$$
+$$\min C\{\text{SAN,~BOS}\} = \min\{C(SAN,x) + \min(\text{1~stop~cost~from }x\to\text{BOS}\}$$
 Let $V(t,x) =$ min cost from $x$ at stop $t$ to Boston.
 \begin{align*}
 V(3,x) &= \begin{cases} 0, & x=\text{BOS} \\ \infty, & x\neq\text{BOS} \end{cases} \\
@@ -101,7 +107,8 @@ V(2,x) &= C(x,\text{BOS}) \\
 V(1,x) &= \min[C(x,y)+V(2,y)] \\
 V(0,x) &= \min[C(x,y)+V(1,y)]
 \end{align*}
-Recall that $\xi_{t+1}=f(\xi_t,w_t)$ where we are ignoring control for the moment. The conditional expectation is then
+Recall that $\xi_{t+1}=f(\xi_t,w_t)$ where we are ignoring control for the moment.
+The conditional expectation is then
 $$E[\{\xi_{t+1},\xi_{t+2},\ldots,\xi_T\}|\xi_t=y] = E[f(y,f(y,w_t)),f(f(y,w_t),w_{t+1}),\ldots]$$
 This represents integration over the $w$'s.
 \begin{align*}
@@ -111,39 +118,50 @@ This represents integration over the $w$'s.
 \end{align*}
 
 \begin{theorem}{Dynamic Programming Principle.}
-Also called Finite Time Horizon DPP. Let $t\in~]s,T-1[$. Then
+Also called Finite Time Horizon DPP\@.
+Let $t\in~]s,T-1[$.% chktex 9
+Then
 \begin{align}
 \label{eq:dpp}
-V(s,x) = \inf_{\mu\in\mathcal{M}_{]s,t-1[}}E\left\lbrace\sum_{r=s}^{t-1}l(\xi_r,w_r(\xi)) + V(t,\xi_t)\right\rbrace
+V(s,x) = \inf_{\mu\in\mathcal{M}_{]s,t-1[}}E\left\lbrace\sum_{r=s}^{t-1}l(\xi_r,w_r(\xi)) + V(t,\xi_t)\right\rbrace% chktex 9
 \end{align}
-The expectation taken over $w_s,\ldots,w_{t-1} = w_{]s,t-1[}$.
+The expectation taken over $w_s,\ldots,w_{t-1} = w_{]s,t-1[}$.% chktex 9
 \end{theorem}
 
 \begin{proof}
-The notation $]a,b[$ operator means greater than $a$ and less than $b$. Let $R(s,x) = $ right hand side of (\ref{eq:dpp}). For any $y\in\mathbb{R}^N$, by definition the value $V(t,y) = \inf_{\mu\in\mathcal{M}_{]t,T-1[}}$. This gives
-$$E_{w_{]t,T-1[}}\left\lbrace \sum_{r=k}^{T-1}l(\xi_r,\mu_r(\xi))+\phi(\xi_T)\right\rbrace$$
-Introduce the notation $x$ is $\epsilon$-optimal for $\inf A$ if $x\in A, x\leq\inf A+\epsilon$. Let $\mu^{\epsilon,y}\in\tilde{M}_{]t,T-1[}$ be $\epsilon$-optimal, then
+The notation $]a,b[$ operator means greater than $a$ and less than $b$.
+Let $R(s,x) = $ right hand side of (\ref{eq:dpp}).
+For any $y\in\mathbb{R}^N$, by definition the value $V(t,y) = \inf_{\mu\in\mathcal{M}_{]t,T-1[}}$.% chktex 9
+This gives
+$$E_{w_{]t,T-1[}}\left\lbrace \sum_{r=k}^{T-1}l(\xi_r,\mu_r(\xi))+\phi(\xi_T)\right\rbrace$$% chktex 9
+Introduce the notation $x$ is $\epsilon$-optimal for $\inf A$ if $x\in A, x\leq\inf A+\epsilon$.
+Let $\mu^{\epsilon,y}\in\tilde{M}_{]t,T-1[}$ be $\epsilon$-optimal, then% chktex 9
 \begin{align}
 \label{eq:dppvalue}
-V(t,y) + \epsilon\geq E_{w_{]t,T-1[}}\left\lbrace \sum_{r=t}^{T-1}l(\xi_r^{\epsilon,y}, \mu_r^{\epsilon,y}(\xi^{\epsilon,y}) + \phi(\xi_T^{\epsilon,y})\right\rbrace
+V(t,y) + \epsilon\geq E_{w_{]t,T-1[}}\left\lbrace \sum_{r=t}^{T-1}l(\xi_r^{\epsilon,y}, \mu_r^{\epsilon,y}(\xi^{\epsilon,y}) + \phi(\xi_T^{\epsilon,y})\right\rbrace% chktex 9
 \end{align}
-with $\xi^{\epsilon,y}$ satisfying the dynamics and $\xi_t^{\epsilon,y} = y$ and control $\mu^{\epsilon,y}$. Substitute (\ref{eq:dppvalue}) into (\ref{eq:dpp}), then
+with $\xi^{\epsilon,y}$ satisfying the dynamics and $\xi_t^{\epsilon,y} = y$ and control $\mu^{\epsilon,y}$.
+Substitute (\ref{eq:dppvalue}) into (\ref{eq:dpp}), then
 \begin{align*}
-R(s,x) \geq &\inf_{w\in\tilde{\mathcal{M}}_{]s,t-1[}} E_{w_{]s,t-1[}}\left\lbrace \sum_{r=s}^{T-1}l(\xi_r,w_r(\xi))\right\rbrace \\
+R(s,x) \geq &\inf_{w\in\tilde{\mathcal{M}}_{]s,t-1[}} E_{w_{]s,t-1[}}\left\lbrace \sum_{r=s}^{T-1}l(\xi_r,w_r(\xi))\right\rbrace \\% chktex 9
 &+ E\left\lbrace \sum_{r=t}^{T-1}l(\xi^{\epsilon,y},w^{\epsilon,y}(\xi^{\epsilon,y})\right\rbrace + \phi(\xi_T^{\epsilon,y}) - \epsilon
 \end{align*}
 Let
-$$\tilde{\mu}(\xi) = \begin{cases} \bar{w}_2(\xi_{]s,t-1[}, & r\leq t-1 \\ w_r^{\epsilon,\xi_\tau}(\xi_{]t,T-1[}), & r\geq t \end{cases}$$
-\textit{Exercise:} Show $\tilde{\mu}\in\tilde{\mathcal{M}}_{]s,T-1[}$.
+$$\tilde{\mu}(\xi) = \begin{cases} \bar{w}_2(\xi_{]s,t-1[}, & r\leq t-1 \\ w_r^{\epsilon,\xi_\tau}(\xi_{]t,T-1[}), & r\geq t \end{cases}$$% chktex 9
+\textit{Exercise:} Show $\tilde{\mu}\in\tilde{\mathcal{M}}_{]s,T-1[}$.% chktex 9
 
 Then we have
-$$R(s,x) \geq \cdots = E_{\mu_{]s,T-1[}}\left\lbrace\sum_{r=s}^{T-1} l(\tilde{\xi}_r,\tilde{w}_r(\tilde{\xi})) + \phi(\tilde{\xi}_r)\right\rbrace - 2\epsilon$$
-where $\tilde{\xi}$ satisfies the dynamics, $\tilde{\xi}_s=x$, and is driven by $\tilde{\mu}$. This leads to
+$$R(s,x) \geq \cdots = E_{\mu_{]s,T-1[}}\left\lbrace\sum_{r=s}^{T-1} l(\tilde{\xi}_r,\tilde{w}_r(\tilde{\xi})) + \phi(\tilde{\xi}_r)\right\rbrace - 2\epsilon$$% chktex 9
+where $\tilde{\xi}$ satisfies the dynamics, $\tilde{\xi}_s=x$, and is driven by $\tilde{\mu}$.
+This leads to
 $$R(s,x) \geq J(s,x,\tilde{w}) - 2\epsilon \geq V(s,x)-2\epsilon$$
-This is true $\forall \epsilon>0\Rightarrow R(s,x)\geq V(s,x)$. Note that if $A\geq B-\epsilon ~\forall \epsilon > 0$, $A,B$ independent of $\epsilon$, then $A\geq B$. This proof can be finished as an exercise.
+This is true $\forall \epsilon>0\Rightarrow R(s,x)\geq V(s,x)$.
+Note that if $A\geq B-\epsilon~\forall \epsilon > 0$, $A,B$ independent of $\epsilon$, then $A\geq B$.
+This proof can be finished as an exercise.
 \end{proof}
 
-DPP is ``universally'' true. This needs to be shown for particular problem classes.
+DPP is ``universally'' true.
+This needs to be shown for particular problem classes.
 
 \begin{example}
 One step forward in time.
@@ -151,12 +169,13 @@ One step forward in time.
 \label{eq:dpe}
 t &= s+1 \nonumber \\
 V(s,x) &= \inf_{w\in\tilde{\mathcal{M}}} E_{w_s}\left\lbrace l(\xi_s,w_s(\xi_s)) + V(s+1,\xi_{s+1})\right\rbrace \nonumber \\
-&= \inf_{w\in\tilde{\mathcal{M}}_{s,s}} \left\lbrace l(x,w_s(x)) + E_{w_s}[V(s+1,f(x,w_s(x),w_s)]\right\rbrace \nonumber \\
+&= \inf_{w\in\tilde{\mathcal{M}}_{s,s}} \left\lbrace l(x,w_s(x)) + E_{w_s}[V(s+1,f(x,w_s(x),w_s))]\right\rbrace \nonumber \\
 &= \inf_{u\in\mathcal{V}} \left\lbrace l(x,u) + E[V(s+1,f(x,u,w_s))]\right\rbrace \nonumber \\
-&\qquad [\text{in integral form}] \nonumber \\
+&\qquad [\text{in~integral~form}] \nonumber \\
 V(s,x) &= \inf_{u\in U} \left\lbrace l(x,u) + \int_{\mathbb{R}}V(s+1)f(x,u,w))P_{w_s}(w)dw\right\rbrace
 \end{align}
-Equation (\ref{eq:dpe}) is known as the Dynamic Programming Equation (DPE). For the third equality we used the definition $\xi_s \doteq x$.
+Equation (\ref{eq:dpe}) is known as the Dynamic Programming Equation (DPE).
+For the third equality we used the definition $\xi_s \doteq x$.
 $\lozenge$
 \end{example}
 
@@ -171,6 +190,4 @@ V(T-1,x) &= \cdots \\
 
 This gives the optimal control (if minimizer exists) as
 $$\mu_s \in \arg\min_{u} \left\lbrace l(x,u) + E[u(s+1,f(x,u,w_s))]\right\rbrace = \bar{\mu}_s(x)$$
-Thus, we can see that optimal control is indeed a feedback on the current state.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Thus, we can see that optimal control is indeed a feedback on the current state.% chktex 17
