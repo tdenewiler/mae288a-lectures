@@ -119,17 +119,17 @@ This represents integration over the $w$'s.
 
 \begin{theorem}{Dynamic Programming Principle.}
 Also called Finite Time Horizon DPP\@.
-Let $t\in~\]s,T-1\[$.% chktex 9
+Let $t\in~\interval[open]{s}{T-1}$.
 Then
 \begin{align}
 \label{eq:dpp}
-V(s,x) = \inf_{\mu\in\mathcal{M}_{]s,t-1[}}E\left\lbrace\sum_{r=s}^{t-1}l(\xi_r,w_r(\xi)) + V(t,\xi_t)\right\rbrace% chktex 9
+V(s,x) = \inf_{\mu\in\mathcal{M}_{]s,t-1[}}E\left\lbrace\sum_{r=s}^{t-1}l(\xi_r,w_r(\xi)) + V(t,\xi_t)\right\rbrace % chktex 9
 \end{align}
-The expectation taken over $w_s,\ldots,w_{t-1} = w_{]s,t-1[}$.% chktex 9
+The expectation taken over $w_s,\ldots,w_{t-1} = w_{]s,t-1[}$. % chktex 9
 \end{theorem}
 
 \begin{proof}
-The notation $\]a,b\[$ operator means greater than $a$ and less than $b$.
+The notation $\interval[open]{a}{b}$ operator means greater than $a$ and less than $b$.
 Let $R(s,x) = $ right hand side of (\ref{eq:dpp}).
 For any $y\in\mathbb{R}^N$, by definition the value $V(t,y) = \inf_{\mu\in\mathcal{M}_{]t,T-1[}}$.% chktex 9
 This gives

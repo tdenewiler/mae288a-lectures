@@ -19,7 +19,7 @@
         morekeywords=[2]{on, off, interp},
         % Put user defined functions here
         morekeywords=[3]{FindESS},
-        morecomment=[l][\color{Blue}]{...},
+        morecomment=[l][\color{Blue}]{...},% NOLINT
         numbers=left,
         firstnumber=1,
         numberstyle=\tiny\color{Blue},
@@ -31,7 +31,7 @@
 \newcommand{\scribe}{Thomas Denewiler}
 \newcommand{\authEmail}{wmceneaney@ucsd.edu}
 \newcommand{\scribeEmail}{tdenewiler@gmail.com}
-\newcommand{\course}{MAE 288A: Optimal Control}
+\newcommand{\course}{MAE 288A:\@Optimal Control}
 
 \address{Department of Mechanical and Aerospace Engineering, University of California, San Diego}
 
@@ -39,14 +39,13 @@
 \newcommand{\mailto}[2]{\href{mailto:#1}{#2}}
 
 % These commands set the document properties for the PDF output. Needs the hyperref package.
-\hypersetup
-{
+\hypersetup{%
     colorlinks,
     linkcolor={black},
     citecolor={black},
     filecolor={black},
     urlcolor={black},
-    pdfauthor={\scribe <\mailto{\scribeEmail}{\scribeEmail}>},
+    pdfauthor={\scribe<\mailto{\scribeEmail}{\scribeEmail}>},
     pdfsubject={\course},
 	pdftitle={MAE 288A Lecture Notes},
     pdfkeywords={UC San Diego, Optimal Control, Dynamic Programming},
@@ -65,18 +64,18 @@
 % The second parameter is the width of the figure normalized to column width
 %   (e.g. 0.5 for half a column, 0.75 for 75% of the column)
 % The third parameter is the caption.
-\newcommand{\scalefig}[3]{
+\newcommand{\scalefig}[3]{%
   \begin{figure}[ht!]
     % Requires \usepackage{graphicx}
     \centering
-	\fbox{
+	\fbox{%
 	    \includegraphics[width=#2\columnwidth]{#1}
 	}
     %%% I think \captionwidth (see above) can go away as long as
     %%% \centering is above
     %\captionwidth{#2\columnwidth}%
     \caption{#3}
-    \label{#1}
+    \label{#1} % NOLINT
   \end{figure}}
 
 % Includes a MATLAB script.
@@ -93,7 +92,7 @@
      {\bfseries}% Thm head font
      {}%        Punctuation after thm head
      {\newline}%     Space after thm head (\newline = linebreak)
-     {\thmname{#1}\thmnumber{ #2}\thmnote{ #3}}%         Thm head spec
+     {\thmname{#1}\thmnumber{#2}\thmnote{#3}}% Thm head spec
 
    \theoremstyle{example}
    \newtheorem{example}{Example}[section]
@@ -105,7 +104,7 @@
      {\bfseries}% Thm head font
      {}%        Punctuation after thm head
      {\newline}%     Space after thm head (\newline = linebreak)
-     {\thmname{#1}\thmnumber{ #2}\thmnote{ #3}}%         Thm head spec
+     {\thmname{#1}\thmnumber{#2}\thmnote{#3}}% Thm head spec
 
    \theoremstyle{corollary}
    \newtheorem{corollary}{Corollary}[section]
@@ -117,7 +116,7 @@
      {\bfseries}% Thm head font
      {}%        Punctuation after thm head
      {\newline}%     Space after thm head (\newline = linebreak)
-     {\thmname{#1}\thmnumber{ #2}\thmnote{ #3}}%         Thm head spec
+     {\thmname{#1}\thmnumber{#2}\thmnote{#3}}% Thm head spec
 
    \theoremstyle{proposition}
    \newtheorem{proposition}{Proposition}[section]
