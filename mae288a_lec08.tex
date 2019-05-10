@@ -41,7 +41,7 @@ Assume that there exists $M<\infty$ such that $|l(x,u)|\leq M~\forall x,u$.
 Then a bounded function is
 \begin{align*}
 \epsilon&>0 \exists \delta>0 \text{~s.t.~} |l(x,u)-l(z,u)|<\epsilon~\forall x,z\in\mathbb{R}^n \text{~s.t.~} |x-z|<\delta \\
-\epsilon&>0 \exists \delta>0 \text{~s.t.~} |F(x,u,w)-F(z,u,w|<\epsilon \\
+\epsilon&>0 \exists \delta>0 \text{~s.t.~} |F(x,u,w)-F(z,u,w)|<\epsilon \\
 &\qquad\qquad~\forall u\in\mathcal{U},w\in\mathbb{R}^n,~\forall x,z \text{~s.t.~} |x-z|<\delta
 \end{align*}
 
@@ -82,7 +82,7 @@ Let $F,H:\mathbb{X}\to\mathbb{R}$, then $\mathbb{X}$ is a normed vector space.
 Let $V,\tilde{V}\in\mathbb{Y}$, we need to show that $||\mathcal{G}[V]-\mathcal{G}[\tilde{V}]||_\infty \leq ||V-\tilde{V}||_\infty$.
 \begin{align*}
 &|V(f(x,u,w)) - \tilde{V}(f(x,u,w))| \leq ||V-\tilde{V}||_\infty \\
-\Rightarrow &E[|V(f(x,u,w)) - \tilde{V}(f(x,u,w))| \leq ||V-\tilde{V}||_\infty \\
+\Rightarrow &E[|V(f(x,u,w)) - \tilde{V}(f(x,u,w))|] \leq ||V-\tilde{V}||_\infty \\
 \Rightarrow &|l(x,u)+\alpha E[V(f(x,u,w))] - l(x,u)+\alpha E[\tilde{V}(f(x,u,w))]| \\
 &\qquad \leq \alpha||V-\tilde{V}||_\infty~\forall x,u
 \end{align*}

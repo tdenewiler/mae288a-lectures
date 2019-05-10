@@ -1,7 +1,10 @@
 *.aux
+*.bbl
+*.blg
 *.log
 *.out
 *.pdf
 *.swp
 *.swo
 *~
+statick_output
