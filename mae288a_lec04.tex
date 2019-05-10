@@ -99,7 +99,7 @@ Each flight from one city to a different city has a cost.
 Let $C(x,y)$ be the cost from city $x$ to city $y$.
 
 \subsection{Dynamic Programming Principle}
-$$\min C\{\text{SAN,~BOS}\} = \min\{C(SAN,x) + \min(\text{1~stop~cost~from }x\to\text{BOS}\}$$
+$$\min C\{\text{SAN,~BOS}\} = \min\{C(SAN,x) + \min(\text{1~stop~cost~from }x\to\text{BOS})\}$$
 Let $V(t,x) =$ min cost from $x$ at stop $t$ to Boston.
 \begin{align*}
 V(3,x) &= \begin{cases} 0, & x=\text{BOS} \\ \infty, & x\neq\text{BOS} \end{cases} \\
@@ -119,7 +119,7 @@ This represents integration over the $w$'s.
 
 \begin{theorem}{Dynamic Programming Principle.}
 Also called Finite Time Horizon DPP\@.
-Let $t\in~]s,T-1[$.% chktex 9
+Let $t\in~\]s,T-1\[$.% chktex 9
 Then
 \begin{align}
 \label{eq:dpp}
@@ -129,7 +129,7 @@ The expectation taken over $w_s,\ldots,w_{t-1} = w_{]s,t-1[}$.% chktex 9
 \end{theorem}
 
 \begin{proof}
-The notation $]a,b[$ operator means greater than $a$ and less than $b$.
+The notation $\]a,b\[$ operator means greater than $a$ and less than $b$.
 Let $R(s,x) = $ right hand side of (\ref{eq:dpp}).
 For any $y\in\mathbb{R}^N$, by definition the value $V(t,y) = \inf_{\mu\in\mathcal{M}_{]t,T-1[}}$.% chktex 9
 This gives
@@ -138,13 +138,13 @@ Introduce the notation $x$ is $\epsilon$-optimal for $\inf A$ if $x\in A, x\leq\
 Let $\mu^{\epsilon,y}\in\tilde{M}_{]t,T-1[}$ be $\epsilon$-optimal, then% chktex 9
 \begin{align}
 \label{eq:dppvalue}
-V(t,y) + \epsilon\geq E_{w_{]t,T-1[}}\left\lbrace \sum_{r=t}^{T-1}l(\xi_r^{\epsilon,y}, \mu_r^{\epsilon,y}(\xi^{\epsilon,y}) + \phi(\xi_T^{\epsilon,y})\right\rbrace% chktex 9
+V(t,y) + \epsilon\geq E_{w_{]t,T-1[}}\left\lbrace \sum_{r=t}^{T-1}l(\xi_r^{\epsilon,y}, \mu_r^{\epsilon,y}(\xi^{\epsilon,y})) + \phi(\xi_T^{\epsilon,y})\right\rbrace% chktex 9
 \end{align}
 with $\xi^{\epsilon,y}$ satisfying the dynamics and $\xi_t^{\epsilon,y} = y$ and control $\mu^{\epsilon,y}$.
 Substitute (\ref{eq:dppvalue}) into (\ref{eq:dpp}), then
 \begin{align*}
 R(s,x) \geq &\inf_{w\in\tilde{\mathcal{M}}_{]s,t-1[}} E_{w_{]s,t-1[}}\left\lbrace \sum_{r=s}^{T-1}l(\xi_r,w_r(\xi))\right\rbrace \\% chktex 9
-&+ E\left\lbrace \sum_{r=t}^{T-1}l(\xi^{\epsilon,y},w^{\epsilon,y}(\xi^{\epsilon,y})\right\rbrace + \phi(\xi_T^{\epsilon,y}) - \epsilon
+&+ E\left\lbrace \sum_{r=t}^{T-1}l(\xi^{\epsilon,y},w^{\epsilon,y}(\xi^{\epsilon,y}))\right\rbrace + \phi(\xi_T^{\epsilon,y}) - \epsilon
 \end{align*}
 Let
 $$\tilde{\mu}(\xi) = \begin{cases} \bar{w}_2(\xi_{]s,t-1[}, & r\leq t-1 \\ w_r^{\epsilon,\xi_\tau}(\xi_{]t,T-1[}), & r\geq t \end{cases}$$% chktex 9
