@@ -27,26 +27,49 @@ Optimal control is concerned with several types of dynamic systems:
 
 \subsection{Dynamics Representations}
 Continuous time deterministic dynamics are given by
-$$\dot\xi_t = f(\xi_t,u_t) \textnormal{, where } \xi_0 = x \in \mathbb{R}^n.$$
+
+\begin{equation*}
+\dot\xi_t = f(\xi_t,u_t) \textnormal{, where } \xi_0 = x \in \mathbb{R}^n.
+\end{equation*}
+
 The state is represented as $\xi(t)$ and the control input is represented by $u(t)$.
 
 Discrete time deterministic dynamics are generally known as ``classical optimal control'' dynamics and are given by
-$$\xi_{t+1} = f(\xi_t,u_t).$$
+
+\begin{equation*}
+\xi_{t+1} = f(\xi_t,u_t).
+\end{equation*}
 
 Continuous time stochastic dynamics are given by
-$$d\xi_t = f(\xi_t,u_t)dt + \sigma(\xi_t)dB_t.$$
+
+\begin{equation*}
+d\xi_t = f(\xi_t,u_t)dt + \sigma(\xi_t)dB_t.
+\end{equation*}
+
 Brownian motion is represented by $B$.
 
 Discrete time stocahstic dynamics in continuous space are given by
-$$\xi_{t+1} = f(\xi_t,u_t) + \sigma(\xi_t)w_t.$$
+
+\begin{equation*}
+\xi_{t+1} = f(\xi_t,u_t) + \sigma(\xi_t)w_t.
+\end{equation*}
+
 Random noise is represented by $w$.
 
 Discrete time stocahstic dynamics in discrete space are given by
-$$\xi_t \in \mathbb{X}.$$
+
+\begin{equation*}
+\xi_t \in \mathbb{X}.
+\end{equation*}
+
 The finite space is represented by $\mathbb{X}$ and this can be thought of as $\mathbb{N}$ or the set of all natural numbers.
 
 The dynamics of games are given by
-$$\dot\xi_t = f(\xi_t,u_t,w_t).$$
+
+\begin{equation*}
+\dot\xi_t = f(\xi_t,u_t,w_t).
+\end{equation*}
+
 Player 1 is represented by $u$ and player 2 is represented by $w$.
 
 \section{Applications}
@@ -60,7 +83,7 @@ Machine repair/replacement & Vehicles        \\
 Sensor Allocation          & Chemical plants \\
 Job shops                  &                 \\
 Command and control        &                 \\ \bottomrule
-\end{tabular}
+\end{tabular}%
 \label{tab:applications}
 \end{table}
 
@@ -74,10 +97,14 @@ We will be using $\sigma$-algebra in this course where $\Sigma$ is a $\sigma$-al
 \end{align*}
 The term $A^C$ means the complement of $A$.
 
-\begin{example}
+\begin{example}%
 \label{ex:cointoss}
 Taking a fair coin and tossing it twice in a row has four possible outcomes that can be considered a set or a sample space such that
-$$\Omega = \left\lbrace (H,H), (H,T), (T,H), (T,T) \right\rbrace$$
+
+\begin{equation*}
+\Omega = \left\lbrace (H,H), (H,T), (T,H), (T,T) \right\rbrace
+\end{equation*}
+
 Each of the coin tosses can be represented by $A$, where $A$ is known as an event.
 Using $\sigma$-algebra we can say
 \begin{align*}
@@ -118,7 +145,7 @@ $\lozenge$
 \begin{figure}[ht!]
 \centering
 \includegraphics[width=.6\textwidth]{images/01set2nat}
-\caption{Members of a set being mapped to the natural numbers.}
+\caption{Members of a set being mapped to the natural numbers.}%
 \label{fig:01set2nat}
 \end{figure}
 
@@ -135,11 +162,17 @@ Given a R.V. $X$ then $F: \mathbb{R}^n \to [0,1]$ is the distribution function f
 More precisely we have $\textnormal{``}P(X \leq x)\textnormal{''} = P\left(\left\lbrace \omega \in \Omega | X(\omega) \leq x \right\rbrace \right)$.
 In this course inequalities are defined such that given $x, y \in \mathbb{R}^n$, if $x_i \leq y_i~\forall~i \in \lbrace 1,2,\ldots,n\rbrace$ then $x \leq y$.
 Using this definition we can restate the probability measure as
-$$P\left(\left\lbrace \omega \in \Omega | X_1(\omega) \leq x_1, X_2(\omega) \leq x_2, \ldots, X_n(\omega) \leq x_n \right\rbrace \right).\footnote{This theorem is found in the text ``Probability'' by A. N. Shiryayev.}$$
+
+\begin{equation*}
+P\left(\left\lbrace \omega \in \Omega | X_1(\omega) \leq x_1, X_2(\omega) \leq x_2, \ldots, X_n(\omega) \leq x_n \right\rbrace \right).\footnote{This theorem is found in the text ``Probability'' by A. N. Shiryayev.}
+\end{equation*}
 
 If $F: \mathbb{R} \to [0,1]$ behaves such that $\lim_{x \to -\infty} F(x) = 0$, $\lim_{x \to +\infty} F(x) = 1$, $F$ is monotonically increasing and $F$ is right continuous (defined as $\lim_{y \downarrow x} F(y) = F(x)$) then $F$ is a distribution function for a R.V.
 Also, $f:\mathbb{R}^n \to [0,\infty]$ is a density function corresponding to the distribution $F$ if
-$$F(x) = \int_{y \leq x} f(y)dy = \int_{-\infty}^{x_1} \int_{-\infty}^{x_2}\cdots \int_{-\infty}^{x_n} f(y_1,y_2,\ldots,y_n)dy_n\ldots dy_2dy_1.$$
+
+\begin{equation*}
+F(x) = \int_{y \leq x} f(y)dy = \int_{-\infty}^{x_1} \int_{-\infty}^{x_2}\cdots \int_{-\infty}^{x_n} f(y_1,y_2,\ldots,y_n)dy_n\ldots dy_2dy_1.
+\end{equation*}
 
 \begin{example}
 Given
@@ -182,14 +215,23 @@ $\lozenge$
 \section{Variance}
 \begin{example}
 Using (\ref{eq:probEg}) in $\mathbb{R}^1$ we have
-$$E[{(x - E(x))}^2] = \int_0^\infty {(x-1)}^2 e^x dx.$$
+
+\begin{equation*}
+E[{(x - E(x))}^2] = \int_0^\infty {(x-1)}^2 e^x dx.
+\end{equation*}
+
 Since $x$ is a R.V. and $E(x)$ is a scalar the variance is a scalar as well.
 $\lozenge$
 \end{example}
 
 \section{Covariance}
 \begin{example}
-Using (\ref{eq:probEg}) in $\mathbb{R}^n$ we have $$C_{ij} \doteq E[(x_i - E(x_i))(x_j - E(x_j))].$$
+Using (\ref{eq:probEg}) in $\mathbb{R}^n$ we have
+
+\begin{equation*}
+C_{ij} \doteq E[(x_i - E(x_i))(x_j - E(x_j))].
+\end{equation*}
+
 Note that $E(x_i) = \lbrace E(x) \rbrace_i$.
 $\lozenge$
 \end{example}
@@ -208,7 +250,7 @@ $\lozenge$
 \begin{figure}[ht!]
 \centering
 \includegraphics[width=.45\textwidth]{images/01box}
-\caption{The function $f(x)$.}
+\caption{The function $f(x)$.}%
 \label{fig:01box}
 \end{figure}
 

@@ -24,15 +24,31 @@ Recall that the dynamics and initial conidtions of the system are given by
 \xi_0 &= x
 \end{align*}
 The cost function is
-$$J(s,x,w) = E\left[\sum_{t=s}^{T-1}l(\xi_t,u_t) + \phi(\xi_T)\right]$$
+
+\begin{equation*}
+J(s,x,w) = E\left[\sum_{t=s}^{T-1}l(\xi_t,u_t) + \phi(\xi_T)\right]
+\end{equation*}
+
 with $u_t=w_t(\xi_t)$.
 The value function is given by
-$$V(s,x) = \inf_{w\in M_{s,T-1}} J(s,x,w)$$
+
+\begin{equation*}
+V(s,x) = \inf_{w\in M_{s,T-1}} J(s,x,w)
+\end{equation*}
+
 Also,
-$$\tilde{M}_{\tau_1,\tau_2} = \{\{w_r\}_{r=\tau_1}^{\tau_2} | w_r:\{\xi_r\}_{r=\tau_1}^{\tau_2}\} \to u\in\mathcal{U}$$% chktex 3
+
+\begin{equation*}
+\tilde{M}_{\tau_1,\tau_2} = \{\{w_r\}_{r=\tau_1}^{\tau_2} | w_r:\{\xi_r\}_{r=\tau_1}^{\tau_2}\} \to u\in\mathcal{U}% chktex 3
+\end{equation*}
+
 This holds $\forall r\in\tau_1,\ldots,\tau_2 \text{~s.t.~} \forall t\in\tau_1,\ldots,\tau_2,~\forall \xi,~\forall \eta$.
 Then,
-$$w_r(\xi_\tau,\xi_{\tau+1},\ldots,\xi_t,\eta_t,\eta_{t-1},\ldots,\eta_{\tau_2}) = w_r(\xi_{\tau_1},\xi_{\tau_1+1},\xi_{\tau_2})$$
+
+\begin{equation*}
+w_r(\xi_\tau,\xi_{\tau+1},\ldots,\xi_t,\eta_t,\eta_{t-1},\ldots,\eta_{\tau_2}) = w_r(\xi_{\tau_1},\xi_{\tau_1+1},\xi_{\tau_2})
+\end{equation*}
+
 These are non-anticipative controls and are known as dynamic programming (DP).
 
 \section{Infinum}
@@ -73,7 +89,11 @@ U_t&\in\{-1,1\}
 \end{align*}
 The last expression means that $U_t$ is either $1$ or $-1$ and is not convex.
 Minimize
-$$\int_0^T|\xi_t|^2 + |u_t|^2dt = \int_0^T|\xi_t|^2 + 1dt$$
+
+\begin{equation*}
+\int_0^T|\xi_t|^2 + |u_t|^2dt = \int_0^T|\xi_t|^2 + 1dt
+\end{equation*}
+
 See Figure~\ref{fig:04signal} to see $u_t$.
 This leads to
 \begin{align*}
@@ -87,19 +107,27 @@ $\lozenge$
 \begin{figure}[ht!]
 \centering
 \includegraphics[width=.4\textwidth]{images/04signal}
-\caption{Original signal in red and integrated signal in blue.}
+\caption{Original signal in red and integrated signal in blue.}%
 \label{fig:04signal}
 \end{figure}
 
 \section{Dynamic Programming}
 What is the cheapest flight from San Diego to Boston with two stops or less when the allowable cities for stops are San Diego, Los Angeles, Chicago, Atlanta, New York City and Boston?
 The state space is
-$$\{\text{San Diego,~Los~Angeles,~Chicago,~Atlanta,~New~York~City,~Boston}\}$$
+
+\begin{equation*}
+\{\text{San Diego,~Los~Angeles,~Chicago,~Atlanta,~New~York~City,~Boston}\}
+\end{equation*}
+
 Each flight from one city to a different city has a cost.
 Let $C(x,y)$ be the cost from city $x$ to city $y$.
 
 \subsection{Dynamic Programming Principle}
-$$\min C\{\text{SAN,~BOS}\} = \min\{C(SAN,x) + \min(\text{1~stop~cost~from }x\to\text{BOS})\}$$
+
+\begin{equation*}
+\min C\{\text{SAN,~BOS}\} = \min\{C(SAN,x) + \min(\text{1~stop~cost~from }x\to\text{BOS})\}
+\end{equation*}
+
 Let $V(t,x) =$ min cost from $x$ at stop $t$ to Boston.
 \begin{align*}
 V(3,x) &= \begin{cases} 0, & x=\text{BOS} \\ \infty, & x\neq\text{BOS} \end{cases} \\
@@ -109,7 +137,11 @@ V(0,x) &= \min[C(x,y)+V(1,y)]
 \end{align*}
 Recall that $\xi_{t+1}=f(\xi_t,w_t)$ where we are ignoring control for the moment.
 The conditional expectation is then
-$$E[\{\xi_{t+1},\xi_{t+2},\ldots,\xi_T\}|\xi_t=y] = E[f(y,f(y,w_t)),f(f(y,w_t),w_{t+1}),\ldots]$$
+
+\begin{equation*}
+E[\{\xi_{t+1},\xi_{t+2},\ldots,\xi_T\}|\xi_t=y] = E[f(y,f(y,w_t)),f(f(y,w_t),w_{t+1}),\ldots]
+\end{equation*}
+
 This represents integration over the $w$'s.
 \begin{align*}
 &\int_{w_{T-1}}\cdots\int_{w_{t+1}}\int_{w_t}f(y,f(y,w_t)),f(f(y,w_t),w_{t+1}),\ldots, \\
@@ -133,7 +165,11 @@ The notation $\interval[open]{a}{b}$ operator means greater than $a$ and less th
 Let $R(s,x) = $ right hand side of (\ref{eq:dpp}).
 For any $y\in\mathbb{R}^N$, by definition the value $V(t,y) = \inf_{\mu\in\mathcal{M}_{]t,T-1[}}$.% chktex 9
 This gives
-$$E_{w_{]t,T-1[}}\left\lbrace \sum_{r=k}^{T-1}l(\xi_r,\mu_r(\xi))+\phi(\xi_T)\right\rbrace$$% chktex 9
+
+\begin{equation*}
+E_{w_{]t,T-1[}}\left\lbrace \sum_{r=k}^{T-1}l(\xi_r,\mu_r(\xi))+\phi(\xi_T)\right\rbrace% chktex 9
+\end{equation*}
+
 Introduce the notation $x$ is $\epsilon$-optimal for $\inf A$ if $x\in A, x\leq\inf A+\epsilon$.
 Let $\mu^{\epsilon,y}\in\tilde{M}_{]t,T-1[}$ be $\epsilon$-optimal, then% chktex 9
 \begin{align}
@@ -147,14 +183,26 @@ R(s,x) \geq &\inf_{w\in\tilde{\mathcal{M}}_{]s,t-1[}} E_{w_{]s,t-1[}}\left\lbrac
 &+ E\left\lbrace \sum_{r=t}^{T-1}l(\xi^{\epsilon,y},w^{\epsilon,y}(\xi^{\epsilon,y}))\right\rbrace + \phi(\xi_T^{\epsilon,y}) - \epsilon
 \end{align*}
 Let
-$$\tilde{\mu}(\xi) = \begin{cases} \bar{w}_2(\xi_{]s,t-1[}, & r\leq t-1 \\ w_r^{\epsilon,\xi_\tau}(\xi_{]t,T-1[}), & r\geq t \end{cases}$$% chktex 9
+
+\begin{equation*}
+\tilde{\mu}(\xi) = \begin{cases} \bar{w}_2(\xi_{]s,t-1[}, & r\leq t-1 \\ w_r^{\epsilon,\xi_\tau}(\xi_{]t,T-1[}), & r\geq t \end{cases}% chktex 9
+\end{equation*}
+
 \textit{Exercise:} Show $\tilde{\mu}\in\tilde{\mathcal{M}}_{]s,T-1[}$.% chktex 9
 
 Then we have
-$$R(s,x) \geq \cdots = E_{\mu_{]s,T-1[}}\left\lbrace\sum_{r=s}^{T-1} l(\tilde{\xi}_r,\tilde{w}_r(\tilde{\xi})) + \phi(\tilde{\xi}_r)\right\rbrace - 2\epsilon$$% chktex 9
+
+\begin{equation*}
+R(s,x) \geq \cdots = E_{\mu_{]s,T-1[}}\left\lbrace\sum_{r=s}^{T-1} l(\tilde{\xi}_r,\tilde{w}_r(\tilde{\xi})) + \phi(\tilde{\xi}_r)\right\rbrace - 2\epsilon% chktex 9
+\end{equation*}
+
 where $\tilde{\xi}$ satisfies the dynamics, $\tilde{\xi}_s=x$, and is driven by $\tilde{\mu}$.
 This leads to
-$$R(s,x) \geq J(s,x,\tilde{w}) - 2\epsilon \geq V(s,x)-2\epsilon$$
+
+\begin{equation*}
+R(s,x) \geq J(s,x,\tilde{w}) - 2\epsilon \geq V(s,x)-2\epsilon
+\end{equation*}
+
 This is true $\forall \epsilon>0\Rightarrow R(s,x)\geq V(s,x)$.
 Note that if $A\geq B-\epsilon~\forall \epsilon > 0$, $A,B$ independent of $\epsilon$, then $A\geq B$.
 This proof can be finished as an exercise.
@@ -189,5 +237,9 @@ V(T-1,x) &= \cdots \\
 \end{align*}
 
 This gives the optimal control (if minimizer exists) as
-$$\mu_s \in \arg\min_{u} \left\lbrace l(x,u) + E[u(s+1,f(x,u,w_s))]\right\rbrace = \bar{\mu}_s(x)$$
+
+\begin{equation*}
+\mu_s \in \arg\min_{u} \left\lbrace l(x,u) + E[u(s+1,f(x,u,w_s))]\right\rbrace = \bar{\mu}_s(x)
+\end{equation*}
+
 Thus, we can see that optimal control is indeed a feedback on the current state.% chktex 17

@@ -31,10 +31,18 @@ We want to apply Theorem~\ref{th:bfp} to bounded functions.
 
 \subsection{Bounded Functions}
 Let
-$$\mathbb{Y} = C_B(\mathbb{R}^N) = \{V:\mathbb{R}^n\to\mathbb{R} | V \text{~cont.,~} \exists C_v \text{~s.t.~} |V(x)|\leq C_v~\forall x\in\mathbb{R}^n\}$$
+
+\begin{equation*}
+\mathbb{Y} = C_B(\mathbb{R}^N) = \{V:\mathbb{R}^n\to\mathbb{R} | V \text{~cont.,~} \exists C_v \text{~s.t.~} |V(x)|\leq C_v~\forall x\in\mathbb{R}^n\}
+\end{equation*}
+
 Note that $C_v$ depends on $V$.
 Let
-$$||V||_\infty = \sup_{x\in\mathbb{R}^n}|V(x)|$$
+
+\begin{equation*}
+||V||_\infty = \sup_{x\in\mathbb{R}^n}|V(x)|
+\end{equation*}
+
 and $\vsp$ be a Banach space.
 
 Assume that there exists $M<\infty$ such that $|l(x,u)|\leq M~\forall x,u$.
@@ -68,7 +76,7 @@ We claim without proving that $\mathcal{G}[V](\cdot)$ is continuous.
 This leads to $\mathcal{G}:\mathbb{Y}\to\mathbb{Y}$ which shows that $\mathcal{G}$ maps into the space.
 We still need to show that $F$ is a contraction.
 
-\begin{theorem}
+\begin{theorem}%
 \label{th:nvs}
 Let $F,H:\mathbb{X}\to\mathbb{R}$, then $\mathbb{X}$ is a normed vector space.
 \begin{align*}
@@ -77,7 +85,7 @@ Let $F,H:\mathbb{X}\to\mathbb{R}$, then $\mathbb{X}$ is a normed vector space.
 \end{align*}
 \end{theorem}
 
-\subsection{Show that $F$ is a contraction.}
+\subsection{Show that $F$ is a contraction.}%
 \label{sec:showfcontraction}
 Let $V,\tilde{V}\in\mathbb{Y}$, we need to show that $||\mathcal{G}[V]-\mathcal{G}[\tilde{V}]||_\infty \leq ||V-\tilde{V}||_\infty$.
 \begin{align*}
@@ -112,7 +120,11 @@ V_1(x) &= \mathcal{G}[V_0](x) = \min\{e^{\frac{x}{2}}+\alpha E[0], e^x + \alpha 
 &= \begin{cases} e^{\frac{x}{2}}, & x\geq0 \\ e^x, & x<0 \end{cases}
 \end{align*}
 If we stopped here the optimal control would be
-$$\mu(x) = \begin{cases} 0, & x\geq0 \\ -1, & x<0 \end{cases}$$
+
+\begin{equation*}
+\mu(x) = \begin{cases} 0, & x\geq0 \\ -1, & x<0 \end{cases}
+\end{equation*}
+
 Continuing we have
 \begin{align*}
 V_2(x) &= \min\left\lbrace e^{\frac{x}{2}} + \alpha\left[\int_{-\infty}^{-x} e^{x+w}p_w(w)dw + \int_{-x}^\infty e^{\frac{x+w}{2}}p_w(w)dw\right], \right. \\
@@ -135,7 +147,11 @@ V(x) &= \inf_{\mu\in\mathcal{M}}J(x,w) \\
 \{w_t\} & \text{~IID,~} \sim N(0,Q)
 \end{align*}
 The DPE is
-$$V(x) = \inf_{u\in\mathbb{R}^l}\left\lbrace\tfrac{1}{2}x^T Cx + \tfrac{1}{2}u^T Du + \alpha E[V(Ax+Bu+\sigma w)]\}\right\rbrace$$
+
+\begin{equation*}
+V(x) = \inf_{u\in\mathbb{R}^l}\left\lbrace\tfrac{1}{2}x^T Cx + \tfrac{1}{2}u^T Du + \alpha E[V(Ax+Bu+\sigma w)]\}\right\rbrace
+\end{equation*}
+
 We start by guessing $V_0(x)=0 = \frac{1}{2}x^T P_0 x+R_0$, where $P_0=0$ is an $n\times n$ matrix and $R_0=0$.
 Suppose that $V_k(x) = \frac{1}{2}x^T P_k x+R_k$ where $k$ is an iteration step and not a time step so that we can go from $V_0\to V_1$.
 Then we get
@@ -150,8 +166,16 @@ We then want to minimize $G(u)$ such that
 \Rightarrow u &= -\alpha{(D+\alpha B^T P_k B)}^{-1}B^T P_k x \doteq -\alpha K_k
 \end{align*}
 This leads to an expression for the value iteration as
-$$V_{k+1}(x) = \frac{1}{2}x^T P_{k+1}x + R_{k+1}$$
+
+\begin{equation*}
+V_{k+1}(x) = \frac{1}{2}x^T P_{k+1}x + R_{k+1}
+\end{equation*}
+
 with
-$$P_{k+1} = \frac{\alpha^2}{2}K_k^T DK_k + \frac{\alpha}{2}{(A-\alpha BK_k)}^T P_k(A-\alpha BK_k)$$
+
+\begin{equation*}
+P_{k+1} = \frac{\alpha^2}{2}K_k^T DK_k + \frac{\alpha}{2}{(A-\alpha BK_k)}^T P_k(A-\alpha BK_k)
+\end{equation*}
+
 $\lozenge$
 \end{example}% chktex 17

@@ -29,7 +29,11 @@ We also have that the Lipschitz condition is satisfied, or
 \exists~K<\infty \text{~s.t.~} |f(x,v)-f(y,v)| \leq K|x-y|~\forall x,y\in\mathbb{R}^n,~\forall v\in\mathbb{R}^m
 \end{align}
 Then, let
-$$\mathcal{U}_{s,T} = \left\lbrace u:[s,T)\to\mathcal{U}~|~||u||_{L_2(s,T)}<\infty \right\rbrace$$% chktex 9
+
+\begin{equation*}
+\mathcal{U}_{s,T} = \left\lbrace u:[s,T)\to\mathcal{U}~|~||u||_{L_2(s,T)}<\infty \right\rbrace% chktex 9
+\end{equation*}
+
 Also,
 \begin{align}
 \label{eq:14cset}
@@ -63,7 +67,10 @@ We will make the assumption that
 Let $\uinu_{s,T}$.
 By (\ref{eq:14cset}) there exists $C^1, \xi_0$ satisfying (\ref{eq:14d}) and (\ref{eq:14ic}).
 We have that a continuous function on a compact set is bounded which implies
-$$\exists~R=R(s,x,u) \text{~s.t.~} |\xi_k|\leq R~\forall t\in[s,T]$$
+
+\begin{equation*}
+\exists~R=R(s,x,u) \text{~s.t.~} |\xi_k|\leq R~\forall t\in[s,T]
+\end{equation*}
 
 Now we want to look at the trajectory of the system under this controller.
 Consider $W(t,\xi_t)$.
@@ -81,11 +88,23 @@ So, for any $s,x,u$ we have
 f(x,v)\cdot\nabla_x W(s,x)+W_s \geq -l(x,v)
 \end{align}
 Substituting (\ref{eq:14fxv}) into (\ref{eq:14dpp}) yields
-$$W(T,\xi_T) - W(s,\xi_s) \geq \int_s^T -l(\xi_t,u_t)dt$$
+
+\begin{equation*}
+W(T,\xi_T) - W(s,\xi_s) \geq \int_s^T -l(\xi_t,u_t)dt
+\end{equation*}
+
 We can re-write this as
-$$W(s,\xi_s) \leq \int_s^T l(\xi_t,u_t)dt + W(T,\xi_T)$$
+
+\begin{equation*}
+W(s,\xi_s) \leq \int_s^T l(\xi_t,u_t)dt + W(T,\xi_T)
+\end{equation*}
+
 By (\ref{eq:14tc})
-$$W(s,x) \leq \int_s^T l(\xi_t,u_t)dt + \psi(\xi_T) = J(s,x,u)$$
+
+\begin{equation*}
+W(s,x) \leq \int_s^T l(\xi_t,u_t)dt + \psi(\xi_T) = J(s,x,u)
+\end{equation*}
+
 This is true $\forall \uinu_s$,
 \begin{align}
 \label{eq:14wv}
@@ -127,7 +146,11 @@ W(s,x) = J(s,x,u^\ast) &\geq V(s,x)
 \begin{theorem}
 Suppose (\ref{eq:14l}) and (\ref{eq:14ae}) and let $W$ be the solution of (\ref{eq:14hjb}) and (\ref{eq:14ic}), then $W\subseteq V$.
 Further, if there exists $\bar{\mu}$ satisfying (\ref{eq:14c1d}) and (\ref{eq:14fstar}) then
-$$W=V=J(s,x,u^\ast)$$
+
+\begin{equation*}
+W=V=J(s,x,u^\ast)
+\end{equation*}
+
 with $u_t^\ast = \bar{\mu}_t(\bar{\xi}_t)$.
 \end{theorem}
 
@@ -141,7 +164,7 @@ Then $W\geq V$.
 Further, $J(s,x,u^\epsilon) \leq V(s,x) + \epsilon(T-s)$.
 Prove this as an exercise.
 
-\begin{example}
+\begin{example}%
 \label{ex:14lq}
 The LQ control problem is set up as
 \begin{align*}
@@ -165,7 +188,11 @@ v^\sigma &= -D^{-1}B^T \nabla_x W \\
 where $\Sigma = -BD^{-1}B^T$.
 
 Suppose
-$$W(t,x) = \tfrac{1}{2}{(x-\bar{x}_t)}^T P_t(x-\bar{x}_t) + r_t$$
+
+\begin{equation*}
+W(t,x) = \tfrac{1}{2}{(x-\bar{x}_t)}^T P_t(x-\bar{x}_t) + r_t
+\end{equation*}
+
 From (\ref{eq:14extc}) $\bar{x}_T = z$, $P_T=E$ and $r_T=0$.
 Then
 \begin{align*}
@@ -197,24 +224,52 @@ $\lozenge$
 \section{Exit Problem}
 This is for deterministic control.
 The system is given as
-$$\dot{\xi} = f(\xi,u), \qquad \xi_0 = x\in G$$
+
+\begin{equation*}
+\dot{\xi} = f(\xi,u), \qquad \xi_0 = x\in G
+\end{equation*}
+
 Here, $G$ is an open set and $\bar{G}$ is a compact set.
 Recall that $G$ is open if and only if given
-$$x\in G,~\exists~\delta_x \text{~s.t.~} B_{\delta_x}(x)\subset G$$
+
+\begin{equation*}
+x\in G,~\exists~\delta_x \text{~s.t.~} B_{\delta_x}(x)\subset G
+\end{equation*}
+
 Let
-$$\partial G = \{x\in\mathbb{R}^n~|~x\notin G, x\notin{(G^C)}^0\}$$
+
+\begin{equation*}
+\partial G = \{x\in\mathbb{R}^n~|~x\notin G, x\notin{(G^C)}^0\}
+\end{equation*}
+
 be the boundary of $G$.
 Let
-$$\tau = \inf\{t\geq 0~|~\xi_t\notin G\}$$
+
+\begin{equation*}
+\tau = \inf\{t\geq 0~|~\xi_t\notin G\}
+\end{equation*}
+
 Note that $\tau=\tau(x,u)$.
 Let
-$$\mathcal{U}_0 = \{u:[0,\infty)\to\mathcal{U}~|~||u||_{L_2[0,T]}<\infty~\forall T\}$$% chktex 9
+
+\begin{equation*}
+\mathcal{U}_0 = \{u:[0,\infty)\to\mathcal{U}~|~||u||_{L_2[0,T]}<\infty~\forall T\}% chktex 9
+\end{equation*}
+
 Let
-$$\mathcal{U}_0^\ast = \{\uinu_0~|~\tau=\tau(x,u)<\infty\}$$
+
+\begin{equation*}
+\mathcal{U}_0^\ast = \{\uinu_0~|~\tau=\tau(x,u)<\infty\}
+\end{equation*}
+
 This means that the system is controllable.
 We will assume $\mathcal{U}_0^\ast\neq\emptyset~\forall x\in G$.
 The cost function is then
-$$J(x,u) = \int_u^\tau l(\xi_t,u_t)dt + \psi(\xi_\tau)$$
+
+\begin{equation*}
+J(x,u) = \int_u^\tau l(\xi_t,u_t)dt + \psi(\xi_\tau)
+\end{equation*}
+
 where $\psi(\xi_\tau)$ is the exit cost.
 Now we get the HJB PDE as
 \begin{align}
@@ -229,17 +284,25 @@ W(x) = \psi(x), \qquad x\in\partial G
 \end{align}
 The argument goes that we assume there exists a unique $C^1$ solution of (\ref{eq:14ephjb}) and (\ref{eq:14epbc}).
 Then we use the Fundamental Theorem of Calculus to get
-$$W(\xi_\tau) - W(\xi_0) = \int_0^\tau \nabla_x W(\xi_t)f(\xi_t,u_t)dt$$
+
+\begin{equation*}
+W(\xi_\tau) - W(\xi_0) = \int_0^\tau \nabla_x W(\xi_t)f(\xi_t,u_t)dt
+\end{equation*}
+
 As before in computing (\ref{eq:14fxv}) we know that one part of the infinum is greater than or equal to zero which implies
 \begin{align*}
 \psi(\xi_t) - W(x) &\geq \int_0^\tau -l(\xi_t,u_t)dt \\
 W(x) &\leq \int_0^\tau l(\xi_t,u_t)dt + \psi(\xi_t)
 \end{align*}
 This is true $\forall \uinu_0^\ast$
-$$\therefore W(x)\leq V(x)~\forall x$$
+
+\begin{equation*}
+\therefore W(x)\leq V(x)~\forall x
+\end{equation*}
+
 It is the same idea as for optimal control.
 
-\begin{example}
+\begin{example}%
 \label{ex:14exit}
 Let the system be described by
 \begin{align*}
@@ -247,7 +310,11 @@ Let the system be described by
 \end{align*}
 We are looking at a space that is a ball with radius $R$ around the origin, see Figure~\ref{fig:14circle}.
 The cost function is
-$$J(x,u) = \int_0^\tau \rho + \tfrac{1}{2}|u_t|^2dt, \qquad \rho>0$$
+
+\begin{equation*}
+J(x,u) = \int_0^\tau \rho + \tfrac{1}{2}|u_t|^2dt, \qquad \rho>0
+\end{equation*}
+
 Now we go to the HJB PDE and find
 \begin{align*}
 &W(x) = 0, \qquad |x|=R \\
@@ -261,12 +328,24 @@ Suppose $A=0$ and $B=I$, then
 \Rightarrow &|\nabla_x W| = \sqrt{2\rho}
 \end{align}
 We guess that
-$$\nabla_x W(x) = \pm \sqrt{2\rho}\frac{x}{|x|}$$
+
+\begin{equation*}
+\nabla_x W(x) = \pm \sqrt{2\rho}\frac{x}{|x|}
+\end{equation*}
+
 satisfies (\ref{eq:14exrho}).
 This leads to
-$$\Rightarrow W(x) = \pm\sqrt{2\rho}|x|+C = \pm\sqrt{2\rho}(|x|-R)$$
+
+\begin{equation*}
+\Rightarrow W(x) = \pm\sqrt{2\rho}|x|+C = \pm\sqrt{2\rho}(|x|-R)
+\end{equation*}
+
 Since $\rho>0$ we get
-$$W(x) = \sqrt{2\rho}(R-|x|)$$
+
+\begin{equation*}
+W(x) = \sqrt{2\rho}(R-|x|)
+\end{equation*}
+
 Notice that this is not differentiable at $x=0$.
 This property is not unique to this example but is found in general for these types of problems.
 $\lozenge$
@@ -275,6 +354,6 @@ $\lozenge$
 \begin{figure}[ht!]
 \centering
 \includegraphics[width=.4\textwidth]{images/14circle}
-\caption{Space that is a ball with radius $R$ around the origin.}
+\caption{Space that is a ball with radius $R$ around the origin.}%
 \label{fig:14circle}
 \end{figure}% chktex 17

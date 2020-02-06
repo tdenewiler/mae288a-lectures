@@ -22,18 +22,42 @@ In Lecture 14 we looked at exit problems where the system dynamics and initial c
 \end{align*}
 Here, $u$ represents a disturbance and $k(\xi)$ is the control.
 The cost function was
-$$J(x,u) = \int_0^T\rho+\frac{1}{2}|u_t|^2dt$$
+
+\begin{equation*}
+J(x,u) = \int_0^T\rho+\frac{1}{2}|u_t|^2dt
+\end{equation*}
+
 which led to the dynamics being $\dot{\xi}=u_t$.
 The idea was to use the value function
-$$V(x) = \inf_{u\in\mathcal{U}_0^\ast}J(x,u)$$
+
+\begin{equation*}
+V(x) = \inf_{u\in\mathcal{U}_0^\ast}J(x,u)
+\end{equation*}
+
 If that is the value function for all $u\in\mathcal{U}_0^\ast$ then we get
-$$V(x) = \int_0^\tau \rho + \frac{1}{2}|u_t|^2dt = \tau\left[\rho+\frac{1}{2}\int_0^\tau|u_t|^2dt\right]$$
+
+\begin{equation*}
+V(x) = \int_0^\tau \rho + \frac{1}{2}|u_t|^2dt = \tau\left[\rho+\frac{1}{2}\int_0^\tau|u_t|^2dt\right]
+\end{equation*}
+
 This leads to
-$$\tau\geq\frac{V(x)}{\rho+\frac{1}{2\tau}\int_0^\tau|u_t|^2dt}$$
+
+\begin{equation*}
+\tau\geq\frac{V(x)}{\rho+\frac{1}{2\tau}\int_0^\tau|u_t|^2dt}
+\end{equation*}
+
 If we then fix $\mathbb{P}<\infty$ and let
-$$\tilde{\mathcal{U}}^\mathbb{P} = \left\lbrace u\in\mathcal{U}_0^\ast~|~\frac{1}{T}\int_0^T|u_t|^2dt \leq \mathbb{P}~\forall T<\infty \right\rbrace$$
+
+\begin{equation*}
+\tilde{\mathcal{U}}^\mathbb{P} = \left\lbrace u\in\mathcal{U}_0^\ast~|~\frac{1}{T}\int_0^T|u_t|^2dt \leq \mathbb{P}~\forall T<\infty \right\rbrace
+\end{equation*}
+
 we get an expression for $\tau$ such that
-$$\tau\geq \frac{V(x)}{\rho+\frac{\mathbb{P}}{2}}$$
+
+\begin{equation*}
+\tau\geq \frac{V(x)}{\rho+\frac{\mathbb{P}}{2}}
+\end{equation*}
+
 This is a robustness statement for the controller.
 
 \section{Numerical Methods}
@@ -60,23 +84,33 @@ W(x) &= 0, x\in\partial G
 Figure~\ref{fig:15g} shows some of the state space.
 For notation in the rest of this lecture we will let functions be of the form $f(x,p)$, where the first argument is $x$ and the second argument is $p$.
 Then we have
-$${[\nabla_p f(x,p)]}_i = f_{p_i}(x,p)$$
+
+\begin{equation*}
+{[\nabla_p f(x,p)]}_i = f_{p_i}(x,p)
+\end{equation*}
 
 \begin{figure}[ht!]
 \centering
 \includegraphics[width=.4\textwidth]{images/15g}
-\caption{The space $G$ showing possible trajectories $\eta_r$ starting at $\bar{x}$.}
+\caption{The space $G$ showing possible trajectories $\eta_r$ starting at $\bar{x}$.}%
 \label{fig:15g}
 \end{figure}
 
 Our goal is to find $W$.
 We start by letting $z_r=W(\eta_r)$ so that $z_0=W(\eta_0)=W(\bar{x})$.
 Then we get
-$$\dot{z}_r = \sum_{i=1}^n W_{x_i}(\eta_r){[\dot{\eta}_r]}_i = \nw(\eta_r)\cdot \dot{\eta}_r$$
+
+\begin{equation*}
+\dot{z}_r = \sum_{i=1}^n W_{x_i}(\eta_r){[\dot{\eta}_r]}_i = \nw(\eta_r)\cdot \dot{\eta}_r
+\end{equation*}
+
 Let $\vp_r=\nw(\eta_r)$.
 This leads to $\dot{z}_r=\vp_r\dot{\eta}_r$.
 From here we choose to let
-$$\dot{\eta}_r = \nabla_p f(\eta_r,\nw(\eta_r)) = \nabla_p f(\eta_r,\vp_r)$$
+
+\begin{equation*}
+\dot{\eta}_r = \nabla_p f(\eta_r,\nw(\eta_r)) = \nabla_p f(\eta_r,\vp_r)
+\end{equation*}
 
 Now, looking at the dynamics of the co-state we see that
 \begin{align}
@@ -89,7 +123,11 @@ Now, looking at the dynamics of the co-state we see that
 This is what the dynamics of $\vp$ need to be given our choice of $\dot{\eta}_r$ above.
 We still need to find $W_{x_i x_j}$.
 But, since
-$$f(x,\nw(x)) = 0~\forall x\in G$$
+
+\begin{equation*}
+f(x,\nw(x)) = 0~\forall x\in G
+\end{equation*}
+
 we have that
 \begin{align}
 \label{eq:15fxi}
@@ -119,7 +157,11 @@ z_0 &= W(\eta_0) = \psi(\eta_0) = \psi(\bar{x}) \\
 But, we still don't know $W$ because that is what we are trying to solve for!
 
 Looking at the boundary, as in Figure~\ref{fig:15gboundary}, we know
-$$f(\bar{x},\nw(\bar{x})) = f(\bar{x},\vp_0) = 0$$
+
+\begin{equation*}
+f(\bar{x},\nw(\bar{x})) = f(\bar{x},\vp_0) = 0
+\end{equation*}
+
 This is only a single equation but we have that $\vp$ is $n$-dimensional.
 Let $\bar{u}$ be the outward normal at $\bar{x}$.
 For this to work we need the boundary $\partial G$ to be smooth because we are also using $W\in C^2(G)$, or second derivatives.
@@ -131,7 +173,11 @@ W_\nu(\bar{x}) &= \psi_\nu(\bar{x}) \\
 \end{align*}
 Now, we also know that there exists $\nu_1,\nu_2,\ldots,\nu_{n-1}$ that span the hyperplane.
 Using this it is sufficient to have
-$$\nw(\bar{x})\cdot\nu_i = \psi_{\nu_i}(\bar{x})~\forall i\in\interval[open]{1}{n-1}$$
+
+\begin{equation*}
+\nw(\bar{x})\cdot\nu_i = \psi_{\nu_i}(\bar{x})~\forall i\in\interval[open]{1}{n-1}
+\end{equation*}
+
 This leads to
 \begin{align*}
 &\vp_0\cdot\nu_i = \psi_{\nu_i}(\bar{x}) \\
@@ -142,7 +188,7 @@ This gives us $n$ equations in $n-1$ dimensions and we can solve the problem.
 \begin{figure}[ht!]
 \centering
 \includegraphics[width=.4\textwidth]{images/15gboundary}
-\caption{A close-up look at the boundary of the space $G$.}
+\caption{A close-up look at the boundary of the space $G$.}%
 \label{fig:15gboundary}
 \end{figure}
 
@@ -193,14 +239,22 @@ From Figure~\ref{fig:15circlezoom} we see that
 \begin{figure}[ht!]
 \centering
 \includegraphics[width=.4\textwidth]{images/15circlezoom}
-\caption{A close-up look at the boundary of the space.}
+\caption{A close-up look at the boundary of the space.}%
 \label{fig:15circlezoom}
 \end{figure}
 
 By (\ref{eq:15vpr}) and (\ref{eq:15vpo}) we get
-$$\vp_0 = \pm\frac{\sqrt{2\rho}}{R}\cdot\left(\begin{array}{c} -x_2 \\ x_1 \end{array}\right) = \pm\frac{\sqrt{2\rho}}{R}x$$
+
+\begin{equation*}
+\vp_0 = \pm\frac{\sqrt{2\rho}}{R}\cdot\left(\begin{array}{c} -x_2 \\ x_1 \end{array}\right) = \pm\frac{\sqrt{2\rho}}{R}x
+\end{equation*}
+
 Then, because $\vp_r$ is constant, we get
-$$\vp_r = \frac{\sqrt{2\rho}}{R}x~\forall~r$$
+
+\begin{equation*}
+\vp_r = \frac{\sqrt{2\rho}}{R}x~\forall~r
+\end{equation*}
+
 and
 \begin{align*}
 \dot{\eta}_r &= \mp \frac{\sqrt{2\rho}}{R}x~\forall r \\
@@ -208,7 +262,11 @@ and
 \eta_r &= x\mp\frac{\sqrt{2\rho}}{R}xr = \left(1\mp\frac{\sqrt{2\rho}r}{R}\right)x
 \end{align*}
 We want to have $\eta_r\in G$ for $r>0$ so
-$$\eta_r = \left(1-\frac{\sqrt{2\rho}r}{R}\right)x$$
+
+\begin{equation*}
+\eta_r = \left(1-\frac{\sqrt{2\rho}r}{R}\right)x
+\end{equation*}
+
 From Figure~\ref{fig:15traj} we want
 \begin{align*}
 y &= \eta_r = \left(1-\frac{\sqrt{2\rho}r}{R}\right)x \\
@@ -221,7 +279,7 @@ r &= \frac{R-|y|}{\sqrt{2\rho}}
 \begin{figure}[ht!]
 \centering
 \includegraphics[width=.4\textwidth]{images/15traj}
-\caption{Possible trajectories in the space.}
+\caption{Possible trajectories in the space.}%
 \label{fig:15traj}
 \end{figure}
 
@@ -245,6 +303,6 @@ $\lozenge$
 \begin{figure}[ht!]
 \centering
 \includegraphics[width=.25\textwidth]{images/15solcone}
-\caption{Dual cones showing possible solution spaces.}
+\caption{Dual cones showing possible solution spaces.}%
 \label{fig:15solcone}
 \end{figure}% chktex 17
