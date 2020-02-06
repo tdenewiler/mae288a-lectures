@@ -34,15 +34,23 @@ See Figure~\ref{fig:03vennProb}.
 \begin{figure}[ht!]
 \centering
 \includegraphics[width=.5\textwidth]{images/03vennProb}
-\caption{Venn diagram of the intersection of probability spaces in the set $\Sigma$.}
+\caption{Venn diagram of the intersection of probability spaces in the set $\Sigma$.}%
 \label{fig:03vennProb}
 \end{figure}
 
 \section{Conditional Probability}
 Let $A,B\in\Sigma$, $P(B)>0$, then the conditional probability of $A$ given $B$ is
-$$P(A|B) = \frac{P(A\cap B)}{P(B)}$$
+
+\begin{equation*}
+P(A|B) = \frac{P(A\cap B)}{P(B)}
+\end{equation*}
+
 If $A$ and $B$ are independent then
-$$P(A|B) = \frac{P(A\cap B)}{P(B)} = \frac{P(A)P(B)}{P(B)} = P(A)$$
+
+\begin{equation*}
+P(A|B) = \frac{P(A\cap B)}{P(B)} = \frac{P(A)P(B)}{P(B)} = P(A)
+\end{equation*}
+
 This means that if two events are independent then learning information about one of the events tells us nothing about the probability of the other event occurring.
 
 \begin{example}
@@ -58,7 +66,7 @@ $\lozenge$
 \begin{figure}[ht!]
 \centering
 \includegraphics[width=.3\textwidth]{images/03coinProb}
-\caption{Sets representing knowledge of two fair coin tosses at different time steps.}
+\caption{Sets representing knowledge of two fair coin tosses at different time steps.}%
 \label{fig:03coinProb}
 \end{figure}
 
@@ -72,7 +80,11 @@ F_{X|Y=d}(x) &= \lim_{\delta\downarrow 0}\frac{P(X\leq x, Y\in B_\delta(d))}{P(Y
 B_\delta(d) &= \{y | |y-d| < \delta\} \nonumber
 \end{align}
 This gives
-$$P_{X|Y=d}(x) = \lim_{\epsilon\downarrow 0}\frac{1}{\epsilon}[F_{X|Y=d}(x+\epsilon) - F_{X|Y=d}(x)]$$
+
+\begin{equation*}
+P_{X|Y=d}(x) = \lim_{\epsilon\downarrow 0}\frac{1}{\epsilon}[F_{X|Y=d}(x+\epsilon) - F_{X|Y=d}(x)]
+\end{equation*}
+
 which is shown in Figure~\ref{fig:03probR1}.
 Then, using (\ref{eq:distFn}) gives
 
@@ -104,22 +116,30 @@ Figure~\ref{fig:03deltaSpace} shows graphically the regions that are being integ
 \begin{figure}[ht!]
 \centering
 \includegraphics[width=.5\textwidth]{images/03probR1}
-\caption{Graphical depiction of the difference of probabilities at $u$ and $v$.}
+\caption{Graphical depiction of the difference of probabilities at $u$ and $v$.}%
 \label{fig:03probR1}
 \end{figure}
 
 \begin{figure}[ht!]
 \centering
 \includegraphics[width=.5\textwidth]{images/03deltaSpace}
-\caption{Graphical depiction of the regions being integrated over.}
+\caption{Graphical depiction of the regions being integrated over.}%
 \label{fig:03deltaSpace}
 \end{figure}
 
 \section{Gaussian Distributions}
 Let
-$$\left(\begin{array}{c}x \\y\end{array}\right) \sim\mathcal{N}\left(\left(\begin{array}{c}0\\0\end{array}\right), C\right)$$
+
+\begin{equation*}
+\left(\begin{array}{c}x \\y\end{array}\right) \sim\mathcal{N}\left(\left(\begin{array}{c}0\\0\end{array}\right), C\right)
+\end{equation*}
+
 and
-$$C^{-1} = \left[\begin{array}{c c} \rho_{xx} & \rho_{xy} \\ \rho_{xy} & \rho_{yy} \end{array}\right]$$
+
+\begin{equation*}
+C^{-1} = \left[\begin{array}{c c} \rho_{xx} & \rho_{xy} \\ \rho_{xy} & \rho_{yy} \end{array}\right]
+\end{equation*}
+
 Also, let
 \begin{align*}
 \hat{k}=e^{-\frac{1}{2}\rho_{yy}d^2}, \qquad \bar{k}=\frac{1}{2\pi|C|^{1/2}},\qquad \sigma^2=\frac{1}{\rho_{xx}}, \\ m=-\frac{\rho_{xy}}{\rho_{xx}}d, \qquad \tilde{k}=\frac{1}{\sqrt{2\pi}\sigma}
@@ -138,7 +158,11 @@ P_{X|Y=d}(x) &= k_d p(x,d) = k\frac{1}{2\pi|C|^{1/2}} e^{-\frac{1}{2}\left(\begi
 \begin{definition}{Markov Process} \\
 Let $\{\xi_k\}$ be a sequence of RVs.
 It is a Markov process if
-$$P(\xi_{t+1}\in A|\xi_r=x_r~\forall r\leq t) = P(\xi_{t+1}\in A|\xi_t=x_t)$$
+
+  \begin{equation*}
+P(\xi_{t+1}\in A|\xi_r=x_r~\forall r\leq t) = P(\xi_{t+1}\in A|\xi_t=x_t)
+  \end{equation*}
+
 \end{definition}
 The definition means that we do not have to know the history of the state to predict the future trajectory of the state.
 
@@ -228,8 +252,15 @@ The dynamics are given by
 \end{cases}
 \end{align*}
 The cost-criterion or payoff, also known as the ``control policy'', is
-$$J(s,x,u_\cdot) = E\left[\sum_{t=s}^{T-1} l(\xi_t,u_t) + C(\xi_t)\right]$$
+
+\begin{equation*}
+J(s,x,u_\cdot) = E\left[\sum_{t=s}^{T-1} l(\xi_t,u_t) + C(\xi_t)\right]
+\end{equation*}
+
 where $T$ is the terminal time, $l(\cdot)$ is the running cost and $C(\xi_t)$ is the terminal cost.
 
 The value function is
-$$V(s,x) = \inf_{\mu_\cdot\in\mathcal{M}_{s,t-1}}J(s,x,\mu_\cdot)$$% chktex 17
+
+\begin{equation*}
+V(s,x) = \inf_{\mu_\cdot\in\mathcal{M}_{s,t-1}}J(s,x,\mu_\cdot)
+\end{equation*}% chktex 17

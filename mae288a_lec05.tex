@@ -24,7 +24,11 @@ V(s,x,\mu) &= \inf_{\mu\in\mathcal{M}}J(s,x,\mu)
 \end{align*}
 The optimal control here is feedback control.
 Using the Dynamic Programming Principle (DPP) and Dynamic Programming Equation (DPE) yields
-$$V(t,x) = \min_{u\in\mathcal{U}}\left\lbrace l(x,u) + E_w[V(t+1,f(x,u,w))]\right\rbrace$$
+
+\begin{equation*}
+V(t,x) = \min_{u\in\mathcal{U}}\left\lbrace l(x,u) + E_w[V(t+1,f(x,u,w))]\right\rbrace
+\end{equation*}
+
 
 \section{Linear Quadratic Gaussian}
 The goal here is to use DP in discrete time to solve the regular LQG problem.
@@ -37,7 +41,11 @@ V(s,x) &= \inf_{\mu\in\mathcal{M}_{s,T-1}}J(s,x,\mu)
 \end{align*}
 where $C,D,F$ are symmetric positive definite matrices.
 Then
-$$V(T,\cdot) = \frac{1}{2}x^T Fx$$
+
+\begin{equation*}
+V(T,\cdot) = \frac{1}{2}x^T Fx
+\end{equation*}
+
 
 If we assume that $V(t,x) = \frac{1}{2}x^T P_{t+1}x + R_{t+1}$, with $P_{t+1}$ symmetric positive definite and that this is true at $t+1=T$ with $P_T=F$, $R_t=0$, then the DPE is
 \begin{align*}
@@ -78,18 +86,34 @@ u &= -{(D+B^T P_{t+1}B)}^{-1}B^T P_{t+1}Ax \doteq K_t x \doteq \mu_t(x)
 where $\mu_t(x)$ is our feedback controller.
 The first equation corresponds to (3.10-8) in Kirk\footnote{``Optimal Control Theory: An Introduction'' by Donald E. Kirk.} and the third equation corresponds to (3.10-10) in Kirk.% chktex 8
 Then we have that
-$$V(t,x) = \frac{1}{2}x^T P_t x + R_t$$
+
+\begin{equation*}
+V(t,x) = \frac{1}{2}x^T P_t x + R_t
+\end{equation*}
+
 with
-$$P_t = C+ K_t^T DK_t + {(A+BK_t)}^T P_{t+1} (A+BK_t)$$
+
+\begin{equation*}
+P_t = C+ K_t^T DK_t + {(A+BK_t)}^T P_{t+1} (A+BK_t)
+\end{equation*}
+
 and by induction $V$ has this form $\forall t\leq T$.
 The equation for $V(t,x)$ corresponds to (3.10-11) in Kirk.% chktex 8
 
 \section{Convex Analysis}
 \begin{definition}
 $\mathcal{C}\in\mathbb{R}^n$ is convex if
-$$\lambda x + (1-\lambda)y \in \mathcal{C}~\forall x,y\in\mathcal{C},~\forall \lambda\in[0,1]$$
+
+\begin{equation*}
+\lambda x + (1-\lambda)y \in \mathcal{C}~\forall x,y\in\mathcal{C},~\forall \lambda\in[0,1]
+\end{equation*}
+
 This can be seen by noticing that
-$$\{\mathcal{Z}\in\mathbb{R}^n | z=\lambda x+(1-\lambda)y,~\lambda\in[0,1]\}$$
+
+\begin{equation*}
+\{\mathcal{Z}\in\mathbb{R}^n | z=\lambda x+(1-\lambda)y,~\lambda\in[0,1]\}
+\end{equation*}
+
 is a line segment from $x\to y$ as shown in Figure~\ref{fig:05convex}.
 \end{definition}
 
@@ -101,20 +125,24 @@ is a line segment from $x\to y$ as shown in Figure~\ref{fig:05convex}.
 \subfloat[Not a convex set.]{%
 \label{fig:05notConvexSet}\includegraphics[width=0.3\textwidth]{images/05notConvexSet}
 }
-\caption{\protect\subref{fig:05convexSet} Example of a convex set and \protect\subref{fig:05notConvexSet} example of a set that is not convex.}
+\caption{\protect\subref{fig:05convexSet} Example of a convex set and \protect\subref{fig:05notConvexSet} example of a set that is not convex.}%
 \label{fig:05convex}
 \end{figure}
 
 \begin{definition}
 Given a function $f:\mathbb{R}^n\to\mathbb{R}$ then the epigraph of that function is
-$$\text{epi}[f] \doteq (x,z)\in\mathbb{R}^{n+1} \text{~s.t.~} z\geq f(x)$$
+
+\begin{equation*}
+\text{epi}[f] \doteq (x,z)\in\mathbb{R}^{n+1} \text{~s.t.~} z\geq f(x)
+\end{equation*}
+
 Figure~\ref{fig:05epigraph} shows that the epigraph is the set of points above and including the curve described by $f$.
 \end{definition}
 
 \begin{figure}[ht!]
 \centering
 \includegraphics[width=.4\textwidth]{images/05epigraph}
-\caption{The epigraph of $f$ is the shaded area above $f$ including the curve.}
+\caption{The epigraph of $f$ is the shaded area above $f$ including the curve.}%
 \label{fig:05epigraph}
 \end{figure}
 
@@ -141,7 +169,7 @@ Since $f$ is convex we know that $\text{epi}[f]$ is a convex set such that
 \begin{figure}[ht!]
 \centering
 \includegraphics[width=.5\textwidth]{images/05convexGeoProof}
-\caption{A curve $f$ is convex if it is as shown.}
+\caption{A curve $f$ is convex if it is as shown.}%
 \label{fig:05convexGeoProof}
 \end{figure}
 
@@ -167,7 +195,7 @@ $f:\mathbb{R}^n\to\mathbb{R}$ is convex if $f\to\infty$ as $x\to\infty$ then $\e
 If $f\in\mathbb{C}^2$ and $\frac{d^2f}{dx^2}$ is positive definite then $f$ is convex.
 \end{theorem}
 
-\begin{theorem}
+\begin{theorem}%
 \label{th:sumConvex}
 If $f_1$ and $f_2$ are convex then $f_1+f_2$ is convex.
 \end{theorem}
@@ -181,7 +209,7 @@ g(\lambda x + (1-\lambda)y) &= f_1(\lambda x+(1-\lambda)y) + f_2(\lambda x+(1-\l
 \end{align*}
 \end{proof}
 
-\begin{theorem}
+\begin{theorem}%
 \label{th:cfxconvex}
 If $f$ is convex, $c\geq 0$ and $f(x)\geq 0~\forall x$ then $cf(x)$ is convex.
 \end{theorem}
@@ -196,7 +224,7 @@ g(\lambda x+(1-\lambda)y) &= cf(\lambda x+(1-\lambda)y) \\
 \end{align*}
 \end{proof}
 
-\begin{theorem}
+\begin{theorem}%
 \label{th:maxconvex}
 If $f_1$ and $f_2$ are convex then $f_1\oplus f_2$ is convex.
 \end{theorem}
@@ -208,16 +236,16 @@ See Figure~\ref{fig:05convexOplusProof} for a geometrical proof.
 \begin{figure}[ht!]
 \centering
 \includegraphics[width=.4\textwidth]{images/05convexOplusProof}
-\caption{Geometrical proof showing region of convexity for two functions.}
+\caption{Geometrical proof showing region of convexity for two functions.}%
 \label{fig:05convexOplusProof}
 \end{figure}
 
-\begin{theorem}
+\begin{theorem}%
 \label{th:argconvex}
 If $f$ is convex and $a\in\mathbb{R}^n$ then $g(x)\doteq f(x+a)$ is convex.
 \end{theorem}
 
-\begin{theorem}
+\begin{theorem}%
 \label{th:randconvex}
 If $f$ is convex and $Z$ is a RV with range in $\mathbb{R}^n$ then $E[f(x+Z)]$ is convex.
 \end{theorem}
@@ -263,5 +291,9 @@ Then, if $\bar{y}\geq x$ then choose $w_t(x) = \bar{g}-x$ which represents buyin
 If $\bar{y}<x$ then choose $w_t(x)=0$ which represents no action.
 This implies that no control exists when selling inventory because it is a RV\@.
 Then
-$$V(t,x) = \begin{cases} H(\bar{y}), & x<\bar{y} \\ H(x), & x>\bar{y} \end{cases}$$
+
+\begin{equation*}
+V(t,x) = \begin{cases} H(\bar{y}), & x<\bar{y} \\ H(x), & x>\bar{y} \end{cases}
+\end{equation*}
+
 $V(t,\cdot)$ is convex follows by induction.% chktex 17

@@ -17,47 +17,82 @@
 \section{Grid-Based Optimization}
 This is a continuation from last lecture.
 The DPP is
-$$V(x) = \inf_{\uinu}\left\lbrace \int_0^{\tau\wedge h}l(\xi_t,u_t)dt + I_{h<\tau}V(\xi_h) + I_{h\geq\tau}\psi(\xi_T) \right\rbrace$$
+
+\begin{equation*}
+V(x) = \inf_{\uinu}\left\lbrace \int_0^{\tau\wedge h}l(\xi_t,u_t)dt + I_{h<\tau}V(\xi_h) + I_{h\geq\tau}\psi(\xi_T) \right\rbrace
+\end{equation*}
+
 The space we are working in is
-$$\mathcal{S} = \{x_{i,j}, x_{i+1,j}, x_{i-1,j}, x_{i,j+1}, x_{i,j-1}\}$$
+
+\begin{equation*}
+\mathcal{S} = \{x_{i,j}, x_{i+1,j}, x_{i-1,j}, x_{i,j+1}, x_{i,j-1}\}
+\end{equation*}
+
 We have the same figures as last time for the space we are working in, see Figures~\ref{fig:17grid} and~\ref{fig:17x} and note that $x_{i+1,j}-x_{i,j}=\delta$ and that $\mathcal{S}$ is a convex hull.
 
 \begin{figure}[ht!]
 \centering
 \includegraphics[width=.4\textwidth]{images/16grid}
-\caption{Grid for the space $G$.}
+\caption{Grid for the space $G$.}%
 \label{fig:17grid}
 \end{figure}
 
 \begin{figure}[ht!]
 \centering
 \includegraphics[width=.4\textwidth]{images/16x}
-\caption{Zoomed in area around the point $x_{ij}$.}
+\caption{Zoomed in area around the point $x_{ij}$.}%
 \label{fig:17x}
 \end{figure}
 
 With $x=\xij$ we want $h$ sufficiently small such that we do not exit $G$ for any reason and that $\tau>h~\forall \epsilon$-optimal control $u$.
 Then
-$$V(\xij) = \inf_{u.}\left\lbrace \int_0^h l(\xi_t,u_t)dt + V(\xi_h) \right\rbrace$$
+
+\begin{equation*}
+V(\xij) = \inf_{u.}\left\lbrace \int_0^h l(\xi_t,u_t)dt + V(\xi_h) \right\rbrace
+\end{equation*}
+
 From here we do a linear approximation to get
-$$V(\xij) \simeq \min_{\uinu}\left\lbrace l(\xij,u)h + V(\xij + hf(\xij,u)) \right\rbrace$$
+
+\begin{equation*}
+V(\xij) \simeq \min_{\uinu}\left\lbrace l(\xij,u)h + V(\xij + hf(\xij,u)) \right\rbrace
+\end{equation*}
 
 Further suppose that $h$ is sufficiently small relative to $\delta$ such that $\xij+hf(\xij,u)\in<\mathcal{S}>$ for all reasonable controls.
 Without loss of generality suppose that $\xij+hf(\xij,u)\in<\mathcal{S}_1>$ with $\mathcal{S}_1=\{\xij,x_{i+1,j},x_{i,j+1}\}$.
 Then we can assume that $V$ is roughly linear in $<\mathcal{S}_1$.
 
 Let $V^k$ be the $k$th iterate and use iteration to find
-$$V^{k+1}(\xij) = \min_{\uinu}\left\lbrace l(\xij,u) + V^k(\xij+hf(\xij,u))\right\rbrace$$
+
+\begin{equation*}
+V^{k+1}(\xij) = \min_{\uinu}\left\lbrace l(\xij,u) + V^k(\xij+hf(\xij,u))\right\rbrace
+\end{equation*}
+
 if $\xij\notin\partial G$ else we have
-$$V^k(\xij)=\psi(\xij)$$
+
+\begin{equation*}
+V^k(\xij)=\psi(\xij)
+\end{equation*}
+
 if $\xij\in\partial G$.
 
 Since $\xij+hf(\xij,u)\in\mathcal{S}_1$ we get
-$$\xij+hf(\xij,u) = \lambda_1\xij + \lambda_2x_{i+1,j} + \lambda_3x_{i,j+1}$$
+
+\begin{equation*}
+\xij+hf(\xij,u) = \lambda_1\xij + \lambda_2x_{i+1,j} + \lambda_3x_{i,j+1}
+\end{equation*}
+
 with
-$$\lambda_1,\lambda_2,\lambda_3\in[0,1], \qquad \sum_i\lambda_i=1$$
+
+\begin{equation*}
+\lambda_1,\lambda_2,\lambda_3\in[0,1], \qquad \sum_i\lambda_i=1
+\end{equation*}
+
 Let
-$$x_{l,m} = \left(\begin{array}{c} x_{l,m}^1 \\ x_{l,m}^2 \end{array}\right)$$
+
+\begin{equation*}
+x_{l,m} = \left(\begin{array}{c} x_{l,m}^1 \\ x_{l,m}^2 \end{array}\right)
+\end{equation*}
+
 This leads to
 \begin{align*}
 &\lambda_1\xij^1 + \lambda_2x_{i+1,j}^1 + \lambda_3x_{i,j+1}^1 = \xij^1+hf^1(\xij,u) \\
@@ -107,7 +142,11 @@ J(x,T,u.) &= \int_0^T l(\xi_t,u_t)dt \\
 V(x) &= \sup_{T<\infty}\sup_{u\in L_2[0,T]}J(x,T,u.)
 \end{align*}
 This leads to the DPP
-$$V(x) = \sup_{u\in L_2[0,T]}\left\lbrace \int_0^\delta l(\xi_t,u_t)dt + V(\xi_\delta) \right\rbrace = \mathcal{S}_\delta[V](x)$$
+
+\begin{equation*}
+V(x) = \sup_{u\in L_2[0,T]}\left\lbrace \int_0^\delta l(\xi_t,u_t)dt + V(\xi_\delta) \right\rbrace = \mathcal{S}_\delta[V](x)
+\end{equation*}
+
 Lets try
 \begin{align*}
 \mathcal{S}_\delta[c\otimes\vp](x) &= \sup_{u\in L_2}\left\lbrace \int_0^\delta l(\xi_t,u_t)dt + c\otimes\vp(\xi_\delta) \right\rbrace \\
@@ -118,12 +157,20 @@ $\lozenge$
 \end{example}
 
 Similarly we could show that
-$$\mathcal{S}_\delta[\vp\oplus\psi](x) = \mathcal{S}_\delta[\vp](x) + \mathcal{S}_\delta[\psi](x)$$
+
+\begin{equation*}
+\mathcal{S}_\delta[\vp\oplus\psi](x) = \mathcal{S}_\delta[\vp](x) + \mathcal{S}_\delta[\psi](x)
+\end{equation*}
+
 which implies that $\mathcal{S}_\delta$ is a max-plus linear operator.
 
 We want to solve $V=\mathcal{S}_\delta[V]$.
 Recall that $0$ is the max-plus multiplicative identity and we can write
-$$0\otimes V=\mathcal{S}_\delta[V]$$
+
+\begin{equation*}
+0\otimes V=\mathcal{S}_\delta[V]
+\end{equation*}
+
 This shows that $V$ is the max-plus eigenfunction corresponding the $0$.
 
 There are two main classes of problems that max-plus methods are used to solve.
