@@ -2,7 +2,7 @@
 
 | Service | Status |
 | ------- | ------ |
-| Linters | [![Travis-CI](https://api.travis-ci.org/tdenewiler/mae288a-lectures.svg?branch=master)](https://travis-ci.org/tdenewiler/mae288a-lectures/branches) |
+| Linters | ![Unit Tests](https://github.com/tdenewiler/mae288a-lectures/workflows/Unit%20Tests/badge.svg) |
 
 This repository contains lecture notes completed for [MAE 288A](http://maeresearch.ucsd.edu/mceneaney/mae288a/mae288a.html)
 at UC San Diego during Fall quarter 2009 and taught by Prof McEneaney.
