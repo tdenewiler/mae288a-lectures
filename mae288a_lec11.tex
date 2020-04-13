@@ -42,7 +42,11 @@ V(i) &= \min_{u\in\mathcal{U}}\{l(i,u)+\alpha E[V(\xi_1^\mu)]\} \nonumber \\
 
 \section{Value Iteration}
 Let
-$$\mathcal{G}[\vp](x) \doteq \min_{u\in\mathcal{U}}\left\lbrace l(i,u)+\alpha\sum_{j\in\mathbb{X}}\pij(u)\vp(j)\right\rbrace$$
+
+\begin{equation*}
+\mathcal{G}[\vp](x) \doteq \min_{u\in\mathcal{U}}\left\lbrace l(i,u)+\alpha\sum_{j\in\mathbb{X}}\pij(u)\vp(j)\right\rbrace
+\end{equation*}
+
 We solve for $V=\mathcal{G}[V]$ using the following steps:
 \begin{enumerate}
 \item Guess $V_0$.
@@ -69,7 +73,7 @@ We want to show that $||\mathcal{G}[V]-\mathcal{G}[\tilde{V}]||_\infty\leq\alpha
 Therefore, $\calg$ is a contraction and by the Banach Fixed Point Theorem (\ref{th:bfp}) the value iteration converges to the unique solution of the DPE\@.
 Note that the term $\sum_j\pij(u)=1$ because the probability transition matrix is defined such that all of the probabilities in a row must add up to $1$, so that term need not be considered.
 
-\begin{example}
+\begin{example}%
 \label{ex:valit}
 Let $\mathbb{X}=\{1,2,3\}$, $U=\{a,b\}$ and $\alpha=\frac{2}{3}$.
 Given
@@ -137,13 +141,21 @@ Then $V^{\bar{k}+1}$ is the solution of
 V=\calg^{\mu^{\bar{k}+1}}[V] \therefore V=\calg^{\mu^{\bar{k}}}
 \end{align}
 But $V^{\bar{k}}$ is the unique solution of (\ref{eq:politrepeat}) so we must have $V^{\bar{k}+1}=V^{\bar{k}}$ and
-$$\therefore \mu^{\bar{k}+2}=\mu^{\bar{k}+1} \Rightarrow V^{\bar{k}+2}=V^{\bar{k}+1} \cdots$$
+
+\begin{equation*}
+\therefore \mu^{\bar{k}+2}=\mu^{\bar{k}+1} \Rightarrow V^{\bar{k}+2}=V^{\bar{k}+1} \cdots
+\end{equation*}
+
 We also find that
-$$V^{\bar{k}} = V^{\bar{k}+1} = \calg^{\mu^{\bar{k}+1}}[V^{\bar{k}+1}] = \calg^{\mu^{\bar{k}+1}}[V^{\bar{k}}] = \calg[V^{\bar{k}}]$$
+
+\begin{equation*}
+V^{\bar{k}} = V^{\bar{k}+1} = \calg^{\mu^{\bar{k}+1}}[V^{\bar{k}+1}] = \calg^{\mu^{\bar{k}+1}}[V^{\bar{k}}] = \calg[V^{\bar{k}}]
+\end{equation*}
+
 by the choice of $\mu^{\bar{k}+1}$.
 This is the same as (\ref{eq:mukplus1}) so $V^{\bar{k}}$ must be the unique solution of the DPE $V=\calg[V]$.
 
-\begin{theorem}
+\begin{theorem}%
 \label{th:dpeuniquesol}
 Suppose $\mu^{\bar{k}+1}=\mu^{\bar{k}}$, then $\mu^{\bar{k}+l}=\mu^{\bar{k}}~\forall l\in\mathbb{N}$ and $V^{\bar{k}+l}=V^{\bar{k}}~\forall l\in\mathbb{N}$ and $V^{\bar{k}}$ is the unique solution of the DPE therefore it is the value function.
 \end{theorem}
@@ -153,7 +165,11 @@ For $\muinm$, define $\mathcal{L}^\mu[\vp](x)\doteq \vp(x)-\alpha E[\vp(\xi_1^\m
 \end{definition}
 
 Note that for $\beta\in\mathbb{R}$ we have
-$$\mathcal{L}^\mu[\beta\vp](x) = \beta\vp(x)-\alpha E[\beta\vp(\xi_1^\mu)] = \beta\mathcal{L}^\mu[\vp](x)$$
+
+\begin{equation*}
+\mathcal{L}^\mu[\beta\vp](x) = \beta\vp(x)-\alpha E[\beta\vp(\xi_1^\mu)] = \beta\mathcal{L}^\mu[\vp](x)
+\end{equation*}
+
 and
 \begin{align*}
 \mathcal{L}^\mu[\vp+\psi](x) &= \vp(x)+\psi(x) - \alpha E[\vp(\xi_1^\mu)+\psi(\xi_1^\mu)] \\
@@ -163,26 +179,46 @@ and
 \end{align*}
 
 Let $\hat{l}^\mu(i)\doteq l(i,\mu(i))$, then $V=\calg^\mu[V]$ becomes $V(x)=l(x,\mu(x))+\alpha E[V(\xi_1^\mu)]$ can be rearranged to yield $V(x)-\alpha E[V(\xi_1^\mu)] = l(x,\mu(x))$ and leads to the expression
-$$\mathcal{L}^\mu[V](x) = \hat{l}^\mu(x) \Rightarrow \mathcal{L}^\mu[V] = \hat{l}^\mu$$
+
+\begin{equation*}
+\mathcal{L}^\mu[V](x) = \hat{l}^\mu(x) \Rightarrow \mathcal{L}^\mu[V] = \hat{l}^\mu
+\end{equation*}
+
 This turns the non-linear problem involving the Banach Fixed Point Theorem~\ref{th:bfp} into a linear problem.
 
 In the finite Markov chain case we get
-$$\mathcal{L}^\mu[V](x) = V(x)-\alpha\sum_{j\in\mathbb{X}}\pxj^\mu V(j)$$
+
+\begin{equation*}
+\mathcal{L}^\mu[V](x) = V(x)-\alpha\sum_{j\in\mathbb{X}}\pxj^\mu V(j)
+\end{equation*}
+
 Let $V$ be in vector form such that
 \begin{align*}
 V\equiv\left[\begin{array}{c} V(1) \\ V(2) \\ V(3) \end{array}\right]
 \qquad \hat{l}^\mu\equiv~\left[\begin{array}{c} \hat{l}^\mu(1) \\ \hat{l}^\mu(2) \\ \hat{l}^\mu(3) \end{array}\right]
 \end{align*}
 then $\mathcal{L}^\mu[V]=\hat{l}^\mu$ becomes
-$$\left[I-\alpha\mathbb{P}^\mu\right]V=\hat{l}^\mu$$
+
+\begin{equation*}
+\left[I-\alpha\mathbb{P}^\mu\right]V=\hat{l}^\mu
+\end{equation*}
+
 which is a finite dimensional linear equality.
 We can solve this with linear solvers such as the inverse or pseudo-inverse depending on the specific problem.
 Nevertheless, we could use the following to solve $V=\calg^\mu[V]$.
 Let $V_0^{k+1}\doteq V^k$.
 Then
-$$V_{l+1}^{k+1}=\calg^{\mu^{k+1}}[V_l^{k+1}]$$
+
+\begin{equation*}
+V_{l+1}^{k+1}=\calg^{\mu^{k+1}}[V_l^{k+1}]
+\end{equation*}
+
 By Theorem~\ref{th:bfp} we get $V_l^{k+1}\to V^{k+1}$ is the unique solution of
-$$V=\calg^{\mu^{k+1}}[V]$$
+
+\begin{equation*}
+V=\calg^{\mu^{k+1}}[V]
+\end{equation*}
+
 Note that
 \begin{align}
 \label{eq:polpayoff}
@@ -193,13 +229,17 @@ V_1^{k+1} &= \calg^{\mu^{k+1}}[V_0^{k+1}] = \calg^{\mu^{k+1}}[V^k] = \calg[V^k] 
 \end{align}
 This shows that we get a better payoff at the next iteration using policy iteration.
 
-\begin{lemma}
+\begin{lemma}%
 \label{lem:contractioninequality}
 Suppose $\vp\leq\psi \Rightarrow \vp(x)\leq\psi(x)~\forall x\in\mathbb{X}$, then $\calg^\mu[\vp]\leq\calg^\mu[\psi]$.
 \end{lemma}
 
 Suppose $V_{l+1}^{k+1}\leq V_l^{k+1}$ (which is true at $l=0$ by (\ref{eq:polpayoff})), then by Lemma~\ref{lem:contractioninequality} we have that
-$$\calg^{\mu^{k+1}}[V_{l+1}^{k+1}]\leq\calg^{\mu^{k+1}}[V_l^{k+1}] \Rightarrow V_{l+2}^{k+1}\leq V_{l+1}^{k+1}$$
+
+\begin{equation*}
+\calg^{\mu^{k+1}}[V_{l+1}^{k+1}]\leq\calg^{\mu^{k+1}}[V_l^{k+1}] \Rightarrow V_{l+2}^{k+1}\leq V_{l+1}^{k+1}
+\end{equation*}
+
 Therefore, by induction $V_l^{k+1}$ is monotonically decreasing in $l$.
 Further, we get convergence by Theorem~\ref{th:bfp} and
 \begin{align}
@@ -238,13 +278,29 @@ Remember that value iteration converges within $\epsilon$, not exactly, so this 
 \begin{example}
 Start by using the probability transition matrices from Example~\ref{ex:valit}.
 Let
-$$l(i,u) = \begin{cases} -2i, & u=a \\ -i, & u=b \end{cases}$$
+
+\begin{equation*}
+l(i,u) = \begin{cases} -2i, & u=a \\ -i, & u=b \end{cases}
+\end{equation*}
+
 and guess
-$$\mu^0(x) = \begin{cases} a, & x=2 \\ b, & x=1,3 \end{cases}$$
+
+\begin{equation*}
+\mu^0(x) = \begin{cases} a, & x=2 \\ b, & x=1,3 \end{cases}
+\end{equation*}
+
 Then we get
-$$\mathcal{L}^{\mu^0}[V]=\hat{l}^{\mu^0} \to V^0$$
+
+\begin{equation*}
+\mathcal{L}^{\mu^0}[V]=\hat{l}^{\mu^0} \to V^0
+\end{equation*}
+
 by
-$$[I-\alpha\mathbb{P}^{\mu^0}]V=\hat{l}^{\mu^0}$$
+
+\begin{equation*}
+[I-\alpha\mathbb{P}^{\mu^0}]V=\hat{l}^{\mu^0}
+\end{equation*}
+
 Writing this out yields
 \begin{align}
 \left[\begin{array}{c c c}
@@ -257,6 +313,10 @@ Writing this out yields
 \end{array}\right]
 \end{align}
 We can then solve for $V^0$ and find the optimal controller as
-$$\mu(x) = \arg\min\left\lbrace l(x,u)+\alpha\sum\pxj(u)V^0(x)\right\rbrace$$
+
+\begin{equation*}
+\mu(x) = \arg\min\left\lbrace l(x,u)+\alpha\sum\pxj(u)V^0(x)\right\rbrace
+\end{equation*}
+
 $\lozenge$
 \end{example}

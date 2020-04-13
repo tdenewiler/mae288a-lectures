@@ -25,10 +25,16 @@ a\otimes b &\doteq a+b \\
 \section{Convexity}
 Let $\mathcal{C}(\mathbb{R}^n)$ be the space of convex functions mapping $\mathbb{R}^n\to\mathbb{R}^-$.
 If $\vp\in\mathcal{C}(\mathbb{R}^n)$ then
-$$\vp(\lambda x+(1-\lambda)y) \leq \lambda\vp(x) + (1-\lambda)\vp(y)~\forall x,y\in\mathbb{R}^n,~\forall \lambda\in[0,1]$$
+
+\begin{equation*}
+\vp(\lambda x+(1-\lambda)y) \leq \lambda\vp(x) + (1-\lambda)\vp(y)~\forall x,y\in\mathbb{R}^n,~\forall \lambda\in[0,1]
+\end{equation*}
 
 In a previous homework we showed that if $\vp,\psi\in\mathcal{C}(\mathbb{R}^n)$ then
-$$[\vp\oplus\psi](x) = \max[\vp(x),\psi(x)], \qquad \vp\oplus\psi\in\mathcal{C}(\mathbb{R}^n)$$
+
+\begin{equation*}
+[\vp\oplus\psi](x) = \max[\vp(x),\psi(x)], \qquad \vp\oplus\psi\in\mathcal{C}(\mathbb{R}^n)
+\end{equation*}
 
 Let $\vp\in\mathcal{C}(\mathbb{R}^n)$ and $c\in\mathbb{R}$.
 Is $c\otimes\vp\in\mathcal{C}(\mathbb{R}^n)$?
@@ -41,15 +47,27 @@ Is $c\otimes\vp\in\mathcal{C}(\mathbb{R}^n)$?
 \end{align*}
 This implies that $\mathcal{C}(\mathbb{R}^n)$ is a max-plus vector space.
 However, value functions are generally semi-convex where $\vp$ is semi-convex with constant $\beta\in\mathbb{R}$ if
-$$\vp(x) + \frac{\beta}{2}|x|^2$$
+
+\begin{equation*}
+\vp(x) + \frac{\beta}{2}|x|^2
+\end{equation*}
+
 is convex.
 We will denote $S_\beta(\mathbb{R}^n)$ to be the space of semi-convex functions with constant $\beta$.
 
 \begin{example}
 Let $\beta=1$, then
-$$-\tfrac{1}{4}{(x-2)}^2\in S_\beta(\mathbb{R})$$
+
+\begin{equation*}
+-\tfrac{1}{4}{(x-2)}^2\in S_\beta(\mathbb{R})
+\end{equation*}
+
 because
-$$-\tfrac{1}{4}{(x-2)}^2 + \tfrac{1}{2}x^2 = \tfrac{1}{4}x^2 + x - 1$$
+
+\begin{equation*}
+-\tfrac{1}{4}{(x-2)}^2 + \tfrac{1}{2}x^2 = \tfrac{1}{4}x^2 + x - 1
+\end{equation*}
+
 is convex due to the positive coefficient for the $x^2$ term.
 See Figure~\ref{fig:18semiconvex}.
 $\lozenge$
@@ -58,7 +76,7 @@ $\lozenge$
 \begin{figure}[ht!]
 \centering
 \includegraphics[width=.4\textwidth]{images/18semiconvex}
-\caption{A semi-convex function.}
+\caption{A semi-convex function.}%
 \label{fig:18semiconvex}
 \end{figure}
 
@@ -89,16 +107,28 @@ This looks like a Laplace transform, we are just using different definitions for
 
 Now, instead of looking at all $z$ we will only look at a dense subset such that ${\{z_n\}}_{n=1}^\infty$ is dense in $\mathbb{R}^n$ (dense like the natural numbers).
 Then
-$$\vp(x) = \max_n\{a(z_n) + \psi(x,z_n)\}$$
+
+\begin{equation*}
+\vp(x) = \max_n\{a(z_n) + \psi(x,z_n)\}
+\end{equation*}
+
 where
-$$a(z_n) = \int_{\mathbb{R}^n}^\oplus \psi(x,z_n)\otimes [-\vp(x)]dx$$
+
+\begin{equation*}
+a(z_n) = \int_{\mathbb{R}^n}^\oplus \psi(x,z_n)\otimes [-\vp(x)]dx
+\end{equation*}
+
 Let $\hat{a}_n=a(z_n)$ and $\hat{\psi}_n=\psi(x,z_n)$, then
 \begin{align}
 \label{eq:18vpx}
 \vp(x) = \max_n\{\hat{a}_n\otimes\hat{\psi}_n(x)\} = \bigoplus_{n=1}^\infty[\hat{a}_n\otimes\hat{\psi}_n(x)]
 \end{align}
 with
-$$\hat{a}_n = \int_{\mathbb{R}^n}^\oplus \hat{\psi}_n(x)\otimes [-\vp(x)]dx$$
+
+\begin{equation*}
+\hat{a}_n = \int_{\mathbb{R}^n}^\oplus \hat{\psi}_n(x)\otimes [-\vp(x)]dx
+\end{equation*}
+
 This is like Fourier transforms but in a different space.
 
 ${\{\psi_n\}}_{n=1}^\infty$ form a max-plus basis for $S_\beta(\mathbb{R}^n)$.
@@ -107,7 +137,11 @@ Since the value functions are all semi-convex we can use $\{\psi_n\}$ to look fo
 \section{Dynamic Programming Application}
 We are trying to solve the DPP $V=\mathcal{S}_\delta[V]$, with $\mathcal{S}_\delta$ being max-plus linear.
 Suppose that
-$$V(x)\simeq \bigoplus_{n=1}^N\hat{a}_n\otimes\hat{\psi}_n(x)$$
+
+\begin{equation*}
+V(x)\simeq \bigoplus_{n=1}^N\hat{a}_n\otimes\hat{\psi}_n(x)
+\end{equation*}
+
 and
 \begin{align}
 \label{eq:18mp}
@@ -120,7 +154,11 @@ and
 The coefficients for the expansion can be found offline.
 
 By (\ref{eq:18vpx}) we have
-$$\mathcal{S}_\delta[\hat{\psi}_i](x) = \bigoplus_{j=1}^N B_{j,i}\otimes\hat{\psi}_j(x)$$
+
+\begin{equation*}
+\mathcal{S}_\delta[\hat{\psi}_i](x) = \bigoplus_{j=1}^N B_{j,i}\otimes\hat{\psi}_j(x)
+\end{equation*}
+
 where $B_{j,i}$ are the coefficients and are given by
 \begin{align}
 \label{eq:18bji}
@@ -135,7 +173,11 @@ By substituting (\ref{eq:18bji}) into (\ref{eq:18mp}) we get
 &= \bigoplus_{j=1}^N\left[\bigoplus_{i=1}^N B_{j,i}\otimes\hat{a}_i\right] \otimes \hat{\psi}_j(x)
 \end{align*}
 Since this is true for all $x$ the result is
-$$\hat{a}_n = \bigoplus_{i=1}^N B_{n,i}\otimes\hat{a}_i~\forall n$$
+
+\begin{equation*}
+\hat{a}_n = \bigoplus_{i=1}^N B_{n,i}\otimes\hat{a}_i~\forall n
+\end{equation*}
+
 
 We can use this to build a coefficient vector and matrix where
 \begin{align*}
@@ -159,7 +201,11 @@ This will work if
 
 \begin{example}
 Let
-$$B = \left[\begin{array}{c c c} 0 & 1 & 0.5 \\ -3 & -1 & -0.3 \\ -1 & 0.1 & -0.1 \end{array}\right]$$
+
+\begin{equation*}
+B = \left[\begin{array}{c c c} 0 & 1 & 0.5 \\ -3 & -1 & -0.3 \\ -1 & 0.1 & -0.1 \end{array}\right]
+\end{equation*}
+
 Let the directed graph have transition costs given by $B_{i,j}$.
 Instead of probabilities when using Markov chains the max-plus power method uses costs for going from one node to another.% chktex 35
 We can see that $B_{1,1}=0$ and
@@ -175,8 +221,16 @@ Then
 \vec{a}^2 &= \left[\begin{array}{c c c} 0 & 1 & 0.5 \\ -3 & -1 & -0.3 \\ -1 & 0.1 & -0.1 \end{array}\right] \left[\begin{array}{c} 1 \\ -0.3 \\ 0.1 \end{array}\right] = \left[\begin{array}{c} 1 \\ -0.2 \\ 0 \end{array}\right]
 \end{align*}
 This procedure eventually converges in four steps to
-$$\vec{a} = \left[\begin{array}{c c c} 1 & -0.3 & 0 \end{array}\right]^T$$
+
+\begin{equation*}
+\vec{a} = \left[\begin{array}{c c c} 1 & -0.3 & 0 \end{array}\right]^T
+\end{equation*}
+
 Using this $\vec{a}$ we can reconstruct
-$$V (x) = \bigoplus_{i=1}^N\hat{a}_i\otimes~\hat{\psi}_i (x)$$
+
+\begin{equation*}
+V (x) = \bigoplus_{i=1}^N\hat{a}_i\otimes~\hat{\psi}_i (x)
+\end{equation*}
+
 $\lozenge$
 \end{example}% chktex 16

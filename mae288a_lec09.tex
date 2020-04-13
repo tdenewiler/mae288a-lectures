@@ -22,7 +22,11 @@ An example of this is vehicles that have three states where $\mathbb{X}=\{\text{
 
 \begin{definition}
 The transition probability is
-$$\pij = P(\xi_{t+1}=j|\xi_t=i)$$
+
+\begin{equation*}
+\pij = P(\xi_{t+1}=j|\xi_t=i)
+\end{equation*}
+
 where $\xi_t\in\mathbb{X}$.
 \end{definition}
 
@@ -34,7 +38,11 @@ P(\xi_{t+1}\in\mathcal{A} | \xi_t=i_t, \xi_{t-1}=i_{t-1},\ldots,\xi_0=i_0) = P(\
 \section{Dynamics}
 The dynamics of Markov chains are given by the transition probability, $\mathbb{P}$.
 Note that de Morgan's Law says that
-$$A\cap[B\cup C] = [A\cap B] \cup [A\cap C]$$
+
+\begin{equation*}
+A\cap[B\cup C] = [A\cap B] \cup [A\cap C]
+\end{equation*}
+
 This gives
 \begin{align*}
 P\left(\xi_{t+2}=j | \xi_t=i\right) &= P\left(\{\xi_{t+2}=j\} \cap \left[\bigcup_{k\in\mathbb{X}}\{\xi_{t+1}=k\}\right] | \{\xi_t=i\}\right) \\
@@ -53,16 +61,23 @@ P\left(\xi_{t+2}=j | \xi_t=i\right) &= P\left(\{\xi_{t+2}=j\} \cap \left[\bigcup
 \end{align*}
 Then, let $p_t$ be a $1\times n$ vector, $p_{t_i}={[p_t]}_i=P(\xi_t=i)$.
 Since it is a probability we must have $p_{t_i}\in[0,1]$ and
-$$\sumi p_{t_i}=1$$
+
+\begin{equation*}
+\sumi p_{t_i}=1
+\end{equation*}
+
 Now let $S^N=\{q\in\mathbb{R}^n|q_i\in[0,1],\sum q_i=1\}$, where $\sum q_i=1$ is the simplex.
 See Figure~\ref{fig:09s2s3}.
 These probabilities define the state.
-$$p_{{t+1}_i} = P(\xi_{t+1}=i) = \sum_j P(\xi_{t+1}=i|\xi_t=j)P(\xi_t=j) = \pji p_{t_i}$$
+
+\begin{equation*}
+p_{{t+1}_i} = P(\xi_{t+1}=i) = \sum_j P(\xi_{t+1}=i|\xi_t=j)P(\xi_t=j) = \pji p_{t_i}
+\end{equation*}
 
 \begin{figure}[ht!]
 \centering
 \includegraphics[width=.4\textwidth]{images/09s2s3}
-\caption{Probability spaces for two and three variables.}
+\caption{Probability spaces for two and three variables.}%
 \label{fig:09s2s3}
 \end{figure}
 
@@ -80,7 +95,11 @@ Consider a birth-death process of cells in a petri dish.
 The state space is given by $\mathbb{X}=\{0,1,2,\ldots\}$ so we are working in infinite space.
 Let $q$ be the probability that a cell dies in one time step, $p$ be the probability that a cell splits in one time step and $r=1-p-q$ the probability that neither event happens.
 Starting at $t=0$ with no cells in the petri dish has a transitional probability of
-$$\mathbb{P}_{0,j} = \begin{cases} 1, & j=0 \\ 0, & j\neq0 \end{cases}$$
+
+\begin{equation*}
+\mathbb{P}_{0,j} = \begin{cases} 1, & j=0 \\ 0, & j\neq0 \end{cases}
+\end{equation*}
+
 Moving forward in time shows
 \begin{align*}
 \mathbb{P}_{1,j} &= \begin{cases} q, & j=0 \\ r, & j=1 \\ p, & j=2 \end{cases} \\
@@ -104,7 +123,11 @@ Let $\xi_t=x+1$.
 Let $\xi_t$ be the player holdings plus one and $\mathbb{X}=\{1,2,\ldots,N\}$ with $N=x+y+1$.
 At each step the player wins with probability $p$ and loses with probability $q=1-p$.
 The probability transistion matrix is given by
-$$\pij = \begin{cases} 1, & j=1 \\ 0, & j\neq1 \end{cases}$$
+
+\begin{equation*}
+\pij = \begin{cases} 1, & j=1 \\ 0, & j\neq1 \end{cases}
+\end{equation*}
+
 For $N=5$ this results in
 \begin{align*}
 \mathbb{P} = \left[\begin{array}{c c c c c}
@@ -160,8 +183,12 @@ Communication, $\leftrightarrow$, is an equivalence relation.
 
 \begin{definition}
 Suppose $A_i\subseteq~\mathbb{X}~\forall~i\in\mathcal{I}, A_i\cap~A_j=\null$ if $i\neq~j$ and
-$$\bigcup_{i\in\mathcal{I}}A_i = \mathbb{X}$$
-then $\{A_i\}_{i\in\mathcal{I}}$ \textit{partitions} $\mathbb{X}$.
+
+\begin{equation*}
+\bigcup_{i\in\mathcal{I}}A_i = \mathbb{X}
+\end{equation*}
+
+then $\{A_i\}_{i\in\mathcal{I}}$ \textit{partitions} $\mathbb{X}$.% chktex 3
 \end{definition}
 
 \begin{theorem}
@@ -182,7 +209,7 @@ $\lozenge$
 \begin{figure}[ht!]
 \centering
 \includegraphics[width=.4\textwidth]{images/09mc5}
-\caption{Five state Markov chain.}
+\caption{Five state Markov chain.}%
 \label{fig:09mc5}
 \end{figure}
 
@@ -192,7 +219,7 @@ If ${[\mathbb{P}^n]}_{i,j} = 0~\forall n\geq1$, then $d(i)=0$.
 So $d(i) = \text{GCD}(\{n\geq1,{[\mathbb{P}^]}_{i,j}>0\})$.
 \end{definition}
 
-\begin{theorem}
+\begin{theorem}%
 \label{th:periodicity}
 If $i\leftrightarrow j$ then $d(i)=d(j)$.
 \end{theorem}
@@ -200,10 +227,18 @@ If $i\leftrightarrow j$ then $d(i)=d(j)$.
 \begin{example}
 $A_1=\{1,2,3,4,5\}$ and $A_6=\{6\}$ are equivalence classes.
 Then
-$$P(\xi_{t+2}=3|\xi_t=3) = \mathbb{P}_{3,5}\mathbb{P}_{5,3} = 0.25> 0$$
+
+\begin{equation*}
+P(\xi_{t+2}=3|\xi_t=3) = \mathbb{P}_{3,5}\mathbb{P}_{5,3} = 0.25> 0
+\end{equation*}
+
 We can also see $d(3)=\text{GCD}(\{2,4,6,8,\ldots\})=2$.
 So, by Theorem~\ref{th:periodicity}
-$$d(1)=d(2)=d(3)=d(4)=d(5)=2 \Rightarrow \mathbb{P}_{6,6}^n=1~\forall n \therefore d(6)=1$$
+
+\begin{equation*}
+d(1)=d(2)=d(3)=d(4)=d(5)=2 \Rightarrow \mathbb{P}_{6,6}^n=1~\forall n \therefore d(6)=1
+\end{equation*}
+
 See Figure~\ref{fig:09mc6}.
 $\lozenge$
 \end{example}
@@ -211,7 +246,7 @@ $\lozenge$
 \begin{figure}[ht!]
 \centering
 \includegraphics[width=.4\textwidth]{images/09mc6}
-\caption{Six state Markov chain.}
+\caption{Six state Markov chain.}%
 \label{fig:09mc6}
 \end{figure}
 
@@ -226,7 +261,11 @@ If $d(i)=1~\forall i$ then the Markov chain is \textit{aperiodic}.
 
 \begin{example}
 Let
-$$\mathbb{P} = \left[\begin{array}{c c} 0 & 1 \\ \frac{1}{2} & \frac{1}{2} \end{array}\right]$$
+
+\begin{equation*}
+\mathbb{P} = \left[\begin{array}{c c} 0 & 1 \\ \frac{1}{2} & \frac{1}{2} \end{array}\right]
+\end{equation*}
+
 Clearly $d (2)=1$ and $d (1)=1$.
 This is aperiodic and irreducible.
 See Figure~\ref{fig:09mc2}.
@@ -236,13 +275,17 @@ $\lozenge$
 \begin{figure}[ht!]
 \centering
 \includegraphics[width=.4\textwidth]{images/09mc2}
-\caption{Two state Markov chain.}
+\caption{Two state Markov chain.}%
 \label{fig:09mc2}
 \end{figure}
 
 \begin{example}
 Let
-$$\mathbb{P} = \left[\begin{array}{c c c} 0 & 1 & 0 \\ \frac{1}{2} & 0 & \frac{1}{2} \\ 0 & 1 & 0 \end{array}\right]$$
+
+\begin{equation*}
+\mathbb{P} = \left[\begin{array}{c c c} 0 & 1 & 0 \\ \frac{1}{2} & 0 & \frac{1}{2} \\ 0 & 1 & 0 \end{array}\right]
+\end{equation*}
+
 This Markov chain is irreducible.
 See Figure~\ref{fig:09mc3}.
 Also, $d (i)=2~\forall~i$.
@@ -278,7 +321,7 @@ $\lozenge$
 \begin{figure}[ht!]
 \centering
 \includegraphics[width=.4\textwidth]{images/09mc3}
-\caption{Three state Markov chain.}
+\caption{Three state Markov chain.}%
 \label{fig:09mc3}
 \end{figure}
 
@@ -296,7 +339,7 @@ This leads to $\sum p_{t_i}=1$, but $p_{t_i}\rightarrow 0~\forall i$ as $i\to\in
 \begin{figure}[ht!]
 \centering
 \includegraphics[width=.4\textwidth]{images/09mcinf}
-\caption{Infinite state Markov chain.}
+\caption{Infinite state Markov chain.}%
 \label{fig:09mcinf}
 \end{figure}
 
@@ -306,9 +349,17 @@ $\Pi\in S^N = S^{\#\mathbb{X}}$ such that $\Pi=\mathbb{P}^T\Pi$ is called a \tex
 
 \begin{example}
 Suppose
-$$\bar{p}=\lim_{t\to\infty}p_t = \lim_{t\to\infty}{(\mathbb{P}^T)}^t p_0$$
+
+\begin{equation*}
+\bar{p}=\lim_{t\to\infty}p_t = \lim_{t\to\infty}{(\mathbb{P}^T)}^t p_0
+\end{equation*}
+
 then
-  $$\mathbb{P}^T\bar{p}=\lim_{t\to\infty}\mathbb{P}^T{(\mathbb{P}^T)}^t p_t = \lim_{t\to\infty}{(\mathbb{P}^T)}^{t+1}p_0=\bar{p}$$
+
+\begin{equation*}
+\mathbb{P}^T\bar{p}=\lim_{t\to\infty}\mathbb{P}^T{(\mathbb{P}^T)}^t p_t = \lim_{t\to\infty}{(\mathbb{P}^T)}^{t+1}p_0=\bar{p}
+\end{equation*}
+
 $\therefore \bar{p}$ is a stationary distribution.
 $\lozenge$
 \end{example}

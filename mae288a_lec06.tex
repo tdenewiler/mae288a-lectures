@@ -45,9 +45,17 @@ Notice that each term in $V(t,x)\geq 0 \Rightarrow V(t,x)\geq 0$.
 Also, $V(t+1,x)\geq 0~\forall x \Rightarrow H_t(y)\to\infty \text{~as~} |y|\to\infty \therefore \exists \min$.
 
 Using this value function gives
-$$y^{\text{opt}} = \begin{cases} \bar{y}, & x\leq\bar{y} \\ x & x\geq y \end{cases}$$
+
+\begin{equation*}
+y^{\text{opt}} = \begin{cases} \bar{y}, & x\leq\bar{y} \\ x & x\geq y \end{cases}
+\end{equation*}
+
 and leads to an optimal control policy of
-$$\mu_t = y^{\text{opt}}-x = \begin{cases} \bar{y}-x, & x\leq\bar{y} \\ 0, & x>\bar{y} \end{cases}$$
+
+\begin{equation*}
+\mu_t = y^{\text{opt}}-x = \begin{cases} \bar{y}-x, & x\leq\bar{y} \\ 0, & x>\bar{y} \end{cases}
+\end{equation*}
+
 We used that $V(t+1,\cdot)$ is convex  so to induction we still need to show that $V(t,\cdot)$ is convex to complete the proof.
 
 \begin{theorem}
@@ -56,7 +64,11 @@ $V(t,\cdot)$ is convex.
 
 \begin{proof}
 It is sufficient to show that
-$$U_t(x) = \begin{cases} H_t(\bar{y}), & x\leq\bar{y} \\ H_t(x), & x>\bar{y} \end{cases}$$
+
+\begin{equation*}
+U_t(x) = \begin{cases} H_t(\bar{y}), & x\leq\bar{y} \\ H_t(x), & x>\bar{y} \end{cases}
+\end{equation*}
+
 is convex.
 There are three cases that must be considered, see Figure~\ref{fig:06curve}.
 Let $x_1,x_2\in\mathbb{R}$, $\lambda\in[0,1]$, $z_\lambda = \lambda x_1 + (1-\lambda)x_2$.
@@ -79,7 +91,7 @@ H_t(z_\lambda) &\leq \beta H_t(\bar{y})+(1-\beta)H_t(x_2) \\
 \begin{figure}[ht!]
 \centering
 \includegraphics[width=.5\textwidth]{images/06curve}
-\caption{Convex curve.}
+\caption{Convex curve.}%
 \label{fig:06curve}
 \end{figure}
 
@@ -94,21 +106,36 @@ J(x,\mu) = E_{w_{]0,\infty[}}\left\lbrace\sum_{t=0}^\infty \alpha^t l(\xi_t,\mu_
 \end{align*}
 Note that a smaller $\alpha$ implies more myopic behavior and $\alpha=0$ implies a completely greedy controller.
 If
-$$|l(x,u)|\leq L \Rightarrow J(x,\mu)\leq E\left\lbrace\sum_{t=0}^\infty \alpha^T L\right\rbrace \leq \frac{1}{1-\alpha}L<\infty$$
+
+\begin{equation*}
+|l(x,u)|\leq L \Rightarrow J(x,\mu)\leq E\left\lbrace\sum_{t=0}^\infty \alpha^T L\right\rbrace \leq \frac{1}{1-\alpha}L<\infty
+\end{equation*}
 
 \begin{example}
 Given $\xi_{t+1}=u_t\xi_t$, $\mu_t(\xi_t)=2$, $\xi_t=2^t x$ and $\alpha=3/4$ gives
-  $$J(x,\mu) = \sum{\left(\frac{3}{4}\right)}^t 2^t x\to+\infty$$
+
+\begin{equation*}
+J(x,\mu) = \sum{\left(\frac{3}{4}\right)}^t 2^t x\to+\infty
+\end{equation*}
+
 $\lozenge$
 \end{example}
 
 An alternative method for solving this type of problem is to average the cost per unit time such that
-$$J(x,\mu) = \lim_{T\to\infty}\sup \frac{1}{T}E\left[\sum_{t=0}^T l(xi_t,u_t)\right]$$
+
+\begin{equation*}
+J(x,\mu) = \lim_{T\to\infty}\sup \frac{1}{T}E\left[\sum_{t=0}^T l(xi_t,u_t)\right]
+\end{equation*}
+
 This is used in non-linear $H_\infty$.
 We are not going to spend time on this method in this course though.
 
 \subsection{Dynamic Programming Principle}
-$$V(x) = \inf_{\mu\in\mathcal{M}_{0,\infty}} J(x,\mu)$$
+
+\begin{equation*}
+V(x) = \inf_{\mu\in\mathcal{M}_{0,\infty}} J(x,\mu)
+\end{equation*}
+
 The following is \textit{not} a proof and we are assuming Markov processes.
 Let $r=t-\tau$, $\hat{\xi}_r=\xi_{\tau+r}$, $\hat{\mu}_r=\mu_{\tau+r}$ and $\hat{w}_r=w_{\tau+r}$.
 Then we can get the value function as
@@ -132,14 +159,21 @@ V(x) &= \inf_{\mu\in\mathcal{M}_{0,0}} E_{\mu_0} \left\lbrace l(x,\mu_0(x)) + \a
 \end{align}
 This is the Dynamic Programming Equation! To get the minimum we have to solve for $V$, the value function.
 If $\min\exists$ then
-$$\mu(x)\in\arg\min\{l(x,u)+\alpha E_u[V(f(x,u,w))]\}$$
+
+\begin{equation*}
+\mu(x)\in\arg\min\{l(x,u)+\alpha E_u[V(f(x,u,w))]\}
+\end{equation*}
+
 The DPE is of the form $V=\mathcal{G}[V]$, where $\mathcal{G}$ is a non-linear operator that maps one function to another function.
 It is a recursive operator.
-$$\mathcal{G}[\vp](x) = \inf_u\{l(x,u)+\alpha E_u[\vp(f(x,u,w))]\}$$
+
+\begin{equation*}
+\mathcal{G}[\vp](x) = \inf_u\{l(x,u)+\alpha E_u[\vp(f(x,u,w))]\}
+\end{equation*}
 
 There are two methods that can be used to solve the DPE\@: value iteration (contraction mapping principle) and policy iteration.
 
-\section{Normed Vector Space Review}
+\section{Normed Vector Space Review}%
 \label{sec:normedvectorspace}
 \begin{definition}
 A space is a set.
@@ -191,6 +225,10 @@ B_R(0) &= \{x\in\mathbb{R}^n | ||x||\subset R\} \\
 \end{align*}
 and let $\mathcal{X}=C(\overline{B_R(0)})$.
 Then
-$$||y||=\max_{x\in B_R} |y(x)|$$
+
+\begin{equation*}
+||y||=\max_{x\in B_R} |y(x)|
+\end{equation*}
+
 $\lozenge$
 \end{example}% chktex 17

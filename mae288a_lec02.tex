@@ -19,7 +19,7 @@ Start with a pair of RVs that are put together where $(X,Y):(\Omega,\Sigma) \to 
 Note that $X$ and $Y$ are in some sample space.
 In the remainder of this course we will assume that probability density functions exist.
 
-\begin{theorem}
+\begin{theorem}%
 \label{th:02expectationlo}
 The expectation operator $E$ is a linear operator.
 
@@ -36,10 +36,14 @@ E[AX+BY] &= \int_{\mathbb{R}\times\mathbb{R}}(AX+BY)p(x,y)dxdy \\
 \end{proof}
 
 Let $X\sim N(m\in\mathbb{R}^n,C)$, then
-$$p(x)=\frac{1}{{(2\pi)}^{n/2}|C|^{1/2}}e^{\left[-\frac{1}{2}{(x-m)}^T C^{-1}(x-m)\right]}$$
+
+\begin{equation*}
+p(x)=\frac{1}{{(2\pi)}^{n/2}|C|^{1/2}}e^{\left[-\frac{1}{2}{(x-m)}^T C^{-1}(x-m)\right]}
+\end{equation*}
+
 Let $k=\frac{1}{{(2\pi)}^{n/2}|C|^{1/2}}$.
 
-\begin{theorem}
+\begin{theorem}%
 \label{th:02mean}
 \begin{align}
 \label{eq:02mean}
@@ -66,7 +70,7 @@ Then, since $f(y)$ is an odd function ($f(y)=-f(-y)$, see Figure~\ref{fig:02oddF
 \begin{figure}[ht!]
 \centering
 \includegraphics[width=.5\textwidth]{images/02oddFunction}
-\caption{An odd function, where the integral is zero because the areas $-A$ and $A$ to the left and right of the origin are symmetric and cancel each other out.}
+\caption{An odd function, where the integral is zero because the areas $-A$ and $A$ to the left and right of the origin are symmetric and cancel each other out.}%
 \label{fig:02oddFunction}
 \end{figure}
 
@@ -85,11 +89,23 @@ F(x,y) &= P(X\leq x, Y\leq y) \\
 
 Then let $A=\lbrace(x,y) | x\in(a_1,b_1], y\in(-\infty,b_2]\rbrace$, $B=\lbrace(~) | x\leq a_1, y\leq b_2\rbrace$ and $C=\lbrace(~)|x\leq b_1, y\leq b_2\rbrace$, as shown in Figure~\ref{fig:02twoSets}.% chktex 9
 This gives $C=A\cup B$, $A\cap B=\emptyset$.
-$$Z^{-1}(A)\cap Z^{-1}(B) = \emptyset$$
+
+\begin{equation*}
+Z^{-1}(A)\cap Z^{-1}(B) = \emptyset
+\end{equation*}
+
 Since $P$ is a probability measure
-$$P(Z^{-1}(C)) = P(Z^{-1}(A\cup B)) = P(Z^{-1}(A))+P(Z^{-1}(B))$$
+
+\begin{equation*}
+P(Z^{-1}(C)) = P(Z^{-1}(A\cup B)) = P(Z^{-1}(A))+P(Z^{-1}(B))
+\end{equation*}
+
 or
-$$P(Z^{-1}(A))=P(Z^{-1}(C))-P(Z^{-1}(B))$$
+
+\begin{equation*}
+P(Z^{-1}(A))=P(Z^{-1}(C))-P(Z^{-1}(B))
+\end{equation*}
+
 This all leads to
 \begin{align*}
 C &= F(b_1,b_2) - F(a_1,b_2) \\
@@ -102,13 +118,17 @@ $\lozenge$
 \begin{figure}[ht!]
 \centering
 \includegraphics[width=.35\textwidth]{images/02twoSets}
-\caption{Two sets, $A$ and $B$, showing the distributions of RVs.}
+\caption{Two sets, $A$ and $B$, showing the distributions of RVs.}%
 \label{fig:02twoSets}
 \end{figure}
 
 \begin{theorem}
 For any measurable $A\subseteq\mathbb{R}^n$ then
-$$P(x\in A)=P(X^{-1}(A)) = \int_A p(x)dx$$
+
+\begin{equation*}
+P(x\in A)=P(X^{-1}(A)) = \int_A p(x)dx
+\end{equation*}
+
 \end{theorem}
 
 \section{Independence}
@@ -123,7 +143,11 @@ P(X\in A, Y\in B) &= P(X^{-1}(A) \cap Y^{-1}(B)) \\
 
 \begin{example}
 Using the uniform system shown in Figure~\ref{fig:02unitSquare} we have
-$$p(x,y) = \begin{cases} 1, & x\in[0,1],y\in[0,1] \\ 0, & \text{elsewhere} \end{cases}$$
+
+\begin{equation*}
+p(x,y) = \begin{cases} 1, & x\in[0,1],y\in[0,1] \\ 0, & \text{elsewhere} \end{cases}
+\end{equation*}
+
 Let $A,B\subseteq\mathbb{R}$, then
 \begin{align*}
 P(X^{-1}(A) \cap Y^{-1}(B)) &= {\int\int}_{A\times B} p(x,y)dydx \\
@@ -139,7 +163,7 @@ $\lozenge$
 \begin{figure}[ht!]
 \centering
 \includegraphics[width=.3\textwidth]{images/02unitSquare}
-\caption{Unit square.}
+\caption{Unit square.}%
 \label{fig:02unitSquare}
 \end{figure}
 
@@ -161,7 +185,7 @@ $\lozenge$
 \begin{figure}[ht!]
 \centering
 \includegraphics[width=.3\textwidth]{images/02unitTriangle}
-\caption{Unit triangle.}
+\caption{Unit triangle.}%
 \label{fig:02unitTriangle}
 \end{figure}
 
@@ -215,7 +239,7 @@ E[XY] &= \int_\mathbb{R}\int_\mathbb{R} xyp(x,y)dxdy \\
 \end{align*}
 \end{proof}
 
-\begin{theorem}
+\begin{theorem}%
 \label{th:02covariance}
 Given $X$ and $Y$ are independent random variables, $X\sim N(m_x,C_x)$, $Y\sim N(m_y,C_y)$ and $Z=AX+BY$, then
 \begin{align}
@@ -252,7 +276,11 @@ Let $\lbrace w_t\rbrace_{t=0}^\infty$ be an IID sequence of RVs.
 The variables are IID if $w_r$ and $w_s$ are independent when $r\neq s$ and they all have the same distribution.
 Let $\xi_0$ be uniformly distributed over the range $[0,1]$.
 Then the desnity function for $w_t$ is
-$$p_t(w) = \begin{cases} \frac{1}{2}, & w\in[-1,1] \\ 0, & \text{elsewhere} \end{cases}$$
+
+\begin{equation*}
+p_t(w) = \begin{cases} \frac{1}{2}, & w\in[-1,1] \\ 0, & \text{elsewhere} \end{cases}
+\end{equation*}
+
 Let $\xi_{t+1}=\xi_t+w_t$.
 Then
 \begin{align*}
@@ -269,6 +297,6 @@ $\lozenge$
 \begin{figure}[ht!]
 \centering
 \includegraphics[width=.3\textwidth]{images/02iid}
-\caption{Distribution over $A$.}
+\caption{Distribution over $A$.}%
 \label{fig:02iid}
 \end{figure}% chktex 17

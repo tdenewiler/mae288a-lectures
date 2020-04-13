@@ -23,9 +23,17 @@ The dynamics and initial conditions are given by
 \xi_s &= x
 \end{align}
 The open loop control space is
-$$\mathcal{U}_{s,t} = \left\lbrace u:[s,t)\to\mathcal{U}\subseteq \mathbb{R}^k~|~\int_s^t |u_t|^2dt < \infty \right\rbrace$$% chktex 9
+
+\begin{equation*}
+\mathcal{U}_{s,t} = \left\lbrace u:[s,t)\to\mathcal{U}\subseteq \mathbb{R}^k~|~\int_s^t |u_t|^2dt < \infty \right\rbrace% chktex 9
+\end{equation*}
+
 and the closed loop, or feedback, control space is
-$$\mathcal{M}_{s,t} = \left\lbrace \mu:[s,t)\times\mathbb{R}^n\to\mathcal{U}\subseteq\mathbb{R}^k~|~\int_s^t |\mu_t(\xi_t)|^2dt < \infty~\forall x \in \mathbb{R}^n \right\rbrace$$% chktex 9
+
+\begin{equation*}
+\mathcal{M}_{s,t} = \left\lbrace \mu:[s,t)\times\mathbb{R}^n\to\mathcal{U}\subseteq\mathbb{R}^k~|~\int_s^t |\mu_t(\xi_t)|^2dt < \infty~\forall x \in \mathbb{R}^n \right\rbrace% chktex 9
+\end{equation*}
+
 given that there exists a unique solution to (\ref{eq:13d}) and (\ref{eq:13ic}).
 The cost function mapping is $J:[0,T]\times\mathbb{R}^n\times\mathcal{U}_{s,t}\to\mathbb{R}$ and the cost function is
 \begin{align}
@@ -33,7 +41,11 @@ The cost function mapping is $J:[0,T]\times\mathbb{R}^n\times\mathcal{U}_{s,t}\t
 J(s,x,u) = \int_s^T l(\xi_t,u_t)dt + \vp(xi_t)
 \end{align}
 The value function is
-$$V(s,x) = \inf_{\uinu}J(s,x,u)$$
+
+\begin{equation*}
+V(s,x) = \inf_{\uinu}J(s,x,u)
+\end{equation*}
+
 and the feedback versions are
 \begin{align*}
 &J^F: [0,T)\times\mathbb{R}^n\times\mathcal{M}_{s,t}\to\mathbb{R} \\% chktex 9
@@ -41,9 +53,13 @@ and the feedback versions are
 &V^F(s,x) = \inf_{\mu\in\mathcal{M}_{s,T}}J^F(s,x,\mu)
 \end{align*}
 
-\begin{proposition}
+\begin{proposition}%
 \label{prop:13value}
-$$V(s,x) = V^F(s,x)~\forall s\in[0,T),~\forall x\in\mathbb{R}^n$$% chktex 9
+
+\begin{equation*}
+V(s,x) = V^F(s,x)~\forall s\in[0,T),~\forall x\in\mathbb{R}^n% chktex 9
+\end{equation*}
+
 \end{proposition}
 
 \begin{proof}
@@ -88,7 +104,11 @@ Therefore
 V(s,x) \leq J(s,x,\hat{u}) = J^F(s,x,\mu^\epsilon)
 \end{align}
 Finally, by (\ref{eq:13costeps}) and (\ref{eq:13valueeps}) we find that
-$$V(s,x) \leq V^\epsilon(s,x)$$
+
+\begin{equation*}
+V(s,x) \leq V^\epsilon(s,x)
+\end{equation*}
+
 \end{proof}
 
 This shows that if the system is deterministic then we can predict the trajectory using open loop control, so feedback is open loop control.
@@ -103,14 +123,18 @@ This is given by $u^0=u_t~\forall t\in[s,\tau)$.% chktex 9
 Then we have the mapping $u^1: [\tau,T)\to\mathcal{U}$ and get that $u^1_t=u_t~\forall t\in[\tau,T)$.% chktex 9
 This leads to $u^0\in\mathcal{U}_{s,\tau}$ and $u^1\in\mathcal{U}_{\tau,T}$.
 Letting
-$$u_t=\begin{cases} u_t^0, & t\in[s,\tau) \\ u_t^1, & t\in[\tau,T) \end{cases}$$% chktex 9
+
+\begin{equation*}
+u_t=\begin{cases} u_t^0, & t\in[s,\tau) \\ u_t^1, & t\in[\tau,T) \end{cases}% chktex 9
+\end{equation*}
+
 we get $u\in\mathcal{U}_{s,T}$.
 See Figure~\ref{fig:13controlspace}.
 
 \begin{figure}[ht!]
 \centering
 \includegraphics[width=.5\textwidth]{images/13controlspace}
-\caption{Multiple control spaces.}
+\caption{Multiple control spaces.}%
 \label{fig:13controlspace}
 \end{figure}
 
@@ -179,13 +203,21 @@ By (\ref{eq:13method1}), (\ref{eq:13limit}) and (\ref{eq:13valtaylor}) and letti
 This is the DPE for the HJB PDE\@.
 
 Recall the definition of the value function
-$$V(s,x) = \inf_{u\in\mathcal{U}_{s,T}} J(s,x,u)$$
+
+\begin{equation*}
+V(s,x) = \inf_{u\in\mathcal{U}_{s,T}} J(s,x,u)
+\end{equation*}
+
 This shows that $V(T,x) = \vp(x)$ is the terminal cost.
 Then
-$$\mu^\ast \in \arg\min_{\uinu} \left\lbrace l(x,u) + \nabla_x V(s,x) f(x,u) \right\rbrace$$
+
+\begin{equation*}
+\mu^\ast \in \arg\min_{\uinu} \left\lbrace l(x,u) + \nabla_x V(s,x) f(x,u) \right\rbrace
+\end{equation*}
+
 Notice that this is feedback control even though we started looking at open loop control, which makes sense because of Proposition~\ref{prop:13value}.
 
-\begin{example}
+\begin{example}%
 \label{ex:13hjb}
 Let the dynamics and initial conditions be
 \begin{align*}
@@ -193,10 +225,18 @@ Let the dynamics and initial conditions be
 \xi_s &= x
 \end{align*}
 The cost is
-$$J(s,x,u) = \int_s^T |\xi_t|+u_t^2dt$$
+
+\begin{equation*}
+J(s,x,u) = \int_s^T |\xi_t|+u_t^2dt
+\end{equation*}
+
 where $\psi=0$ means there is no terminal payoff.
 The HJB PDE is found as
-$$0 = V_s(s,x) + \inf_{v\in\mathbb{R}} \underbrace{\left[|x|+v^2+\sqrt{|x|}\cdot\text{sign}(x)\cdot v\right]}_{g(v)}$$
+
+\begin{equation*}
+0 = V_s(s,x) + \inf_{v\in\mathbb{R}} \underbrace{\left[|x|+v^2+\sqrt{|x|}\cdot\text{sign}(x)\cdot v\right]}_{g(v)}
+\end{equation*}
+
 Notice that $g(v)$ is quadratic and is a typical way of setting up these types of problems.
 From this we get
 \begin{align*}
@@ -229,9 +269,17 @@ Those yield a solution of
 \Rightarrow h &= \frac{1-\tilde{c}e^s}{1+\tilde{c}e^s}
 \end{align*}
 By the terminal condition we get
-$$0 = 2(1-\tilde{c}e^T) \Rightarrow \tilde{c} = e^{-T}$$
+
+\begin{equation*}
+0 = 2(1-\tilde{c}e^T) \Rightarrow \tilde{c} = e^{-T}
+\end{equation*}
+
 Now the value function is
-$$V(s,x) = 2\left(\frac{1-e^{s-T}}{1+e^{s-T}}\right)|x|$$
+
+\begin{equation*}
+V(s,x) = 2\left(\frac{1-e^{s-T}}{1+e^{s-T}}\right)|x|
+\end{equation*}
+
 Using the value function we can find the optimal control as
 \begin{align*}
 \mu^\ast(s,x) &= \underbrace{-2\left(\frac{1-e^{s-T}}{1+e^{s-T}}\right)\cdot\text{sign}(x)}_{V_x}\cdot\frac{\text{sign}(x)\sqrt{|x|}}{2} \\
@@ -249,6 +297,6 @@ $\lozenge$
 \begin{figure}[ht!]
 \centering
 \includegraphics[width=.6\textwidth]{images/13trajectory}
-\caption{State dynamics trajectory.}
+\caption{State dynamics trajectory.}%
 \label{fig:13trajectory}
 \end{figure}% chktex 17
